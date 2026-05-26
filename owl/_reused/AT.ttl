@@ -1,0 +1,1682 @@
+@prefix : <https://w3id.org/at#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/at#> .
+
+<https://w3id.org/at#> rdf:type owl:Ontology ;
+                        terms:contributor :Ekaterina_Petrova ;
+                        terms:creator <https://orcid.org/0000-0002-9383-7234> ;
+                        terms:description "The Archetype Ontology for building engineering domain classifies buildings, building elements, layersets, and materials that can be assigned to existing building stock. As such, the classes offer to assign average values defined by typical building characteristics and serve as reasonable approximations when detailed building-specific data is unavailable."@en ;
+                        terms:title "Building Archetype Ontology"@en ;
+                        vann:preferredNamespacePrefix "at"@en ;
+                        vann:preferredNamespaceUri "https://w3id.org/at#"@en ;
+                        rdfs:label "" ;
+                        owl:versionInfo "1.0"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+terms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+terms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/weblog
+foaf:weblog rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/at#constructionPeriod
+:constructionPeriod rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :Building ;
+                    rdfs:range :ConstructionPeriod .
+
+
+###  https://w3id.org/at#hasBuildingArchetype
+:hasBuildingArchetype rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :Building ;
+                      rdfs:range :BuildingArchetype .
+
+
+###  https://w3id.org/at#hasBuildingElement
+:hasBuildingElement rdf:type owl:ObjectProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain :Building ;
+                    rdfs:range :BuildingElement .
+
+
+###  https://w3id.org/at#hasBuildingType
+:hasBuildingType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :Building ;
+                 rdfs:range :BuildingType .
+
+
+###  https://w3id.org/at#hasElementArchetype
+:hasElementArchetype rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain :BuildingElement ;
+                     rdfs:range :ElementArchetype .
+
+
+###  https://w3id.org/at#hasLayer
+:hasLayer rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :LayerSet ;
+          rdfs:range :Layer .
+
+
+###  https://w3id.org/at#hasLayerDirect
+:hasLayerDirect rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :BuildingElement ;
+                owl:propertyChainAxiom ( :hasLayerSet
+                                         :hasLayer
+                                       ) .
+
+
+###  https://w3id.org/at#hasLayerSet
+:hasLayerSet rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :BuildingElement ;
+             rdfs:range :LayerSet .
+
+
+###  https://w3id.org/at#hasMaterial
+:hasMaterial rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Layer ;
+             rdfs:range :Material .
+
+
+###  https://w3id.org/at#hasReferenceLayerSet
+:hasReferenceLayerSet rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :LayerSet ;
+                      rdfs:range :ReferenceLayerSet .
+
+
+###  https://w3id.org/at#hasReferenceMaterial
+:hasReferenceMaterial rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :Material ;
+                      rdfs:range :ReferenceMaterial .
+
+
+###  https://w3id.org/at#hasRenovationStatus
+:hasRenovationStatus rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain :Building ;
+                     rdfs:range :RenovationStatus .
+
+
+###  https://w3id.org/at#hasResidentialType
+:hasResidentialType rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasBuildingType ;
+                    rdfs:domain :Residential ;
+                    rdfs:range :ApartmentHouse ,
+                               :DetachedHouse ,
+                               :GalleryHouse ,
+                               :MaisonetteHouse ,
+                               :SemiDetachedHouse ,
+                               :TerraceHouse .
+
+
+###  https://w3id.org/at#isType
+:isType rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Building .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/at#hasHeatingDemand
+:hasHeatingDemand rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Building ;
+                  rdfs:range xsd:float .
+
+
+###  https://w3id.org/at#isConstructedIn
+:isConstructedIn rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Building ;
+                 rdfs:range xsd:gYear .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/at#ApartmentHouse
+:ApartmentHouse rdf:type owl:Class ;
+                rdfs:subClassOf :Residential ;
+                rdfs:comment "A medium to high-rise residential building, A multi-storey apartment building, An apartment block with stacked dwellings." .
+
+
+###  https://w3id.org/at#Building
+:Building rdf:type owl:Class .
+
+
+###  https://w3id.org/at#BuildingArchetype
+:BuildingArchetype rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( :BuildingArchetype01
+                                                     :BuildingArchetype02
+                                                     :BuildingArchetype03
+                                                     :BuildingArchetype04
+                                                     :BuildingArchetype05
+                                                     :BuildingArchetype06
+                                                     :BuildingArchetype07
+                                                     :BuildingArchetype08
+                                                     :BuildingArchetype09
+                                                     :BuildingArchetype10
+                                                     :BuildingArchetype11
+                                                     :BuildingArchetype12
+                                                     :BuildingArchetype13
+                                                     :BuildingArchetype14
+                                                     :BuildingArchetype15
+                                                     :BuildingArchetype16
+                                                     :BuildingArchetype17
+                                                     :BuildingArchetype18
+                                                     :BuildingArchetype19
+                                                     :BuildingArchetype20
+                                                     :BuildingArchetype21
+                                                     :BuildingArchetype22
+                                                     :BuildingArchetype23
+                                                     :BuildingArchetype24
+                                                     :BuildingArchetype25
+                                                     :BuildingArchetype26
+                                                     :BuildingArchetype27
+                                                     :BuildingArchetype28
+                                                     :BuildingArchetype29
+                                                     :BuildingArchetype30
+                                                     :BuildingArchetype31
+                                                     :BuildingArchetype32
+                                                   )
+                                       ] ;
+                   rdfs:comment "Building archetypes define and utilise core sets of representative construction structures and systems of a building type, formalised as exemplary buildings. BuildingArchetype os a controlled vocabulary (enumeration) containing named individuals (1..n)" .
+
+
+###  https://w3id.org/at#BuildingElement
+:BuildingElement rdf:type owl:Class .
+
+
+###  https://w3id.org/at#BuildingType
+:BuildingType rdf:type owl:Class ;
+              rdfs:comment "A building type is a categorical classification of buildings based on the occupation type and other buiding-based characteristics." .
+
+
+###  https://w3id.org/at#CavityWall
+:CavityWall rdf:type owl:Class ;
+            rdfs:subClassOf :ReferenceLayerSet ;
+            rdfs:comment "Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss." .
+
+
+###  https://w3id.org/at#ConstructionPeriod
+:ConstructionPeriod rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:oneOf ( <https://w3id.org/at#1946>
+                                                      <https://w3id.org/at#1964>
+                                                      <https://w3id.org/at#1974>
+                                                      <https://w3id.org/at#1991>
+                                                      <https://w3id.org/at#2005>
+                                                      <https://w3id.org/at#2014>
+                                                      <https://w3id.org/at#2018>
+                                                    )
+                                        ] ;
+                    rdfs:comment """Category: Building Life Cycle / Chronology
+What it is / How it is determined: It is the specific timeframe from start to finish where a building is actively being built. It marks the historical era or exact calendar span when construction crews are on-site assembling the structure, lasting from the initial groundbreaking until the building is finished and ready to be lived in.
+Description: The specific timeframe from the start of digging the foundation to the final completion where a building is built (ConstructionPeriod).""" .
+
+
+###  https://w3id.org/at#DetachedHouse
+:DetachedHouse rdf:type owl:Class ;
+               rdfs:subClassOf :SingleFamilyHouse .
+
+
+###  https://w3id.org/at#DoorArchetype
+:DoorArchetype rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( :DoorArchetype01
+                                                 :DoorArchetype02
+                                                 :DoorArchetype03
+                                                 :DoorArchetype04
+                                                 :DoorArchetype05
+                                                 :DoorArchetype06
+                                                 :DoorArchetype07
+                                                 :DoorArchetype08
+                                                 :DoorArchetype09
+                                                 :DoorArchetype10
+                                                 :DoorArchetype11
+                                                 :DoorArchetype12
+                                                 :DoorArchetype13
+                                                 :DoorArchetype14
+                                                 :DoorArchetype15
+                                               )
+                                   ] ;
+               rdfs:subClassOf :ElementArchetype .
+
+
+###  https://w3id.org/at#ElementArchetype
+:ElementArchetype rdf:type owl:Class ;
+                  rdfs:comment "A controlled vocabulary representing the standardized, representative building components (like walls, slabs, or floors) that make up a building archetype (ElementArchetype)." .
+
+
+###  https://w3id.org/at#FloorArchetype
+:FloorArchetype rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:oneOf ( :FloorArchetype01
+                                                  :FloorArchetype02
+                                                  :FloorArchetype03
+                                                  :FloorArchetype04
+                                                  :FloorArchetype05
+                                                  :FloorArchetype06
+                                                  :FloorArchetype07
+                                                  :FloorArchetype08
+                                                  :FloorArchetype09
+                                                  :FloorArchetype10
+                                                  :FloorArchetype11
+                                                  :FloorArchetype12
+                                                  :FloorArchetype13
+                                                  :FloorArchetype14
+                                                  :FloorArchetype15
+                                                )
+                                    ] ;
+                rdfs:subClassOf :ElementArchetype ;
+                owl:disjointWith :WallArchetype .
+
+
+###  https://w3id.org/at#Frame
+:Frame rdf:type owl:Class ;
+       rdfs:subClassOf :ReferenceLayerSet ;
+       rdfs:comment "A skeletal or frame structure of wood or steel." .
+
+
+###  https://w3id.org/at#GalleryHouse
+:GalleryHouse rdf:type owl:Class ;
+              rdfs:subClassOf :MultifamilyHouse .
+
+
+###  https://w3id.org/at#Layer
+:Layer rdf:type owl:Class .
+
+
+###  https://w3id.org/at#LayerSet
+:LayerSet rdf:type owl:Class .
+
+
+###  https://w3id.org/at#MaisonetteHouse
+:MaisonetteHouse rdf:type owl:Class ;
+                 rdfs:subClassOf :MultifamilyHouse .
+
+
+###  https://w3id.org/at#Material
+:Material rdf:type owl:Class .
+
+
+###  https://w3id.org/at#MultiLayer
+:MultiLayer rdf:type owl:Class ;
+            rdfs:subClassOf :ReferenceLayerSet ;
+            rdfs:comment "A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)." .
+
+
+###  https://w3id.org/at#MultifamilyHouse
+:MultifamilyHouse rdf:type owl:Class ;
+                  rdfs:subClassOf :Residential ;
+                  rdfs:comment "A residential building containing multiple independent dwelling units for separate households. A residential building designed to accommodate more than one household in separate dwelling units." .
+
+
+###  https://w3id.org/at#ReferenceLayerSet
+:ReferenceLayerSet rdf:type owl:Class .
+
+
+###  https://w3id.org/at#ReferenceMaterial
+:ReferenceMaterial rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( :ReferenceMaterial01
+                                                     :ReferenceMaterial02
+                                                     :ReferenceMaterial03
+                                                     :ReferenceMaterial04
+                                                     :ReferenceMaterial05
+                                                     :ReferenceMaterial06
+                                                     :ReferenceMaterial07
+                                                     :ReferenceMaterial08
+                                                     :ReferenceMaterial09
+                                                     :ReferenceMaterial10
+                                                     :ReferenceMaterial11
+                                                     :ReferenceMaterial12
+                                                     :ReferenceMaterial13
+                                                     :ReferenceMaterial14
+                                                     :ReferenceMaterial15
+                                                   )
+                                       ] .
+
+
+###  https://w3id.org/at#RenovationStatus
+:RenovationStatus rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:oneOf ( :MajorRenovation
+                                                    :MinorRenovation
+                                                    :NoRenovation
+                                                  )
+                                      ] .
+
+
+###  https://w3id.org/at#Residential
+:Residential rdf:type owl:Class ;
+             rdfs:subClassOf :BuildingType ;
+             rdfs:comment "A building designed or used predominantly for residential occupancy by one or more households. A building whose primary function is to provide dwelling or living accommodation for people." .
+
+
+###  https://w3id.org/at#RoofArchetype
+:RoofArchetype rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( :RoofArchetype01
+                                                 :RoofArchetype02
+                                                 :RoofArchetype03
+                                                 :RoofArchetype04
+                                                 :RoofArchetype05
+                                                 :RoofArchetype06
+                                                 :RoofArchetype07
+                                                 :RoofArchetype08
+                                                 :RoofArchetype09
+                                                 :RoofArchetype10
+                                                 :RoofArchetype11
+                                                 :RoofArchetype12
+                                                 :RoofArchetype13
+                                                 :RoofArchetype14
+                                                 :RoofArchetype15
+                                               )
+                                   ] ;
+               rdfs:subClassOf :ElementArchetype .
+
+
+###  https://w3id.org/at#SemiDetachedHouse
+:SemiDetachedHouse rdf:type owl:Class ;
+                   rdfs:subClassOf :SingleFamilyHouse .
+
+
+###  https://w3id.org/at#SingleFamilyHouse
+:SingleFamilyHouse rdf:type owl:Class ;
+                   rdfs:subClassOf :Residential ;
+                   rdfs:comment "A detached single family house, A semi-detached house with one shared wall, A single residential building not attached on both sides." .
+
+
+###  https://w3id.org/at#SingleLayer
+:SingleLayer rdf:type owl:Class ;
+             rdfs:subClassOf :ReferenceLayerSet ;
+             rdfs:comment "A solid, monolithic wall construction without separate cavities or insulation layers." .
+
+
+###  https://w3id.org/at#TerraceHouse
+:TerraceHouse rdf:type owl:Class ;
+              rdfs:subClassOf :Residential ;
+              rdfs:comment "A long row of identical brick houses sharing side walls, two to three storeys tall, narrow facades, typical Dutch street, A Dutch terrace house in a continuous row of houses, Row houses sharing walls on both sides, Residential buildings forming a long row." .
+
+
+###  https://w3id.org/at#WallArchetype
+:WallArchetype rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( :WallArchetype01
+                                                 :WallArchetype02
+                                                 :WallArchetype03
+                                                 :WallArchetype04
+                                                 :WallArchetype05
+                                                 :WallArchetype06
+                                                 :WallArchetype07
+                                                 :WallArchetype08
+                                                 :WallArchetype09
+                                                 :WallArchetype10
+                                                 :WallArchetype11
+                                                 :WallArchetype12
+                                                 :WallArchetype13
+                                                 :WallArchetype14
+                                                 :WallArchetype15
+                                               )
+                                   ] ;
+               rdfs:subClassOf :ElementArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype
+:WindowArchetype rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Class ;
+                                       owl:oneOf ( :WindowArchetype01
+                                                   :WindowArchetype02
+                                                   :WindowArchetype03
+                                                   :WindowArchetype04
+                                                   :WindowArchetype05
+                                                   :WindowArchetype06
+                                                   :WindowArchetype07
+                                                   :WindowArchetype08
+                                                   :WindowArchetype09
+                                                   :WindowArchetype10
+                                                   :WindowArchetype11
+                                                   :WindowArchetype12
+                                                   :WindowArchetype13
+                                                   :WindowArchetype14
+                                                   :WindowArchetype15
+                                                 )
+                                     ] ;
+                 rdfs:subClassOf :ElementArchetype .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://orcid.org/0000-0002-9383-7234
+<https://orcid.org/0000-0002-9383-7234> rdf:type owl:NamedIndividual ;
+                                        rdfs:comment "Julia Kaltenegger" ;
+                                        rdfs:label "Julia Kaltenegger" ;
+                                        foaf:name "Julia Kaltenegger" ;
+                                        foaf:weblog "https://linktr.ee/julkaltenegger" .
+
+
+###  https://w3id.org/at#André_Borrmann
+:André_Borrmann rdf:type owl:NamedIndividual ;
+                rdfs:label "André Borrmann" .
+
+
+###  https://w3id.org/at#BuildingArchetype01
+:BuildingArchetype01 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype02
+:BuildingArchetype02 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype03
+:BuildingArchetype03 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype04
+:BuildingArchetype04 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype05
+:BuildingArchetype05 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype06
+:BuildingArchetype06 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype07
+:BuildingArchetype07 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype08
+:BuildingArchetype08 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype09
+:BuildingArchetype09 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype10
+:BuildingArchetype10 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype11
+:BuildingArchetype11 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype12
+:BuildingArchetype12 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype13
+:BuildingArchetype13 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype14
+:BuildingArchetype14 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#BuildingArchetype15
+:BuildingArchetype15 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype16
+:BuildingArchetype16 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype17
+:BuildingArchetype17 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype18
+:BuildingArchetype18 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype19
+:BuildingArchetype19 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype20
+:BuildingArchetype20 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype21
+:BuildingArchetype21 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype22
+:BuildingArchetype22 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype23
+:BuildingArchetype23 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype24
+:BuildingArchetype24 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype25
+:BuildingArchetype25 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype26
+:BuildingArchetype26 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype27
+:BuildingArchetype27 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype28
+:BuildingArchetype28 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype29
+:BuildingArchetype29 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype30
+:BuildingArchetype30 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype31
+:BuildingArchetype31 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#BuildingArchetype32
+:BuildingArchetype32 rdf:type owl:NamedIndividual ,
+                              :BuildingArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype01
+:DoorArchetype01 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype02
+:DoorArchetype02 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype03
+:DoorArchetype03 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype04
+:DoorArchetype04 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype05
+:DoorArchetype05 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype06
+:DoorArchetype06 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype07
+:DoorArchetype07 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype08
+:DoorArchetype08 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype09
+:DoorArchetype09 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype10
+:DoorArchetype10 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype11
+:DoorArchetype11 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype12
+:DoorArchetype12 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype13
+:DoorArchetype13 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype14
+:DoorArchetype14 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype15
+:DoorArchetype15 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype16
+:DoorArchetype16 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype17
+:DoorArchetype17 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype18
+:DoorArchetype18 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype19
+:DoorArchetype19 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype20
+:DoorArchetype20 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype21
+:DoorArchetype21 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype22
+:DoorArchetype22 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype23
+:DoorArchetype23 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype24
+:DoorArchetype24 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype25
+:DoorArchetype25 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype26
+:DoorArchetype26 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype27
+:DoorArchetype27 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype28
+:DoorArchetype28 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype29
+:DoorArchetype29 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype30
+:DoorArchetype30 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype31
+:DoorArchetype31 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#DoorArchetype32
+:DoorArchetype32 rdf:type owl:NamedIndividual ,
+                          :DoorArchetype .
+
+
+###  https://w3id.org/at#Ekaterina_Petrova
+:Ekaterina_Petrova rdf:type owl:NamedIndividual ;
+                   rdfs:label "Ekaterina Petrova" .
+
+
+###  https://w3id.org/at#FloorArchetype01
+:FloorArchetype01 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype02
+:FloorArchetype02 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype03
+:FloorArchetype03 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype04
+:FloorArchetype04 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype05
+:FloorArchetype05 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype06
+:FloorArchetype06 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype07
+:FloorArchetype07 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype08
+:FloorArchetype08 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype09
+:FloorArchetype09 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype10
+:FloorArchetype10 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype11
+:FloorArchetype11 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype12
+:FloorArchetype12 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype13
+:FloorArchetype13 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype14
+:FloorArchetype14 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype15
+:FloorArchetype15 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype16
+:FloorArchetype16 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype17
+:FloorArchetype17 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype18
+:FloorArchetype18 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype19
+:FloorArchetype19 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype20
+:FloorArchetype20 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype21
+:FloorArchetype21 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype22
+:FloorArchetype22 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype23
+:FloorArchetype23 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype24
+:FloorArchetype24 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype25
+:FloorArchetype25 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype26
+:FloorArchetype26 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype27
+:FloorArchetype27 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype28
+:FloorArchetype28 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype29
+:FloorArchetype29 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype30
+:FloorArchetype30 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype31
+:FloorArchetype31 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorArchetype32
+:FloorArchetype32 rdf:type owl:NamedIndividual ,
+                           :FloorArchetype .
+
+
+###  https://w3id.org/at#FloorLayerSet01
+:FloorLayerSet01 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#FloorLayerSet02
+:FloorLayerSet02 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#FloorLayerSet03
+:FloorLayerSet03 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#FloorLayerSet04
+:FloorLayerSet04 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#FloorLayerSet05
+:FloorLayerSet05 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#MajorRenovation
+:MajorRenovation rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#MinorRenovation
+:MinorRenovation rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#NoRenovation
+:NoRenovation rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#Pieter_Pauwels
+:Pieter_Pauwels rdf:type owl:NamedIndividual ;
+                rdfs:label "Pieter Pauwels" .
+
+
+###  https://w3id.org/at#ReferenceMaterial01
+:ReferenceMaterial01 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial02
+:ReferenceMaterial02 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial03
+:ReferenceMaterial03 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial04
+:ReferenceMaterial04 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial05
+:ReferenceMaterial05 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial06
+:ReferenceMaterial06 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial07
+:ReferenceMaterial07 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial08
+:ReferenceMaterial08 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial09
+:ReferenceMaterial09 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial10
+:ReferenceMaterial10 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial11
+:ReferenceMaterial11 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial12
+:ReferenceMaterial12 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial13
+:ReferenceMaterial13 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial14
+:ReferenceMaterial14 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#ReferenceMaterial15
+:ReferenceMaterial15 rdf:type owl:NamedIndividual ,
+                              :ReferenceMaterial .
+
+
+###  https://w3id.org/at#RoofArchetype01
+:RoofArchetype01 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype02
+:RoofArchetype02 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype03
+:RoofArchetype03 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype04
+:RoofArchetype04 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype05
+:RoofArchetype05 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype06
+:RoofArchetype06 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype07
+:RoofArchetype07 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype08
+:RoofArchetype08 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype09
+:RoofArchetype09 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype10
+:RoofArchetype10 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype11
+:RoofArchetype11 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype12
+:RoofArchetype12 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype13
+:RoofArchetype13 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype14
+:RoofArchetype14 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype15
+:RoofArchetype15 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype16
+:RoofArchetype16 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype17
+:RoofArchetype17 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype18
+:RoofArchetype18 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype19
+:RoofArchetype19 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype20
+:RoofArchetype20 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype21
+:RoofArchetype21 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype22
+:RoofArchetype22 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype23
+:RoofArchetype23 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype24
+:RoofArchetype24 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype25
+:RoofArchetype25 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype26
+:RoofArchetype26 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype27
+:RoofArchetype27 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype28
+:RoofArchetype28 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype29
+:RoofArchetype29 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype30
+:RoofArchetype30 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype31
+:RoofArchetype31 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofArchetype32
+:RoofArchetype32 rdf:type owl:NamedIndividual ,
+                          :RoofArchetype .
+
+
+###  https://w3id.org/at#RoofLayerSet01
+:RoofLayerSet01 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#RoofLayerSet02
+:RoofLayerSet02 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#RoofLayerSet03
+:RoofLayerSet03 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#RoofLayerSet04
+:RoofLayerSet04 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#RoofLayerSet05
+:RoofLayerSet05 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WallArchetype01
+:WallArchetype01 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype02
+:WallArchetype02 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype03
+:WallArchetype03 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype04
+:WallArchetype04 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype05
+:WallArchetype05 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype06
+:WallArchetype06 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype07
+:WallArchetype07 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype08
+:WallArchetype08 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype09
+:WallArchetype09 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype10
+:WallArchetype10 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype11
+:WallArchetype11 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype12
+:WallArchetype12 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype13
+:WallArchetype13 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype14
+:WallArchetype14 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype15
+:WallArchetype15 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype16
+:WallArchetype16 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype17
+:WallArchetype17 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype18
+:WallArchetype18 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype19
+:WallArchetype19 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype20
+:WallArchetype20 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype21
+:WallArchetype21 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype22
+:WallArchetype22 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype23
+:WallArchetype23 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype24
+:WallArchetype24 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype25
+:WallArchetype25 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype26
+:WallArchetype26 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype27
+:WallArchetype27 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype28
+:WallArchetype28 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype29
+:WallArchetype29 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype30
+:WallArchetype30 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype31
+:WallArchetype31 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallArchetype32
+:WallArchetype32 rdf:type owl:NamedIndividual ,
+                          :WallArchetype .
+
+
+###  https://w3id.org/at#WallLayerSet01
+:WallLayerSet01 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WallLayerSet02
+:WallLayerSet02 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WallLayerSet03
+:WallLayerSet03 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WallLayerSet04
+:WallLayerSet04 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WallLayerSet05
+:WallLayerSet05 rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/at#WindowArchetype01
+:WindowArchetype01 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype02
+:WindowArchetype02 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype03
+:WindowArchetype03 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype04
+:WindowArchetype04 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype05
+:WindowArchetype05 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype06
+:WindowArchetype06 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype07
+:WindowArchetype07 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype08
+:WindowArchetype08 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype09
+:WindowArchetype09 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype10
+:WindowArchetype10 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype11
+:WindowArchetype11 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype12
+:WindowArchetype12 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype13
+:WindowArchetype13 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype14
+:WindowArchetype14 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype15
+:WindowArchetype15 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype16
+:WindowArchetype16 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype17
+:WindowArchetype17 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype18
+:WindowArchetype18 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype19
+:WindowArchetype19 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype20
+:WindowArchetype20 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype21
+:WindowArchetype21 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype22
+:WindowArchetype22 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype23
+:WindowArchetype23 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype24
+:WindowArchetype24 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype25
+:WindowArchetype25 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype26
+:WindowArchetype26 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype27
+:WindowArchetype27 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype28
+:WindowArchetype28 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype29
+:WindowArchetype29 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype30
+:WindowArchetype30 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype31
+:WindowArchetype31 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#WindowArchetype32
+:WindowArchetype32 rdf:type owl:NamedIndividual ,
+                            :WindowArchetype .
+
+
+###  https://w3id.org/at#1946
+<https://w3id.org/at#1946> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#1964
+<https://w3id.org/at#1964> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#1974
+<https://w3id.org/at#1974> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#1991
+<https://w3id.org/at#1991> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#2005
+<https://w3id.org/at#2005> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#2014
+<https://w3id.org/at#2014> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  https://w3id.org/at#2018
+<https://w3id.org/at#2018> rdf:type owl:NamedIndividual ,
+                                    :ConstructionPeriod .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
