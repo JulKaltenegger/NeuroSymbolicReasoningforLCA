@@ -77,14 +77,12 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasBuildingArchetype
 :hasBuildingArchetype rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf owl:topObjectProperty ;
-                      rdf:type owl:FunctionalProperty ;
                       rdfs:domain :Building ;
                       rdfs:range :BuildingArchetype .
 
 
 ###  https://w3id.org/at#hasBuildingElement
-:hasBuildingElement rdf:type owl:ObjectProperty ,
-                             owl:FunctionalProperty ;
+:hasBuildingElement rdf:type owl:ObjectProperty ;
                     rdfs:domain :Building ;
                     rdfs:range :BuildingElement .
 
@@ -92,14 +90,12 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasBuildingType
 :hasBuildingType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdf:type owl:FunctionalProperty ;
                  rdfs:domain :Building ;
                  rdfs:range :BuildingType .
 
 
 ###  https://w3id.org/at#hasElementArchetype
-:hasElementArchetype rdf:type owl:ObjectProperty ,
-                              owl:FunctionalProperty ;
+:hasElementArchetype rdf:type owl:ObjectProperty ;
                      rdfs:domain :BuildingElement ;
                      rdfs:range :ElementArchetype .
 
@@ -107,7 +103,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasLayer
 :hasLayer rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdf:type owl:FunctionalProperty ;
           rdfs:domain :LayerSet ;
           rdfs:range :Layer .
 
@@ -115,7 +110,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasLayerDirect
 :hasLayerDirect rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdf:type owl:FunctionalProperty ;
                 rdfs:domain :BuildingElement ;
                 owl:propertyChainAxiom ( :hasLayerSet
                                          :hasLayer
@@ -123,15 +117,13 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 
 ###  https://w3id.org/at#hasLayerSet
-:hasLayerSet rdf:type owl:ObjectProperty ,
-                      owl:FunctionalProperty ;
+:hasLayerSet rdf:type owl:ObjectProperty ;
              rdfs:domain :BuildingElement ;
              rdfs:range :LayerSet .
 
 
 ###  https://w3id.org/at#hasMaterial
-:hasMaterial rdf:type owl:ObjectProperty ,
-                      owl:FunctionalProperty ;
+:hasMaterial rdf:type owl:ObjectProperty ;
              rdfs:domain :Layer ;
              rdfs:range :Material .
 
@@ -139,7 +131,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasReferenceLayerSet
 :hasReferenceLayerSet rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf owl:topObjectProperty ;
-                      rdf:type owl:FunctionalProperty ;
                       rdfs:domain :LayerSet ;
                       rdfs:range :ReferenceLayerSet .
 
@@ -147,14 +138,12 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#hasReferenceMaterial
 :hasReferenceMaterial rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf owl:topObjectProperty ;
-                      rdf:type owl:FunctionalProperty ;
                       rdfs:domain :Material ;
                       rdfs:range :ReferenceMaterial .
 
 
 ###  https://w3id.org/at#hasRenovationStatus
-:hasRenovationStatus rdf:type owl:ObjectProperty ,
-                              owl:FunctionalProperty ;
+:hasRenovationStatus rdf:type owl:ObjectProperty ;
                      rdfs:domain :Building ;
                      rdfs:range :RenovationStatus .
 
@@ -174,7 +163,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/at#isType
 :isType rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf owl:topObjectProperty ;
-        rdf:type owl:FunctionalProperty ;
         rdfs:domain :Building .
 
 

@@ -164,27 +164,15 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  https://w3id.org/lca#hasPerformanceResult
-:hasPerformanceResult rdf:type owl:DatatypeProperty ,
-                               owl:FunctionalProperty ;
-                      rdfs:domain :Material ;
-                      rdfs:range xsd:float .
+###  https://w3id.org/lca#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty ;
+         rdfs:domain :EnvironmentalIndicator .
 
 
 ###  https://w3id.org/lca#hasValue
 :hasValue rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
-          rdfs:domain :ADPE ,
-                      :ADPF ,
-                      :AP ,
-                      :EP ,
-                      :GWP ,
-                      :ODP ,
-                      :PEGES ,
-                      :PENE ,
-                      :POCP ,
-                      :WF ;
-          rdfs:range rdfs:Literal .
+          rdfs:domain :EnvironmentalIndicator .
 
 
 #################################################################
@@ -193,44 +181,68 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/lca#A1
 :A1 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Product Stage (Cradle)
+What it is / How it's measured: It accounts for the raw material extraction and processing. This includes the environmental impacts of mining sand, harvesting wood, or drilling for oil, as well as the energy required to gather these resources.
+Description: The life cycle stage tracking the extraction and gathering of raw materials from nature (A1).""" .
 
 
 ###  https://w3id.org/lca#A2
 :A2 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Product Stage (Cradle)
+What it is / How it's measured: It measures the transportation of raw, extracted materials from the extraction site (like a quarry or forest) to the manufacturing factory floor.
+Description: The life cycle stage accounting for the transport of raw ingredients to the manufacturing plant (A2).""" .
 
 
 ###  https://w3id.org/lca#A3
 :A3 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Product Stage (Cradle to Gate)
+What it is / How it's measured: It covers the actual fabrication of the product inside the factory (e.g., melting sand into glass, baking clay into bricks). It includes factory energy use, water consumption, and manufacturing waste.
+Description: The life cycle stage covering the physical manufacturing and packaging of a building material (A3).""" .
 
 
 ###  https://w3id.org/lca#A4
 :A4 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Construction Process Stage
+What it is / How it's measured: It tracks the transportation of the finished building product from the factory gate to the construction site where the building is being erected.
+Description: The life cycle stage measuring the logistics and transport of finished materials to the construction site (A4).""" .
 
 
 ###  https://w3id.org/lca#A5
 :A5 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Construction Process Stage
+What it is / How it's measured: It calculates the impacts of the physical installation process on-site. This includes crane operation, excavating dirt, on-site energy use, and managing material scrap/waste generated during assembly.
+Description: The life cycle stage representing the actual on-site installation and construction activities (A5).""" .
 
 
 ###  https://w3id.org/lca#ADPE
 :ADPE rdf:type owl:Class ;
       rdfs:subClassOf :EnvironmentalIndicator ;
+      dcterms:description """ADPE (Abiotic Depletion Potential for Non-Fossil Resources)
+Material Category: Environmental Indicator / Resource Scarcity
+What it measures / How it's calculated: It measures the depletion of non-living, non-fossil natural resources, specifically raw chemical elements and minerals (like copper, zinc, iron ore, or limestone). It calculates how much the extraction of a material reduces the global availability of that mineral, using antimony (Sb) equivalents as a baseline reference unit.
+Description: An indicator tracking the exhaustion of scarce natural mineral and chemical element resources (ADPE).""" ;
       rdfs:comment "Abiotic Depletion Potential for Elements (ADPE)" .
 
 
 ###  https://w3id.org/lca#ADPF
 :ADPF rdf:type owl:Class ;
       rdfs:subClassOf :EnvironmentalIndicator ;
+      dcterms:description """ADPF (Abiotic Depletion Potential for Fossil Resources)
+Material Category: Environmental Indicator / Resource Scarcity
+What it measures / How it's calculated: It measures the depletion of non-living energy resources derived from fossil origins, such as crude oil, natural gas, coal, and peat. The calculation sums up the total heating energy content (measured in Megajoules, MJ) of the fossil fuels extracted from nature to power the material's production.
+Description: An indicator tracking the permanent consumption of non-renewable fossil energy resources (ADPF).""" ;
       rdfs:comment "Abiotic Depletion Potential of fossil Fuels (ADPF)" .
 
 
 ###  https://w3id.org/lca#AP
 :AP rdf:type owl:Class ;
     rdfs:subClassOf :EnvironmentalIndicator ;
+    dcterms:description "AP (Acidification Potential)Material Category: Environmental Indicator / Air & Soil PollutionWhat it measures / How it's calculated: It measures the potential of airborne pollutants to form acid rain or acidify soils and aquatic ecosystems. It quantifies the release of acidic gases like sulfur dioxide SO2 and nitrogen oxides NO from industrial smokestacks or transport trucks, which react with atmospheric water vapor to lower the pH of ecosystems.Description: An indicator measuring the capacity of chemical emissions to cause acid rain and soil or water acidification (AP)." ;
     rdfs:comment "Acidification Potential (AP)" .
 
 
@@ -240,42 +252,66 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/lca#Aim
 :Aim rdf:type owl:Class ;
+     dcterms:description """Category: Sustainability Metrics / LCA Configuration
+What it is / How it is determined: It is the foundational statement that defines the core purpose, the intended application, and the target audience of a Life Cycle Assessment. Before a single data point is collected, the LCA Aim must be established to dictate why the study is being conducted (e.g., to compare two material archetypes, to achieve green building certification, or to identify carbon hotspots in a design) and who will use the results to make decisions.
+Description: The explicitly defined objective and target application that guides the scope, data collection, and decision-making criteria of a Life Cycle Assessment (LCAAim).""" ;
      rdfs:comment "Life-cycle oriented building planning" .
 
 
 ###  https://w3id.org/lca#B1
 :B1 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Use Stage
+What it is / How it's measured: It tracks any direct environmental emissions released by a material while it is simply existing in the building (such as the release of chemicals or substances from paints, coatings, or plastics into the environment over time).
+Description: The life cycle stage tracking the passive environmental release or emissions from materials during normal use (B1).""" .
 
 
 ###  https://w3id.org/lca#B2
 :B2 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Use Stage
+What it is / How it's measured: It measures the impacts of routine, planned actions required to keep a material clean or functioning as intended (such as energy and water used for cleaning glass facades or washing floor tiles).
+Description: The life cycle stage covering the regular cleaning and scheduled maintenance of building components (B2).""" .
 
 
 ###  https://w3id.org/lca#B3
 :B3 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Use Stage
+What it is / How it's measured: It accounts for the actions taken to fix a broken component to restore it to its original working condition, including the production and transport of small patch-up parts.
+Description: The life cycle stage representing the repair of broken or damaged building parts (B3).""" .
 
 
 ###  https://w3id.org/lca#B4
 :B4 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Use Stage
+What it is / How it's measured: It tracks the full replacement of a material or system that has reached the end of its service life during the building's lifespan (e.g., replacing a roof membrane or window unit after 25 years).
+Description: The life cycle stage covering the scheduled, total replacement of worn-out building elements (B4).""" .
 
 
 ###  https://w3id.org/lca#B5
 :B5 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Use Stage
+What it is / How it's measured: It calculates major, planned modifications or structural changes made to a building to alter its function, extend its lifespan, or modernize its layout.
+Description: The life cycle stage representing structural or aesthetic building renovations and modernizations (B5).""" .
 
 
 ###  https://w3id.org/lca#B6
 :B6 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Operational Use Stage
+What it is / How it's measured: It measures the total amount of grid electricity, gas, oil, or renewable energy consumed by the building's systems (heating, cooling, ventilation, lighting, hot water) during its operational life.
+Description: The life cycle stage tracking the energy consumption required to operate the building (B6).""" .
 
 
 ###  https://w3id.org/lca#B7
 :B7 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / Operational Use Stage
+What it is / How it's measured: It measures the volume of clean water consumed by the building's occupants and systems, alongside the environmental cost of treating the resulting wastewater.
+Description: The life cycle stage tracking the operational water consumption of the building (B7).""" .
 
 
 ###  https://w3id.org/lca#Building
@@ -288,32 +324,51 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/lca#C1
 :C1 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / End-of-Life Stage
+What it is / How it's measured: It covers the physical tear-down, dismantling, or explosive demolition of the building at the end of its useful life, including the energy used by wrecking balls, excavators, and handheld tools.
+Description: The life cycle stage representing the deconstruction and demolition of the building (C1).""" .
 
 
 ###  https://w3id.org/lca#C2
 :C2 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / End-of-Life Stage
+What it is / How it's measured: It measures the transportation of the demolished building rubble and structural waste from the deconstruction site to a waste management facility, sorting yard, or landfill.
+Description: The life cycle stage tracking the transport of structural waste to disposal or sorting centers (C2).""" .
 
 
 ###  https://w3id.org/lca#C3
 :C3 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / End-of-Life Stage
+What it is / How it's measured: It covers the waste processing activities needed to prepare components for recovery, such as sorting concrete from steel, crushing rubble into aggregate, or shredding wood.
+Description: The life cycle stage tracking the waste processing of materials for reuse, recycling, or energy recovery (C3).""" .
 
 
 ###  https://w3id.org/lca#C4
 :C4 rdf:type owl:Class ;
-    rdfs:subClassOf :LifeCycleStage .
+    rdfs:subClassOf :LifeCycleStage ;
+    rdfs:comment """Material Category: Life Cycle Stage / End-of-Life Stage
+What it is / How it's measured: It calculates the final environmental impacts of dumping non-recyclable waste materials into a landfill or burning them in a standard incinerator without energy capture.
+Description: The life cycle stage representing final waste disposal, such as landfilling or incineration (C4).""" .
 
 
 ###  https://w3id.org/lca#D
 :D rdf:type owl:Class ;
-   rdfs:subClassOf :LifeCycleStage .
+   rdfs:subClassOf :LifeCycleStage ;
+   rdfs:comment """Material Category: Life Cycle Stage / Benefits and Loads Beyond System Boundary
+What it is / How it's measured: It calculates the net environmental credits (benefits) or burdens gained by recycling or reusing the building's materials in future projects (e.g., recycling structural steel into new steel beams, or burning scrap wood to generate municipal electricity, saving raw fossil fuels elsewhere).
+Description: The life cycle stage calculating the future environmental benefits, reuse potential, and recycling credits outside the current building's life cycle (D).""" .
 
 
 ###  https://w3id.org/lca#EP
 :EP rdf:type owl:Class ;
     rdfs:subClassOf :EnvironmentalIndicator ;
+    dcterms:description """EP (Eutrophication Potential)
+Material Category: Environmental Indicator / Water Pollution
+What it measures / How it's calculated: It measures the over-enrichment of aquatic or terrestrial ecosystems with nutrients like nitrogen and phosphorus (often from chemical runoff, wastewater, or manufacturing emissions). This nutrient spike causes massive algae blooms that block sunlight and choke oxygen levels in water bodies, killing fish and destroying biodiversity.
+Description: An indicator tracking the risk of ecosystem nutrient over-enrichment and destructive aquatic algae blooms (EP).""" ;
     rdfs:comment "Eutrophication Potential (EP)" .
 
 
@@ -324,12 +379,14 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/lca#FunctionalEquivalent
 :FunctionalEquivalent rdf:type owl:Class ;
+                      dcterms:description "Category: Sustainability Metrics / LCA ConfigurationWhat it is / How it is determined: It is the quantified, technical baseline that describes exactly what function a material or structural element must perform, how well it must perform it, and for how long. In a Life Cycle Assessment, you cannot fairly compare materials simply by weight or volume (e.g., comparing 1kg, of insulation to1 kg of concrete is meaningless). Instead, the Functional Equivalent establishes a common denominator based on performance—such as \"providing a thermal resistance RcValue of 4 m2K/W for a 1m2 wall area over a reference study period of 50 years.\"Description: The quantified performance requirements for a building component or system used as a reference basis to enable fair environmental comparisons (FunctionalEquivalent)." ;
                       rdfs:comment "Description of the building with regard to its material and time-dependent properties" .
 
 
 ###  https://w3id.org/lca#GWP
 :GWP rdf:type owl:Class ;
      rdfs:subClassOf :EnvironmentalIndicator ;
+     dcterms:description "GWP (Global Warming Potential)Material Category: Environmental Indicator / Climate ImpactWhat it measures / How it's calculated: It measures the total amount of greenhouse gases (like carbon dioxide CO2 methane CH4 and nitrous oxide NO released into the atmosphere during the material's life cycle. It normalizes all these different gases into a single mass unit of carbon dioxide equivalents kgCO2eq  based on how much heat they trap in the atmosphere over a 100-year horizon.Description: An indicator measuring the carbon footprint and overall contribution of a material to global climate change (GWP)." ;
      rdfs:comment "Global Warming Potential (GWP)" .
 
 
@@ -367,24 +424,36 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/lca#ODP
 :ODP rdf:type owl:Class ;
      rdfs:subClassOf :EnvironmentalIndicator ;
+     dcterms:description """Material Category: Environmental Indicator / Atmospheric Impact
+What it measures / How it's calculated: It measures the potential destruction of the stratospheric ozone layer, which shields the Earth from harmful ultraviolet (UV) radiation. It tracks the release of volatile halogenated hydrocarbons, chlorofluorocarbons (CFCs), and halons, normalizing them against a baseline reference unit of Trichlorofluoromethane (CFC-11) equivalents.
+Description: An indicator tracking the emissions of chemical gases that destroy the protective stratospheric ozone layer (ODP).""" ;
      rdfs:comment "Ozone Depletion Potential (ODP)" .
 
 
 ###  https://w3id.org/lca#PEGES
 :PEGES rdf:type owl:Class ;
        rdfs:subClassOf :EnvironmentalIndicator ;
+       dcterms:description """Material Category: Environmental Indicator / Energy Use
+What it measures / How it's calculated: It tracks the portion of primary energy consumption derived from secondary (recycled or waste-derived) fuels rather than raw, virgin energy sources. This accounts for things like burning municipal waste, shredded tires, or spent industrial solvents to fire cement kilns instead of burning fresh coal.
+Description: An indicator tracking the use of secondary or waste-derived fuels as a primary energy source during manufacturing (PEGES).""" ;
        rdfs:comment "Total primary energy demand (PEges)" .
 
 
 ###  https://w3id.org/lca#PENE
 :PENE rdf:type owl:Class ;
       rdfs:subClassOf :EnvironmentalIndicator ;
+      dcterms:description """Material Category: Environmental Indicator / Energy Use
+What it measures / How it's calculated: It measures the total amount of non-renewable primary energy consumed to create and process the material. This represents the total raw energy pulled from fossil or nuclear sources (coal, gas, uranium) before it is converted into electricity or heat, accounting for both fuel used in production and energy embedded inside the material itself as a feedstock.
+Description: An indicator calculating the total amount of raw, non-renewable primary energy consumed throughout a material's lifecycle (PENE).""" ;
       rdfs:comment "Non-renewable primary energy demand (PEne)" .
 
 
 ###  https://w3id.org/lca#POCP
 :POCP rdf:type owl:Class ;
       rdfs:subClassOf :EnvironmentalIndicator ;
+      dcterms:description """Material Category: Environmental Indicator / Air Quality
+What it measures / How it's calculated: It measures the potential of industrial emissions to produce low-level ground-based ozone, commonly known as photochemical smog. It quantifies the release of Volatile Organic Compounds (VOCs) and carbon monoxide that react chemically with sunlight and nitrogen oxides in the lower atmosphere, creating toxic air pollution that harms human lungs and vegetation.
+Description: An indicator measuring the capacity of chemical emissions to create ground-level toxic smog (POCP).""" ;
       rdfs:comment "Photochemical Ozone Creation Potential (POCP)" .
 
 
@@ -395,12 +464,18 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/lca#ReferenceStudyPeriod
 :ReferenceStudyPeriod rdf:type owl:Class ;
+                      dcterms:description """Category: Sustainability Metrics / LCA Configuration
+What it is / How it is determined: It is the specific, fixed timeframe (typically measured in years) chosen as the baseline for a Life Cycle Assessment. Because different building elements have completely different lifespans—for instance, a concrete foundation might last 100 years while an insulation foam board might last 25—the Reference Study Period establishes a uniform temporal boundary. It dictates how many times shorter-lived materials must be completely replaced (Stage B4) and how much operational energy (Stage B6) is counted, ensuring fair calculations across the entire system.
+Description: The fixed, standardized time horizon over which a building's total life cycle environmental impacts are calculated and evaluated (ReferenceStudyPeriod).""" ;
                       rdfs:comment """50 years for office building;
 100 years for residential building;""" .
 
 
 ###  https://w3id.org/lca#SystemBoundary
 :SystemBoundary rdf:type owl:Class ;
+                dcterms:description """Category: Sustainability Metrics / LCA Configuration
+What it is / How it is determined: It is the conceptual line that defines exactly which life cycle stages, physical processes, and geographic locations are included in—or excluded from—a Life Cycle Assessment. Instead of blindly measuring every single molecule affected by a building, the system boundary is a set of strict rules (often dictated by standards like EN 15978) that tells the researcher or software precisely where to stop collecting data. It establishes whether an assessment is a limited analysis or a complete environmental overview.
+Description: The structural boundary that defines which life cycle stages and physical processes are included within the scope of an environmental impact assessment (SystemBoundary).""" ;
                 rdfs:comment "Entire buildings, without: -outdoor facilities -selected technical equipment" .
 
 
@@ -417,6 +492,9 @@ lca:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/lca#WF
 :WF rdf:type owl:Class ;
     rdfs:subClassOf :EnvironmentalIndicator ;
+    dcterms:description """Material Category: Environmental Indicator / Water Consumption
+What it measures / How it's calculated: It measures the total net consumption of fresh water during the material's manufacturing, processing, and supply chain. It evaluates the relative water scarcity in the geographic regions where the water is pulled out of the ground, calculating the potential environmental deprivation caused by using that water instead of leaving it in its natural watershed.
+Description: An indicator quantifying the total freshwater consumption and localized water scarcity impacts of a material (WF).""" ;
     rdfs:comment "Water consumption (WF)" .
 
 

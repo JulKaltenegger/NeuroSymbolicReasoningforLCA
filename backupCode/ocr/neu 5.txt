@@ -1,0 +1,161 @@
+import re
+import json
+
+
+# ============================================================
+# CORE PARSER
+# ============================================================
+
+def clean_lines(text):
+    lines = [l.strip() for l in text.split("\n")]
+    lines = [l for l in lines if l]
+    return lines
+
+
+def is_key_line(line):
+    """
+    Detect lines like:
+    '• Außenwände:' or 'Innenwände:'
+    """
+    return bool(re.match(r"^[•\-]?\s*[^:]+:\s*", line))
+
+
+def split_key_value(line):
+    """
+    Split 'Außenwände: Leichtbeton ...'
+    """
+    line = line.lstrip("•- ").strip()
+    key, value = line.split(":", 1)
+    return key.strip(), value.strip()
+
+
+def merge_multiline_values(lines):
+    """
+    Merge OCR lines that belong together.
+    """
+    merged = []
+    buffer = ""
+
+    for line in lines:
+        if is_key_line(line):
+            if buffer:
+                merged.append(buffer.strip())
+            buffer = line
+        else:
+            buffer += " " + line
+
+    if buffer:
+        merged.append(buffer.strip())
+
+    return merged
+
+
+# ============================================================
+# SEMANTIC EXTRACTION
+# ============================================================
+
+def split_list_values(value):
+    """
+    "2,40 m, 3,60 m, 4,80 m" → list
+    """
+    if "," in value and "m" in value:
+        return [v.strip() for v in value.split(",")]
+    return value
+
+
+def parse_wall_structure(value):
+    """
+    Extract structured info for walls
+    """
+    result = {}
+
+    # materials
+    materials = re.split(r"- oder | oder ", value)
+    result["material"] = [m.strip() for m in materials if "cm" not in m]
+
+    # thickness
+    match = re.search(r"(\d+,\d+\s*cm)", value)
+    if match:
+        result["dicke"] = match.group(1)
+
+    # surface
+    if "geputzt" in value:
+        result["oberfläche"] = "beiderseitig geputzt"
+
+    if "einschichtig" in value:
+        result["ausführung"] = "einschichtig"
+
+    return result
+
+
+def parse_decke(value):
+    result = {}
+
+    if "Zwickauer Decke" in value:
+        result["typ"] = "Zwickauer Decke"
+
+    if "zweischalig" in value:
+        result["bauweise"] = "zweischalig"
+
+    match = re.search(r"(\d+,\d+\s*cm)", value)
+    if match:
+        result["dicke"] = match.group(1)
+
+    if "geputzt" in value:
+        result["unterseite"] = "geputzt"
+
+    return result
+
+
+# ============================================================
+# MAIN FUNCTION
+# ============================================================
+
+def parse_gebaeudekonstruktion(text):
+
+    lines = clean_lines(text)
+    merged = merge_multiline_values(lines)
+
+    data = {}
+
+    for line in merged:
+        key, value = split_key_value(line)
+
+        # --- special handling ---
+        if key == "Deckenspannweiten":
+            data[key] = split_list_values(value)
+
+        elif key in ["Außenwände", "Innenwände", "Trennwände"]:
+            data[key] = parse_wall_structure(value)
+
+        elif key == "Decke":
+            data[key] = parse_decke(value)
+
+        else:
+            data[key] = value
+
+    return data
+
+
+# ============================================================
+# EXAMPLE USAGE
+# ============================================================
+
+if __name__ == "__main__":
+
+    text = """
+    • Laststufe (Montage): 0,75 t
+    • Konstruktionssystem: Langswandkonstruktion
+    • Deckenspannweiten: 2,40 m, 3,60 m, 4,80 m
+    • Außenwände: Leichtbeton- oder Hohllochziegelelemente,
+      einschichtig, 29 cm dick; beiderseitig geputzt
+    • Innenwände: Ziegelblockelemente, 19 cm dick; beiderseitig geputzt
+    • Trennwände: Langlochziegelverbund, 7,1 cm dick
+    • Decke: Zwickauer Decke, zweischalig, 21,5 cm dick;
+      Unterseite geputzt
+    • Fußbodendicke: 7,5 cm
+    """
+
+    result = parse_gebaeudekonstruktion(text)
+
+    print(json.dumps(result, indent=2, ensure_ascii=False))

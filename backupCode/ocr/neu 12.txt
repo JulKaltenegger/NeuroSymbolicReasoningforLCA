@@ -1,0 +1,53 @@
+def parse_page_header(all_lines):
+    """
+    Extract top typology banner:
+    e.g.
+        2 Blockbauweise 0,8 t
+        2.1 Typenserie IW 58/Reihe L 4
+    """
+
+    lines_sorted = sorted(
+        all_lines,
+        key=lambda L: (L["bbox"]["y0"], L["bbox"]["x0"])
+    )
+
+    result = {
+        "main_section": None,
+        "subseries": None
+    }
+
+    for line in lines_sorted:
+
+        text = layout_strip_bullet_noise(line.get("text") or "").strip()
+
+        # MAIN SECTION
+        m1 = re.match(
+            r"^(\d+)\s+(.+)$",
+            text
+        )
+
+        # SUBSERIES
+        m2 = re.match(
+            r"^(\d+\.\d+)\s+(.+)$",
+            text
+        )
+
+        # avoid matching 2.1.1
+        if m2 and not re.match(r"^\d+\.\d+\.\d+", text):
+
+            result["subseries"] = {
+                "section": m2.group(1),
+                "title": m2.group(2).strip()
+            }
+
+        elif m1 and "bauweise" in text.lower():
+
+            result["main_section"] = {
+                "section": m1.group(1),
+                "title": m1.group(2).strip()
+            }
+
+        if result["main_section"] and result["subseries"]:
+            break
+
+    return result

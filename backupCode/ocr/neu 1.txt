@@ -1,0 +1,146 @@
+import os
+import re
+
+# --- TESSERACT SETUP ---
+os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+print("Languages:", pytesseract.get_languages(config=''))
+
+# --- PDF → IMAGE ---
+from pdf2image import convert_from_path
+
+BBSR_PDF = "data-text-BBSR/BBSR.pdf"
+PAGE_NUMBER = 4  # index page
+
+images = convert_from_path(
+    BBSR_PDF,
+    first_page=PAGE_NUMBER + 1,
+    last_page=PAGE_NUMBER + 1,
+    dpi=300,
+    poppler_path=r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+)
+
+image = images[0]
+image.save("debug_index.png")
+
+# --- OCR ---
+text = pytesseract.image_to_string(image, lang="deu")
+
+print("\n--- RAW OCR ---\n")
+print(text)
+
+# ============================================================
+# INDEX PARSING
+# ============================================================
+
+def clean_index_lines(text):
+    lines = text.split("\n")
+    cleaned = []
+
+    for line in lines:
+        line = line.strip()
+
+        if not line:
+            continue
+
+        # remove dotted lines
+        line = re.sub(r"\.{2,}", " ", line)
+
+        cleaned.append(line)
+
+    return cleaned
+
+
+def normalize_page_number(page_str):
+    page_str = page_str.replace("S", "5").replace("i", "1")
+    return int(page_str)
+
+
+def classify_index_lines(lines):
+    sections = []
+    titles = []
+    pages = []
+
+    for line in lines:
+
+        # section numbers like 2 or 2.1
+        if re.match(r"^\d+(\.\d+)?$", line):
+            sections.append(line)
+
+        # page numbers (small integers)
+        elif re.match(r"^\d{1,3}$", line):
+            pages.append(line)
+
+        # everything else → title
+        else:
+            titles.append(line)
+
+    return sections, titles, pages
+
+
+def reconstruct_index(sections, titles, pages):
+    entries = []
+
+    n = min(len(sections), len(titles), len(pages))
+
+    for i in range(n):
+        entries.append({
+            "section": sections[i],
+            "title": titles[i],
+            "page": normalize_page_number(pages[i])
+        })
+
+    return entries
+
+
+def build_section_ranges(entries, last_page):
+    sections = {}
+
+    for i, entry in enumerate(entries):
+        start = entry["page"]
+
+        if i < len(entries) - 1:
+            end = entries[i + 1]["page"] - 1
+        else:
+            end = last_page
+
+        sections[entry["section"]] = {
+            "title": entry["title"],
+            "start": start,
+            "end": end
+        }
+
+    return sections
+
+
+# ============================================================
+# PIPELINE EXECUTION
+# ============================================================
+
+lines = clean_index_lines(text)
+
+print("\n--- CLEANED LINES ---\n")
+for l in lines:
+    print(l)
+
+sections_list, titles_list, pages_list = classify_index_lines(lines)
+
+print("\n--- SECTIONS ---\n", sections_list[:10])
+print("\n--- TITLES ---\n", titles_list[:10])
+print("\n--- PAGES ---\n", pages_list[:10])
+
+entries = reconstruct_index(sections_list, titles_list, pages_list)
+
+print("\n--- ENTRIES ---\n")
+for e in entries:
+    print(e)
+
+# optional: use real page count later
+sections = build_section_ranges(entries, last_page=100)
+
+print("\n--- FINAL STRUCTURE ---\n")
+for k, v in sections.items():
+    print(k, ":", v)

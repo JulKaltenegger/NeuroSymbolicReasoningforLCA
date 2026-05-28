@@ -1,0 +1,8 @@
+STEP 1:
+OCR index page
+→ print parsed TOC JSON
+
+STEP 2:
+OCR content page(s)
+→ save structured JSON to file
+→ print only confirmation

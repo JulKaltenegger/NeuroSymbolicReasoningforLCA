@@ -1,0 +1,518 @@
+import os
+import re
+import json
+import pandas as pd
+
+from pdf2image import convert_from_path
+
+# --- TESSERACT SETUP ---
+os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+import pytesseract
+from pytesseract import Output
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+
+# ============================================================
+# CONFIG
+# ============================================================
+
+PDF_PATH = "data-text-BBSR/BBSR.pdf"
+POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+
+INDEX_PAGE = 5      # page with Inhaltsverzeichnis
+CONTENT_PAGE = 19   # page with construction details
+
+# ============================================================
+# OCR HELPER
+# ============================================================
+
+def ocr_page(pdf_path, page_number, dpi=300):
+    images = convert_from_path(
+        pdf_path,
+        first_page=page_number,
+        last_page=page_number,
+        dpi=dpi,
+        poppler_path=POPPLER_PATH,
+    )
+
+    image = images[0]
+
+    data = pytesseract.image_to_data(
+        image,
+        lang="deu",
+        output_type=Output.DATAFRAME
+    )
+
+    data = data.dropna(subset=["text"])
+    data = data[data["text"].str.strip() != ""]
+
+    return data
+
+
+# ============================================================
+# INDEX PARSER (TOC)
+# ============================================================
+
+def group_rows(df, y_tol=10):
+    rows = []
+    current = []
+    current_y = None
+
+    df = df.sort_values("top")
+
+    for _, r in df.iterrows():
+        if current_y is None:
+            current_y = r["top"]
+
+        # MUCH stricter grouping
+        if abs(r["top"] - current_y) <= y_tol:
+            current.append(r)
+        else:
+            rows.append(current)
+            current = [r]
+            current_y = r["top"]
+
+    if current:
+        rows.append(current)
+
+    return rows
+
+
+
+def parse_index_from_layout(df):
+    entries = []
+
+    # define columns (tune if needed)
+    LEFT_MAX = 350
+    RIGHT_MIN = 1200
+
+    rows = group_rows(df)
+
+    for row in rows:
+        row = sorted(row, key=lambda r: r["left"])
+
+        section = None
+        title_parts = []
+        page = None
+
+        for r in row:
+            txt = r["text"]
+            x = r["left"]
+
+            # LEFT COLUMN → section
+            if x < LEFT_MAX and re.match(r"\d+(\.\d+)?", txt):
+                section = txt
+
+            # RIGHT COLUMN → page
+            elif x > RIGHT_MIN and re.match(r"\d+", txt):
+                page = int(txt)
+
+            # MIDDLE → title
+            else:
+                title_parts.append(txt)
+
+        title = " ".join(title_parts).strip()
+
+        if section or title:
+            entries.append({
+                "section": section,
+                "title": title,
+                "page": page
+            })
+
+    return entries
+
+
+# ============================================================
+# CONTENT PARSER (KEY-VALUE)
+# ============================================================
+
+
+def extract_key_values(data):
+    """
+    Legacy: one flat dict for the whole page via Tesseract ``line_num``.
+
+    Problem: ignores layout columns and section headings (2.1.1 / 2.1.2 …), so keys
+    collide and stdout looks like “everything in one object”. Prefer
+    :func:`layout_df_to_lines` + :func:`layout_lines_to_structured_sections`.
+    """
+    rows = []
+
+    for _, g in data.groupby("line_num"):
+        words = g.sort_values("left")["text"].tolist()
+        line = " ".join(words)
+        rows.append(line)
+
+    result = {}
+    current_key = None
+
+    for line in rows:
+
+        # normalize bullet OCR noise
+        line = re.sub(r"^[•\-\*\s]+", "", line)
+
+        if ":" in line:
+            key, val = line.split(":", 1)
+
+            current_key = key.strip()
+            result[current_key] = val.strip()
+
+        else:
+            # multiline continuation
+            if current_key:
+                result[current_key] += " " + line.strip()
+
+    return result
+
+
+# ── Layout lines (geometry) + boxed specs → structured JSON ───────────────
+
+
+def layout_df_to_lines(df, y_tol=22):
+    """Cluster OCR words into reading-order lines (avoids dumping the whole page as one KV map)."""
+    df = df.dropna(subset=["text"])
+    df = df[df["text"].astype(str).str.strip() != ""]
+    df = df.copy()
+    df["text"] = df["text"].astype(str).str.strip()
+
+    df_sorted = df.sort_values("top")
+    lines_out = []
+    current = []
+    anchor_y = None
+
+    for _, row in df_sorted.iterrows():
+        if anchor_y is None:
+            anchor_y = row["top"]
+        if abs(row["top"] - anchor_y) <= y_tol:
+            current.append(row)
+        else:
+            if current:
+                sub = pd.DataFrame(current).sort_values("left")
+                text = " ".join(sub["text"].tolist())
+                x0 = int(sub["left"].min())
+                y0 = int(sub["top"].min())
+                x1 = int((sub["left"] + sub["width"]).max())
+                y1 = int((sub["top"] + sub["height"]).max())
+                lines_out.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+            current = [row]
+            anchor_y = row["top"]
+
+    if current:
+        sub = pd.DataFrame(current).sort_values("left")
+        text = " ".join(sub["text"].tolist())
+        x0 = int(sub["left"].min())
+        y0 = int(sub["top"].min())
+        x1 = int((sub["left"] + sub["width"]).max())
+        y1 = int((sub["top"] + sub["height"]).max())
+        lines_out.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+    return lines_out
+
+
+def layout_strip_bullet_noise(text):
+    t = text.strip()
+    t = re.sub(r"^[\*\u2022\•\-\s]+", "", t)
+    t = re.sub(r"^[eEsS©®]\s*", "", t)
+    return t.strip()
+
+
+def layout_split_key_value(line_text):
+    if ":" in line_text:
+        key, _, rest = line_text.partition(":")
+        if key.strip() and rest.strip():
+            return key.strip(), rest.strip()
+    return None, None
+
+
+def _normalize_ocr_measurement_display(s):
+    if not isinstance(s, str):
+        return s
+    return re.sub(r"m\?", "m²", s)
+
+
+def _normalize_property_values(props):
+    if isinstance(props, dict):
+        return {k: _normalize_property_values(v) for k, v in props.items()}
+    if isinstance(props, list):
+        return [_normalize_property_values(x) for x in props]
+    if isinstance(props, str):
+        return _normalize_ocr_measurement_display(props)
+    return props
+
+
+def _normalize_key_for_lookup(raw):
+    if not raw:
+        return ""
+    t = raw.lower().strip()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+        t = t.replace(a, b)
+    t = re.sub(r"[^\w\s()\-]+", " ", t, flags=re.UNICODE)
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
+
+
+def _sanitize_property_key(raw_key):
+    k = layout_strip_bullet_noise(raw_key or "")
+    k = re.sub(r"^[»°\*\+\-\s]+\s*", "", k).strip()
+    k = re.sub(r"^[a-zäöüß]\s+", "", k, flags=re.I)
+    return k.strip()
+
+
+def _fields_to_flat_kv(fields):
+    out = {}
+    for f in fields or []:
+        kk = _sanitize_property_key(f.get("key") or "")
+        if not kk:
+            continue
+        vv = (f.get("value") or "").strip()
+        if kk in out:
+            out[kk] = (out[kk] + " " + vv).strip()
+        else:
+            out[kk] = vv
+    return out
+
+
+def _take_field_once(mapping, needles, reject_contains=()):
+    needles = [_normalize_key_for_lookup(n) for n in needles]
+    reject_contains = [_normalize_key_for_lookup(r) for r in reject_contains]
+    for k in list(mapping.keys()):
+        nk = _normalize_key_for_lookup(k)
+        if any(rc and rc in nk for rc in reject_contains):
+            continue
+        if needles and all(n in nk for n in needles):
+            return mapping.pop(k)
+    return None
+
+
+def _parse_deckenspannweiten(val):
+    chunks = re.findall(r"\d+,\d+\s*m", val)
+    if chunks:
+        return chunks
+    chunks_d = re.findall(r"\d+\.\d+\s*m", val)
+    return chunks_d if chunks_d else [val.strip()]
+
+
+def _fix_ausfuehrung_typos(s):
+    t = (s or "").strip()
+    if re.match(r"^in.?schichtig$", t, flags=re.I):
+        return "einschichtig"
+    return t
+
+
+def _parse_materials_fragment(s):
+    s = (s or "").strip()
+    parts = re.split(r"\s+oder\s+", s, flags=re.IGNORECASE)
+    parts = [p.strip().rstrip("-").strip() for p in parts if p.strip()]
+    if len(parts) > 1:
+        return parts
+    return parts[0] if parts else s
+
+
+def _parse_aussenwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mats>.+?),\s*(?P<ausf>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    mats = _parse_materials_fragment(m.group("mats"))
+    dicke = "{} cm".format(m.group("dnum").strip())
+    return {
+        "material": mats,
+        "ausführung": _fix_ausfuehrung_typos(m.group("ausf")),
+        "dicke": dicke,
+        "oberfläche": m.group("ober").strip(),
+    }
+
+
+def _parse_innenwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "material": m.group("mat").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+        "oberfläche": m.group("ober").strip(),
+    }
+
+
+def _parse_trennwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "material": m.group("mat").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+    }
+
+
+def _parse_decke(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<typ>.+?),\s*(?P<bau>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*Unterseite\s+(?P<unt>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "typ": m.group("typ").strip(),
+        "bauweise": m.group("bau").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+        "unterseite": m.group("unt").strip(),
+    }
+
+
+def build_properties_gebaeudekonstruktion_211(flat_kv):
+    d = dict(flat_kv)
+    props = {}
+
+    v_ls = _take_field_once(d, ["laststufe"])
+    if v_ls is not None:
+        props["Laststufe (Montage)"] = v_ls
+
+    v_ks = _take_field_once(d, ["konstruktionssystem"])
+    if v_ks is not None:
+        props["Konstruktionssystem"] = v_ks
+
+    v_dw = _take_field_once(d, ["deckenspannweiten"])
+    if v_dw is not None:
+        props["Deckenspannweiten"] = _parse_deckenspannweiten(v_dw)
+
+    v_aw = _take_field_once(d, ["aussen", "wand"])
+    if v_aw is not None:
+        aw = _parse_aussenwaende(v_aw)
+        props["Außenwände"] = aw.get("_raw") if len(aw) == 1 and "_raw" in aw else aw
+
+    v_iw = _take_field_once(d, ["innen", "wand"])
+    if v_iw is not None:
+        iw = _parse_innenwaende(v_iw)
+        props["Innenwände"] = iw.get("_raw") if len(iw) == 1 and "_raw" in iw else iw
+
+    v_tw = _take_field_once(d, ["trenn", "wand"])
+    if v_tw is not None:
+        tw = _parse_trennwaende(v_tw)
+        props["Trennwände"] = tw.get("_raw") if len(tw) == 1 and "_raw" in tw else tw
+
+    v_dc = _take_field_once(d, ["decke"], reject_contains=("spannweit",))
+    if v_dc is not None:
+        dc = _parse_decke(v_dc)
+        props["Decke"] = dc.get("_raw") if len(dc) == 1 and "_raw" in dc else dc
+
+    v_fb = _take_field_once(d, ["fussboden", "dicke"]) or _take_field_once(
+        d, ["fussbodendicke"]
+    )
+    if v_fb is not None:
+        props["Fußbodendicke"] = v_fb
+
+    for k, v in d.items():
+        props[k] = v
+
+    return props
+
+
+def parse_h3_sections_from_lines(all_lines):
+    """
+    Scan sorted layout lines: each ``2.1.x Title`` opens a boxed section;
+    bullet lines ``key: value`` and continuations attach to it.
+    """
+    lines_sorted = sorted(all_lines, key=lambda L: (L["bbox"]["y0"], L["bbox"]["x0"]))
+    sections = []
+    current = None
+
+    for line in lines_sorted:
+        text = line.get("text") or ""
+        t = layout_strip_bullet_noise(text)
+
+        m = re.match(r"^(\d+\.\d+\.\d+)\s*(.*)$", t.strip())
+        if m:
+            if current is not None:
+                sections.append(current)
+            title_tail = (m.group(2) or "").strip()
+            current = {"section": m.group(1), "title": title_tail or None, "fields": []}
+            continue
+
+        if current is None:
+            continue
+
+        ts = t.strip()
+        if re.match(r"^\d{1,2}\s+RWE\b", ts, re.I):
+            if current["fields"]:
+                last = current["fields"][-1]
+                sep = ", " if last.get("value") and not last["value"].rstrip().endswith(",") else " "
+                last["value"] = (last["value"] + sep + ts).strip()
+            continue
+
+        if ":" in ts:
+            k, v = layout_split_key_value(ts)
+            if k and v:
+                current["fields"].append({"key": k, "value": v})
+            continue
+
+        if current["fields"]:
+            last = current["fields"][-1]
+            last["value"] = (last["value"] + " " + layout_strip_bullet_noise(text)).strip()
+
+    if current is not None:
+        sections.append(current)
+    return sections
+
+
+def layout_lines_to_structured_sections(all_lines):
+    """One JSON object per ``2.1.x`` boxed block; §2.1.1 gets nested walls/deck semantics."""
+    out = []
+    for s in parse_h3_sections_from_lines(all_lines):
+        sid = s["section"]
+        title = (s.get("title") or "").strip()
+        flat = _fields_to_flat_kv(s["fields"])
+
+        if sid == "2.1.1":
+            props = build_properties_gebaeudekonstruktion_211(flat)
+        else:
+            props = dict(flat)
+
+        props = _normalize_property_values(props)
+        out.append({"section": sid, "title": title or None, "properties": props})
+    return out
+
+
+# ============================================================
+# RUN PIPELINE
+# ============================================================
+
+def main():
+
+    # --- INDEX ---
+    print("\n--- INDEX ---\n")
+
+    index_df = ocr_page(PDF_PATH, INDEX_PAGE)
+    index_entries = parse_index_from_layout(index_df)
+
+    print(json.dumps(index_entries, indent=2, ensure_ascii=False))
+
+
+    # --- CONTENT PAGE (one JSON object per 2.1.x box, not one flat dict) ---
+    print("\n--- PAGE CONTENT (structured boxes) ---\n")
+
+    content_data = ocr_page(PDF_PATH, CONTENT_PAGE)
+    layout_lines = layout_df_to_lines(content_data, y_tol=22)
+    structured_boxes = layout_lines_to_structured_sections(layout_lines)
+
+    print(json.dumps(structured_boxes, indent=2, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
+
+this is the version that works

@@ -1,0 +1,827 @@
+{
+    "pdf_path": "data-text-BBSR/BBSR.pdf",
+    "logical_first_page_on_pdf": 7,
+    "default_note": "BBSR / iEMB typology specification sheets: many Bauweisen and IW/P series; each page typically three sections (Gebäudekonstruktion, Gebäudecharakteristik, Wohnungscharakteristik). Printed booklet page (Seite n) is not the same as PDF page index.",
+    "pages_requested_pdf_index": [
+      11,
+      15,
+      19,
+      23,
+      27,
+      31,
+      35,
+      39,
+      43,
+      47,
+      51,
+      57,
+      61,
+      65,
+      69
+    ],
+    "page_count": 15,
+    "pages": [
+      {
+        "pdf_page_index": 11,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_11.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "2.1.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "0,75 t",
+              "Konstruktionssystem": "Längswandkonstruktion",
+              "Deckenspannweiten": [
+                "2,40 m",
+                "3,60 m",
+                "4,80 m"
+              ],
+              "Decke": {
+                "typ": "Zwickauer Decke",
+                "bauweise": "zweischalig",
+                "dicke": "21,5 cm",
+                "unterseite": "geputzt"
+              },
+              "Fußbodendicke": "7,5 cm",
+              "Außenwände": "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt",
+              "Innenwände": "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt",
+              "Trennwände": "Langlochziegelverbund, 7,1 cm dick"
+            }
+          },
+          {
+            "section": "2.1.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1958 (IW 58), vorgesehen vorwiegend für städtische Standorte",
+              "Gebäudelängen": "3 - 5 Segmente gereiht, 45,40 m bis 74,80 m (Systemlänge)",
+              "Gebäudebreite": "9,79 m (häufig als Haustiefe bezeichnet)",
+              "Segmenttypen und -längen": "SA, 18,60 m (3 WE); S B, 15,00 m (2 WE); (WE) SC, 17,40 (2 WE) m",
+              "Dachform und -art": "steilgeneigtes Satteldach; Kaltdachlösung",
+              "Geschoßanzahl": "4",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Ofenheizung, Zentralheizung"
+            }
+          },
+          {
+            "section": "2.1.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 RWE (48,95 m² - 49,74 m²), 3 RWE (58,73 m², 58,91 m²), 4 RWE (69,28 m², 69,49 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad",
+              "Balkon/Loggia": "Planung von Balkonen vor den Wohnzimmern, auch giebelseitig"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 15,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_15.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "2.2.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "0,75 t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+              "Innenwände": "Leichtbeton, 19 cm dick; beiderseitig geputzt",
+              "Trennwände": "Gipselemente, 5 cm dick",
+              "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Unterseite geputzt",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "2.2.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1963 (IW 63), vorgesehen für städtische Standorte in Berlin",
+              "Gebäudelängen": "regelrecht 4 Segmente gereiht, 57,60 m bis 67,20 m (Systemlänge)",
+              "Gebäudebreite": "9,99 m (häufig als Haustiefe bezeichnet)",
+              "Segmenttypen und -längen": "S 1, 14,40 m (2 WE); S 2, 16,80 m (3 WE); (WE) S$3, 16,80 m (2 WE)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "4",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Ofenheizung"
+            }
+          },
+          {
+            "section": "2.2.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 RWE (36,15 m®, 48,30 m*), 3 RWE (55,97 m²), 4 RWE (66,69 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Innenbad; nur mit Dusche/WC (kleine 2 RWE)",
+              "Balkon/Loggia": "Planung von Balkonen und partiell von französischen Fenstern"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 19,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_19.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "2.3.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "0,8 t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+              "Innenwände": "Normalbeton, 19 cm dick; beiderseitig geputzt",
+              "Trennwände": "Gips, 7 cm dick; Normalbeton, 6 cm dick",
+              "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "2.3.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für städtische Standorte, dazu Ratiostufen 1970 und 1974",
+              "Gebäudelängen": "3 - 4 Segmente gereiht, 39,60 m bis 67,20 m (Systemlänge)",
+              "Gebäudebreite": "10,19 m (häufig als Haustiefe bezeichnet)",
+              "egmenttypen und -längen": "S 1, 16,80 m (3 WE); 8 2, 13,20 m (2 WE): (WE) S 3, 14,40 m (2 WE)",
+              "Dachform und -art": "steilgeneigtes Satteldach und Flachdach; Kaltdachlösungen",
+              "Geschoßanzahl": "4-5",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Ofenheizung (4 Geschosse/Steildach) Zentralheizung (4 - 5 Geschosse/Flachdach)"
+            }
+          },
+          {
+            "section": "2.3.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 RWE (40,61 m®, 47,02 m², 47,89 m²), 3 RWE (57,70 m², 58,23 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE)",
+              "Balkon/Loggia": "Planung wahlweise von französischen Fenstern, von Balkonen oder Loggien"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 23,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_23.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "2.4.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "0,8 t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+              "Innenwände": "Normalbeton, 19 cm dick",
+              "Trennwände": "Gips, 7 cm dick; Normalbeton, 6 cm dick",
+              "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "2.4.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für ländliche Standorte",
+              "Gebäudelängen": "3 Segmente gereiht, 36,00 m bis 54,00 m (Systemlänge)",
+              "Gebäudebreite": "10,19 m (häufig als Haustiefe bezeichnet)",
+              "Segmenttypen und -längen": "SS 1, 12,00 m (2 WE); S 2, 18,00 m (3 WE); (WE) $ 3, 14,40 (2 WE) m",
+              "Dachform und -art": "steilgeneigtes Satteldach; Kaltdachlösung",
+              "Geschoßanzahl": "3-4",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Ofenheizung"
+            }
+          },
+          {
+            "section": "2.4.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 RWE (42,93 m² - 53,62 m²), 3 RWE (63,31 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad",
+              "Balkon/Loggia": "Planung wahlweise von französischen Fenstern und Balkonen",
+              "Wohnterrasse (EG)": "zn"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 27,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_27.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "3.1.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "11t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtzuschlagstoffbeton (LZS-Beton), einschichtig, 29 cm dick; dreischichtige Giebelwände, 26 cm dick, oder Porenbeton, 24 cm bzw. 30 cm dick; jeweils oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 6 cm dick; Gips, 7 cm dick, oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "4,5 cm"
+            }
+          },
+          {
+            "section": "3.1.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1977, weiterentwickelte Typenreihe IW 64 zur neuen Serie Brandenburg mit Ratio-Typen für innerstädtische und ländliche Standorte",
+              "Gebäudelängen": "28,80 m - variabel (max. 67,20 m Systemlänge)",
+              "Gebäudebreite": "10,19 m, 11,40 m Haustiefe (10,80 m Systemmaß)",
+              "egmenttypen und -längen": "S$1-53; 9,60... 12,00 m, 13,20 m, 14,40 m, 16,80 m (WE) (WE-Anzahl variabel)",
+              "Dachform und -art": "Flachdach, steilgeneigtes Satteldach, Mansarddach; Kaltdach- und kombinierte Kalt-/Warmdachlösungen",
+              "Geschoßanzahl": "4-5",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung (4 - 5 Geschosse) Ofenheizung (4 Geschosse)"
+            }
+          },
+          {
+            "section": "3.1.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1- bis 4 RWE (35,98 m² - 77,24 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad; Innenbad",
+              "Balkon/Loggia": "wahlweise Anordnung von vorgesetzten und ingezogenen Loggien",
+              "Wohnterrasse (EG)": "möglich"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 31,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_31.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "4.1.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "2,0t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtbeton, einschichtig, 29 cm (milde Klimazone) und 35 cm dick (strenge Klimazone); beiderseitig geputzt",
+              "Innenwände": "Normalbeton, 19 cm dick; beiderseitig geputzt",
+              "Trennwände": "Gips, 7 cm dick, und Normalbeton, 4 cm dick (Trennwand Küche/Bad), jeweils oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "4.1.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1965 (IW 65), weiterentwickelte Typenreihe der Blockbauweise 0,8 t, IW 64/Brandenburg",
+              "Gebäudelängen": "3 4 Segmente gereiht, 39,60 m - variabel 67,20 m ... (Systemlänge)",
+              "Gebäudebreite": "10,19 m, 10,31 m Haustiefe (9,60 m Systemmaß)",
+              "egmenttypen und -längen": "S1, 16,80 m (3 WE); S 2, 13,20 m (2 WE); (WE) S3, 14,40 (2 WE) m",
+              "Dachform und -art": "Flachdach und steilgeneigtes Satteldach; Kaltdachlösungen",
+              "Geschoßanzahl": "4-5",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung (4 - 5 Geschosse/Flachdach) Ofenheizung (4 Geschosse/Steildach))"
+            }
+          },
+          {
+            "section": "4.1.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2- bis 3 RWE (40,61 m² - 58,49 m®)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE im Segment 1)",
+              "Balkon/Loggia": "wahlweise Anordnung von französischen Fenstern und von Balkonen",
+              "Wohnterrasse (EG)": "="
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 35,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_35.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "5.1.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "5,0 t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "haufwerksporiger Beton/Leichtbeton, einschichtig, 24 cm dick; Innen- und Außenputz",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 10 cm dick, oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "5,5 cm"
+            }
+          },
+          {
+            "section": "5.1.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1961, (IW 61, auch IW 63), rste zentrale Entwicklung der Plattenbauweise (VEB Typenprojektierung Berlin, VEB Hochbau- projektierung Erfurt)",
+              "Gebäudelängen": "4 6 Segmente gereiht, 52,80 m variabel 72,00 m ... (Systemlänge)",
+              "Gebäudebreite": "10,09 m Haustiefe, (9,60 m Systemmaß)",
+              "egmenttypen und -längen": "S A (I), 13,20 m (2 WE); S B (II), 14,40 m (2 WE); C (I), 16,80 m (2WE); SD (IV), 16,80 m (3 WE)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "4 (Segmente A, B, C) 4-5 (Segmente D)",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung"
+            }
+          },
+          {
+            "section": "5.1.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2- bis 4 RWE (48,04 m² - 69,60...75,20 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad",
+              "Balkon/Loggia": "Balkon (Wohnzimmer)"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 39,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_39.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "5.2.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "5,0t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m",
+              "Außenwände": "Leichtbeton, einschichtig, 29 cm dick, oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 4 cm (Trennwand Küche/Bad) und 7 cm dick, oberflächenfertig",
+              "Decke": "Hohlraumdecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "5.2.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1964, (IW 64), zentrale Weiterentwicklung der Serie IW 61...63/P1 durch Projekt IW 64/P-Halle (VEB Typenprojektierung Berlin)",
+              "Gebäudelängen": "3, tlw. 4 Segmente gereiht, 43,20 m bis 50,40 m (Systemlänge)",
+              "Gebäudebreite": "10,19 m Haustiefe, (9,60 m Systemmaß)",
+              "egmenttypen und -längen": "S 1, 16,80 m (3 WE); S 2, 14,40 m (2 WE); (WE) S$ 3, 16,80 m (2WE)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "4-5",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "5.2.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 RWE (41,84 m*/48,82 m*), 3 RWE (58,81 m’), 4 RWE (69,74 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE)",
+              "Balkon/Loggia": "Balkon oder Loggia (Wohnraum, ausgenommen kleine 2 RWE in S 1)",
+              "Wohnterrasse (EG)": "-"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 43,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_43.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "5.3.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "5,0t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m, 4,20 m und 6,00 m",
+              "Außenwände": "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 4, 6 und 7 cm dick; Gips, 7 cm dick",
+              "Decke": "Vollbetondecke, Stahlbeton, 6,00 m-Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "5.3.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1966 - 1977 (IW 66...77), zentral entwickelte Typenserie P2;",
+              "Grundkonzeption": "Deutsche Bauakademie zu Berlin",
+              "Gebäudelängen": "4 - 5 Segmente gereiht/5geschossig, 48,00 m bis 60,00 m; 2 Segmente mit Zusatzsegment (12 m) gereiht/11geschossig, 67,20 m, selten max. 3 Segmente gereiht, 82,80 m (Systemlänge)",
+              "Gebäudebreite": "10,80 m und 12,00 m Haustiefe (Systemmaße)",
+              "egmenttypen und -längen": "Wohnsegmente 12,00 m (2 WE/5geschossig); 27,60 m (WE) (4 WE/11geschossig)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "SA. 11",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "5.3.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "2 bis 4 RWE/5geschossig (46,28 m® - 63,04 m*); 1- bis 4 RWE/11geschossig, Berlin 1972 (33,89 m* - 75,91 m²)",
+              "Küche": "Innenküche",
+              "Bad": "Innenbad",
+              "Balkon/Loggia": "Loggia (Wohnzimmer)"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 47,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_47.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "5.4.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "5,0t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "2,40 m, 3,60 m, 4,80 m",
+              "Außenwände": "Längswand, Leichtbeton, einschichtig, 28 cm dick; Giebelwand, Normalbeton/Kerndämmung (Schaumpolystyrol), 3schichtig, 30 cm dick, jeweils oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig (im KG bewehrt)",
+              "Trennwände": "Gipselemente, 7 cm dick",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "6,5 cm"
+            }
+          },
+          {
+            "section": "5.4.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau 1961 - 1978, bezirkliche Entwick-",
+              "lung in Berlin, QP 71-R (Vorläufer der Serie": "QP 61, QP 64, QP 71; VEB Berlin-Projekt)",
+              "Gebäudelängen": "Wohnblock A 103 (3 Segmente/117 WE), 65,27 m; A 104 (4 Segmente/156 WE), 84,44 m",
+              "Gebäudebreite": "11,51 m Haustiefe",
+              "egmenttypen und -längen": "—Mittelsegment, 19,20 m (39 WE); Giebelsegment, 22,80 m (WE) (39 WE) Systemmaße",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "10",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,70 m (Kellergeschoß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "5.4.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1 RWE (29,48 m²), 2 RWE (48,11 m² 56,39 m’), 3 RWE (74,85 m² - 79,34 m²)",
+              "Küche": "Außenküche",
+              "Bad": "Außenbad; Innenbad (1 RWE, kleine 2 RWE)",
+              "Balkon/Loggia": "Loggia",
+              "Wohnterrasse (EG)": "="
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 51,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_51.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "5.5.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "5,0t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "3,60 m",
+              "Außenwände": "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig",
+              "Innenwände": "(1) Stahlbeton, 17 cm; (2/3) Stahlbeton, 15 cm dick, jeweils oberflächenfertig",
+              "Trennwände": "Normalbeton oder Gips, 7 cm dick, oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm bzw. bei (2) 15 cm dick, oberflächenfertig",
+              "Fußbodendicke": "4,5 - 7,5 cm"
+            }
+          },
+          {
+            "section": "5.5.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)",
+              "Gebäudelängen": "} Einzelgebäude, (1) 22,22 m x 18,62 m, (2) 18,83 m x 37,84 m,",
+              "Gebäudebreite": "} (3) 29,69 m x 29,69 m",
+              "egmenttypen und -längen": "keine Reihungssegmente, (1) 90 WE, (2) 208 WE, (WE) (3) 132 WE",
+              "Dachform und -art": "Flachdach",
+              "Geschoßanzahl": "16 und 17",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "5.5.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1- bis 3 RWE (vereinzelt 4-, 6 RWE bei PH 16)",
+              "Küche": "Innenküche (vereinzelt Außenküche bei WHH 17)",
+              "Bad": "Innenbad",
+              "Balkon/Loggia": "Loggia (WHH 17)",
+              "Wohnterrasse (EG)": "- (1) Punkthochhaus PHH 16 Frankfurt/Oder (2) Wohnhochhaus WHH 17 Dresden (3) Wohnhochhaus PH 16 Leipzig"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 57,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_57.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "6.1.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+              "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+              "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig 26 cm dick, oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig",
+              "oe Decke": "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "3 cm - 3,5 cm (Normalgeschoß), 7,5 cm (Erdgeschoß)"
+            }
+          },
+          {
+            "section": "6.1.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller Wohnungsbau WBS 70 (Ersteinführung 1972),",
+              "zentral entwickelte Serie; Grundkonzeption": "Bauakademie, Kooperationsverband WBS 70 (5 Wohnungsbaukombinate), TU Dresden",
+              "Gebäudelängen": "3 - 5 Segmente gereiht, 36,00 m - variabel (max. 72,00 m Systemlänge)",
+              "Gebäudebreite": "12,00 m Haustiefe (Systemmaß)",
+              "egmenttypen und -längen": "Basis-Segment 0501W, 12,00 m (2 WE); (WE) 0503W, 14,40 m (2 WE); 0502W, 18,00 m (3 WE)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "5 (6)",
+              "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "6.1.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1- bis 4 RWE (32,31 m² - 79,69 m²/100,02 m* im konischen Segment 0509W), 5 RWE im Segment 0513W mit Verbindertrakt (96,40 m)",
+              "Küche": "Außenküche; Innenküche teilweise in 1 RWE",
+              "Bad": "Innenbad",
+              "Balkon/Loggia": "Loggia (Wohnzimmer)",
+              "Wohnterrasse (EG)": "teilweise vorhanden"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 61,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_61.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "6.2.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+              "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+              "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 26 cm dick, oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 6,00 m Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "3 cm - 7,5 cm"
+            }
+          },
+          {
+            "section": "6.2.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau WBS 70 (Ersteinführung 1977), zentral entwickelte Serie;",
+              "Grundkonzeption": "Bauakademie, Kooperationsverband WBS 70 (5 Wohnungsbaukombinate), TU Dresden u.a.",
+              "Gebäudelängen": "2-3 Segmente gereiht, 48,00 m - variabel (max. 72,00 m Systemlänge)",
+              "Gebäudebreite": "12,00 m Haustiefe (Systemmaß)",
+              "gmenttypen und -längen": "Basis-Segmente: 1130W...37W, 24,00/30,00 m (42/43 WE); (WE) 1142W...48W, 24,00/30,00 m (32/33/43 WE); 1153W...56W, egmente WBL 2.66.0/2.77.2, 24,00 m (33/38-39 WE)",
+              "Dachform und -art": "Flachdach; Kaltdachlösung",
+              "Geschoßanzahl": "11",
+              "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "6.2.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1- bis 4 RWE (32,61 m² - 86,85 m²/98,87 m² im konischen egment 1137W), 5 RWE in konischen Segmenten 1148W/1156W (120,00/114,19 m²)",
+              "Küche": "Außenküche; Innenküche teilweise in 1 RWE",
+              "Bad": "Innenbad",
+              "Balkon/Loggia": "Loggia (Wohnzimmer)",
+              "Wohnterrasse (EG)": "möglich"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 65,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_65.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "6.3.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "6,3 t",
+              "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+              "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+              "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 25 cm dick, oberflächenfertig",
+              "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+              "Trennwände": "Normalbeton, 4 cm und 7 cm dick, oberflächenfertig",
+              "Decke": "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "5,5 cm (1. 0G), 3,5 cm (2. 11. 06), 4 cm - 5,5 cm (in Bädern)"
+            }
+          },
+          {
+            "section": "6.3.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau, Basis WBS 70 (Ausführung 1978), bezirkliche Entwicklung vom VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder",
+              "Gebäudelängen": "} Einzelgebäude,",
+              "Gebäudebreite": "} 18,35 m x 18,35 m",
+              "Segmenttypen und -längen": "PH 12 G als Segment (55 WE) in versetzter Doppelstellung (WE) reihbar, 2 x 18,35 m",
+              "Dachform und -art": "Flachdach; Warmdachlösung",
+              "Geschoßanzahl": "12 (nicht unterkellert)",
+              "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "6.3.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1- bis 3 RWE (32,70 m² - 66,33)",
+              "Küche": "Außenküche",
+              "Bad": "Innenbad",
+              "Balkon/Loggia": "Loggia (Wohnzimmer)",
+              "Wohnterrasse (EG)": "entfällt, da im Erdgeschoß keine Wohnungen vorhanden sind"
+            }
+          }
+        ]
+      },
+      {
+        "pdf_page_index": 69,
+        "note": null,
+        "dpi": 300,
+        "debug_image": "data-text-BBSR/debug_page_69.png",
+        "outline": {
+          "section_id": null,
+          "title": null,
+          "source_line": null,
+          "fields": []
+        },
+        "structured_sections": [
+          {
+            "section": "6.4.1",
+            "title": "Gebäudekonstruktion",
+            "properties": {
+              "Laststufe (Montage)": "6,3 t",
+              "Konstruktionssystem": "Querwandkonstruktion",
+              "Deckenspannweiten": "3,60 m",
+              "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol), 3schichtig, 21 cm dick, oberflächenfertig",
+              "Innenwände": "Normal- und Stahlbeton, 19 cm dick, oberflächenfertig;",
+              "Trennwände": "monolithischer Teil in Stahlbeton: Erdgeschoß",
+              "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+              "Fußbodendicke": "7,5 cm"
+            }
+          },
+          {
+            "section": "6.4.2",
+            "title": "Gebäudecharakteristik",
+            "properties": {
+              "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau (Ausführung 1978), Typ WHH GT 18, bezirkliche Entwicklung vom VEB Wohnungsbaukombinat Berlin",
+              "Gebäudelängen": "} Einzelgebäude,",
+              "Gebäudebreite": "} 35,34 m x 18,84 m",
+              "Segmenttypen und -längen": "_Wohnhochhaus, nicht segmentiert (136 WE) (WE)",
+              "Dachform und -art": "Flachdach; Warmdachlösung",
+              "Geschoßanzahl": "18 (nicht unterkellert), technisches Geschoß über dem 17. OG",
+              "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse), (Rohbau/Systemmaß) 4,20 m (Erdgeschoß, Gebäudetechnik)",
+              "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+            }
+          },
+          {
+            "section": "6.4.3",
+            "title": "Wohnungscharakteristik",
+            "properties": {
+              "Wohnungsarten und -größen": "1RWE (29,84 m²), 2 RWE (47,46 m²), 3 RWE (71,45 m²), 4 RWE (75,76 m²)",
+              "Küche": "Ionen- und Außenküche",
+              "Bad": "Innenbad (Sanitärzelle)",
+              "Balkon/Loggia": "Loggien in den Gebäude-Mittelachsen",
+              "Wohnterrasse (EG)": "entfällt, da im Erdgeschoß keine Wohnungen vorhanden sind"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

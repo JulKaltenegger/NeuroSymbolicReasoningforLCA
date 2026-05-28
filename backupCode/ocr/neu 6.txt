@@ -1,0 +1,161 @@
+import os
+import re
+import json
+import pandas as pd
+
+from pdf2image import convert_from_path
+import pytesseract
+from pytesseract import Output
+
+
+# ============================================================
+# CONFIG
+# ============================================================
+
+PDF_PATH = "data-text-BBSR/BBSR.pdf"
+
+POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+INDEX_PAGE = 5      # page with Inhaltsverzeichnis
+CONTENT_PAGE = 11   # page with construction details
+
+
+
+BBSR_PDF = "data-text-BBSR/BBSR.pdf"
+POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+
+INDEX_PAGE = 5        # index page
+CONTENT_PAGE = 11     # page you want structured
+
+
+
+
+# ============================================================
+# OCR HELPER
+# ============================================================
+
+def ocr_page(pdf_path, page_number, dpi=300):
+    images = convert_from_path(
+        pdf_path,
+        first_page=page_number,
+        last_page=page_number,
+        dpi=dpi,
+        poppler_path=POPPLER_PATH,
+    )
+
+    image = images[0]
+
+    data = pytesseract.image_to_data(
+        image,
+        lang="deu",
+        output_type=Output.DATAFRAME
+    )
+
+    data = data.dropna(subset=["text"])
+    data = data[data["text"].str.strip() != ""]
+
+    return data
+
+
+# ============================================================
+# INDEX PARSER (TOC)
+# ============================================================
+
+def extract_index(data):
+    rows = []
+
+    # group words into lines
+    for _, g in data.groupby("line_num"):
+        words = g.sort_values("left")["text"].tolist()
+        rows.append(words)
+
+    entries = []
+
+    for row in rows:
+        if len(row) < 2:
+            continue
+
+        # last token = page number
+        if re.match(r"^\d+$", row[-1]):
+            page = int(row[-1])
+
+            # detect section
+            section = None
+            title_tokens = row[:-1]
+
+            if re.match(r"^\d+(\.\d+)?$", row[0]):
+                section = row[0]
+                title_tokens = row[1:-1]
+
+            title = " ".join(title_tokens)
+
+            entries.append({
+                "section": section,
+                "title": title,
+                "page": page
+            })
+
+    return entries
+
+
+# ============================================================
+# CONTENT PARSER (KEY-VALUE)
+# ============================================================
+
+def extract_key_values(data):
+    rows = []
+
+    for _, g in data.groupby("line_num"):
+        words = g.sort_values("left")["text"].tolist()
+        line = " ".join(words)
+        rows.append(line)
+
+    result = {}
+    current_key = None
+
+    for line in rows:
+
+        # normalize bullet OCR noise
+        line = re.sub(r"^[•\-\*\s]+", "", line)
+
+        if ":" in line:
+            key, val = line.split(":", 1)
+
+            current_key = key.strip()
+            result[current_key] = val.strip()
+
+        else:
+            # multiline continuation
+            if current_key:
+                result[current_key] += " " + line.strip()
+
+    return result
+
+
+# ============================================================
+# RUN PIPELINE
+# ============================================================
+
+def main():
+
+    # --- INDEX ---
+    print("\n--- INDEX ---\n")
+
+    index_data = ocr_page(PDF_PATH, INDEX_PAGE)
+    index_entries = extract_index(index_data)
+
+    print(json.dumps(index_entries, indent=2, ensure_ascii=False))
+
+
+    # --- CONTENT PAGE ---
+    print("\n--- PAGE CONTENT ---\n")
+
+    content_data = ocr_page(PDF_PATH, CONTENT_PAGE)
+    content_json = extract_key_values(content_data)
+
+    print(json.dumps(content_json, indent=2, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

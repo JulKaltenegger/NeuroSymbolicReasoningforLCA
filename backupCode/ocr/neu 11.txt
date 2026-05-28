@@ -1,0 +1,2755 @@
+using this code
+import os
+import re
+import json
+from pathlib import Path
+
+import pandas as pd
+
+from pdf2image import convert_from_path
+
+# TESSERACT SETUP 
+os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+import pytesseract
+from pytesseract import Output
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+
+# CONFIG
+
+REPO_ROOT = Path(__file__).resolve().parent
+
+PDF_PATH = "data-text-BBSR/BBSR.pdf"
+POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+
+INDEX_PAGE = 5      # page with Inhaltsverzeichnis (1-based PDF index)
+LOGICAL_FIRST_PAGE_ON_PDF = 7
+
+DEFAULT_PAGE_BOX_NOTE = (
+    "BBSR / iEMB typology specification sheets: many Bauweisen and IW/P series; each page "
+    "typically three sections (Gebäudekonstruktion, Gebäudecharakteristik, Wohnungscharakteristik). "
+    "Printed booklet page (Seite n) is not the same as PDF page index."
+)
+CONTENT_PDF_PAGES = [11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 57, 61, 65, 69]  # add more PDF 1-based indices, e.g. [11, 15, 19, 23, 27, 31, ...]
+CONTENT_PDF_PAGE_NOTES = []  # optional per-page strings (same order as CONTENT_PDF_PAGES); use for §/Typenserie hints
+
+# OCR quality
+CONTENT_PAGE_OCR_DPI = 300
+PAGE_BOX_LAYOUT_Y_TOL = 22
+PAGE_BOX_JSON_PATH = "data-text-BBSR/page_boxes.json"
+WRITE_PAGE_BOXES_JSON = True
+
+# Section 2. OCR HELPER - convert  pdf to image, tesseract ocr and pandas
+
+def ocr_page(pdf_path, page_number, dpi=300):
+    images = convert_from_path(
+        pdf_path,
+        first_page=page_number,
+        last_page=page_number,
+        dpi=dpi,
+        poppler_path=POPPLER_PATH,
+    )
+
+    image = images[0]
+
+    data = pytesseract.image_to_data(
+        image,
+        lang="deu",
+        output_type=Output.DATAFRAME
+    )
+
+    data = data.dropna(subset=["text"])
+    data = data[data["text"].str.strip() != ""]
+
+    return data
+
+# Section 3. INDEX PARSER (TOC)
+
+def group_rows(df, y_tol=10):
+    rows = []
+    current = []
+    current_y = None
+
+    df = df.sort_values("top")
+
+    for _, r in df.iterrows():
+        if current_y is None:
+            current_y = r["top"]
+
+        # stricter grouping
+        if abs(r["top"] - current_y) <= y_tol:
+            current.append(r)
+        else:
+            rows.append(current)
+            current = [r]
+            current_y = r["top"]
+
+    if current:
+        rows.append(current)
+
+    return rows
+
+
+
+def parse_index_from_layout(df):
+    entries = []
+
+    # define columns (tune if needed)
+    LEFT_MAX = 350
+    RIGHT_MIN = 1200
+
+    rows = group_rows(df)
+
+    for row in rows:
+        row = sorted(row, key=lambda r: r["left"])
+
+        section = None
+        title_parts = []
+        page = None
+
+        for r in row:
+            txt = r["text"]
+            x = r["left"]
+
+            # LEFT COLUMN → section
+            if x < LEFT_MAX and re.match(r"\d+(\.\d+)?", txt):
+                section = txt
+
+            # RIGHT COLUMN → page
+            elif x > RIGHT_MIN and re.match(r"\d+", txt):
+                page = int(txt)
+
+            # MIDDLE → title
+            else:
+                title_parts.append(txt)
+
+        title = " ".join(title_parts).strip()
+
+        if section or title:
+            entries.append({
+                "section": section,
+                "title": title,
+                "page": page
+            })
+
+    return entries
+
+
+# CONTENT parsing (KEY-VALUE)
+
+
+def extract_key_values(data):
+    """
+    Legacy: one flat dict for the whole page via Tesseract ``line_num``.
+
+    Problem: ignores layout columns and section headings (2.1.1 / 2.1.2 …), so keys
+    collide and stdout looks like “everything in one object”. Prefer
+    :func:`layout_df_to_lines` + :func:`layout_lines_to_structured_sections`.
+    """
+    rows = []
+
+    for _, g in data.groupby("line_num"):
+        words = g.sort_values("left")["text"].tolist()
+        line = " ".join(words)
+        rows.append(line)
+
+    result = {}
+    current_key = None
+
+    for line in rows:
+
+        # normalize bullet OCR noise
+        line = re.sub(r"^[•\-\*\s]+", "", line)
+
+        if ":" in line:
+            key, val = line.split(":", 1)
+
+            current_key = key.strip()
+            result[current_key] = val.strip()
+
+        else:
+            # multiline continuation
+            if current_key:
+                result[current_key] += " " + line.strip()
+
+    return result
+
+
+#Layout lines (geometry) + boxed specs structured JSON
+
+
+def layout_df_to_lines(df, y_tol=22):
+    """Cluster OCR words into reading-order lines (avoids dumping the whole page as one KV map)."""
+    df = df.dropna(subset=["text"])
+    df = df[df["text"].astype(str).str.strip() != ""]
+    df = df.copy()
+    df["text"] = df["text"].astype(str).str.strip()
+
+    df_sorted = df.sort_values("top")
+    lines_out = []
+    current = []
+    anchor_y = None
+
+    for _, row in df_sorted.iterrows():
+        if anchor_y is None:
+            anchor_y = row["top"]
+        if abs(row["top"] - anchor_y) <= y_tol:
+            current.append(row)
+        else:
+            if current:
+                sub = pd.DataFrame(current).sort_values("left")
+                text = " ".join(sub["text"].tolist())
+                x0 = int(sub["left"].min())
+                y0 = int(sub["top"].min())
+                x1 = int((sub["left"] + sub["width"]).max())
+                y1 = int((sub["top"] + sub["height"]).max())
+                lines_out.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+            current = [row]
+            anchor_y = row["top"]
+
+    if current:
+        sub = pd.DataFrame(current).sort_values("left")
+        text = " ".join(sub["text"].tolist())
+        x0 = int(sub["left"].min())
+        y0 = int(sub["top"].min())
+        x1 = int((sub["left"] + sub["width"]).max())
+        y1 = int((sub["top"] + sub["height"]).max())
+        lines_out.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+    return lines_out
+
+
+def layout_strip_bullet_noise(text):
+    t = text.strip()
+    t = re.sub(r"^[\*\u2022\•\-\s]+", "", t)
+    t = re.sub(r"^[eEsS©®]\s*", "", t)
+    return t.strip()
+
+
+def layout_split_key_value(line_text):
+    if ":" in line_text:
+        key, _, rest = line_text.partition(":")
+        if key.strip() and rest.strip():
+            return key.strip(), rest.strip()
+    return None, None
+
+
+def _normalize_ocr_measurement_display(s):
+    if not isinstance(s, str):
+        return s
+    return re.sub(r"m\?", "m²", s)
+
+
+def _normalize_property_values(props):
+    if isinstance(props, dict):
+        return {k: _normalize_property_values(v) for k, v in props.items()}
+    if isinstance(props, list):
+        return [_normalize_property_values(x) for x in props]
+    if isinstance(props, str):
+        return _normalize_ocr_measurement_display(props)
+    return props
+
+
+def _normalize_key_for_lookup(raw):
+    if not raw:
+        return ""
+    t = raw.lower().strip()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+        t = t.replace(a, b)
+    t = re.sub(r"[^\w\s()\-]+", " ", t, flags=re.UNICODE)
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
+
+
+def _sanitize_property_key(raw_key):
+    k = layout_strip_bullet_noise(raw_key or "")
+    k = re.sub(r"^[»°\*\+\-\s]+\s*", "", k).strip()
+    k = re.sub(r"^[a-zäöüß]\s+", "", k, flags=re.I)
+    return k.strip()
+
+
+def _fields_to_flat_kv(fields):
+    out = {}
+    for f in fields or []:
+        kk = _sanitize_property_key(f.get("key") or "")
+        if not kk:
+            continue
+        vv = (f.get("value") or "").strip()
+        if kk in out:
+            out[kk] = (out[kk] + " " + vv).strip()
+        else:
+            out[kk] = vv
+    return out
+
+
+def _take_field_once(mapping, needles, reject_contains=()):
+    needles = [_normalize_key_for_lookup(n) for n in needles]
+    reject_contains = [_normalize_key_for_lookup(r) for r in reject_contains]
+    for k in list(mapping.keys()):
+        nk = _normalize_key_for_lookup(k)
+        if any(rc and rc in nk for rc in reject_contains):
+            continue
+        if needles and all(n in nk for n in needles):
+            return mapping.pop(k)
+    return None
+
+
+
+############## parse element descriptinos
+
+def _parse_deckenspannweiten(val):
+    chunks = re.findall(r"\d+,\d+\s*m", val)
+    if chunks:
+        return chunks
+    chunks_d = re.findall(r"\d+\.\d+\s*m", val)
+    return chunks_d if chunks_d else [val.strip()]
+
+def _fix_ausfuehrung_typos(s):
+    t = (s or "").strip()
+    if re.match(r"^in.?schichtig$", t, flags=re.I):
+        return "einschichtig"
+    return t
+
+def _parse_materials_fragment(s):
+    s = (s or "").strip()
+    parts = re.split(r"\s+oder\s+", s, flags=re.IGNORECASE)
+    parts = [p.strip().rstrip("-").strip() for p in parts if p.strip()]
+    if len(parts) > 1:
+        return parts
+    return parts[0] if parts else s
+
+def _parse_aussenwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mats>.+?),\s*(?P<ausf>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    mats = _parse_materials_fragment(m.group("mats"))
+    dicke = "{} cm".format(m.group("dnum").strip())
+    return {
+        "material": mats,
+        "ausführung": _fix_ausfuehrung_typos(m.group("ausf")),
+        "dicke": dicke,
+        "oberfläche": m.group("ober").strip(),
+    }
+
+
+def _parse_innenwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "material": m.group("mat").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+        "oberfläche": m.group("ober").strip(),
+    }
+
+
+def _parse_trennwaende(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "material": m.group("mat").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+    }
+
+
+def _parse_decke(val):
+    val = (val or "").strip().replace(".", ",")
+    m = re.match(
+        r"^(?P<typ>.+?),\s*(?P<bau>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*Unterseite\s+(?P<unt>.+)$",
+        val,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m:
+        return {"_raw": val} if val else {}
+    return {
+        "typ": m.group("typ").strip(),
+        "bauweise": m.group("bau").strip(),
+        "dicke": "{} cm".format(m.group("dnum").strip()),
+        "unterseite": m.group("unt").strip(),
+    }
+
+
+def build_properties_gebaeudekonstruktion_211(flat_kv):
+    d = dict(flat_kv)
+    props = {}
+
+    v_ls = _take_field_once(d, ["laststufe"])
+    if v_ls is not None:
+        props["Laststufe (Montage)"] = v_ls
+
+    v_ks = _take_field_once(d, ["konstruktionssystem"])
+    if v_ks is not None:
+        props["Konstruktionssystem"] = v_ks
+
+    v_dw = _take_field_once(d, ["deckenspannweiten"])
+    if v_dw is not None:
+        props["Deckenspannweiten"] = _parse_deckenspannweiten(v_dw)
+
+    v_aw = _take_field_once(d, ["aussen", "wand"])
+    if v_aw is not None:
+        aw = _parse_aussenwaende(v_aw)
+        props["Außenwände"] = aw.get("_raw") if len(aw) == 1 and "_raw" in aw else aw
+
+    v_iw = _take_field_once(d, ["innen", "wand"])
+    if v_iw is not None:
+        iw = _parse_innenwaende(v_iw)
+        props["Innenwände"] = iw.get("_raw") if len(iw) == 1 and "_raw" in iw else iw
+
+    v_tw = _take_field_once(d, ["trenn", "wand"])
+    if v_tw is not None:
+        tw = _parse_trennwaende(v_tw)
+        props["Trennwände"] = tw.get("_raw") if len(tw) == 1 and "_raw" in tw else tw
+
+    v_dc = _take_field_once(d, ["decke"], reject_contains=("spannweit",))
+    if v_dc is not None:
+        dc = _parse_decke(v_dc)
+        props["Decke"] = dc.get("_raw") if len(dc) == 1 and "_raw" in dc else dc
+
+    v_fb = _take_field_once(d, ["fussboden", "dicke"]) or _take_field_once(
+        d, ["fussbodendicke"]
+    )
+    if v_fb is not None:
+        props["Fußbodendicke"] = v_fb
+
+    for k, v in d.items():
+        props[k] = v
+
+    return props
+
+
+def parse_h3_sections_from_lines(all_lines):
+    """
+    Scan sorted layout lines: each ``2.1.x Title`` opens a boxed section;
+    bullet lines ``key: value`` and continuations attach to it.
+    """
+    lines_sorted = sorted(all_lines, key=lambda L: (L["bbox"]["y0"], L["bbox"]["x0"]))
+    sections = []
+    current = None
+
+    for line in lines_sorted:
+        text = line.get("text") or ""
+        t = layout_strip_bullet_noise(text)
+
+        m = re.match(r"^(\d+\.\d+\.\d+)\s*(.*)$", t.strip())
+        if m:
+            if current is not None:
+                sections.append(current)
+            title_tail = (m.group(2) or "").strip()
+            current = {"section": m.group(1), "title": title_tail or None, "fields": []}
+            continue
+
+        if current is None:
+            continue
+
+        ts = t.strip()
+        if re.match(r"^\d{1,2}\s+RWE\b", ts, re.I):
+            if current["fields"]:
+                last = current["fields"][-1]
+                sep = ", " if last.get("value") and not last["value"].rstrip().endswith(",") else " "
+                last["value"] = (last["value"] + sep + ts).strip()
+            continue
+
+        if ":" in ts:
+            k, v = layout_split_key_value(ts)
+            if k and v:
+                current["fields"].append({"key": k, "value": v})
+            continue
+
+        if current["fields"]:
+            last = current["fields"][-1]
+            last["value"] = (last["value"] + " " + layout_strip_bullet_noise(text)).strip()
+
+    if current is not None:
+        sections.append(current)
+    return sections
+
+
+def layout_lines_to_structured_sections(all_lines):
+    """One JSON object per ``2.1.x`` boxed block; §2.1.1 gets nested walls/deck semantics."""
+    out = []
+    for s in parse_h3_sections_from_lines(all_lines):
+        sid = s["section"]
+        title = (s.get("title") or "").strip()
+        flat = _fields_to_flat_kv(s["fields"])
+
+        if sid == "2.1.1":
+            props = build_properties_gebaeudekonstruktion_211(flat)
+        else:
+            props = dict(flat)
+
+        props = _normalize_property_values(props)
+        out.append({"section": sid, "title": title or None, "properties": props})
+    return out
+
+
+def resolve_pdf_path() -> Path:
+    p = Path(PDF_PATH)
+    return p.resolve() if p.is_absolute() else (REPO_ROOT / p).resolve()
+
+
+def _json_rel_path(abs_path: Path) -> str:
+    abs_path = abs_path.resolve()
+    try:
+        return abs_path.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return abs_path.as_posix()
+
+
+def content_pdf_pages_to_extract():
+    """
+    1-based PDF page indices for the page_boxes bundle.
+    Env PDF_EXTRACT_PAGES (comma-separated) or PDF_EXTRACT_PAGE overrides CONTENT_PDF_PAGES.
+    """
+    env_raw = os.environ.get("PDF_EXTRACT_PAGES")
+    if env_raw is not None and str(env_raw).strip() != "":
+        pages = []
+        for part in str(env_raw).split(","):
+            part = part.strip()
+            if not part:
+                continue
+            try:
+                n = int(part)
+                if n > 0:
+                    pages.append(n)
+            except ValueError:
+                pass
+        return pages
+    lone = os.environ.get("PDF_EXTRACT_PAGE", "").strip()
+    if lone:
+        try:
+            n = int(lone)
+            return [n] if n > 0 else []
+        except ValueError:
+            return []
+    return [p for p in CONTENT_PDF_PAGES if isinstance(p, int) and p > 0]
+
+
+def default_empty_outline():
+    """Placeholder outline matching hand-edited page_boxes.json (no outline OCR yet)."""
+    return {
+        "section_id": None,
+        "title": None,
+        "source_line": None,
+        "fields": [],
+    }
+
+
+def extract_single_page_for_bundle(
+    pdf_abs: Path,
+    pdf_page_1based: int,
+    *,
+    dpi: int,
+    y_tol: int,
+    note,
+):
+    """
+    OCR one PDF page → debug PNG + structured_sections (2.1.x boxes).
+    """
+    images = convert_from_path(
+        str(pdf_abs),
+        first_page=pdf_page_1based,
+        last_page=pdf_page_1based,
+        dpi=dpi,
+        poppler_path=POPPLER_PATH,
+    )
+    image = images[0]
+    debug_dir = REPO_ROOT / "data-text-BBSR"
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    debug_name = f"debug_page_{pdf_page_1based}.png"
+    debug_abs = debug_dir / debug_name
+    image.save(str(debug_abs))
+
+    data = pytesseract.image_to_data(image, lang="deu", output_type=Output.DATAFRAME)
+    layout_lines = layout_df_to_lines(data, y_tol=y_tol)
+    structured_sections = layout_lines_to_structured_sections(layout_lines)
+
+    debug_rel = (Path("data-text-BBSR") / debug_name).as_posix()
+
+    return {
+        "pdf_page_index": pdf_page_1based,
+        "note": note,
+        "dpi": dpi,
+        "debug_image": debug_rel,
+        "outline": default_empty_outline(),
+        "structured_sections": structured_sections,
+    }
+
+
+def build_page_boxes_bundle():
+    pdf_abs = resolve_pdf_path()
+    if not pdf_abs.is_file():
+        raise FileNotFoundError(f"PDF not found: {pdf_abs}")
+
+    pages = content_pdf_pages_to_extract()
+    if not pages:
+        return None
+
+    logical_first = int(
+        os.environ.get("LOGICAL_FIRST_PAGE_ON_PDF", str(LOGICAL_FIRST_PAGE_ON_PDF))
+    )
+    raw_default = os.environ.get("DEFAULT_PAGE_BOX_NOTE")
+    if raw_default is not None:
+        default_note = raw_default.strip() or None
+    else:
+        default_note = DEFAULT_PAGE_BOX_NOTE
+
+    extracted = []
+    for i, pg in enumerate(pages):
+        nnote = None
+        if i < len(CONTENT_PDF_PAGE_NOTES):
+            raw = CONTENT_PDF_PAGE_NOTES[i]
+            nnote = raw if raw else None
+        extracted.append(
+            extract_single_page_for_bundle(
+                pdf_abs,
+                pg,
+                dpi=CONTENT_PAGE_OCR_DPI,
+                y_tol=PAGE_BOX_LAYOUT_Y_TOL,
+                note=nnote,
+            )
+        )
+
+    return {
+        "pdf_path": _json_rel_path(pdf_abs),
+        "logical_first_page_on_pdf": logical_first,
+        "default_note": default_note,
+        "pages_requested_pdf_index": list(pages),
+        "page_count": len(extracted),
+        "pages": extracted,
+    }
+
+
+# RUN PIPELINE
+
+def main():
+
+    pdf_abs = resolve_pdf_path()
+
+    # INDEX 
+    print("\n INDEX \n")
+
+    index_df = ocr_page(str(pdf_abs), INDEX_PAGE)
+    index_entries = parse_index_from_layout(index_df)
+
+    print(json.dumps(index_entries, indent=2, ensure_ascii=False))
+
+    # Page-box bundle: same JSON shape as data-text-BBSR/page_boxes.json (multi-page)
+    if WRITE_PAGE_BOXES_JSON:
+        try:
+            bundle = build_page_boxes_bundle()
+        except FileNotFoundError as exc:
+            print(f"\nSkipping page_boxes.json: {exc}\n")
+        else:
+            if bundle is None:
+                print(
+                    "\nSkipping page_boxes.json: no pages in CONTENT_PDF_PAGES "
+                    "and no PDF_EXTRACT_PAGES / PDF_EXTRACT_PAGE.\n"
+                )
+            else:
+                out_path = REPO_ROOT / PAGE_BOX_JSON_PATH
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                dumped = json.dumps(bundle, ensure_ascii=False, indent=2)
+                with open(out_path, "w", encoding="utf-8") as f:
+                    f.write(dumped)
+                    if not dumped.endswith("\n"):
+                        f.write("\n")
+                print(
+                    f"\nWrote {out_path.relative_to(REPO_ROOT)} — "
+                    f"{bundle['page_count']} page(s), "
+                    f"pdf indices {bundle['pages_requested_pdf_index']}\n"
+                )
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+# import os
+# import re
+# import json
+# import pandas as pd
+
+# # --- TESSERACT SETUP ---
+# os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+
+# import pytesseract
+# from pytesseract import Output
+
+# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+# # --- PDF → IMAGE ---
+# from pdf2image import convert_from_path
+
+# BBSR_PDF = "data-text-BBSR/BBSR.pdf"
+# PAGE_NUMBER = 4
+
+# # Optional: JSON with numbering fixes keyed by OCR row index (see apply_toc_corrections_from_file).
+# TOC_CORRECTIONS_JSON = os.environ.get(
+#     "TOC_CORRECTIONS_JSON",
+#     os.path.join("data-text-BBSR", "toc_corrections.json"),
+# )
+
+# POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+
+# # --- STEP 5: content OCR (printed “Seite n” ≠ PDF viewer page index) ---
+# # Pdf2image uses 1-based page numbers inside the PDF file.
+# #
+# # Manual: list every sheet you want. Only those pages are processed; there is no
+# # automatic “stop” beyond the last number you list. [] skips STEP 5 entirely.
+# CONTENT_PDF_PAGES = [11]
+
+# # Optional short notes, same length and order as CONTENT_PDF_PAGES (e.g. "§2.1").
+# CONTENT_PDF_PAGE_NOTES = []
+# LOGICAL_FIRST_PAGE_ON_PDF = int(os.environ.get("LOGICAL_PAGE_1_PDF_INDEX", "7"))
+# EXTRACT_PAGE_TOC_NOTE = os.environ.get(
+#     "EXTRACT_PAGE_TOC_NOTE",
+#     "§2.1 Typenserie IW 58; booklet header Seite 5",
+# )
+# CONTENT_PAGE_DPI = 300
+# PAGE_BOX_JSON_PATH = os.path.join("data-text-BBSR", "page_boxes.json")
+# # When STEP 5 runs: also print the same JSON as written to PAGE_BOX_JSON_PATH (set 0/false/no/off to disable).
+# PAGE_BOX_JSON_STDOUT = os.environ.get("PAGE_BOX_JSON_STDOUT", "1").strip().lower() not in (
+#     "0",
+#     "false",
+#     "no",
+#     "off",
+# )
+
+
+# def content_pdf_pages_to_extract():
+#     """
+#     Resolved list of PDF page indices for STEP 5.
+#     If env PDF_EXTRACT_PAGES is set (comma-separated), it overrides CONTENT_PDF_PAGES.
+#     Examples: PDF_EXTRACT_PAGES=11 | PDF_EXTRACT_PAGES=11,12,13
+#     """
+#     env_raw = os.environ.get("PDF_EXTRACT_PAGES")
+#     source = CONTENT_PDF_PAGES
+#     if env_raw is not None and str(env_raw).strip() != "":
+#         source = []
+#         for part in str(env_raw).split(","):
+#             part = part.strip()
+#             if not part:
+#                 continue
+#             try:
+#                 n = int(part)
+#                 if n > 0:
+#                     source.append(n)
+#             except ValueError:
+#                 pass
+#     elif os.environ.get("PDF_EXTRACT_PAGE"):
+#         lone = os.environ.get("PDF_EXTRACT_PAGE", "").strip()
+#         try:
+#             n = int(lone)
+#             source = [n] if n > 0 else []
+#         except ValueError:
+#             source = []
+#     pages = []
+#     for p in source:
+#         if isinstance(p, int) and p > 0:
+#             pages.append(p)
+#     return pages
+
+# images = convert_from_path(
+#     BBSR_PDF,
+#     first_page=PAGE_NUMBER + 1,
+#     last_page=PAGE_NUMBER + 1,
+#     dpi=300,
+#     poppler_path=POPPLER_PATH,
+# )
+
+# image = images[0]
+# image.save("debug_index.png")
+
+# # ============================================================
+# # OCR WITH LAYOUT
+# # ============================================================
+
+# data = pytesseract.image_to_data(image, lang="deu", output_type=Output.DATAFRAME)
+
+# data = data.dropna(subset=["text"])
+# data = data[data["text"].str.strip() != ""]
+
+
+# # ============================================================
+# # STEP 1: GROUP WORDS INTO ROWS (BY Y POSITION)
+# # ============================================================
+
+# def group_rows(df, y_threshold=15):
+#     rows = []
+#     current_row = []
+#     current_y = None
+
+#     df_sorted = df.sort_values("top")
+
+#     for _, row in df_sorted.iterrows():
+#         if current_y is None:
+#             current_y = row["top"]
+
+#         if abs(row["top"] - current_y) < y_threshold:
+#             current_row.append(row)
+#         else:
+#             rows.append(current_row)
+#             current_row = [row]
+#             current_y = row["top"]
+
+#     if current_row:
+#         rows.append(current_row)
+
+#     return rows
+
+
+# # rows = group_rows(data)
+# rows = group_rows(data, y_threshold=25)
+
+
+# def row_ends_with_page_number(row):
+#     if not row:
+#         return False
+#     last = normalize_ocr_token(row[-1].strip())
+#     return bool(re.fullmatch(r"\d+", last))
+
+
+# def is_section_header(row):
+#     """
+#     Banner-only parent line (e.g. category with no page column).
+#     Lines like "Blockbauweise 1,1 t 21" end with a page → handled as entries, not banners.
+#     """
+#     if not (len(row) >= 2 and not re.match(r"^\d", row[0])):
+#         return False
+#     if not any("bauweise" in w.lower() for w in row):
+#         return False
+#     if row_ends_with_page_number(row):
+#         return False
+#     return True
+
+
+# def normalize_ocr_token(token):
+#     """
+#     Normalize frequent OCR confusions for numeric fields.
+#     """
+#     return (
+#         token.replace("S", "5")
+#         .replace("s", "5")
+#         .replace("i", "1")
+#         .replace("I", "1")
+#         .replace("l", "1")
+#         .replace("|", "1")
+#         .replace("O", "0")
+#         .replace("o", "0")
+#     )
+
+
+# def normalize_section_token(token):
+#     """
+#     Normalize section numbering with safer logic.
+#     Exactly two digits with no dot are left as "35" for parse_section_from_row to reject,
+#     so extract_entries can treat them as M.N with missing dot and the correct chapter major.
+#     """
+#     cleaned = token.strip().replace(",", ".").replace(":", ".")
+#     cleaned = normalize_ocr_token(cleaned)
+
+#     # already correct
+#     if re.fullmatch(r"\d+\.\d+", cleaned):
+#         return cleaned
+
+#     # single number (e.g. "5") or long run (e.g. "100") — but not exactly two digits only
+#     if re.fullmatch(r"\d+", cleaned) and not re.fullmatch(r"\d{2}$", cleaned):
+#         return cleaned
+
+#     # "5U" after S→5 on "SU": dot between chapter and subsection is lost; "1" read as "U"
+#     m_u = re.fullmatch(r"(\d+)U", cleaned, re.I)
+#     if m_u:
+#         return f"{m_u.group(1)}.1"
+
+#     return cleaned
+
+
+# def parse_section_from_row(row_words):
+#     """
+#     Return normalized section token if row starts with one.
+#     Two digits only (e.g. "35") with no dot: OCR often dropped the dot in "5.5";
+#     return None so extract_entries maps major from the current Bauweise chapter.
+#     """
+#     if not row_words:
+#         return None
+
+#     candidate = normalize_section_token(row_words[0])
+#     if re.fullmatch(r"\d{2}$", candidate):
+#         return None
+#     if re.fullmatch(r"\d+(\.\d+)?", candidate):
+#         return candidate
+#     return None
+
+
+# def parse_page_from_row(row_words):
+#     """
+#     Return (page, title_tokens) for a row.
+#     Heuristic: page is usually right-most token and may be OCR-noisy.
+#     """
+#     if len(row_words) < 2:
+#         return None, row_words
+
+#     last = normalize_ocr_token(row_words[-1].strip())
+#     prev = row_words[-2].strip() if len(row_words) >= 3 else ""
+
+#     if re.fullmatch(r"\d+", last):
+#         page = int(last)
+
+#         # OCR-specific fix: "S. 5" is often read as "L. 4"
+#         if prev in {"L.", "L", "l.", "l"} and page == 4:
+#             page = 5
+
+#         return page, row_words[:-1]
+
+#     return None, row_words
+
+
+# def section_to_tuple(section):
+#     """
+#     Convert '2.1' -> (2, 1) for ordered comparisons.
+#     """
+#     if not section or not re.fullmatch(r"\d+(\.\d+)?", section):
+#         return None
+#     return tuple(int(p) for p in section.split("."))
+
+
+# def apply_toc_corrections(entries, corrections):
+#     """
+#     Merge optional corrections into extracted entries without document-specific defaults.
+
+#     ``corrections`` dict may contain:
+#       - ``by_entry_index``: { "3": {"section": "4.1", "title": "..."}, ... }
+#         Applies to merge order of entries (same order as extracted list).
+#       - ``by_ocr_row``: { "42": {"section": "3.1"}, ... }
+#         Applies to entries that carry "_ocr_row" matching structured_rows index.
+
+#     Only keys listed under ``set``/flat dict are patched onto the entry (shallow merge).
+#     """
+#     if not corrections:
+#         return entries
+
+#     by_idx = corrections.get("by_entry_index") or {}
+#     by_row = corrections.get("by_ocr_row") or {}
+
+#     def patch_entry(entry, patch):
+#         if not patch:
+#             return
+#         for k, v in patch.items():
+#             if v is None:
+#                 entry.pop(k, None)
+#             else:
+#                 entry[k] = v
+
+#     for i, e in enumerate(entries):
+#         key_str = str(i)
+#         if key_str in by_idx:
+#             patch_entry(e, by_idx[key_str])
+
+#     for e in entries:
+#         row_key = e.get("_ocr_row")
+#         if row_key is None:
+#             continue
+#         key_str = str(row_key)
+#         if key_str in by_row:
+#             patch_entry(e, by_row[key_str])
+
+#     return entries
+
+
+# def apply_toc_corrections_from_file(entries, path):
+#     if not path or not os.path.isfile(path):
+#         return entries
+#     with open(path, encoding="utf-8") as f:
+#         data = json.load(f)
+#     return apply_toc_corrections(entries, data)
+
+
+# def fill_missing_pages(entries):
+#     """
+#     Fill missing page numbers when neighboring section numbers are consecutive.
+#     """
+#     for i, entry in enumerate(entries):
+#         if entry.get("page") is not None:
+#             continue
+#         if i == 0:
+#             continue
+
+#         prev = entries[i - 1]
+#         prev_page = prev.get("page")
+#         if not isinstance(prev_page, int):
+#             continue
+
+#         curr_sec = section_to_tuple(entry.get("section"))
+#         prev_sec = section_to_tuple(prev.get("section"))
+#         if not curr_sec or not prev_sec:
+#             continue
+
+#         # Example: 2.1 -> 2.2, assign next page when OCR misses it.
+#         if len(curr_sec) == len(prev_sec) == 2 and curr_sec[0] == prev_sec[0] and curr_sec[1] == prev_sec[1] + 1:
+#             entry["page"] = prev_page + 1
+
+#     return entries
+
+# def parse_main_section_from_row(row_words):
+#     if not row_words:
+#         return None
+
+#     token = normalize_ocr_token(row_words[0])
+
+#     # ONLY pure integers allowed
+#     if re.fullmatch(r"\d+", token):
+#         return int(token)
+
+#     return None
+
+    
+# # ============================================================
+# # STEP 2: SORT EACH ROW LEFT → RIGHT
+# # ============================================================
+
+# structured_rows = []
+
+# for row in rows:
+#     row_sorted = sorted(row, key=lambda r: r["left"])
+#     texts = [r["text"] for r in row_sorted]
+#     structured_rows.append(texts)
+    
+# current_main_section = None
+# def extract_main_section(parent_text):
+#     if not parent_text:
+#         return None
+
+#     match = re.search(r"\d+", parent_text)
+#     if match:
+#         return int(match.group())
+#     return None
+
+
+# def extract_entries(structured_rows):
+#     entries = []
+#     current_main_section = 1
+#     current_parent = None
+#     # Subsections remap to (current_main_section - 1) only AFTER we've seen a
+#     # Bauweise + page banner. Before that, remapping uses 1-1 == 0 → bogus "0.1";
+#     # the PDF OCR still has the real major (e.g. 2.1 → keep 2).
+#     saw_bauweise_main_banner = False
+#     # Highest M in M.N subsections encountered before first Bauweise+page banner.
+#     # TOC often has Einleitung + Blockbauweise 0,8 chapters without such a banner row,
+#     # so first visible banner ("Blockbauweise 1,1 t") must be chap. max+1 (e.g. 3).
+#     max_ocr_major_before_first_banner = 0
+
+#     for i, row in enumerate(structured_rows):
+
+#         if not row:
+#             continue
+
+#         # ============================================================
+#         # 1. MAIN SECTION (detect by "bauweise" + page)
+#         # ============================================================
+#         if (
+#             len(row) >= 2
+#             and not re.match(r"^\d", row[0])
+#             and any("bauweise" in w.lower() for w in row)
+#             and row_ends_with_page_number(row)
+#         ):
+#             page, title_tokens = parse_page_from_row(row)
+#             title = " ".join(title_tokens).strip()
+
+#             if not saw_bauweise_main_banner:
+#                 current_main_section = max(
+#                     current_main_section,
+#                     max_ocr_major_before_first_banner + 1,
+#                 )
+
+#             entries.append({
+#                 "_ocr_row": i,
+#                 "section": str(current_main_section),
+#                 "title": title,
+#                 "page": page,
+#                 "parent": None
+#             })
+
+#             current_parent = title
+#             saw_bauweise_main_banner = True
+#             current_main_section += 1
+#             continue
+
+
+#         # ============================================================
+#         # 2. SUBSECTIONS
+#         # ============================================================
+#         section = parse_section_from_row(row)
+
+#         # OCR FIX: "35" → "5.5"
+#         if (
+#             not section
+#             and re.fullmatch(r"\d{2}", normalize_ocr_token(row[0]))
+#         ):
+#             token = normalize_ocr_token(row[0])
+#             sub = int(token[1])
+#             if saw_bauweise_main_banner:
+#                 major = max(1, current_main_section - 1)
+#             else:
+#                 major = int(token[0])
+#             section = f"{major}.{sub}"
+
+#         if section:
+
+#             # Map M.N to our running main chapter only after a banner set the counter;
+#             # otherwise keep OCR major (e.g. 2.1 before any Bauweise+page row).
+#             if "." in section:
+#                 ocr_major_str, sub_str = section.split(".")
+#                 ocr_major = int(ocr_major_str)
+#                 sub = int(sub_str)
+#                 if saw_bauweise_main_banner:
+#                     major = max(1, current_main_section - 1)
+#                     section = f"{major}.{sub}"
+#                 else:
+#                     section = f"{ocr_major}.{sub}"
+
+#             page, title_tokens = parse_page_from_row(row[1:])
+#             title = " ".join(title_tokens).strip()
+
+#             # fallback page from next row
+#             if page is None and i + 1 < len(structured_rows):
+#                 next_row = structured_rows[i + 1]
+#                 if len(next_row) == 1:
+#                     token = normalize_ocr_token(next_row[0])
+#                     if re.fullmatch(r"\d+", token):
+#                         page = int(token)
+
+#             # enforce sequence
+#             if entries:
+#                 prev = entries[-1]
+#                 prev_sec = prev.get("section")
+
+#                 if (
+#                     isinstance(prev_sec, str)
+#                     and "." in prev_sec
+#                     and "." in section
+#                 ):
+#                     prev_main, prev_sub = map(int, prev_sec.split("."))
+#                     curr_main, curr_sub = map(int, section.split("."))
+
+#                     if curr_main == prev_main:
+#                         if curr_sub <= prev_sub:
+#                             curr_sub = prev_sub + 1
+#                             section = f"{curr_main}.{curr_sub}"
+
+#             if not saw_bauweise_main_banner and "." in section:
+#                 m_maj = int(section.split(".")[0])
+#                 max_ocr_major_before_first_banner = max(
+#                     max_ocr_major_before_first_banner, m_maj
+#                 )
+
+#             entries.append({
+#                 "_ocr_row": i,
+#                 "section": section,
+#                 "title": title,
+#                 "page": page,
+#                 "parent": current_parent
+#             })
+
+#             continue
+
+#     return fill_missing_pages(entries)
+
+
+
+
+# ########### ROW to JSON RECORD ###########
+# def row_to_json_record(row_words):
+#     """
+#     Build one JSON-friendly record from one OCR line.
+#     """
+#     line_text = " ".join(row_words).strip()
+#     record = {
+#         "line": line_text,
+#         "words": row_words,
+#         "section": None,
+#         "title": None,
+#         "page": None,
+#     }
+
+#     section = parse_section_from_row(row_words)
+#     if len(row_words) >= 2 and section:
+#         record["section"] = section
+#         page, title_tokens = parse_page_from_row(row_words[1:])
+#         record["page"] = page
+#         record["title"] = " ".join(title_tokens).strip() or None
+
+#     return record
+
+
+# def rows_to_json(structured_rows):
+#     records = [row_to_json_record(row) for row in structured_rows if row]
+
+#     # Mirror the same page-fill logic used for parsed entries.
+#     indexed_records = [r for r in records if r.get("section")]
+#     fill_missing_pages(indexed_records)
+
+#     return records
+
+
+# # ============================================================
+# # Content page layout (boxed sections) — used by STEP 5
+# # ============================================================
+
+
+# def layout_df_to_lines(df, y_tol=26):
+#     """Cluster OCR words into reading-order lines with bounding boxes."""
+#     df = df.dropna(subset=["text"])
+#     df = df[df["text"].astype(str).str.strip() != ""]
+#     df = df.copy()
+#     df["text"] = df["text"].astype(str).str.strip()
+
+#     df_sorted = df.sort_values("top")
+#     lines = []
+#     current = []
+#     anchor_y = None
+
+#     for _, row in df_sorted.iterrows():
+#         if anchor_y is None:
+#             anchor_y = row["top"]
+#         if abs(row["top"] - anchor_y) <= y_tol:
+#             current.append(row)
+#         else:
+#             if current:
+#                 sub = pd.DataFrame(current).sort_values("left")
+#                 text = " ".join(sub["text"].tolist())
+#                 x0 = int(sub["left"].min())
+#                 y0 = int(sub["top"].min())
+#                 x1 = int((sub["left"] + sub["width"]).max())
+#                 y1 = int((sub["top"] + sub["height"]).max())
+#                 lines.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+#             current = [row]
+#             anchor_y = row["top"]
+
+#     if current:
+#         sub = pd.DataFrame(current).sort_values("left")
+#         text = " ".join(sub["text"].tolist())
+#         x0 = int(sub["left"].min())
+#         y0 = int(sub["top"].min())
+#         x1 = int((sub["left"] + sub["width"]).max())
+#         y1 = int((sub["top"] + sub["height"]).max())
+#         lines.append({"text": text, "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}})
+#     return lines
+
+
+# def layout_lines_to_blocks(lines, gap_threshold=60):
+#     if not lines:
+#         return []
+#     sorted_lines = sorted(lines, key=lambda L: L["bbox"]["y0"])
+#     blocks = []
+#     cur = []
+#     prev_bottom = None
+
+#     for line in sorted_lines:
+#         top = line["bbox"]["y0"]
+#         if prev_bottom is not None and top - prev_bottom > gap_threshold:
+#             blocks.append(cur)
+#             cur = []
+#         cur.append(line)
+#         prev_bottom = line["bbox"]["y1"]
+
+#     if cur:
+#         blocks.append(cur)
+#     return blocks
+
+
+# def layout_guess_section_heading(text):
+#     m = re.match(r"^(\d+\.\d+\.\d+)\s+(.+)$", text.strip())
+#     if m:
+#         return m.group(1), m.group(2).strip()
+#     m = re.match(r"^(\d+\.\d+\.\d+)(.*)$", text.strip())
+#     if m:
+#         tail = m.group(2).strip()
+#         return m.group(1), tail if tail else None
+#     return None, None
+
+
+# def layout_split_key_value(line_text):
+#     if ":" in line_text:
+#         key, _, rest = line_text.partition(":")
+#         if key.strip() and rest.strip():
+#             return key.strip(), rest.strip()
+#     return None, None
+
+
+# def layout_strip_bullet_noise(text):
+#     """Remove common OCR artefacts before headings / KV parsing (bullets, stray e/s)."""
+#     t = text.strip()
+#     t = re.sub(r"^[\*\u2022\•\-\s]+", "", t)
+#     t = re.sub(r"^[eEsS©®]\s*", "", t)
+#     return t.strip()
+
+
+# def layout_classify_line(text):
+#     """
+#     Heading depth: chapter 2, subsection 2.1, sub-subsection 2.1.1 — or key/value / continuation.
+#     """
+#     raw = text.strip()
+#     t = layout_strip_bullet_noise(raw)
+
+#     m = re.match(r"^(\d+\.\d+\.\d+)\s*(.*)$", t)
+#     if m:
+#         return "h3", m.group(1), (m.group(2).strip() or None), raw
+
+#     m = re.match(r"^(\d+\.\d+)\s+(.+)$", t)
+#     if m:
+#         return "h2", m.group(1), m.group(2).strip(), raw
+
+#     # "4 RWE (…)" / "3 RWE (…)" are apartment-type rows, not chapter "4 …"
+#     if re.match(r"^\d{1,2}\s+RWE\b", t, re.I):
+#         return "continuation", None, t, raw
+
+#     m = re.match(r"^(?!\d+\.\d)(\d+)\s+(.+)$", t)
+#     if m:
+#         return "h1", m.group(1), m.group(2).strip(), raw
+
+#     if ":" in t:
+#         k, v = layout_split_key_value(t)
+#         if k and v:
+#             return "kv", k, v, raw
+
+#     return "continuation", None, t, raw
+
+
+# def layout_new_node(section_id, title, source_line, bbox):
+#     return {
+#         "section_id": section_id,
+#         "title": title,
+#         "source_line": source_line,
+#         "bbox": bbox,
+#         "fields": [],
+#         "children": [],
+#     }
+
+
+# def layout_lines_to_outline(all_lines):
+#     """
+#     Turn top-to-bottom OCR lines into a nested tree:
+#     2 Blockbauweise → 2.1 Typenserie → 2.1.1 … → key: value fields.
+#     """
+#     sorted_lines = sorted(all_lines, key=lambda L: (L["bbox"]["y0"], L["bbox"]["x0"]))
+#     root = layout_new_node(None, None, None, None)
+#     stack = [root]
+
+#     for line in sorted_lines:
+#         text = line.get("text") or ""
+#         bbox = line.get("bbox")
+#         kind, a, b, raw = layout_classify_line(text)
+
+#         if kind == "h1":
+#             while len(stack) > 1:
+#                 stack.pop()
+#             node = layout_new_node(a, b, raw, bbox)
+#             stack[-1]["children"].append(node)
+#             stack.append(node)
+
+#         elif kind == "h2":
+#             while len(stack) > 2:
+#                 stack.pop()
+#             node = layout_new_node(a, b, raw, bbox)
+#             stack[-1]["children"].append(node)
+#             stack.append(node)
+
+#         elif kind == "h3":
+#             while len(stack) > 3:
+#                 stack.pop()
+#             node = layout_new_node(a, b, raw, bbox)
+#             stack[-1]["children"].append(node)
+#             stack.append(node)
+
+#         elif kind == "kv":
+#             target = stack[-1]
+#             target["fields"].append({"key": a, "value": b, "source_line": raw, "bbox": bbox})
+
+#         elif kind == "continuation":
+#             if stack[-1]["fields"]:
+#                 stack[-1]["fields"][-1]["value"] = (
+#                     stack[-1]["fields"][-1]["value"] + " " + layout_strip_bullet_noise(raw)
+#                 ).strip()
+#                 stack[-1]["fields"][-1]["continuation_lines"] = stack[-1]["fields"][-1].get(
+#                     "continuation_lines", []
+#                 ) + [raw]
+#             else:
+#                 stack[-1].setdefault("orphan_lines", []).append(raw)
+
+#     return root
+
+
+# def _outline_last_x_x_x_section(node):
+#     """Deepest-last node with section_id N.N.N under ``node`` (reading order in tree)."""
+#     last = None
+#     sid = node.get("section_id")
+#     if sid and re.fullmatch(r"\d+\.\d+\.\d+", str(sid)):
+#         last = node
+#     for ch in node.get("children") or []:
+#         sub = _outline_last_x_x_x_section(ch)
+#         if sub:
+#             last = sub
+#     return last
+
+
+# def layout_outline_merge_false_rwe_chapters(node):
+#     """
+#     When a line like ``4 RWE (69,28 m²…)`` is misclassified as top-level chapter 4,
+#     its fields end up on a bogus sibling. Move them onto the previous real chapter's
+#     last x.x.x subsection (e.g. 2.1.3).
+#     """
+#     children = node.get("children") or []
+#     for c in children:
+#         layout_outline_merge_false_rwe_chapters(c)
+
+#     children = node.get("children") or []
+#     rebuilt = []
+#     for c in children:
+#         sid = c.get("section_id")
+#         title = (c.get("title") or "").strip()
+#         fields = c.get("fields") or []
+
+#         bogus = (
+#             sid is not None
+#             and re.fullmatch(r"\d+", str(sid))
+#             and "." not in str(sid)
+#             and re.search(r"\bRWE\b", title, re.I)
+#             and fields
+#             and rebuilt
+#         )
+#         if bogus:
+#             prev = rebuilt[-1]
+#             tgt = _outline_last_x_x_x_section(prev)
+#             if tgt is not None:
+#                 slip = (c.get("source_line") or "").strip()
+#                 tf = tgt.get("fields") or []
+#                 if slip and tf:
+#                     last_f = tf[-1]
+#                     join = ", ".join(
+#                         x for x in (last_f.get("value"), slip) if (x or "").strip()
+#                     )
+#                     last_f["value"] = join
+#                 tgt.setdefault("fields", []).extend(fields)
+#                 continue
+#         rebuilt.append(c)
+
+#     node["children"] = rebuilt
+
+
+# def _normalize_ocr_measurement_display(s):
+#     """Tesseract often reads m² as ``m?``."""
+#     if not isinstance(s, str):
+#         return s
+#     return re.sub(r"m\?", "m²", s)
+
+
+# def _normalize_property_values(props):
+#     if isinstance(props, dict):
+#         return {k: _normalize_property_values(v) for k, v in props.items()}
+#     if isinstance(props, list):
+#         return [_normalize_property_values(x) for x in props]
+#     if isinstance(props, str):
+#         return _normalize_ocr_measurement_display(props)
+#     return props
+
+
+# def _normalize_key_for_lookup(raw):
+#     """Lower-case + umlaut fold for tolerant key matching (OCR artefacts)."""
+#     if not raw:
+#         return ""
+#     t = raw.lower().strip()
+#     for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+#         t = t.replace(a, b)
+#     t = re.sub(r"[^\w\s()\-]+", " ", t, flags=re.UNICODE)
+#     t = re.sub(r"\s+", " ", t).strip()
+#     return t
+
+
+# def _sanitize_property_key(raw_key):
+#     k = layout_strip_bullet_noise(raw_key or "")
+#     k = re.sub(r"^[»°\*\+\-\s]+\s*", "", k).strip()
+#     k = re.sub(r"^[a-zäöüß]\s+", "", k, flags=re.I)
+#     return k.strip()
+
+
+# def _fields_to_flat_kv(fields):
+#     out = {}
+#     for f in fields or []:
+#         kk = _sanitize_property_key(f.get("key") or "")
+#         if not kk:
+#             continue
+#         vv = (f.get("value") or "").strip()
+#         if kk in out:
+#             out[kk] = (out[kk] + " " + vv).strip()
+#         else:
+#             out[kk] = vv
+#     return out
+
+
+# def _take_field_once(mapping, needles, reject_contains=()):
+#     """
+#     Pop first key whose normalized lookup string contains every needle substring
+#     and does not contain any reject substring (e.g. decke vs deckenspannweiten).
+#     """
+#     needles = [_normalize_key_for_lookup(n) for n in needles]
+#     reject_contains = [_normalize_key_for_lookup(r) for r in reject_contains]
+#     for k in list(mapping.keys()):
+#         nk = _normalize_key_for_lookup(k)
+#         if any(rc and rc in nk for rc in reject_contains):
+#             continue
+#         if needles and all(n in nk for n in needles):
+#             return mapping.pop(k)
+#     return None
+
+
+# def _parse_deckenspannweiten(val):
+#     chunks = re.findall(r"\d+,\d+\s*m", val)
+#     if chunks:
+#         return chunks
+#     chunks_d = re.findall(r"\d+\.\d+\s*m", val)
+#     return chunks_d if chunks_d else [val.strip()]
+
+
+# def _fix_ausfuehrung_typos(s):
+#     t = (s or "").strip()
+#     if re.match(r"^in.?schichtig$", t, flags=re.I):
+#         return "einschichtig"
+#     return t
+
+
+# def _parse_aussenwaende(val):
+#     val = (val or "").strip().replace(".", ",")
+#     m = re.match(
+#         r"^(?P<mats>.+?),\s*(?P<ausf>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+#         val,
+#         flags=re.IGNORECASE | re.DOTALL,
+#     )
+#     if not m:
+#         return {"_raw": val} if val else {}
+#     mats = _parse_materials_fragment(m.group("mats"))
+#     dicke = "{} cm".format(m.group("dnum").strip())
+#     return {
+#         "material": mats,
+#         "ausführung": _fix_ausfuehrung_typos(m.group("ausf")),
+#         "dicke": dicke,
+#         "oberfläche": m.group("ober").strip(),
+#     }
+
+
+# def _parse_materials_fragment(s):
+#     s = (s or "").strip()
+#     parts = re.split(r"\s+oder\s+", s, flags=re.IGNORECASE)
+#     parts = [p.strip().rstrip("-").strip() for p in parts if p.strip()]
+#     if len(parts) > 1:
+#         return parts
+#     return parts[0] if parts else s
+
+
+# def _parse_innenwaende(val):
+#     val = (val or "").strip().replace(".", ",")
+#     m = re.match(
+#         r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*(?P<ober>.+)$",
+#         val,
+#         flags=re.IGNORECASE | re.DOTALL,
+#     )
+#     if not m:
+#         return {"_raw": val} if val else {}
+#     return {
+#         "material": m.group("mat").strip(),
+#         "dicke": "{} cm".format(m.group("dnum").strip()),
+#         "oberfläche": m.group("ober").strip(),
+#     }
+
+
+# def _parse_trennwaende(val):
+#     val = (val or "").strip().replace(".", ",")
+#     m = re.match(
+#         r"^(?P<mat>.+?),\s*(?P<dnum>[\d,]+)\s*cm\s*dick$",
+#         val,
+#         flags=re.IGNORECASE | re.DOTALL,
+#     )
+#     if not m:
+#         return {"_raw": val} if val else {}
+#     return {
+#         "material": m.group("mat").strip(),
+#         "dicke": "{} cm".format(m.group("dnum").strip()),
+#     }
+
+
+# def _parse_decke(val):
+#     val = (val or "").strip().replace(".", ",")
+#     m = re.match(
+#         r"^(?P<typ>.+?),\s*(?P<bau>[^,]+),\s*(?P<dnum>[\d,]+)\s*cm\s*dick\s*;\s*Unterseite\s+(?P<unt>.+)$",
+#         val,
+#         flags=re.IGNORECASE | re.DOTALL,
+#     )
+#     if not m:
+#         return {"_raw": val} if val else {}
+#     return {
+#         "typ": m.group("typ").strip(),
+#         "bauweise": m.group("bau").strip(),
+#         "dicke": "{} cm".format(m.group("dnum").strip()),
+#         "unterseite": m.group("unt").strip(),
+#     }
+
+
+# def build_properties_gebaeudekonstruktion_211(flat_kv):
+#     """
+#     Map OCR key/value pairs for §2.1.1 Gebäudekonstruktion to nested properties.
+#     """
+#     d = dict(flat_kv)
+#     props = {}
+
+#     v_ls = _take_field_once(d, ["laststufe"])
+#     if v_ls is not None:
+#         props["Laststufe (Montage)"] = v_ls
+
+#     v_ks = _take_field_once(d, ["konstruktionssystem"])
+#     if v_ks is not None:
+#         props["Konstruktionssystem"] = v_ks
+
+#     v_dw = _take_field_once(d, ["deckenspannweiten"])
+#     if v_dw is not None:
+#         props["Deckenspannweiten"] = _parse_deckenspannweiten(v_dw)
+
+#     v_aw = _take_field_once(d, ["aussen"])
+#     if v_aw is not None:
+#         aw = _parse_aussenwaende(v_aw)
+#         props["Außenwände"] = aw.get("_raw") if len(aw) == 1 and "_raw" in aw else aw
+
+#     v_iw = _take_field_once(d, ["innen", "wand"])
+#     if v_iw is not None:
+#         iw = _parse_innenwaende(v_iw)
+#         props["Innenwände"] = iw.get("_raw") if len(iw) == 1 and "_raw" in iw else iw
+
+#     v_tw = _take_field_once(d, ["trenn", "wand"])
+#     if v_tw is not None:
+#         tw = _parse_trennwaende(v_tw)
+#         props["Trennwände"] = tw.get("_raw") if len(tw) == 1 and "_raw" in tw else tw
+
+#     v_dc = _take_field_once(d, ["decke"], reject_contains=("spannweit",))
+#     if v_dc is not None:
+#         dc = _parse_decke(v_dc)
+#         props["Decke"] = dc.get("_raw") if len(dc) == 1 and "_raw" in dc else dc
+
+#     v_fb = _take_field_once(d, ["fussboden", "dicke"]) or _take_field_once(
+#         d, ["fussbodendicke"]
+#     )
+#     if v_fb is not None:
+#         props["Fußbodendicke"] = v_fb
+
+#     for k, v in d.items():
+#         props[k] = v
+
+#     return props
+
+
+# def outline_to_structured_sections(outline_root):
+#     """
+#     One object per x.x.x subsection that has boxed key/value fields.
+#     2.1.1 Gebäudekonstruktion is parsed into nested properties; others stay flat strings.
+#     """
+#     structured = []
+
+#     def visit(node):
+#         sid = node.get("section_id")
+#         title = (node.get("title") or "").strip()
+#         fields = node.get("fields") or []
+#         children = node.get("children") or []
+
+#         if sid and re.fullmatch(r"\d+\.\d+\.\d+", str(sid)) and fields:
+#             flat = _fields_to_flat_kv(fields)
+#             nt_c = _normalize_key_for_lookup(title.replace(" ", ""))
+#             if str(sid) == "2.1.1" and nt_c == "gebaudekonstruktion":
+#                 props = build_properties_gebaeudekonstruktion_211(flat)
+#             else:
+#                 props = dict(flat)
+#             props = _normalize_property_values(props)
+#             structured.append({"section": str(sid), "title": title, "properties": props})
+
+#         for c in children:
+#             visit(c)
+
+#     for c in outline_root.get("children") or []:
+#         visit(c)
+
+#     return structured
+
+
+# def extract_pdf_page_boxes(
+#     pdf_path,
+#     pdf_page_1based,
+#     *,
+#     dpi,
+#     poppler_path,
+#     page_note=None,
+# ):
+#     images = convert_from_path(
+#         pdf_path,
+#         first_page=pdf_page_1based,
+#         last_page=pdf_page_1based,
+#         dpi=dpi,
+#         poppler_path=poppler_path,
+#     )
+#     image = images[0]
+#     debug_png = os.path.join("data-text-BBSR", f"debug_page_{pdf_page_1based}.png")
+#     image.save(debug_png)
+
+#     data = pytesseract.image_to_data(image, lang="deu", output_type=Output.DATAFRAME)
+#     lines = layout_df_to_lines(data, y_tol=26)
+#     raw_blocks = layout_lines_to_blocks(lines, gap_threshold=60)
+
+#     blocks_out = []
+#     for bi, block_lines in enumerate(raw_blocks):
+#         texts = [L["text"] for L in block_lines]
+#         joined = "\n".join(texts)
+#         xs0 = min(L["bbox"]["x0"] for L in block_lines)
+#         ys0 = min(L["bbox"]["y0"] for L in block_lines)
+#         xs1 = max(L["bbox"]["x1"] for L in block_lines)
+#         ys1 = max(L["bbox"]["y1"] for L in block_lines)
+
+#         sec_id, sec_title = None, None
+#         if texts:
+#             sec_id, sec_title = layout_guess_section_heading(texts[0])
+
+#         pairs = []
+#         for t in texts:
+#             k, v = layout_split_key_value(t)
+#             if k and v:
+#                 pairs.append({"key": k, "value": v})
+
+#         blocks_out.append(
+#             {
+#                 "block_index": bi,
+#                 "bbox": {"x0": xs0, "y0": ys0, "x1": xs1, "y1": ys1},
+#                 "section_id": sec_id,
+#                 "section_title": sec_title,
+#                 "lines": block_lines,
+#                 "text": joined,
+#                 "key_value_pairs": pairs if pairs else None,
+#             }
+#         )
+
+#     outline = layout_lines_to_outline(lines)
+#     layout_outline_merge_false_rwe_chapters(outline)
+#     structured_sections = outline_to_structured_sections(outline)
+
+#     return {
+#         "pdf_page_index": pdf_page_1based,
+#         "note": page_note,
+#         "dpi": dpi,
+#         "debug_image": debug_png,
+#         "outline": outline,
+#         "structured_sections": structured_sections,
+#         "blocks": blocks_out,
+#     }
+
+
+# # ============================================================
+# # STEP 3: EXTRACT INDEX ENTRIES + SAVE RAW LINES AS JSON
+# # ============================================================
+
+# entries = extract_entries(structured_rows)
+# entries = apply_toc_corrections_from_file(entries, TOC_CORRECTIONS_JSON)
+
+
+# def format_entry_line(e):
+#     """Human-readable one line: '2.1 Typenserie … 5' or unnumbered category + page."""
+#     sec = e.get("section")
+#     title = (e.get("title") or "").strip()
+#     page = e.get("page")
+#     parts = []
+#     if sec:
+#         parts.append(str(sec))
+#     if title:
+#         parts.append(title)
+#     if page is not None:
+#         parts.append(str(page))
+#     return " ".join(parts)
+
+
+# def entries_to_json_documents(entries):
+#     """Mirror printed --- ENTRIES --- as structured JSON (no numbering logic)."""
+#     documents = []
+#     for e in entries:
+#         doc = {
+#             "display": format_entry_line(e),
+#             "section": e.get("section"),
+#             "title": e.get("title"),
+#             "page": e.get("page"),
+#             "parent": e.get("parent"),
+#         }
+#         if e.get("_ocr_row") is not None:
+#             doc["_ocr_row"] = e["_ocr_row"]
+#         documents.append(doc)
+#     return documents
+
+
+# ENTRY_JSON_PATH = os.path.join("data-text-BBSR", "index_entries.json")
+# with open(ENTRY_JSON_PATH, "w", encoding="utf-8") as f:
+#     json.dump(
+#         {"entries": entries_to_json_documents(entries)},
+#         f,
+#         ensure_ascii=False,
+#         indent=2,
+#     )
+
+# json_lines = rows_to_json(structured_rows)
+# output_json_path = "data-text-BBSR/index_lines.json"
+
+# with open(output_json_path, "w", encoding="utf-8") as f:
+#     json.dump(json_lines, f, ensure_ascii=False, indent=2)
+
+
+# # ============================================================
+# # STEP 4: BUILD FINAL STRUCTURE
+# # ============================================================
+
+# def build_section_ranges(entries, last_page=100):
+#     sections = {}
+#     valid_entries = [
+#         e for e in entries
+#         if isinstance(e.get("page"), int) and e.get("section")
+#     ]
+
+#     for i, entry in enumerate(valid_entries):
+#         start = entry["page"]
+
+#         if i < len(valid_entries) - 1:
+#             end = valid_entries[i + 1]["page"] - 1
+#         else:
+#             end = last_page
+
+#         sections[entry["section"]] = {
+#             "title": entry["title"],
+#             "start": start,
+#             "end": end
+#         }
+
+#     return sections
+
+
+# sections = build_section_ranges(entries)
+
+
+# def page_box_bundle_normalize_paths(bundle):
+#     """
+#     Deep copy bundle and use forward slashes in stored path strings so file + stdout JSON
+#     matches the shape of hand-parsed ``page_boxes.json`` (e.g. pdf_path, debug_image).
+#     """
+#     b = json.loads(json.dumps(bundle))
+
+#     def posix(p):
+#         return p.replace("\\", "/") if isinstance(p, str) else p
+
+#     b["pdf_path"] = posix(b.get("pdf_path"))
+#     for pg in b.get("pages") or []:
+#         if isinstance(pg, dict) and "debug_image" in pg:
+#             pg["debug_image"] = posix(pg.get("debug_image"))
+#     return b
+
+
+# def page_box_bundle_strip_bboxes(obj):
+#     """Remove every ``bbox`` key (nested) from page-box JSON for smaller file + stdout output."""
+#     if isinstance(obj, dict):
+#         return {
+#             k: page_box_bundle_strip_bboxes(v)
+#             for k, v in obj.items()
+#             if k != "bbox"
+#         }
+#     if isinstance(obj, list):
+#         return [page_box_bundle_strip_bboxes(x) for x in obj]
+#     return obj
+
+
+# # ============================================================
+# # STEP 5: Outline + blocks for each manually listed PDF page
+# # Processes only CONTENT_PDF_PAGES (or PDF_EXTRACT_PAGES / PDF_EXTRACT_PAGE env).
+# # No automatic range — the last PDF index in that list is where extraction stops.
+# # ============================================================
+
+# _content_pages = content_pdf_pages_to_extract()
+# if _content_pages and os.path.isfile(BBSR_PDF):
+#     extracted = []
+#     for i, pg in enumerate(_content_pages):
+#         nnote = None
+#         if i < len(CONTENT_PDF_PAGE_NOTES):
+#             txt = CONTENT_PDF_PAGE_NOTES[i]
+#             nnote = txt if txt else None
+#         extracted.append(
+#             extract_pdf_page_boxes(
+#                 BBSR_PDF,
+#                 pg,
+#                 dpi=CONTENT_PAGE_DPI,
+#                 poppler_path=POPPLER_PATH,
+#                 page_note=nnote,
+#             )
+#         )
+
+#     page_box_bundle = {
+#         "pdf_path": BBSR_PDF,
+#         "logical_first_page_on_pdf": LOGICAL_FIRST_PAGE_ON_PDF,
+#         "default_note": EXTRACT_PAGE_TOC_NOTE,
+#         "pages_requested_pdf_index": list(_content_pages),
+#         "page_count": len(extracted),
+#         "pages": extracted,
+#     }
+#     page_box_bundle = page_box_bundle_strip_bboxes(
+#         page_box_bundle_normalize_paths(page_box_bundle)
+#     )
+#     dumped = json.dumps(page_box_bundle, ensure_ascii=False, indent=2)
+#     with open(PAGE_BOX_JSON_PATH, "w", encoding="utf-8") as f:
+#         f.write(dumped)
+#         if not dumped.endswith("\n"):
+#             f.write("\n")
+#     if PAGE_BOX_JSON_STDOUT:
+#         print(dumped)
+
+i receive this json
+{
+  "pdf_path": "data-text-BBSR/BBSR.pdf",
+  "logical_first_page_on_pdf": 7,
+  "default_note": "BBSR / iEMB typology specification sheets: many Bauweisen and IW/P series; each page typically three sections (Gebäudekonstruktion, Gebäudecharakteristik, Wohnungscharakteristik). Printed booklet page (Seite n) is not the same as PDF page index.",
+  "pages_requested_pdf_index": [
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47,
+    51,
+    57,
+    61,
+    65,
+    69
+  ],
+  "page_count": 15,
+  "pages": [
+    {
+      "pdf_page_index": 11,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_11.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "2.1.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "0,75 t",
+            "Konstruktionssystem": "Längswandkonstruktion",
+            "Deckenspannweiten": [
+              "2,40 m",
+              "3,60 m",
+              "4,80 m"
+            ],
+            "Decke": {
+              "typ": "Zwickauer Decke",
+              "bauweise": "zweischalig",
+              "dicke": "21,5 cm",
+              "unterseite": "geputzt"
+            },
+            "Fußbodendicke": "7,5 cm",
+            "Außenwände": "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt",
+            "Innenwände": "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt",
+            "Trennwände": "Langlochziegelverbund, 7,1 cm dick"
+          }
+        },
+        {
+          "section": "2.1.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1958 (IW 58), vorgesehen vorwiegend für städtische Standorte",
+            "Gebäudelängen": "3 - 5 Segmente gereiht, 45,40 m bis 74,80 m (Systemlänge)",
+            "Gebäudebreite": "9,79 m (häufig als Haustiefe bezeichnet)",
+            "Segmenttypen und -längen": "SA, 18,60 m (3 WE); S B, 15,00 m (2 WE); (WE) SC, 17,40 (2 WE) m",
+            "Dachform und -art": "steilgeneigtes Satteldach; Kaltdachlösung",
+            "Geschoßanzahl": "4",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Ofenheizung, Zentralheizung"
+          }
+        },
+        {
+          "section": "2.1.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 RWE (48,95 m² - 49,74 m²), 3 RWE (58,73 m², 58,91 m²), 4 RWE (69,28 m², 69,49 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad",
+            "Balkon/Loggia": "Planung von Balkonen vor den Wohnzimmern, auch giebelseitig"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 15,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_15.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "2.2.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "0,75 t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+            "Innenwände": "Leichtbeton, 19 cm dick; beiderseitig geputzt",
+            "Trennwände": "Gipselemente, 5 cm dick",
+            "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Unterseite geputzt",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "2.2.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1963 (IW 63), vorgesehen für städtische Standorte in Berlin",
+            "Gebäudelängen": "regelrecht 4 Segmente gereiht, 57,60 m bis 67,20 m (Systemlänge)",
+            "Gebäudebreite": "9,99 m (häufig als Haustiefe bezeichnet)",
+            "Segmenttypen und -längen": "S 1, 14,40 m (2 WE); S 2, 16,80 m (3 WE); (WE) S$3, 16,80 m (2 WE)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "4",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Ofenheizung"
+          }
+        },
+        {
+          "section": "2.2.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 RWE (36,15 m®, 48,30 m*), 3 RWE (55,97 m²), 4 RWE (66,69 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Innenbad; nur mit Dusche/WC (kleine 2 RWE)",
+            "Balkon/Loggia": "Planung von Balkonen und partiell von französischen Fenstern"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 19,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_19.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "2.3.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "0,8 t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+            "Innenwände": "Normalbeton, 19 cm dick; beiderseitig geputzt",
+            "Trennwände": "Gips, 7 cm dick; Normalbeton, 6 cm dick",
+            "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "2.3.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für städtische Standorte, dazu Ratiostufen 1970 und 1974",
+            "Gebäudelängen": "3 - 4 Segmente gereiht, 39,60 m bis 67,20 m (Systemlänge)",
+            "Gebäudebreite": "10,19 m (häufig als Haustiefe bezeichnet)",
+            "egmenttypen und -längen": "S 1, 16,80 m (3 WE); 8 2, 13,20 m (2 WE): (WE) S 3, 14,40 m (2 WE)",
+            "Dachform und -art": "steilgeneigtes Satteldach und Flachdach; Kaltdachlösungen",
+            "Geschoßanzahl": "4-5",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Ofenheizung (4 Geschosse/Steildach) Zentralheizung (4 - 5 Geschosse/Flachdach)"
+          }
+        },
+        {
+          "section": "2.3.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 RWE (40,61 m®, 47,02 m², 47,89 m²), 3 RWE (57,70 m², 58,23 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE)",
+            "Balkon/Loggia": "Planung wahlweise von französischen Fenstern, von Balkonen oder Loggien"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 23,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_23.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "2.4.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "0,8 t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt",
+            "Innenwände": "Normalbeton, 19 cm dick",
+            "Trennwände": "Gips, 7 cm dick; Normalbeton, 6 cm dick",
+            "Decke": "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "2.4.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für ländliche Standorte",
+            "Gebäudelängen": "3 Segmente gereiht, 36,00 m bis 54,00 m (Systemlänge)",
+            "Gebäudebreite": "10,19 m (häufig als Haustiefe bezeichnet)",
+            "Segmenttypen und -längen": "SS 1, 12,00 m (2 WE); S 2, 18,00 m (3 WE); (WE) $ 3, 14,40 (2 WE) m",
+            "Dachform und -art": "steilgeneigtes Satteldach; Kaltdachlösung",
+            "Geschoßanzahl": "3-4",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Ofenheizung"
+          }
+        },
+        {
+          "section": "2.4.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 RWE (42,93 m² - 53,62 m²), 3 RWE (63,31 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad",
+            "Balkon/Loggia": "Planung wahlweise von französischen Fenstern und Balkonen",
+            "Wohnterrasse (EG)": "zn"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 27,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_27.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "3.1.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "11t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtzuschlagstoffbeton (LZS-Beton), einschichtig, 29 cm dick; dreischichtige Giebelwände, 26 cm dick, oder Porenbeton, 24 cm bzw. 30 cm dick; jeweils oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 6 cm dick; Gips, 7 cm dick, oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "4,5 cm"
+          }
+        },
+        {
+          "section": "3.1.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1977, weiterentwickelte Typenreihe IW 64 zur neuen Serie Brandenburg mit Ratio-Typen für innerstädtische und ländliche Standorte",
+            "Gebäudelängen": "28,80 m - variabel (max. 67,20 m Systemlänge)",
+            "Gebäudebreite": "10,19 m, 11,40 m Haustiefe (10,80 m Systemmaß)",
+            "egmenttypen und -längen": "S$1-53; 9,60... 12,00 m, 13,20 m, 14,40 m, 16,80 m (WE) (WE-Anzahl variabel)",
+            "Dachform und -art": "Flachdach, steilgeneigtes Satteldach, Mansarddach; Kaltdach- und kombinierte Kalt-/Warmdachlösungen",
+            "Geschoßanzahl": "4-5",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung (4 - 5 Geschosse) Ofenheizung (4 Geschosse)"
+          }
+        },
+        {
+          "section": "3.1.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1- bis 4 RWE (35,98 m² - 77,24 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad; Innenbad",
+            "Balkon/Loggia": "wahlweise Anordnung von vorgesetzten und ingezogenen Loggien",
+            "Wohnterrasse (EG)": "möglich"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 31,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_31.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "4.1.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "2,0t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtbeton, einschichtig, 29 cm (milde Klimazone) und 35 cm dick (strenge Klimazone); beiderseitig geputzt",
+            "Innenwände": "Normalbeton, 19 cm dick; beiderseitig geputzt",
+            "Trennwände": "Gips, 7 cm dick, und Normalbeton, 4 cm dick (Trennwand Küche/Bad), jeweils oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "4.1.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1965 (IW 65), weiterentwickelte Typenreihe der Blockbauweise 0,8 t, IW 64/Brandenburg",
+            "Gebäudelängen": "3 4 Segmente gereiht, 39,60 m - variabel 67,20 m ... (Systemlänge)",
+            "Gebäudebreite": "10,19 m, 10,31 m Haustiefe (9,60 m Systemmaß)",
+            "egmenttypen und -längen": "S1, 16,80 m (3 WE); S 2, 13,20 m (2 WE); (WE) S3, 14,40 (2 WE) m",
+            "Dachform und -art": "Flachdach und steilgeneigtes Satteldach; Kaltdachlösungen",
+            "Geschoßanzahl": "4-5",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung (4 - 5 Geschosse/Flachdach) Ofenheizung (4 Geschosse/Steildach))"
+          }
+        },
+        {
+          "section": "4.1.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2- bis 3 RWE (40,61 m² - 58,49 m®)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE im Segment 1)",
+            "Balkon/Loggia": "wahlweise Anordnung von französischen Fenstern und von Balkonen",
+            "Wohnterrasse (EG)": "="
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 35,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_35.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "5.1.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "5,0 t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "haufwerksporiger Beton/Leichtbeton, einschichtig, 24 cm dick; Innen- und Außenputz",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 10 cm dick, oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "5,5 cm"
+          }
+        },
+        {
+          "section": "5.1.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1961, (IW 61, auch IW 63), rste zentrale Entwicklung der Plattenbauweise (VEB Typenprojektierung Berlin, VEB Hochbau- projektierung Erfurt)",
+            "Gebäudelängen": "4 6 Segmente gereiht, 52,80 m variabel 72,00 m ... (Systemlänge)",
+            "Gebäudebreite": "10,09 m Haustiefe, (9,60 m Systemmaß)",
+            "egmenttypen und -längen": "S A (I), 13,20 m (2 WE); S B (II), 14,40 m (2 WE); C (I), 16,80 m (2WE); SD (IV), 16,80 m (3 WE)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "4 (Segmente A, B, C) 4-5 (Segmente D)",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung"
+          }
+        },
+        {
+          "section": "5.1.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2- bis 4 RWE (48,04 m² - 69,60...75,20 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad",
+            "Balkon/Loggia": "Balkon (Wohnzimmer)"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 39,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_39.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "5.2.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "5,0t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m",
+            "Außenwände": "Leichtbeton, einschichtig, 29 cm dick, oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 4 cm (Trennwand Küche/Bad) und 7 cm dick, oberflächenfertig",
+            "Decke": "Hohlraumdecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "5.2.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1964, (IW 64), zentrale Weiterentwicklung der Serie IW 61...63/P1 durch Projekt IW 64/P-Halle (VEB Typenprojektierung Berlin)",
+            "Gebäudelängen": "3, tlw. 4 Segmente gereiht, 43,20 m bis 50,40 m (Systemlänge)",
+            "Gebäudebreite": "10,19 m Haustiefe, (9,60 m Systemmaß)",
+            "egmenttypen und -längen": "S 1, 16,80 m (3 WE); S 2, 14,40 m (2 WE); (WE) S$ 3, 16,80 m (2WE)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "4-5",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "5.2.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 RWE (41,84 m*/48,82 m*), 3 RWE (58,81 m’), 4 RWE (69,74 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad; Innen-WC mit Dusche (kleine 2 RWE)",
+            "Balkon/Loggia": "Balkon oder Loggia (Wohnraum, ausgenommen kleine 2 RWE in S 1)",
+            "Wohnterrasse (EG)": "-"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 43,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_43.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "5.3.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "5,0t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m, 4,20 m und 6,00 m",
+            "Außenwände": "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 4, 6 und 7 cm dick; Gips, 7 cm dick",
+            "Decke": "Vollbetondecke, Stahlbeton, 6,00 m-Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "5.3.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1966 - 1977 (IW 66...77), zentral entwickelte Typenserie P2;",
+            "Grundkonzeption": "Deutsche Bauakademie zu Berlin",
+            "Gebäudelängen": "4 - 5 Segmente gereiht/5geschossig, 48,00 m bis 60,00 m; 2 Segmente mit Zusatzsegment (12 m) gereiht/11geschossig, 67,20 m, selten max. 3 Segmente gereiht, 82,80 m (Systemlänge)",
+            "Gebäudebreite": "10,80 m und 12,00 m Haustiefe (Systemmaße)",
+            "egmenttypen und -längen": "Wohnsegmente 12,00 m (2 WE/5geschossig); 27,60 m (WE) (4 WE/11geschossig)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "SA. 11",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "5.3.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "2 bis 4 RWE/5geschossig (46,28 m® - 63,04 m*); 1- bis 4 RWE/11geschossig, Berlin 1972 (33,89 m* - 75,91 m²)",
+            "Küche": "Innenküche",
+            "Bad": "Innenbad",
+            "Balkon/Loggia": "Loggia (Wohnzimmer)"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 47,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_47.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "5.4.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "5,0t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "2,40 m, 3,60 m, 4,80 m",
+            "Außenwände": "Längswand, Leichtbeton, einschichtig, 28 cm dick; Giebelwand, Normalbeton/Kerndämmung (Schaumpolystyrol), 3schichtig, 30 cm dick, jeweils oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig (im KG bewehrt)",
+            "Trennwände": "Gipselemente, 7 cm dick",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "6,5 cm"
+          }
+        },
+        {
+          "section": "5.4.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau 1961 - 1978, bezirkliche Entwick-",
+            "lung in Berlin, QP 71-R (Vorläufer der Serie": "QP 61, QP 64, QP 71; VEB Berlin-Projekt)",
+            "Gebäudelängen": "Wohnblock A 103 (3 Segmente/117 WE), 65,27 m; A 104 (4 Segmente/156 WE), 84,44 m",
+            "Gebäudebreite": "11,51 m Haustiefe",
+            "egmenttypen und -längen": "—Mittelsegment, 19,20 m (39 WE); Giebelsegment, 22,80 m (WE) (39 WE) Systemmaße",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "10",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,70 m (Kellergeschoß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "5.4.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1 RWE (29,48 m²), 2 RWE (48,11 m² 56,39 m’), 3 RWE (74,85 m² - 79,34 m²)",
+            "Küche": "Außenküche",
+            "Bad": "Außenbad; Innenbad (1 RWE, kleine 2 RWE)",
+            "Balkon/Loggia": "Loggia",
+            "Wohnterrasse (EG)": "="
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 51,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_51.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "5.5.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "5,0t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "3,60 m",
+            "Außenwände": "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig",
+            "Innenwände": "(1) Stahlbeton, 17 cm; (2/3) Stahlbeton, 15 cm dick, jeweils oberflächenfertig",
+            "Trennwände": "Normalbeton oder Gips, 7 cm dick, oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm bzw. bei (2) 15 cm dick, oberflächenfertig",
+            "Fußbodendicke": "4,5 - 7,5 cm"
+          }
+        },
+        {
+          "section": "5.5.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)",
+            "Gebäudelängen": "} Einzelgebäude, (1) 22,22 m x 18,62 m, (2) 18,83 m x 37,84 m,",
+            "Gebäudebreite": "} (3) 29,69 m x 29,69 m",
+            "egmenttypen und -längen": "keine Reihungssegmente, (1) 90 WE, (2) 208 WE, (WE) (3) 132 WE",
+            "Dachform und -art": "Flachdach",
+            "Geschoßanzahl": "16 und 17",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "5.5.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1- bis 3 RWE (vereinzelt 4-, 6 RWE bei PH 16)",
+            "Küche": "Innenküche (vereinzelt Außenküche bei WHH 17)",
+            "Bad": "Innenbad",
+            "Balkon/Loggia": "Loggia (WHH 17)",
+            "Wohnterrasse (EG)": "- (1) Punkthochhaus PHH 16 Frankfurt/Oder (2) Wohnhochhaus WHH 17 Dresden (3) Wohnhochhaus PH 16 Leipzig"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 57,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_57.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "6.1.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+            "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+            "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig 26 cm dick, oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig",
+            "oe Decke": "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "3 cm - 3,5 cm (Normalgeschoß), 7,5 cm (Erdgeschoß)"
+          }
+        },
+        {
+          "section": "6.1.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller Wohnungsbau WBS 70 (Ersteinführung 1972),",
+            "zentral entwickelte Serie; Grundkonzeption": "Bauakademie, Kooperationsverband WBS 70 (5 Wohnungsbaukombinate), TU Dresden",
+            "Gebäudelängen": "3 - 5 Segmente gereiht, 36,00 m - variabel (max. 72,00 m Systemlänge)",
+            "Gebäudebreite": "12,00 m Haustiefe (Systemmaß)",
+            "egmenttypen und -längen": "Basis-Segment 0501W, 12,00 m (2 WE); (WE) 0503W, 14,40 m (2 WE); 0502W, 18,00 m (3 WE)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "5 (6)",
+            "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "6.1.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1- bis 4 RWE (32,31 m² - 79,69 m²/100,02 m* im konischen Segment 0509W), 5 RWE im Segment 0513W mit Verbindertrakt (96,40 m)",
+            "Küche": "Außenküche; Innenküche teilweise in 1 RWE",
+            "Bad": "Innenbad",
+            "Balkon/Loggia": "Loggia (Wohnzimmer)",
+            "Wohnterrasse (EG)": "teilweise vorhanden"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 61,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_61.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "6.2.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+            "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+            "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 26 cm dick, oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 6,00 m Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "3 cm - 7,5 cm"
+          }
+        },
+        {
+          "section": "6.2.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau WBS 70 (Ersteinführung 1977), zentral entwickelte Serie;",
+            "Grundkonzeption": "Bauakademie, Kooperationsverband WBS 70 (5 Wohnungsbaukombinate), TU Dresden u.a.",
+            "Gebäudelängen": "2-3 Segmente gereiht, 48,00 m - variabel (max. 72,00 m Systemlänge)",
+            "Gebäudebreite": "12,00 m Haustiefe (Systemmaß)",
+            "gmenttypen und -längen": "Basis-Segmente: 1130W...37W, 24,00/30,00 m (42/43 WE); (WE) 1142W...48W, 24,00/30,00 m (32/33/43 WE); 1153W...56W, egmente WBL 2.66.0/2.77.2, 24,00 m (33/38-39 WE)",
+            "Dachform und -art": "Flachdach; Kaltdachlösung",
+            "Geschoßanzahl": "11",
+            "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "6.2.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1- bis 4 RWE (32,61 m² - 86,85 m²/98,87 m² im konischen egment 1137W), 5 RWE in konischen Segmenten 1148W/1156W (120,00/114,19 m²)",
+            "Küche": "Außenküche; Innenküche teilweise in 1 RWE",
+            "Bad": "Innenbad",
+            "Balkon/Loggia": "Loggia (Wohnzimmer)",
+            "Wohnterrasse (EG)": "möglich"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 65,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_65.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "6.3.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "6,3 t",
+            "Konstruktionssystem": "Querwandkonstruktion, Grundraster 6,00 m x 6,00 m",
+            "Deckenspannweiten": "2,40 m, 3,60 m, 6,00 m",
+            "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 25 cm dick, oberflächenfertig",
+            "Innenwände": "Normalbeton, 15 cm dick, oberflächenfertig",
+            "Trennwände": "Normalbeton, 4 cm und 7 cm dick, oberflächenfertig",
+            "Decke": "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "5,5 cm (1. 0G), 3,5 cm (2. 11. 06), 4 cm - 5,5 cm (in Bädern)"
+          }
+        },
+        {
+          "section": "6.3.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau, Basis WBS 70 (Ausführung 1978), bezirkliche Entwicklung vom VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder",
+            "Gebäudelängen": "} Einzelgebäude,",
+            "Gebäudebreite": "} 18,35 m x 18,35 m",
+            "Segmenttypen und -längen": "PH 12 G als Segment (55 WE) in versetzter Doppelstellung (WE) reihbar, 2 x 18,35 m",
+            "Dachform und -art": "Flachdach; Warmdachlösung",
+            "Geschoßanzahl": "12 (nicht unterkellert)",
+            "Geschoßhöhe": "2,80 m (Rohbau/Systemmaß)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "6.3.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1- bis 3 RWE (32,70 m² - 66,33)",
+            "Küche": "Außenküche",
+            "Bad": "Innenbad",
+            "Balkon/Loggia": "Loggia (Wohnzimmer)",
+            "Wohnterrasse (EG)": "entfällt, da im Erdgeschoß keine Wohnungen vorhanden sind"
+          }
+        }
+      ]
+    },
+    {
+      "pdf_page_index": 69,
+      "note": null,
+      "dpi": 300,
+      "debug_image": "data-text-BBSR/debug_page_69.png",
+      "outline": {
+        "section_id": null,
+        "title": null,
+        "source_line": null,
+        "fields": []
+      },
+      "structured_sections": [
+        {
+          "section": "6.4.1",
+          "title": "Gebäudekonstruktion",
+          "properties": {
+            "Laststufe (Montage)": "6,3 t",
+            "Konstruktionssystem": "Querwandkonstruktion",
+            "Deckenspannweiten": "3,60 m",
+            "Außenwände": "Normalbeton mit Kerndämmung (Schaumpolystyrol), 3schichtig, 21 cm dick, oberflächenfertig",
+            "Innenwände": "Normal- und Stahlbeton, 19 cm dick, oberflächenfertig;",
+            "Trennwände": "monolithischer Teil in Stahlbeton: Erdgeschoß",
+            "Decke": "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig",
+            "Fußbodendicke": "7,5 cm"
+          }
+        },
+        {
+          "section": "6.4.2",
+          "title": "Gebäudecharakteristik",
+          "properties": {
+            "Gebäudetyp": "Industrieller vielgeschossiger Wohnungsbau (Ausführung 1978), Typ WHH GT 18, bezirkliche Entwicklung vom VEB Wohnungsbaukombinat Berlin",
+            "Gebäudelängen": "} Einzelgebäude,",
+            "Gebäudebreite": "} 35,34 m x 18,84 m",
+            "Segmenttypen und -längen": "_Wohnhochhaus, nicht segmentiert (136 WE) (WE)",
+            "Dachform und -art": "Flachdach; Warmdachlösung",
+            "Geschoßanzahl": "18 (nicht unterkellert), technisches Geschoß über dem 17. OG",
+            "Geschoßhöhe": "2,80 m (Normal- bzw. Obergeschosse), (Rohbau/Systemmaß) 4,20 m (Erdgeschoß, Gebäudetechnik)",
+            "Heizungsart": "Zentralheizung/Fernwärmenetzanschluß"
+          }
+        },
+        {
+          "section": "6.4.3",
+          "title": "Wohnungscharakteristik",
+          "properties": {
+            "Wohnungsarten und -größen": "1RWE (29,84 m²), 2 RWE (47,46 m²), 3 RWE (71,45 m²), 4 RWE (75,76 m²)",
+            "Küche": "Ionen- und Außenküche",
+            "Bad": "Innenbad (Sanitärzelle)",
+            "Balkon/Loggia": "Loggien in den Gebäude-Mittelachsen",
+            "Wohnterrasse (EG)": "entfällt, da im Erdgeschoß keine Wohnungen vorhanden sind"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+the problem, i miss the index, so the title of each page in the json.
+i need the top box also parsed in each json building block
+so here, in the image it is the 2 Blockbauweise 0,8 t

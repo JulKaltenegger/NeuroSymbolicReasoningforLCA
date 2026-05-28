@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="https://w3id.org/lca#" uri="_reused/LCA.ttl"/>
+    <uri id="Imports Wizard Entry" name="https://w3id.org/bot-0.3.2" uri="_reused/BOT.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://w3id.org/bmp#" uri="_reused/BMP.ttl"/>
+    <uri id="Imports Wizard Entry" name="https://w3id.org/beo#" uri="_reused/BEO.ttl"/>
+    <uri id="Imports Wizard Entry" name="https://w3id.org/at#" uri="_reused/AT.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public"/>
+</catalog>

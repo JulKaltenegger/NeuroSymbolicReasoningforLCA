@@ -1,0 +1,162 @@
+import os
+import re
+import pandas as pd
+
+# --- TESSERACT SETUP ---
+os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+
+import pytesseract
+from pytesseract import Output
+
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+print("Languages:", pytesseract.get_languages(config=''))
+
+# --- PDF → IMAGE ---
+from pdf2image import convert_from_path
+
+BBSR_PDF = "data-text-BBSR/BBSR.pdf"
+PAGE_NUMBER = 4
+
+images = convert_from_path(
+    BBSR_PDF,
+    first_page=PAGE_NUMBER + 1,
+    last_page=PAGE_NUMBER + 1,
+    dpi=300,
+    poppler_path=r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+)
+
+image = images[0]
+image.save("debug_index.png")
+
+# ============================================================
+# OCR WITH LAYOUT
+# ============================================================
+
+data = pytesseract.image_to_data(image, lang="deu", output_type=Output.DATAFRAME)
+
+data = data.dropna(subset=["text"])
+data = data[data["text"].str.strip() != ""]
+
+print("\n--- OCR DATA ---\n")
+print(data[["text", "left", "top"]].head(50))
+
+
+# ============================================================
+# STEP 1: GROUP WORDS INTO ROWS (BY Y POSITION)
+# ============================================================
+
+def group_rows(df, y_threshold=15):
+    rows = []
+    current_row = []
+    current_y = None
+
+    df_sorted = df.sort_values("top")
+
+    for _, row in df_sorted.iterrows():
+        if current_y is None:
+            current_y = row["top"]
+
+        if abs(row["top"] - current_y) < y_threshold:
+            current_row.append(row)
+        else:
+            rows.append(current_row)
+            current_row = [row]
+            current_y = row["top"]
+
+    if current_row:
+        rows.append(current_row)
+
+    return rows
+
+
+rows = group_rows(data)
+
+
+# ============================================================
+# STEP 2: SORT EACH ROW LEFT → RIGHT
+# ============================================================
+
+structured_rows = []
+
+for row in rows:
+    row_sorted = sorted(row, key=lambda r: r["left"])
+    texts = [r["text"] for r in row_sorted]
+    structured_rows.append(texts)
+
+print("\n--- STRUCTURED ROWS ---\n")
+for r in structured_rows[:15]:
+    print(r)
+
+
+# ============================================================
+# STEP 3: EXTRACT INDEX ENTRIES
+# ============================================================
+
+def normalize_page_number(page_str):
+    page_str = page_str.replace("S", "5").replace("i", "1")
+    return int(page_str)
+
+
+entries = []
+
+for row in structured_rows:
+    if len(row) < 2:
+        continue
+
+    first = row[0]
+    last = row[-1]
+
+    # section pattern
+    if not re.match(r"^\d+(\.\d+)?$", first):
+        continue
+
+    # page pattern
+    if not re.match(r"^\d+$", last):
+        continue
+
+    section = first
+    page = normalize_page_number(last)
+    title = " ".join(row[1:-1])
+
+    entries.append({
+        "section": section,
+        "title": title,
+        "page": page
+    })
+
+
+print("\n--- ENTRIES ---\n")
+for e in entries:
+    print(e)
+
+
+# ============================================================
+# STEP 4: BUILD FINAL STRUCTURE
+# ============================================================
+
+def build_section_ranges(entries, last_page=100):
+    sections = {}
+
+    for i, entry in enumerate(entries):
+        start = entry["page"]
+
+        if i < len(entries) - 1:
+            end = entries[i + 1]["page"] - 1
+        else:
+            end = last_page
+
+        sections[entry["section"]] = {
+            "title": entry["title"],
+            "start": start,
+            "end": end
+        }
+
+    return sections
+
+
+sections = build_section_ranges(entries)
+
+print("\n--- FINAL STRUCTURE ---\n")
+for k, v in sections.items():
+    print(k, ":", v)

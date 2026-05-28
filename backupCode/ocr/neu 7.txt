@@ -1,0 +1,175 @@
+import os
+import re
+import json
+import pandas as pd
+import pytesseract
+from pytesseract import Output
+from pdf2image import convert_from_path
+
+# --- CONFIG ---
+os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+PDF_PATH = "data-text-BBSR/BBSR.pdf"
+POPPLER_PATH = r"C:\Program Files\Poppler\poppler-25.12.0\Library\bin"
+
+INDEX_PAGE = 5
+CONTENT_PAGE = 11
+
+
+# ============================================================
+# OCR → DATAFRAME
+# ============================================================
+
+def ocr_page(pdf_path, page):
+    images = convert_from_path(
+        pdf_path,
+        first_page=page,
+        last_page=page,
+        dpi=300,
+        poppler_path=POPPLER_PATH,
+    )
+    image = images[0]
+
+    data = pytesseract.image_to_data(image, lang="deu", output_type=Output.DATAFRAME)
+    data = data.dropna(subset=["text"])
+    data = data[data["text"].str.strip() != ""]
+
+    return data
+
+
+# ============================================================
+# GROUP WORDS INTO ROWS
+# ============================================================
+
+def group_rows(df, y_tol=25):
+    rows = []
+    current = []
+    current_y = None
+
+    df = df.sort_values("top")
+
+    for _, r in df.iterrows():
+        if current_y is None:
+            current_y = r["top"]
+
+        if abs(r["top"] - current_y) < y_tol:
+            current.append(r)
+        else:
+            rows.append(current)
+            current = [r]
+            current_y = r["top"]
+
+    if current:
+        rows.append(current)
+
+    return rows
+
+
+def rows_to_text(rows):
+    structured = []
+    for row in rows:
+        row = sorted(row, key=lambda r: r["left"])
+        structured.append([r["text"] for r in row])
+    return structured
+
+
+# ============================================================
+# INDEX PARSER (simple but robust)
+# ============================================================
+
+def parse_index(rows):
+    entries = []
+    current_main = None
+    sub_counter = 0
+
+    for row in rows:
+
+        # join row
+        text = " ".join(row)
+
+        # page number
+        page = None
+        if re.match(r".*\d+$", text):
+            page = int(re.findall(r"\d+$", text)[0])
+            text = re.sub(r"\d+$", "", text).strip()
+
+        # explicit section (2.1)
+        if re.match(r"^\d+\.\d+", row[0]):
+            section = row[0]
+            title = " ".join(row[1:])
+            current_main = int(section.split(".")[0])
+            sub_counter = int(section.split(".")[1])
+
+        # implicit main section (Blockbauweise)
+        elif any("bauweise" in w.lower() for w in row):
+            current_main = (current_main or 0) + 1
+            sub_counter = 0
+            section = str(current_main)
+            title = text
+
+        # fallback subsection
+        else:
+            if current_main is None:
+                continue
+            sub_counter += 1
+            section = f"{current_main}.{sub_counter}"
+            title = text
+
+        entries.append({
+            "section": section,
+            "title": title.strip(),
+            "page": page
+        })
+
+    return entries
+
+
+# ============================================================
+# CONTENT PAGE → SIMPLE JSON
+# ============================================================
+
+def parse_content_page(df):
+    rows = group_rows(df)
+    lines = []
+
+    for row in rows:
+        row = sorted(row, key=lambda r: r["left"])
+
+        text = " ".join(r["text"] for r in row)
+
+        x0 = int(min(r["left"] for r in row))
+        y0 = int(min(r["top"] for r in row))
+        x1 = int(max(r["left"] + r["width"] for r in row))
+        y1 = int(max(r["top"] + r["height"] for r in row))
+
+        lines.append({
+            "text": text,
+            "bbox": {"x0": x0, "y0": y0, "x1": x1, "y1": y1}
+        })
+
+    return lines
+
+
+# ============================================================
+# RUN PIPELINE
+# ============================================================
+
+# --- INDEX ---
+index_df = ocr_page(PDF_PATH, INDEX_PAGE)
+index_rows = rows_to_text(group_rows(index_df))
+index_entries = parse_index(index_rows)
+
+with open("index.json", "w", encoding="utf-8") as f:
+    json.dump(index_entries, f, indent=2, ensure_ascii=False)
+
+
+# --- CONTENT PAGE ---
+content_df = ocr_page(PDF_PATH, CONTENT_PAGE)
+content_json = parse_content_page(content_df)
+
+with open("content.json", "w", encoding="utf-8") as f:
+    json.dump(content_json, f, indent=2, ensure_ascii=False)
+
+
+print("DONE")

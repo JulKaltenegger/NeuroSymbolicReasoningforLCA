@@ -67,143 +67,6 @@ BMP classifies construction materials based on categories, types and property gr
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/bmp#hasBrickType
-:hasBrickType rdf:type owl:ObjectProperty ;
-              rdfs:domain :Brick ;
-              rdfs:range :BrickMasonryUnit ,
-                         :CalciumSilicateUnit ,
-                         :ClayUnit .
-
-
-###  http://w3id.org/bmp#hasConcreteType
-:hasConcreteType rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Concrete ;
-                 rdfs:range :ReinforcedConcrete ,
-                            :HeavyWeightAggregate ,
-                            :HeavyWeightConcrete ,
-                            :LightWeightAggregate ,
-                            :LightWeightConcrete ,
-                            :PrestressedConcrete .
-
-
-###  http://w3id.org/bmp#hasGlassType
-:hasGlassType rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain :Glass ;
-              rdfs:range :ESG ,
-                         :VSG ,
-                         :DrawnSheetGlass ,
-                         :FloatGlass .
-
-
-###  http://w3id.org/bmp#hasHempType
-:hasHempType rdf:type owl:ObjectProperty ;
-             rdfs:domain :Hemp ;
-             rdfs:range :HempFibre ,
-                        :Hempcrete .
-
-
-###  http://w3id.org/bmp#hasMaterialCategory
-:hasMaterialCategory rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Material ;
-                     rdfs:range :MaterialCategory .
-
-
-###  http://w3id.org/bmp#hasMaterialProperty
-:hasMaterialProperty rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Material ;
-                     rdfs:range :MaterialProperty .
-
-
-###  http://w3id.org/bmp#hasMaterialType
-:hasMaterialType rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Material ;
-                 rdfs:range :MaterialType .
-
-
-###  http://w3id.org/bmp#hasMineralFibreType
-:hasMineralFibreType rdf:type owl:ObjectProperty ;
-                     rdfs:domain :MineralFibre ;
-                     rdfs:range :GlassFibres ,
-                                :Rockwool ,
-                                :Slagwool .
-
-
-###  http://w3id.org/bmp#hasNaturalStoneType
-:hasNaturalStoneType rdf:type owl:ObjectProperty ;
-                     rdfs:domain :NaturalStone ;
-                     rdfs:range :BasaltStone ,
-                                :GranitStone ,
-                                :SandStone .
-
-
-###  http://w3id.org/bmp#hasPolymerType
-:hasPolymerType rdf:type owl:ObjectProperty ;
-                rdfs:domain :Polymer ;
-                rdfs:range :ExpandedPolystyrene ,
-                           :ExtrudedPolystyrene .
-
-
-###  http://w3id.org/bmp#hasRcValue
-:hasRcValue rdf:type owl:ObjectProperty ;
-            rdfs:domain :Layer ,
-                        :LayerSet ;
-            rdfs:range [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasUnit ;
-                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasValue ;
-                         owl:someValuesFrom xsd:float
-                       ] .
-
-
-###  http://w3id.org/bmp#hasThickness
-:hasThickness rdf:type owl:ObjectProperty ;
-              rdfs:domain :Layer ,
-                          :LayerSet ;
-              rdfs:range [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasUnit ;
-                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasValue ;
-                           owl:someValuesFrom xsd:float
-                         ] .
-
-
-###  http://w3id.org/bmp#hasWoodType
-:hasWoodType rdf:type owl:ObjectProperty ;
-             rdfs:domain :WoodTimber ;
-             rdfs:range :AirDryTimber ,
-                        :WoodHard ,
-                        :WoodSoft .
-
-
-###  http://w3id.org/bmp#isMineralFibre
-:isMineralFibre rdf:type owl:ObjectProperty ;
-                rdfs:domain :MaterialCategory ;
-                rdfs:range :MineralFibre .
-
-
-###  http://w3id.org/bmp#isNaturalStone
-:isNaturalStone rdf:type owl:ObjectProperty ;
-                rdfs:domain :MaterialCategory ;
-                rdfs:range :NaturalStone .
-
-
-###  http://w3id.org/bmp#isPolymer
-:isPolymer rdf:type owl:ObjectProperty ;
-           rdfs:domain :MaterialCategory ;
-           rdfs:range :Polymer .
-
-
-###  http://w3id.org/bmp#isWoodTimber
-:isWoodTimber rdf:type owl:ObjectProperty ;
-              rdfs:domain :MaterialCategory ;
-              rdfs:range :WoodTimber .
-
-
 ###  https://w3id.org/bmp#adjacentLayer
 :adjacentLayer rdf:type owl:ObjectProperty ;
                rdfs:domain :Layer ;
@@ -231,10 +94,29 @@ BMP classifies construction materials based on categories, types and property gr
                  rdfs:range :AdsorptionWm .
 
 
+###  https://w3id.org/bmp#hasBrickType
+:hasBrickType rdf:type owl:ObjectProperty ;
+              rdfs:domain :Brick ;
+              rdfs:range :BrickMasonryUnit ,
+                         :CalciumSilicateUnit ,
+                         :ClayUnit .
+
+
 ###  https://w3id.org/bmp#hasBulkDensity
 :hasBulkDensity rdf:type owl:ObjectProperty ;
                 rdfs:domain :Physical ;
                 rdfs:range :BulkDensity .
+
+
+###  https://w3id.org/bmp#hasConcreteType
+:hasConcreteType rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Concrete ;
+                 rdfs:range :HeavyWeightAggregate ,
+                            :HeavyWeightConcrete ,
+                            :LightWeightAggregate ,
+                            :LightWeightConcrete ,
+                            :PrestressedConcrete ,
+                            :ReinforcedConcrete .
 
 
 ###  https://w3id.org/bmp#hasDesorptionC
@@ -285,6 +167,23 @@ BMP classifies construction materials based on categories, types and property gr
                    rdfs:range :FireResistance .
 
 
+###  https://w3id.org/bmp#hasGlassType
+:hasGlassType rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Glass ;
+              rdfs:range :DrawnSheetGlass ,
+                         :ESG ,
+                         :FloatGlass ,
+                         :VSG .
+
+
+###  https://w3id.org/bmp#hasHempType
+:hasHempType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Hemp ;
+             rdfs:range :HempFibre ,
+                        :Hempcrete .
+
+
 ###  https://w3id.org/bmp#hasInnerLayer
 :hasInnerLayer rdf:type owl:ObjectProperty ;
                rdfs:domain :LayerSet ;
@@ -315,6 +214,32 @@ BMP classifies construction materials based on categories, types and property gr
                         rdfs:range :LiquidTransportCoef .
 
 
+###  https://w3id.org/bmp#hasMaterialCategory
+:hasMaterialCategory rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Material ;
+                     rdfs:range :MaterialCategory .
+
+
+###  https://w3id.org/bmp#hasMaterialProperty
+:hasMaterialProperty rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Material ;
+                     rdfs:range :MaterialProperty .
+
+
+###  https://w3id.org/bmp#hasMaterialType
+:hasMaterialType rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Material ;
+                 rdfs:range :MaterialType .
+
+
+###  https://w3id.org/bmp#hasMineralFibreType
+:hasMineralFibreType rdf:type owl:ObjectProperty ;
+                     rdfs:domain :MineralFibre ;
+                     rdfs:range :GlassFibres ,
+                                :Rockwool ,
+                                :Slagwool .
+
+
 ###  https://w3id.org/bmp#hasMoistureContent
 :hasMoistureContent rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf :hasThermalConductivity ;
@@ -322,10 +247,25 @@ BMP classifies construction materials based on categories, types and property gr
                     rdfs:range :MoistureContent .
 
 
+###  https://w3id.org/bmp#hasNaturalStoneType
+:hasNaturalStoneType rdf:type owl:ObjectProperty ;
+                     rdfs:domain :NaturalStone ;
+                     rdfs:range :BasaltStone ,
+                                :GranitStone ,
+                                :SandStone .
+
+
 ###  https://w3id.org/bmp#hasOuterLayer
 :hasOuterLayer rdf:type owl:ObjectProperty ;
                rdfs:domain :LayerSet ;
                rdfs:range :Layer .
+
+
+###  https://w3id.org/bmp#hasPolymerType
+:hasPolymerType rdf:type owl:ObjectProperty ;
+                rdfs:domain :Polymer ;
+                rdfs:range :ExpandedPolystyrene ,
+                           :ExtrudedPolystyrene .
 
 
 ###  https://w3id.org/bmp#hasPorosity
@@ -398,9 +338,22 @@ BMP classifies construction materials based on categories, types and property gr
                          rdfs:range :ThermalExpansionCoef .
 
 
+###  https://w3id.org/bmp#hasThickness
+:hasThickness rdf:type owl:ObjectProperty ;
+              rdfs:domain :Layer ,
+                          :LayerSet ;
+              rdfs:range [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasUnit ;
+                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValue ;
+                           owl:someValuesFrom xsd:float
+                         ] .
+
+
 ###  https://w3id.org/bmp#hasUValue
-:hasUValue rdf:type owl:ObjectProperty ,
-                    owl:FunctionalProperty ;
+:hasUValue rdf:type owl:ObjectProperty ;
            rdfs:domain :Layer ,
                        :LayerSet ;
            rdfs:range [ rdf:type owl:Restriction ;
@@ -449,6 +402,14 @@ BMP classifies construction materials based on categories, types and property gr
                                 rdfs:range :WaterVapourSorptionIsotherm .
 
 
+###  https://w3id.org/bmp#hasWoodType
+:hasWoodType rdf:type owl:ObjectProperty ;
+             rdfs:domain :WoodTimber ;
+             rdfs:range :AirDryTimber ,
+                        :WoodHard ,
+                        :WoodSoft .
+
+
 ###  https://w3id.org/bmp#isBrick
 :isBrick rdf:type owl:ObjectProperty ,
                   owl:TransitiveProperty ;
@@ -476,11 +437,35 @@ BMP classifies construction materials based on categories, types and property gr
         rdfs:range :Hemp .
 
 
+###  https://w3id.org/bmp#isMineralFibre
+:isMineralFibre rdf:type owl:ObjectProperty ;
+                rdfs:domain :MaterialCategory ;
+                rdfs:range :MineralFibre .
+
+
+###  https://w3id.org/bmp#isNaturalStone
+:isNaturalStone rdf:type owl:ObjectProperty ;
+                rdfs:domain :MaterialCategory ;
+                rdfs:range :NaturalStone .
+
+
+###  https://w3id.org/bmp#isPolymer
+:isPolymer rdf:type owl:ObjectProperty ;
+           rdfs:domain :MaterialCategory ;
+           rdfs:range :Polymer .
+
+
+###  https://w3id.org/bmp#isWoodTimber
+:isWoodTimber rdf:type owl:ObjectProperty ;
+              rdfs:domain :MaterialCategory ;
+              rdfs:range :WoodTimber .
+
+
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://w3id.org/bmp#hasUnit
+###  https://w3id.org/bmp#hasUnit
 :hasUnit rdf:type owl:DatatypeProperty .
 
 
@@ -493,64 +478,6 @@ BMP classifies construction materials based on categories, types and property gr
 #################################################################
 #    Classes
 #################################################################
-
-###  http://w3id.org/bmp#ESG
-:ESG rdf:type owl:Class ;
-     rdfs:subClassOf :MaterialType ;
-     rdfs:comment "Material Category: Glass / Toughened Safety GlassWhat it is made of / How it's made: It is made from a standard sheet of float glass (silica sand, soda ash, and limestone) that undergoes a thermal tempering process. The glass is heated up to an intense temperature of around $600^\\circ\\text{C}$ and then blasted uniformly with cold air. This rapid cooling locks the outside layers in a state of high compression while the inside remains under high tension, drastically increasing its strength.Description: A single pane of highly toughened safety glass designed to withstand heavy impacts and break into thousands of tiny, blunt, relatively harmless pebbles instead of sharp shards (ESG)." .
-
-
-###  http://w3id.org/bmp#GlassFibres
-:GlassFibres rdf:type owl:Class ;
-             rdfs:subClassOf :MaterialType ;
-             rdfs:comment """Material Category: Mineral Fibre
-What it is made of / How it's made: It is made from silica sand and recycled glass materials. The ingredients are melted in a furnace at extreme temperatures and then forced through microscopic holes while being blasted with air, spinning them into highly flexible glass threads.
-Description: Fine, spun filaments of glass gathered into fluffy thermal insulation mats or structural reinforcement meshes (GlassFibres).""" .
-
-
-###  http://w3id.org/bmp#RcValue
-:RcValue rdf:type owl:Class ;
-         rdfs:subClassOf :LayerProperty .
-
-
-###  http://w3id.org/bmp#ReinforcedConcrete
-:ReinforcedConcrete rdf:type owl:Class ;
-                    rdfs:subClassOf :MaterialType ;
-                    rdfs:comment """Material Category: Concrete / Composite Material
-What it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.
-Description: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete).""" .
-
-
-###  http://w3id.org/bmp#Rockwool
-:Rockwool rdf:type owl:Class ;
-          rdfs:subClassOf :MaterialType ;
-          rdfs:comment "Material Category: Mineral FibreWhat it is made of / How it's made: It is made from natural volcanic basalt rock and chalk. The stones are melted down into liquid magma at around $1,600^\\circ\\text{C}$ and poured onto high-speed spinning wheels, which fling the liquid out into long, interlocking fuzzy fibers.Description: Stone wool insulation made by melting volcanic rock and spinning it into fireproof, acoustic mats (Rockwool)." ;
-          rdfs:label "Rockwool" .
-
-
-###  http://w3id.org/bmp#Slagwool
-:Slagwool rdf:type owl:Class ;
-          rdfs:subClassOf :MaterialType ;
-          rdfs:comment """Material Category: Mineral Fibre
-
-What it is made of / How it's made: It is made from blast-furnace slag, which is the molten mineral waste byproduct left over from smelting iron ore into steel. This liquid waste is collected, reheated, and spun using air pressure or spinning rotors into soft, fibrous wool insulation.
-
-Description: Mineral wool insulation manufactured by spinning molten industrial iron-smelting waste into thermal fibers (Slagwool).""" ;
-          rdfs:label "Slagwool" .
-
-
-###  http://w3id.org/bmp#Thickness
-:Thickness rdf:type owl:Class ;
-           rdfs:subClassOf :LayerProperty .
-
-
-###  http://w3id.org/bmp#VSG
-:VSG rdf:type owl:Class ;
-     rdfs:subClassOf :MaterialType ;
-     rdfs:comment """Material Category: Glass / Laminated Safety Glass
-What it is made of / How it's made: It is made by creating a \"sandwich\" of two or more sheets of glass (which can be standard float glass or tempered ESG) bound together by an internal layer of tough, sticky plastic film—typically Polyvinyl Butyral (PVB). The layers are pressed together under intense heat and pressure in a specialized oven to make the plastic completely transparent and permanently fuse the panes together.
-Description: A laminated safety glass composite consisting of multiple glass sheets bonded together by a sticky plastic interlayer that prevents the pane from falling apart or shattering when broken (VSG).""" .
-
 
 ###  https://w3id.org/bmp#Accoustic
 :Accoustic rdf:type owl:Class ;
@@ -686,6 +613,12 @@ Description: Flat glass produced by drawing a molten ribbon vertically, known fo
             rdfs:label "Durability"@en .
 
 
+###  https://w3id.org/bmp#ESG
+:ESG rdf:type owl:Class ;
+     rdfs:subClassOf :MaterialType ;
+     rdfs:comment "Material Category: Glass / Toughened Safety GlassWhat it is made of / How it's made: It is made from a standard sheet of float glass (silica sand, soda ash, and limestone) that undergoes a thermal tempering process. The glass is heated up to an intense temperature of around $600^\\circ\\text{C}$ and then blasted uniformly with cold air. This rapid cooling locks the outside layers in a state of high compression while the inside remains under high tension, drastically increasing its strength.Description: A single pane of highly toughened safety glass designed to withstand heavy impacts and break into thousands of tiny, blunt, relatively harmless pebbles instead of sharp shards (ESG)." .
+
+
 ###  https://w3id.org/bmp#EffectiveGasPermeability
 :EffectiveGasPermeability rdf:type owl:Class ;
                           rdfs:subClassOf :Physical .
@@ -736,6 +669,14 @@ Description: Standard modern window glass manufactured by floating liquid glass 
        rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
                     "Glass materials are rigid, non-crystalline solids used extensively for windows, facades, and partitions. The category features basic manufactured flat glass (float glass), toughened single-pane safety glass (ESG), and shatterproof laminated safety glass (VSG). In multi-pane window systems, the airtight gaps between these glass layers are frequently injected with dense, invisible gases like argon to drastically improve the building's energy efficiency." ;
        rdfs:label "Glass"@en .
+
+
+###  https://w3id.org/bmp#GlassFibres
+:GlassFibres rdf:type owl:Class ;
+             rdfs:subClassOf :MaterialType ;
+             rdfs:comment """Material Category: Mineral Fibre
+What it is made of / How it's made: It is made from silica sand and recycled glass materials. The ingredients are melted in a furnace at extreme temperatures and then forced through microscopic holes while being blasted with air, spinning them into highly flexible glass threads.
+Description: Fine, spun filaments of glass gathered into fluffy thermal insulation mats or structural reinforcement meshes (GlassFibres).""" .
 
 
 ###  https://w3id.org/bmp#GranitStone
@@ -957,9 +898,29 @@ Description: Concrete elements structurally pre-compressed using tensioned steel
                      rdfs:label "PrestressedConcrete"@en .
 
 
+###  https://w3id.org/bmp#RcValue
+:RcValue rdf:type owl:Class ;
+         rdfs:subClassOf :LayerProperty .
+
+
+###  https://w3id.org/bmp#ReinforcedConcrete
+:ReinforcedConcrete rdf:type owl:Class ;
+                    rdfs:subClassOf :MaterialType ;
+                    rdfs:comment """Material Category: Concrete / Composite Material
+What it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.
+Description: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete).""" .
+
+
 ###  https://w3id.org/bmp#RelativeGasDiffusivity
 :RelativeGasDiffusivity rdf:type owl:Class ;
                         rdfs:subClassOf :Physical .
+
+
+###  https://w3id.org/bmp#Rockwool
+:Rockwool rdf:type owl:Class ;
+          rdfs:subClassOf :MaterialType ;
+          rdfs:comment "Material Category: Mineral FibreWhat it is made of / How it's made: It is made from natural volcanic basalt rock and chalk. The stones are melted down into liquid magma at around $1,600^\\circ\\text{C}$ and poured onto high-speed spinning wheels, which fling the liquid out into long, interlocking fuzzy fibers.Description: Stone wool insulation made by melting volcanic rock and spinning it into fireproof, acoustic mats (Rockwool)." ;
+          rdfs:label "Rockwool" .
 
 
 ###  https://w3id.org/bmp#SandStone
@@ -970,6 +931,17 @@ Description: Concrete elements structurally pre-compressed using tensioned steel
 What it is made of / How it's made: It is made of small, grainy mineral particles—mostly quartz and feldspar. It is formed over vast geological eras as layers of sand accumulate at the bottoms of rivers or deserts, where they are slowly compressed by overlying weight and cemented together by natural silica or calcium deposits.
 Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" ;
            rdfs:label "SandStone"@en .
+
+
+###  https://w3id.org/bmp#Slagwool
+:Slagwool rdf:type owl:Class ;
+          rdfs:subClassOf :MaterialType ;
+          rdfs:comment """Material Category: Mineral Fibre
+
+What it is made of / How it's made: It is made from blast-furnace slag, which is the molten mineral waste byproduct left over from smelting iron ore into steel. This liquid waste is collected, reheated, and spun using air pressure or spinning rotors into soft, fibrous wool insulation.
+
+Description: Mineral wool insulation manufactured by spinning molten industrial iron-smelting waste into thermal fibers (Slagwool).""" ;
+          rdfs:label "Slagwool" .
 
 
 ###  https://w3id.org/bmp#SmokeDevelopment
@@ -1014,9 +986,22 @@ Description: A grainy, layered sedimentary rock formed by the natural compaction
                       rdfs:subClassOf :Thermal .
 
 
+###  https://w3id.org/bmp#Thickness
+:Thickness rdf:type owl:Class ;
+           rdfs:subClassOf :LayerProperty .
+
+
 ###  https://w3id.org/bmp#UValue
 :UValue rdf:type owl:Class ;
         rdfs:subClassOf :LayerProperty .
+
+
+###  https://w3id.org/bmp#VSG
+:VSG rdf:type owl:Class ;
+     rdfs:subClassOf :MaterialType ;
+     rdfs:comment """Material Category: Glass / Laminated Safety Glass
+What it is made of / How it's made: It is made by creating a \"sandwich\" of two or more sheets of glass (which can be standard float glass or tempered ESG) bound together by an internal layer of tough, sticky plastic film—typically Polyvinyl Butyral (PVB). The layers are pressed together under intense heat and pressure in a specialized oven to make the plastic completely transparent and permanently fuse the panes together.
+Description: A laminated safety glass composite consisting of multiple glass sheets bonded together by a sticky plastic interlayer that prevents the pane from falling apart or shattering when broken (VSG).""" .
 
 
 ###  https://w3id.org/bmp#VolumetricHeatCapacity
@@ -1097,14 +1082,6 @@ Description: Lightweight, flexible timber harvested from fast-growing, needle-be
                                         rdfs:label "Julia Kaltenegger" ;
                                         <http://xmlns.com/foaf/0.1/name> "Julia Kaltenegger" ;
                                         <http://xmlns.com/foaf/0.1/weblog> "https://linktr.ee/julkaltenegger" .
-
-
-###  https://w3id.org/bmp#Facade
-:Facade rdf:type owl:NamedIndividual .
-
-
-###  https://w3id.org/bmp#Finishing
-:Finishing rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

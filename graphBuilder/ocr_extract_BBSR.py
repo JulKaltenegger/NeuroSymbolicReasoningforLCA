@@ -1,12 +1,14 @@
 import json
 import re
 from pathlib import Path
+from typing import List, Dict, Any
 
 import cv2
 import numpy as np
 import pytesseract
 from pdf2image import convert_from_path
 from PIL import Image
+from pdf2image.exceptions import PDFInfoNotInstalledError
 
 
 ########################################################
@@ -14,12 +16,15 @@ from PIL import Image
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PDF_PATH = (
-    BASE_DIR
-    / "data-text-BBSR"
-    / "pdf"
-    / "bbsr_buildings.pdf"
-)
+# PDF_PATH = (
+#     BASE_DIR
+#     / "data_source"
+#     / "data_text_BBSR"
+#     / "bbsr_buildings.pdf"
+# )
+LOCAL_DATA_DIR = Path(r"C:\Users\go46wic\intermediat")
+PDF_PATH = LOCAL_DATA_DIR / "bbsr_building.pdf"
+
 
 OUTPUT_DIR = (
     BASE_DIR
@@ -37,6 +42,29 @@ DPI = 300
 OCR_CONFIG = "--oem 3 --psm 6"
 
 LANG = "deu"
+
+# 1-based PDF page numbers to process
+TARGET_PAGES = [11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 57, 61, 65, 69]
+
+# Optional local path to Poppler bin (contains pdfinfo.exe / pdftoppm.exe)
+# Example: BASE_DIR / "tools" / "poppler" / "Library" / "bin"
+POPPLER_PATH = r"C:\Users\go46wic\Dropbox\_PhD\11_KnowledgeBaseLCA\NeuroSymbolicReasoningforLCA\tools\Release-26.02.0-0\poppler-26.02.0\Library\bin"
+
+
+
+if not PDF_PATH.exists():
+    raise FileNotFoundError(
+        f"\n[ERROR] PDF File missing!\n"
+        f"Could not find 'bbsr_buildings.pdf' at: {PDF_PATH}\n"
+        f"Please verify the file has been copied out of Dropbox into that exact path."
+    )
+
+if not Path(POPPLER_PATH).exists():
+    raise FileNotFoundError(
+        f"\n[ERROR] Poppler path path is broken!\n"
+        f"The folder does not exist: {POPPLER_PATH}\n"
+        f"Please verify your extraction layout."
+    )
 
 
 ########################################################
@@ -445,21 +473,126 @@ def parse_structured_sections(lines):
 
 
 ########################################################
+# FINAL JSON SHAPING
+
+
+DATE_PATTERN = re.compile(r"\b\d{2}/\d{2}\b")
+PAGE_PATTERN = re.compile(r"\bSeite\s+\d+\b", re.IGNORECASE)
+
+
+def parse_document_info(lines):
+
+    clean_lines = [
+        clean_text(line["text"])
+        for line in lines
+        if clean_text(line["text"])
+    ]
+
+    organization = None
+    title = None
+    subtitle = None
+    date = None
+    page = None
+
+    if clean_lines:
+        organization = clean_lines[0]
+
+    # Keep top metadata lines before first section id (e.g. 6.3.1 ...)
+    section_start_index = None
+    for idx, line in enumerate(clean_lines):
+        if SECTION_PATTERN.match(line):
+            section_start_index = idx
+            break
+
+    head_lines = clean_lines[:section_start_index] if section_start_index else clean_lines[:6]
+
+    # Extract date/page markers from header lines
+    for line in head_lines:
+        date_match = DATE_PATTERN.search(line)
+        if date_match and date is None:
+            date = date_match.group(0)
+
+        page_match = PAGE_PATTERN.search(line)
+        if page_match and page is None:
+            page = page_match.group(0)
+
+    # Candidate lines for title/subtitle
+    filtered = []
+    for line in head_lines:
+        if PAGE_PATTERN.search(line) or DATE_PATTERN.search(line):
+            continue
+        if MAIN_SECTION_PATTERN.match(line):
+            continue
+        if SUBSERIES_PATTERN.match(line):
+            continue
+        filtered.append(line)
+
+    if len(filtered) >= 2:
+        title = filtered[1]
+    elif len(filtered) == 1:
+        title = filtered[0]
+
+    if len(filtered) >= 3:
+        subtitle = filtered[2]
+
+    return {
+        "organization": organization,
+        "title": title,
+        "subtitle": subtitle,
+        "date": date,
+        "page": page
+    }
+
+
+def to_target_json(document_info, structured_sections):
+
+    sections = []
+
+    for sec in structured_sections:
+        sections.append({
+            "id": sec["section"],
+            "title": sec["title"],
+            "data": sec["properties"]
+        })
+
+    return {
+        "document_info": document_info,
+        "sections": sections
+    }
+
+
+########################################################
 # MAIN OCR PIPELINE
 
 
 print(f"Loading PDF:\n{PDF_PATH}")
 
-pages = convert_from_path(
-    PDF_PATH,
-    dpi=DPI
-)
+results: List[Dict[str, Any]] = []
 
-results = []
+for pdf_page_number in TARGET_PAGES:
 
-for page_index, pil_page in enumerate(pages):
+    print(f"\nProcessing PDF page {pdf_page_number}")
 
-    print(f"\nProcessing page {page_index}")
+    try:
+        page_images = convert_from_path(
+            PDF_PATH,
+            dpi=DPI,
+            first_page=pdf_page_number,
+            last_page=pdf_page_number,
+            poppler_path=str(POPPLER_PATH) if POPPLER_PATH else None
+        )
+    except PDFInfoNotInstalledError as e:
+        raise SystemExit(
+            "pdf2image could not find Poppler (pdfinfo.exe).\n"
+            "Install Poppler and either add its bin directory to PATH,\n"
+            "or set POPPLER_PATH in this script."
+        ) from e
+
+    if not page_images:
+        print(f"Skipped PDF page {pdf_page_number}: no image generated.")
+        continue
+
+    pil_page = page_images[0]
 
     cv_img = cv2.cvtColor(
         np.array(pil_page),
@@ -468,7 +601,7 @@ for page_index, pil_page in enumerate(pages):
 
     page_debug_path = (
         DEBUG_DIR
-        / f"debug_page_{page_index}.png"
+        / f"page_{pdf_page_number}_raw.png"
     )
 
     pil_page.save(page_debug_path)
@@ -556,7 +689,7 @@ for page_index, pil_page in enumerate(pages):
 
     debug_boxed_path = (
         DEBUG_DIR
-        / f"boxed_page_{page_index}.png"
+        / f"page_{pdf_page_number}_boxed.png"
     )
 
     cv2.imwrite(
@@ -564,31 +697,17 @@ for page_index, pil_page in enumerate(pages):
         debug_img
     )
 
-    page_record = {
+    document_info = parse_document_info(page_lines)
 
-        "pdf_page_index": page_index,
-
-        "note": None,
-
-        "dpi": DPI,
-
-        "page_header": page_header,
-
-        "debug_image": str(
-            debug_boxed_path.relative_to(BASE_DIR)
-        ),
-
-        "outline": {
-            "section_id": None,
-            "title": None,
-            "source_line": None,
-            "fields": []
-        },
-
-        "boxes": page_boxes,
-
-        "structured_sections": structured_sections
-    }
+    page_record = to_target_json(
+        document_info=document_info,
+        structured_sections=structured_sections
+    )
+    page_record["pdf_page"] = pdf_page_number
+    page_record["debug_image_raw"] = str(page_debug_path.relative_to(BASE_DIR))
+    page_record["debug_image_boxed"] = str(debug_boxed_path.relative_to(BASE_DIR))
+    page_record["detected_box_count"] = len(page_boxes)
+    page_record["page_header"] = page_header
 
     results.append(page_record)
 
@@ -603,6 +722,7 @@ bundle = {
         PDF_PATH.relative_to(BASE_DIR)
     ),
 
+    "processed_pdf_pages": TARGET_PAGES,
     "pages": results
 }
 
