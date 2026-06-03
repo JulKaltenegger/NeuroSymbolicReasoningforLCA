@@ -33,7 +33,7 @@ def translate_safely(text):
 ########################################################
 #### GET DATA FROM JSON FILE
 ########################################################
-json_files = [BASE_DIR / "data" / "data_text_BBSR" / "json_outputs" / "bbsr_ocr.json"]
+json_files = [BASE_DIR / "data-text-BBSR" / "json_outputs" / "page_boxes.json"]
 all_data = []
 
 for file_path in json_files:

@@ -1,6 +1,0 @@
-pandas
-numpy
-rdflib
-owlready2
-networkx
-scikit-learn
