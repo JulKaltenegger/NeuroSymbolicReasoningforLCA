@@ -25,3 +25,4 @@ scipy
 sentence-transformers
 sympy
 torch
+owlready2

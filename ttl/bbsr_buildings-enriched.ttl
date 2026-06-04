@@ -1,0 +1,283 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix bbsr: <https://namedgraphs.org/bbsr#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix bot: <https://w3id.org/bot#> .
+@prefix om: <http://ontology.eil.utoronto.ca/icity/OM#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bbsr:building001 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 - 5 Segmente gereiht, 45,40 m bis 74,80 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1958 (IW 58), vorgesehen vorwiegend für städtische Standorte"@de,
+        "Industrial housing construction in 1958 (IW 58), intended primarily for urban locations"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_001,
+        bbsr:floor_001,
+        bbsr:internal_wall_001,
+        bbsr:partition_wall_001,
+        bbsr:slab_001 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "steilgeneigtes Satteldach; Kaltdachlösung"@de,
+        "steeply sloping gable roof; Cold roof solution"@en ;
+    bot:hasStorey "4"@de .
+
+bbsr:building002 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "regelrecht 4 Segmente gereiht, 57,60 m bis 67,20 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1963 (IW 63), vorgesehen für städtische Standorte in Berlin"@de,
+        "Industrial housing construction 1963 (IW 63), intended for urban locations in Berlin"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_002,
+        bbsr:floor_002,
+        bbsr:internal_wall_002,
+        bbsr:partition_wall_002,
+        bbsr:slab_002 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "4"@de .
+
+bbsr:building003 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 - 4 Segmente gereiht, 39,60 m bis 67,20 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für städtische Standorte, dazu Ratiostufen 1970 und 1974"@de,
+        "Industrial housing construction 1964 (IW 64), intended for urban locations, plus ratio levels 1970 and 1974"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_003,
+        bbsr:floor_003,
+        bbsr:internal_wall_003,
+        bbsr:partition_wall_003,
+        bbsr:slab_003 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "steilgeneigtes Satteldach und Flachdach; Kaltdachlösungen"@de,
+        "steeply pitched gable roof and flat roof; Cold roof solutions"@en ;
+    bot:hasStorey "4-5"@de .
+
+bbsr:building004 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 Segmente gereiht, 36,00 m bis 54,00 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für ländliche Standorte"@de,
+        "Industrial housing construction 1964 (IW 64), intended for rural locations"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_004,
+        bbsr:floor_004,
+        bbsr:internal_wall_004,
+        bbsr:partition_wall_004,
+        bbsr:slab_004 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "steilgeneigtes Satteldach; Kaltdachlösung"@de,
+        "steeply sloping gable roof; Cold roof solution"@en ;
+    bot:hasStorey "3-4"@de .
+
+bbsr:building005 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "28,80 m - variabel (max. 67,20 m Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1977, weiterentwickelte Typenreihe IW 64 zur neuen Serie Brandenburg mit Ratio-Typen für innerstädtische und ländliche Standorte"@de,
+        "Industrial housing construction in 1977, further developed type series IW 64 to form the new Brandenburg series with ratio types for inner-city and rural locations"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_005,
+        bbsr:floor_005,
+        bbsr:internal_wall_005,
+        bbsr:partition_wall_005,
+        bbsr:slab_005 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach, steilgeneigtes Satteldach, Mansarddach; Kaltdach- und kombinierte Kalt-/Warmdachlösungen"@de,
+        "Flat roof, steeply pitched gable roof, mansard roof; Cold roof and combined cold/warm roof solutions"@en ;
+    bot:hasStorey "4-5"@de .
+
+bbsr:building006 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 4 Segmente gereiht, 39,60 m - variabel 67,20 m ... (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1965 (IW 65), weiterentwickelte Typenreihe der Blockbauweise 0,8 t, IW 64/Brandenburg"@de,
+        "Industrial housing construction 1965 (IW 65), further developed series of block construction 0.8 t, IW 64/Brandenburg"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_006,
+        bbsr:floor_006,
+        bbsr:internal_wall_006,
+        bbsr:partition_wall_006,
+        bbsr:slab_006 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach und steilgeneigtes Satteldach; Kaltdachlösungen"@de,
+        "Flat roof and steeply pitched gable roof; Cold roof solutions"@en ;
+    bot:hasStorey "4-5"@de .
+
+bbsr:building007 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "4 6 Segmente gereiht, 52,80 m variabel 72,00 m ... (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1961, (IW 61, auch IW 63), rste zentrale Entwicklung der Plattenbauweise (VEB Typenprojektierung Berlin, VEB Hochbau- projektierung Erfurt)"@de,
+        "Industrial housing construction 1961, (IW 61, also IW 63), first central development of prefabricated construction (VEB Typprojektierung Berlin, VEB Hochbauprojektierung Erfurt)"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_007,
+        bbsr:floor_007,
+        bbsr:internal_wall_007,
+        bbsr:partition_wall_007,
+        bbsr:slab_007 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "4 (Segmente A, B, C) 4-5 (Segmente D)"@de .
+
+bbsr:building008 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3, tlw. 4 Segmente gereiht, 43,20 m bis 50,40 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1964, (IW 64), zentrale Weiterentwicklung der Serie IW 61...63/P1 durch Projekt IW 64/P-Halle (VEB Typenprojektierung Berlin)"@de,
+        "Industrial housing construction 1964, (IW 64), central further development of the IW 61...63/P1 series through the IW 64/P-Halle project (VEB Typprojektierung Berlin)"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_008,
+        bbsr:floor_008,
+        bbsr:internal_wall_008,
+        bbsr:partition_wall_008,
+        bbsr:slab_008 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "4-5"@de .
+
+bbsr:building009 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "4 - 5 Segmente gereiht/5geschossig, 48,00 m bis 60,00 m; 2 Segmente mit Zusatzsegment (12 m) gereiht/11geschossig, 67,20 m, selten max. 3 Segmente gereiht, 82,80 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1966 - 1977 (IW 66...77), zentral entwickelte Typenserie P2;"@de,
+        "Industrial housing construction 1966 - 1977 (IW 66...77), centrally developed type series P2;"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_009,
+        bbsr:floor_009,
+        bbsr:internal_wall_009,
+        bbsr:partition_wall_009,
+        bbsr:slab_009 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "SA. 11"@de .
+
+bbsr:building010 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "Wohnblock A 103 (3 Segmente/117 WE), 65,27 m; A 104 (4 Segmente/156 WE), 84,44 m"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,70 m (Kellergeschoß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau 1961 - 1978, bezirkliche Entwick-"@de,
+        "Industrial housing construction 1961 - 1978, district development"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_010,
+        bbsr:floor_010,
+        bbsr:internal_wall_010,
+        bbsr:partition_wall_010,
+        bbsr:slab_010 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "10"@de .
+
+bbsr:building011 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "} Einzelgebäude, (1) 22,22 m x 18,62 m, (2) 18,83 m x 37,84 m,"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)"@de,
+        "Industrial multi-story housing construction (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_011,
+        bbsr:floor_011,
+        bbsr:internal_wall_011,
+        bbsr:partition_wall_011,
+        bbsr:slab_011 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach"@de,
+        "Flat roof"@en ;
+    bot:hasStorey "16 und 17"@de .
+
+bbsr:building012 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 - 5 Segmente gereiht, 36,00 m - variabel (max. 72,00 m Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller Wohnungsbau WBS 70 (Ersteinführung 1972),"@de,
+        "Industrial housing construction WBS 70 (first introduced in 1972),"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_012,
+        bbsr:floor_012,
+        bbsr:internal_wall_012,
+        bbsr:partition_wall_012 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "5 (6)"@de .
+
+bbsr:building013 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "2-3 Segmente gereiht, 48,00 m - variabel (max. 72,00 m Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau WBS 70 (Ersteinführung 1977), zentral entwickelte Serie;"@de,
+        "Industrial multi-storey residential building WBS 70 (first introduced in 1977), centrally developed series;"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_013,
+        bbsr:floor_013,
+        bbsr:internal_wall_013,
+        bbsr:partition_wall_013,
+        bbsr:slab_013 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Kaltdachlösung"@de,
+        "flat roof; Cold roof solution"@en ;
+    bot:hasStorey "11"@de .
+
+bbsr:building014 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "} Einzelgebäude,"@de ;
+    om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau, Basis WBS 70 (Ausführung 1978), bezirkliche Entwicklung vom VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder"@de,
+        "Industrial multi-storey residential building, based on WBS 70 (execution in 1978), district development by VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_014,
+        bbsr:floor_014,
+        bbsr:internal_wall_014,
+        bbsr:partition_wall_014,
+        bbsr:slab_014 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Warmdachlösung"@de,
+        "flat roof; Warm roof solution"@en ;
+    bot:hasStorey "12 (nicht unterkellert)"@de .
+
+bbsr:building015 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "} Einzelgebäude,"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse), (Rohbau/Systemmaß) 4,20 m (Erdgeschoß, Gebäudetechnik)"@de ;
+    om:hasWidth "None"@de ;
+    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau (Ausführung 1978), Typ WHH GT 18, bezirkliche Entwicklung vom VEB Wohnungsbaukombinat Berlin"@de,
+        "Industrial multi-storey residential building (execution in 1978), type WHH GT 18, district development by VEB Wohnungsbaukombinat Berlin"@en ;
+    at:hasDescription "None"@de ;
+    at:hasElementArchetype bbsr:external_wall_015,
+        bbsr:floor_015,
+        bbsr:internal_wall_015,
+        bbsr:partition_wall_015,
+        bbsr:slab_015 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "Flachdach; Warmdachlösung"@de,
+        "flat roof; Warm roof solution"@en ;
+    bot:hasStorey "18 (nicht unterkellert), technisches Geschoß über dem 17. OG"@de .
+
+bbsr:ex_wall_layer_001_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction beo:RigidPavement ;
+    bmp:hasMaterialCategory 

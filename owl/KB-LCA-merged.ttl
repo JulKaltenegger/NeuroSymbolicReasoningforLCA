@@ -1838,12 +1838,6 @@ at:BuildingType rdf:type owl:Class ;
                 rdfs:comment "A building type is a categorical classification of buildings based on the occupation type and other buiding-based characteristics." .
 
 
-###  https://w3id.org/at#CavityWall
-at:CavityWall rdf:type owl:Class ;
-              rdfs:subClassOf at:ReferenceLayerSet ;
-              rdfs:comment "Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss." .
-
-
 ###  https://w3id.org/at#ConstructionPeriod
 at:ConstructionPeriod rdf:type owl:Class ;
                       owl:equivalentClass [ rdf:type owl:Class ;
@@ -1918,12 +1912,6 @@ at:FloorArchetype rdf:type owl:Class ;
                   owl:disjointWith at:WallArchetype .
 
 
-###  https://w3id.org/at#Frame
-at:Frame rdf:type owl:Class ;
-         rdfs:subClassOf at:ReferenceLayerSet ;
-         rdfs:comment "A skeletal or frame structure of wood or steel." .
-
-
 ###  https://w3id.org/at#GalleryHouse
 at:GalleryHouse rdf:type owl:Class ;
                 rdfs:subClassOf at:MultifamilyHouse .
@@ -1950,12 +1938,6 @@ at:MaisonetteHouse rdf:type owl:Class ;
 at:Material rdf:type owl:Class ;
             owl:equivalentClass bmp:Material ,
                                 lca:Material .
-
-
-###  https://w3id.org/at#MultiLayer
-at:MultiLayer rdf:type owl:Class ;
-              rdfs:subClassOf at:ReferenceLayerSet ;
-              rdfs:comment "A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)." .
 
 
 ###  https://w3id.org/at#MultifamilyHouse
@@ -2038,12 +2020,6 @@ at:SemiDetachedHouse rdf:type owl:Class ;
 at:SingleFamilyHouse rdf:type owl:Class ;
                      rdfs:subClassOf at:Residential ;
                      rdfs:comment "A detached single family house, A semi-detached house with one shared wall, A single residential building not attached on both sides." .
-
-
-###  https://w3id.org/at#SingleLayer
-at:SingleLayer rdf:type owl:Class ;
-               rdfs:subClassOf at:ReferenceLayerSet ;
-               rdfs:comment "A solid, monolithic wall construction without separate cavities or insulation layers." .
 
 
 ###  https://w3id.org/at#TerraceHouse
@@ -5343,6 +5319,11 @@ Description: A durable, highly uniform, sand-lime building block cured using hig
                         rdfs:label "CalciumSilicateUnit"@en .
 
 
+###  https://w3id.org/bmp#Cavity
+bmp:Cavity rdf:type owl:Class ;
+           rdfs:subClassOf bmp:LayerSet .
+
+
 ###  https://w3id.org/bmp#ClayUnit
 bmp:ClayUnit rdf:type owl:Class ;
              rdfs:subClassOf bmp:MaterialType ;
@@ -5448,6 +5429,11 @@ bmp:FloatGlass rdf:type owl:Class ;
 What it is made of / How it's made: It is made of silica sand, soda ash, dolomite, and limestone. It is produced by pouring the liquid glass mixture out of a furnace directly onto a bath of molten liquid tin, where it floats, spreads out, and cools into a perfectly flat, uniform sheet.
 Description: Standard modern window glass manufactured by floating liquid glass over a smooth bed of molten tin (FloatGlass).""" ;
                rdfs:label "FloatGlass"@en .
+
+
+###  https://w3id.org/bmp#Frame
+bmp:Frame rdf:type owl:Class ;
+          rdfs:subClassOf bmp:LayerSet .
 
 
 ###  https://w3id.org/bmp#Glass
@@ -5642,6 +5628,11 @@ bmp:MoistureContent rdf:type owl:Class ;
                     rdfs:subClassOf bmp:ThermalConductivity .
 
 
+###  https://w3id.org/bmp#MultiLayer
+bmp:MultiLayer rdf:type owl:Class ;
+               rdfs:subClassOf bmp:LayerSet .
+
+
 ###  https://w3id.org/bmp#NaturalStone
 bmp:NaturalStone rdf:type owl:Class ;
                  rdfs:subClassOf bmp:MaterialCategory ;
@@ -5718,6 +5709,11 @@ bmp:SandStone rdf:type owl:Class ;
 What it is made of / How it's made: It is made of small, grainy mineral particles—mostly quartz and feldspar. It is formed over vast geological eras as layers of sand accumulate at the bottoms of rivers or deserts, where they are slowly compressed by overlying weight and cemented together by natural silica or calcium deposits.
 Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" ;
               rdfs:label "SandStone"@en .
+
+
+###  https://w3id.org/bmp#SingleLayer
+bmp:SingleLayer rdf:type owl:Class ;
+                rdfs:subClassOf bmp:LayerSet .
 
 
 ###  https://w3id.org/bmp#Slagwool

@@ -245,12 +245,6 @@ xsd:gYear rdf:type rdfs:Datatype .
               rdfs:comment "A building type is a categorical classification of buildings based on the occupation type and other buiding-based characteristics." .
 
 
-###  https://w3id.org/at#CavityWall
-:CavityWall rdf:type owl:Class ;
-            rdfs:subClassOf :ReferenceLayerSet ;
-            rdfs:comment "Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss." .
-
-
 ###  https://w3id.org/at#ConstructionPeriod
 :ConstructionPeriod rdf:type owl:Class ;
                     owl:equivalentClass [ rdf:type owl:Class ;
@@ -325,12 +319,6 @@ Description: The specific timeframe from the start of digging the foundation to 
                 owl:disjointWith :WallArchetype .
 
 
-###  https://w3id.org/at#Frame
-:Frame rdf:type owl:Class ;
-       rdfs:subClassOf :ReferenceLayerSet ;
-       rdfs:comment "A skeletal or frame structure of wood or steel." .
-
-
 ###  https://w3id.org/at#GalleryHouse
 :GalleryHouse rdf:type owl:Class ;
               rdfs:subClassOf :MultifamilyHouse .
@@ -351,12 +339,6 @@ Description: The specific timeframe from the start of digging the foundation to 
 
 ###  https://w3id.org/at#Material
 :Material rdf:type owl:Class .
-
-
-###  https://w3id.org/at#MultiLayer
-:MultiLayer rdf:type owl:Class ;
-            rdfs:subClassOf :ReferenceLayerSet ;
-            rdfs:comment "A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)." .
 
 
 ###  https://w3id.org/at#MultifamilyHouse
@@ -439,12 +421,6 @@ Description: The specific timeframe from the start of digging the foundation to 
 :SingleFamilyHouse rdf:type owl:Class ;
                    rdfs:subClassOf :Residential ;
                    rdfs:comment "A detached single family house, A semi-detached house with one shared wall, A single residential building not attached on both sides." .
-
-
-###  https://w3id.org/at#SingleLayer
-:SingleLayer rdf:type owl:Class ;
-             rdfs:subClassOf :ReferenceLayerSet ;
-             rdfs:comment "A solid, monolithic wall construction without separate cavities or insulation layers." .
 
 
 ###  https://w3id.org/at#TerraceHouse
