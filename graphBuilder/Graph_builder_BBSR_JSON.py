@@ -8,9 +8,13 @@ from sentence_transformers import SentenceTransformer, util
 from deep_translator import GoogleTranslator
 import ollama
 from pyvis.network import Network
+import torch
 
-# Model Setup
-embedder_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+# Model Setup & Hardware Acceleration Routing
+device = "cuda" if torch.cuda.is_available() else "cpu"
+embedder_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2", device=device)
+print("Using device:", device)
+
 LLM_MODEL = "llama3"  # Change this to "llama3.1", "mistral", etc. depending on local setup
 BASE_DIR = Path(__file__).resolve().parent.parent
 print(f"Base Directory: {BASE_DIR}")
@@ -260,7 +264,7 @@ def create_graph_embeddings(graph_instance):
 
 
 ############################################################
-# STEP 4: OWL ONTOLOGY EMBEDDINGS (OVERHAULED & TAXONOMY MINED)
+# STEP 4: YOUR PREFERRED EXPLICIT LANGUAGE EMBEDDING METHOD
 ############################################################
 def create_ontology_embeddings(ontology_graph):
     """
@@ -270,7 +274,6 @@ def create_ontology_embeddings(ontology_graph):
     ontology_corpus = []
     
     # 1. Dynamically extract broad parent categories (Top-Level Classes)
-    # We look for classes that have sub-classes, serving as our Material Categories
     parent_categories = set()
     for child, parent in ontology_graph.subject_objects(RDFS.subClassOf):
         if isinstance(parent, URIRef) and "http" in str(parent):
@@ -281,15 +284,34 @@ def create_ontology_embeddings(ontology_graph):
 
     for entity in all_entities:
         entity_uri = str(entity)
+        local_name = entity_uri.split("#")[-1].split("/")[-1]
         
-        # Mine textual descriptions from the graph dynamically
-        text_parts = [entity_uri.split("#")[-1].split("/")[-1]] # Add short local name fragment
+        # Base token structure always starts with the localized class ID string
+        text_parts = [local_name] 
+        
+        # --- STRICT LANGUAGE FILTERED LITERAL EXTRACTION ---
+        # Only harvest literals that are implicitly untagged or explicitly marked as English (@en)
         for label in ontology_graph.objects(entity, RDFS.label):
-            text_parts.append(str(label))
+            lang = getattr(label, 'language', None)
+            if lang is None or lang == 'en':
+                text_parts.append(str(label))
+                
         for comment in ontology_graph.objects(entity, RDFS.comment):
-            text_parts.append(str(comment))
-        for desc in ontology_graph.objects(entity, URIRef("http://purl.org/dc/terms/description")):
-            text_parts.append(str(desc))
+            lang = getattr(comment, 'language', None)
+            if lang is None or lang == 'en':
+                text_parts.append(str(comment))
+                
+        dcterms_description = URIRef("http://purl.org/dc/terms/description")
+        for desc in ontology_graph.objects(entity, dcterms_description):
+            lang = getattr(desc, 'language', None)
+            if lang is None or lang == 'en':
+                text_parts.append(str(desc))
+                
+        # If no English textual annotations exist, fall back onto formatting the local name fragment split
+        if len(text_parts) == 1:
+            # e.g., converts CamelCase "LightWeightConcrete" to "Light Weight Concrete"
+            spaced_name = re.sub(r'(?<!^)(?=[A-Z])', ' ', local_name)
+            text_parts.append(spaced_name)
             
         combined_text = " | ".join(text_parts)
         
@@ -404,7 +426,6 @@ def retrieve_hierarchical_matches(chunk_embedding, ontology_corpus, top_k=6):
     Executes a two-tiered taxonomic lookup matching parent categories first, 
     and then finding valid sub-ordinary classes mapped under that category.
     """
-    # Tier 1 Pass: Look up the best fitting broad Material/Function Category
     category_candidates = []
     for item in ontology_corpus:
         if item["is_category"]:
@@ -418,10 +439,8 @@ def retrieve_hierarchical_matches(chunk_embedding, ontology_corpus, top_k=6):
     best_category, best_cat_score = category_candidates[0]
     matched_category_uri = best_category["entity_uri"]
 
-    # Tier 2 Pass: Extract sub-ordinary classes belonging strictly to the selected parent branch
     scoped_type_candidates = []
     for item in ontology_corpus:
-        # Check if the node is an explicit structural child of our chosen category
         if matched_category_uri in item["superclasses"] or item["entity_uri"] == matched_category_uri:
             score = util.cos_sim(chunk_embedding, item["embedding"]).item()
             scoped_type_candidates.append({
@@ -431,7 +450,6 @@ def retrieve_hierarchical_matches(chunk_embedding, ontology_corpus, top_k=6):
                 "parent_category": matched_category_uri
             })
 
-    # Sort and return the highest-scoring taxonomy-constrained classes
     scoped_type_candidates.sort(key=lambda x: x["score"], reverse=True)
     return scoped_type_candidates[:top_k]
 
