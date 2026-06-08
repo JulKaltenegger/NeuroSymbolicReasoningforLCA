@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Large local BIM/LCA case data (not for git)
+data/data-BIM-LCA/

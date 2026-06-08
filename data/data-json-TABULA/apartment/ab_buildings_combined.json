@@ -1,0 +1,1459 @@
+{
+    "metadata": {
+        "source_directory": "data-json-TABULA/apartment",
+        "building_type": "apartment_building",
+        "size_class": "AB",
+        "building_count": 11,
+        "source_files": [
+            "DE.East.AB.06.Gen.ReEx.001.json",
+            "DE.East.AB.06.HR.ReEx.001.json",
+            "DE.East.AB.07.Gen.ReEx.001.json",
+            "DE.East.AB.07.HR.ReEx.001.json",
+            "DE.East.AB.08.Gen.ReEx.001.json",
+            "DE.N.AB.03.Gen.ReEx.001.json",
+            "DE.N.AB.04.Gen.ReEx.001.json",
+            "DE.N.AB.05.Gen.ReEx.001.json",
+            "DE.N.AB.05.HR.ReEx.001.json",
+            "DE.N.AB.06.Gen.ReEx.001.json",
+            "DE.N.AB.06.HR.ReEx.001.json"
+        ]
+    },
+    "buildings": [
+        {
+            "building": {
+                "id": "DE.East.AB.06.Gen.ReEx.001",
+                "building_json": "DE.East.AB.06.Gen.ReEx.001.json",
+                "building_image": "DE.East.AB.06.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1969-1978",
+                "reference_floor_area_m2": 3108,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 94.5,
+                "usual_refurbishment": 58.1,
+                "advanced_refurbishment": {
+                    "total": 38.7,
+                    "components": {
+                        "heating": 14.3,
+                        "other": 24.4
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 5 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 5 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 1599.7,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.1
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 2 cm insulation",
+                    "type_of_construction_de": "(Stahl-)Betondecke mit schwimmendem Estrich auf 2 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.77
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.28
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.21
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 461.0,
+                    "type_of_construction_eng": "composite window with two single panes in wooden frames",
+                    "type_of_construction_de": "Verbundfenster: 2 Scheiben im Holzrahmen",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 2.7
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.East.AB.06.HR.ReEx.001",
+                "building_json": "DE.East.AB.06.HR.ReEx.001.json",
+                "building_image": "DE.East.AB.06.HR.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1969-1978",
+                "reference_floor_area_m2": 5276,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 93.5,
+                "usual_refurbishment": 56.9,
+                "advanced_refurbishment": {
+                    "total": 38.1,
+                    "components": {
+                        "heating": 13.7,
+                        "other": 24.4
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 5 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 5 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 2992.1,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.1
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 2 cm insulation",
+                    "type_of_construction_de": "(Stahl-)Betondecke mit schwimmendem Estrich auf 2 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.77
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.28
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.21
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 756.0,
+                    "type_of_construction_eng": "composite window with two single panes in wooden frames",
+                    "type_of_construction_de": "Verbundfenster: 2 Scheiben im Holzrahmen",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 2.7
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.East.AB.07.Gen.ReEx.001",
+                "building_json": "DE.East.AB.07.Gen.ReEx.001.json",
+                "building_image": "DE.East.AB.07.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1979-1983",
+                "reference_floor_area_m2": 3108,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 87.5,
+                "usual_refurbishment": 57.2,
+                "advanced_refurbishment": {
+                    "total": 38.6,
+                    "components": {
+                        "heating": 14.0,
+                        "other": 24.6
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 6 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 6 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.43
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.17
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 1673.7,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.9
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.22
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 4 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 4 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.65
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.26
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.2
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 387.0,
+                    "type_of_construction_eng": "composite window with two single panes in wooden frames",
+                    "type_of_construction_de": "Verbundfenster: 2 Scheiben im Holzrahmen",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 2.7
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.East.AB.07.HR.ReEx.001",
+                "building_json": "DE.East.AB.07.HR.ReEx.001.json",
+                "building_image": "DE.East.AB.07.HR.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1979-1983",
+                "reference_floor_area_m2": 7997,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 90.2,
+                "usual_refurbishment": 56.1,
+                "advanced_refurbishment": {
+                    "total": 37.3,
+                    "components": {
+                        "heating": 13.2,
+                        "other": 24.1
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 695.1,
+                    "type_of_construction_eng": "concrete ceiling with 6 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 6 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.43
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.17
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 4221.7,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.9
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.22
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 695.1,
+                    "type_of_construction_eng": "concrete ceiling with 4 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 4 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.65
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.26
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.2
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 1471.1,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.East.AB.08.Gen.ReEx.001",
+                "building_json": "DE.East.AB.08.Gen.ReEx.001.json",
+                "building_image": "DE.East.AB.08.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1984-1994",
+                "reference_floor_area_m2": 3108,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 79.9,
+                "usual_refurbishment": 55.9,
+                "advanced_refurbishment": {
+                    "total": 38.0,
+                    "components": {
+                        "heating": 13.5,
+                        "other": 24.5
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 10 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 10 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.36
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.16
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 1673.7,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.6
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.2
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.12
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 598.3,
+                    "type_of_construction_eng": "concrete ceiling with 6 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 6 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.24
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.19
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 387.0,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.03.Gen.ReEx.001",
+                "building_json": "DE.N.AB.03.Gen.ReEx.001.json",
+                "building_image": "DE.N.AB.03.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1919-1948",
+                "reference_floor_area_m2": 1484,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy": {
+                "heating_demand": {
+                    "unit": "kWh/(m2a)",
+                    "states": {
+                        "existing": 129.2,
+                        "usual_refurbishment": 71.0,
+                        "advanced_refurbishment": {
+                            "total": 46.6,
+                            "components": {
+                                "heating": 21.4,
+                                "other": 25.2
+                            }
+                        }
+                    }
+                }
+            },
+            "elements": {
+                "roof": {
+                    "name": "Roof 2",
+                    "surface_area_m2": 384.2,
+                    "type_of_construction_eng": "wooden beam ceiling",
+                    "type_of_construction_de": "Holzbalkendecke",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.65
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.2
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.1
+                        }
+                    }
+                },
+                "wall": {
+                    "name": "Wall 1",
+                    "surface_area_m2": 1244.0,
+                    "type_of_construction_eng": "brickwork, two layers",
+                    "type_of_construction_de": "zweischaliges Mauerwerk",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.4
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.24
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "floor": {
+                    "name": "Floor 1",
+                    "surface_area_m2": 395.6,
+                    "type_of_construction_eng": "concrete ceiling with steel beams and wooden flooring",
+                    "type_of_construction_de": "Stahlträger-Ortbeton-Decke mit Holzboden",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.77
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke",
+                            "u_value_W_m2K": 0.28
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below (if sufficient cellar height) / alternatively: on top of ceiling",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke",
+                            "u_value_W_m2K": 0.21
+                        }
+                    }
+                },
+                "window": {
+                    "name": "Window 1",
+                    "surface_area_m2": 278.5,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "door": {
+                    "name": "Door 1",
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "wooden door",
+                    "type_of_construction_de": "Holztür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "entry door with insulation layer",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "mount new door with insulation layer",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.04.Gen.ReEx.001",
+                "building_json": "DE.N.AB.04.Gen.ReEx.001.json",
+                "building_image": "DE.N.AB.04.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1949-1957",
+                "reference_floor_area_m2": 1603,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 127.7,
+                "usual_refurbishment": 70.0,
+                "advanced_refurbishment": {
+                    "total": 45.8,
+                    "components": {
+                        "heating": 20.7,
+                        "other": 25.1
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 353.5,
+                    "type_of_construction_eng": "concrete ceiling",
+                    "type_of_construction_de": "Betondecke",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.08
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.11
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 1376.0,
+                    "type_of_construction_eng": "masonry of hollow blocks or honeycomb bricks",
+                    "type_of_construction_de": "Mauerwerk aus Hohlblocksteinen, Hochlochziegeln oder Gitterziegeln",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.2
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm of insulation + plaster (external insulated render system), alternative: curtain wall (e.g. cellulose between timbers)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen)",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 24 cm of insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 353.5,
+                    "type_of_construction_eng": "cavity blocks ceiling",
+                    "type_of_construction_de": "Rippendecke / Stahlsteindecke / Gitterträgerdecke",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.29
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.33
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling (in case of floor renovation) or combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination",
+                            "u_value_W_m2K": 0.24
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 294.9,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "wooden door",
+                    "type_of_construction_de": "Holztür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.05.Gen.ReEx.001",
+                "building_json": "DE.N.AB.05.Gen.ReEx.001.json",
+                "building_image": "DE.N.AB.05.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1958-1968",
+                "reference_floor_area_m2": 3887,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 116.9,
+                "usual_refurbishment": 65.3,
+                "advanced_refurbishment": {
+                    "total": 43.1,
+                    "components": {
+                        "heating": 25.0,
+                        "other": 18.1
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 479.6,
+                    "type_of_construction_eng": "concrete ceiling with 5 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 5 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 30 cm insulation above (+ flooring if necessary)",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 3247.8,
+                    "type_of_construction_eng": "masonry of hollow blocks or honeycomb bricks",
+                    "type_of_construction_de": "Mauerwerk aus Hohlblocksteinen, Hochlochziegeln oder Gitterziegeln",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.2
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 459.2,
+                    "type_of_construction_eng": "concrete ceiling with 1 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 1 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.08
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.31
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke / oder Kombination",
+                            "u_value_W_m2K": 0.23
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 687.0,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "wooden door",
+                    "type_of_construction_de": "Holztür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.05.HR.ReEx.001",
+                "building_json": "DE.N.AB.05.HR.ReEx.001.json",
+                "building_image": "DE.N.AB.05.HR.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1958-1968",
+                "reference_floor_area_m2": 11449,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 100.4,
+                "usual_refurbishment": 56.7,
+                "advanced_refurbishment": {
+                    "total": 37.8,
+                    "components": {
+                        "heating": 13.3,
+                        "other": 24.2
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 501.2,
+                    "type_of_construction": "concrete ceiling with 5 cm insulation",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure": "12 cm insulation on ceiling + roofing",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "30 cm insulation on ceiling + roofing",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 6349.1,
+                    "type_of_construction": "masonry of hollow blocks or honeycomb bricks",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.2
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 485.4,
+                    "type_of_construction": "concrete ceiling with 1 cm insulation",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.08
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "u_value_W_m2K": 0.31
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below / alternatively: on top of ceiling / combination of both",
+                            "u_value_W_m2K": 0.23
+                        }
+                    }
+                },
+                "Floor 2": {
+                    "surface_area_m2": 265.9,
+                    "type_of_construction": "concrete ceiling with 1 cm insulation",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.6
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling",
+                            "u_value_W_m2K": 0.34
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below / alternatively: on top of ceiling / combination",
+                            "u_value_W_m2K": 0.25
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 1947.2,
+                    "type_of_construction": "plastic frame window with dual-pane glazing",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "windows with double glazing, argon filled, low-E",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction": "wooden door",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.06.Gen.ReEx.001",
+                "building_json": "DE.N.AB.06.Gen.ReEx.001.json",
+                "building_image": "DE.N.AB.06.Gen.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1969-1978",
+                "reference_floor_area_m2": 3322,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 104.6,
+                "usual_refurbishment": 61.6,
+                "advanced_refurbishment": {
+                    "total": 37.8,
+                    "components": {
+                        "heating": 16.2,
+                        "other": 24.8
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 540.0,
+                    "type_of_construction": "concrete ceiling with 5 cm insulation",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure": "12 cm insulation on ceiling + roofing",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke + Dachabdichtung",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "30 cm insulation on ceiling + roofing",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke + Dachabdichtung",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 2130.0,
+                    "type_of_construction": "concrete panels",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.1
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 540.0,
+                    "type_of_construction": "concrete ceiling with 2 cm insulation",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.77
+                        },
+                        "usual_refurbishment": {
+                            "measure": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.28
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke / oder Kombination",
+                            "u_value_W_m2K": 0.21
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 545.0,
+                    "type_of_construction": "plastic frame window with dual-pane glazing",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction": "metal door",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "building": {
+                "id": "DE.N.AB.06.HR.ReEx.001",
+                "building_json": "DE.N.AB.06.HR.ReEx.001.json",
+                "building_image": "DE.N.AB.06.HR.ReEx.001.png",
+                "size_class": "AB",
+                "construction_period": "1969-1978",
+                "reference_floor_area_m2": 19813,
+                "heat_supply_system": {
+                    "type": "gas central heating",
+                    "efficiency": "poor",
+                    "category": "multi-unit housing"
+                },
+                "climate_region": "Default (National (EnEV 2009))"
+            },
+            "energy_need_for_heating": {
+                "unit": "kWh/(m2a)",
+                "existing_state": 101.1,
+                "usual_refurbishment": 58.2,
+                "advanced_refurbishment": {
+                    "total": 38.8,
+                    "components": {
+                        "heating": 14.2,
+                        "other": 24.6
+                    }
+                }
+            },
+            "elements": {
+                "Roof 2": {
+                    "surface_area_m2": 1469.0,
+                    "type_of_construction_eng": "concrete ceiling with 5 cm insulation",
+                    "type_of_construction_de": "Betondecke mit 5 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.51
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "12 cm insulation on ceiling + roofing",
+                            "measure_de": "Dämmung 12 cm (WLS 035) auf der Decke + Dachabdichtung",
+                            "u_value_W_m2K": 0.19
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "30 cm insulation on ceiling + roofing",
+                            "measure_de": "Dämmung 30 cm (WLS 035) auf der Decke + Dachabdichtung",
+                            "u_value_W_m2K": 0.09
+                        }
+                    }
+                },
+                "Wall 1": {
+                    "surface_area_m2": 14623.4,
+                    "type_of_construction_eng": "concrete panels",
+                    "type_of_construction_de": "Beton-Fertigteile",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 1.1
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)",
+                            "u_value_W_m2K": 0.23
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall",
+                            "measure_de": "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade",
+                            "u_value_W_m2K": 0.13
+                        }
+                    }
+                },
+                "Floor 1": {
+                    "surface_area_m2": 1469.0,
+                    "type_of_construction_eng": "concrete ceiling with 2 cm insulation",
+                    "type_of_construction_de": "(Stahl-)Betondecke mit schwimmendem Estrich auf 2 cm Dämmung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 0.77
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+                            "measure_de": "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)",
+                            "u_value_W_m2K": 0.28
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both",
+                            "measure_de": "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf",
+                            "u_value_W_m2K": 0.21
+                        }
+                    }
+                },
+                "Window 1": {
+                    "surface_area_m2": 2580.5,
+                    "type_of_construction_eng": "plastic frame window with dual-pane glazing",
+                    "type_of_construction_de": "Kunststofffenster mit Zweischeiben-Isolierverglasung",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 3.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "windows with double glazing, argon filled, low-E",
+                            "measure_de": "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "windows with triple glazing, argon filled, low-E, insulated frame",
+                            "measure_de": "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                },
+                "Door 1": {
+                    "surface_area_m2": 2.0,
+                    "type_of_construction_eng": "metal door",
+                    "type_of_construction_de": "Metalltür",
+                    "states": {
+                        "existing": {
+                            "u_value_W_m2K": 4.0
+                        },
+                        "usual_refurbishment": {
+                            "measure_eng": "entry door with insulation layer (U = 1.3 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 1,3 W/(m²K))",
+                            "u_value_W_m2K": 1.3
+                        },
+                        "advanced_refurbishment": {
+                            "measure_eng": "mount new door with insulation layer (U = 0.8 W/(m²K))",
+                            "measure_de": "Haustür mit Dämmkern (U = 0,8 W/(m²K))",
+                            "u_value_W_m2K": 0.8
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
