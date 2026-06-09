@@ -100,8 +100,9 @@ g.bind("qudt", QUDT)
 
 instance_counter = 1
 
+
 ############################################################
-# STEP 1: RDF Graph creation (initial graph)
+# STEP 1: RDF Graph creation (initial graph) - RESTROCTURED PROPERTY ROUTING
 ############################################################
 for page_record in all_data:
     page_header = page_record.get("page_header", {})
@@ -112,18 +113,27 @@ for page_record in all_data:
 
     building_uri = BBSR[f"building{instance_counter:03d}"]
 
+    # Standard core structural class assignments
     g.add((building_uri, RDF.type, BOT.Building))
     g.add((building_uri, RDF.type, AT.BuildingArchetype))
     g.add((building_uri, AT.hasResidentialType, AT.ApartmentHouse))
 
-    g.add((building_uri, AT.hasDescription, Literal(main_title, lang="de")))
-    if main_title_en := translate_safely(main_title):
-        g.add((building_uri, AT.hasDescription, Literal(main_title_en, lang="en")))
-        
-    g.add((building_uri, AT.hasDescription, Literal(subseries_title, lang="de")))
-    if subseries_title_en := translate_safely(subseries_title):
-        g.add((building_uri, AT.hasDescription, Literal(subseries_title_en, lang="en")))
+    # --- NEW PROPERTY ASSIGNMENT LOGIC ---
+    # 1. Force structural classification type straight to at:ResidentialType
+    g.add((building_uri, AT.hasBuildingType, AT.ResidentialType))
 
+    # 2. Map textual metadata directly into at:hasDescription instead of hasBuildingType
+    if main_title:
+        g.add((building_uri, AT.hasDescription, Literal(main_title, lang="de")))
+        if main_title_en := translate_safely(main_title):
+            g.add((building_uri, AT.hasDescription, Literal(main_title_en, lang="en")))
+            
+    if subseries_title:
+        g.add((building_uri, AT.hasDescription, Literal(subseries_title, lang="de")))
+        if subseries_title_en := translate_safely(subseries_title):
+            g.add((building_uri, AT.hasDescription, Literal(subseries_title_en, lang="en")))
+
+    # Proceed natively with deep structural element processing loops
     structured_sections = page_record.get("structured_sections", [])
     for section in structured_sections:
         properties = section.get("properties", {})
@@ -192,26 +202,26 @@ for page_record in all_data:
             if part_wall_en := translate_safely(partition_wall):
                 g.add((partition_wall_uri, AT.hasDescription, Literal(part_wall_en, lang="en")))
 
-        # Dimensional properties
-        building_type = properties.get("Gebäudetyp")
+        # Core dimensional layout specifications
         builiding_length = properties.get("Gebäudelängen")
         builiding_width = properties.get("Gebäubreite")
         roof_shape = properties.get("Dachform und -art")
         level_number = properties.get("Geschoßanzahl")
         level_height = properties.get("Geschoßhöhe")
 
-        if building_type is not None:
-            g.add((building_uri, AT.hasBuildingType, Literal(building_type, lang="de")))
-            if b_type_en := translate_safely(building_type):
-                g.add((building_uri, AT.hasBuildingType, Literal(b_type_en, lang="en")))
-                
+        if builiding_length is not None:
             g.add((building_uri, OM.hasLength, Literal(builiding_length, lang="de")))
+        if builiding_width is not None:
             g.add((building_uri, OM.hasWidth, Literal(builiding_width, lang="de")))
+            
+        if roof_shape is not None:
             g.add((building_uri, AT.hasRoofShape, Literal(roof_shape, lang="de")))
             if roof_en := translate_safely(roof_shape):
                 g.add((building_uri, AT.hasRoofShape, Literal(roof_en, lang="en")))
                 
+        if level_number is not None:
             g.add((building_uri, BOT.hasStorey, Literal(level_number, lang="de")))            
+        if level_height is not None:
             g.add((building_uri, OM.hasStoreyHeight, Literal(level_height, lang="de")))
    
     instance_counter += 1
@@ -264,7 +274,7 @@ def create_graph_embeddings(graph_instance):
 
 
 ############################################################
-# STEP 4: YOUR PREFERRED EXPLICIT LANGUAGE EMBEDDING METHOD
+# STEP 4: OWL Mining & Embedding
 ############################################################
 def create_ontology_embeddings(ontology_graph):
     """
@@ -321,8 +331,15 @@ def create_ontology_embeddings(ontology_graph):
         
         # Categorize node characteristics based purely on OWL topology
         is_category = entity in parent_categories
-        is_material_type = any("Material" in str(s) or "Concrete" in str(s) or "Insulation" in str(s) for s in superclasses)
-
+        
+        # Flag if the class belongs to materials or your new functional taxonomy branches
+        is_material_type = any(
+            "Material" in str(s) or 
+            "Concrete" in str(s) or 
+            "Insulation" in str(s) or 
+            "LayerFunction" in str(s) 
+            for s in superclasses
+        )
         ontology_corpus.append({
             "entity_uri": entity_uri,
             "text": combined_text,
@@ -419,39 +436,64 @@ def textual_decomposition_llm(text):
 
 
 ##########################################################
-# STEP 6: SCOPED HIERARCHICAL MATCH RETRIEVAL LOGIC
+# STEP 6: DUAL-TAXONOMY COGNITIVE RETRIEVAL ENGINE
 ##########################################################
-def retrieve_hierarchical_matches(chunk_embedding, ontology_corpus, top_k=6):
+def retrieve_hierarchical_matches(chunk_embedding, ontology_corpus, top_k=5):
     """
-    Executes a two-tiered taxonomic lookup matching parent categories first, 
-    and then finding valid sub-ordinary classes mapped under that category.
+    Executes parallel taxonomic routing to extract material hierarchies 
+    and functional layer hierarchies independently, completely avoiding cross-contamination.
     """
-    category_candidates = []
+    # ==========================================
+    # ROUTE 1: MATERIAL TAXONOMY SIEVE
+    # ==========================================
+    material_categories = []
     for item in ontology_corpus:
-        if item["is_category"]:
+        # Isolate broad material anchors (exclude functional domains here)
+        if item["is_category"] and "LayerFunction" not in item["entity_uri"]:
             score = util.cos_sim(chunk_embedding, item["embedding"]).item()
-            category_candidates.append((item, score))
+            material_categories.append((item, score))
+            
+    material_categories.sort(key=lambda x: x[1], reverse=True)
     
-    category_candidates.sort(key=lambda x: x[1], reverse=True)
-    if not category_candidates:
-        return []
-        
-    best_category, best_cat_score = category_candidates[0]
-    matched_category_uri = best_category["entity_uri"]
+    scoped_material_types = []
+    if material_categories:
+        matched_mat_cat_uri = material_categories[0][0]["entity_uri"]
+        for item in ontology_corpus:
+            if matched_mat_cat_uri in item["superclasses"] or item["entity_uri"] == matched_mat_cat_uri:
+                score = util.cos_sim(chunk_embedding, item["embedding"]).item()
+                scoped_material_types.append({
+                    "entity_uri": item["entity_uri"],
+                    "text": item["text"],
+                    "score": score,
+                    "parent_category": matched_mat_cat_uri,
+                    "taxonomy_branch": "Material"
+                })
 
-    scoped_type_candidates = []
+    # ==========================================
+    # ROUTE 2: FUNCTIONAL TAXONOMY SIEVE
+    # ==========================================
+    # Explicitly target your new Protégé branch: bmp:LayerFunction
+    LAYER_FUNCTION_URI = "https://w3id.org/bmp#LayerFunction"
+    scoped_layer_functions = []
+    
     for item in ontology_corpus:
-        if matched_category_uri in item["superclasses"] or item["entity_uri"] == matched_category_uri:
+        # Check if this item explicitly inherits from LayerFunction or is LayerFunction itself
+        if LAYER_FUNCTION_URI in item["superclasses"] or item["entity_uri"] == LAYER_FUNCTION_URI:
             score = util.cos_sim(chunk_embedding, item["embedding"]).item()
-            scoped_type_candidates.append({
+            scoped_layer_functions.append({
                 "entity_uri": item["entity_uri"],
                 "text": item["text"],
                 "score": score,
-                "parent_category": matched_category_uri
+                "parent_category": LAYER_FUNCTION_URI,
+                "taxonomy_branch": "Function"
             })
 
-    scoped_type_candidates.sort(key=lambda x: x["score"], reverse=True)
-    return scoped_type_candidates[:top_k]
+    # Sort both branches individually by their semantic scores
+    scoped_material_types.sort(key=lambda x: x["score"], reverse=True)
+    scoped_layer_functions.sort(key=lambda x: x["score"], reverse=True)
+
+    # Merge the best candidates from both worlds into a unified context payload
+    return scoped_layer_functions[:3] + scoped_material_types[:top_k]
 
 
 ############################################################
@@ -470,7 +512,11 @@ def llm_reasoning_to_rdf(element_uri, german_desc, english_desc, ontology_matche
 
     system_prompt = """
 You are a deterministic mapping agent for a Semantic Web engine. Map the architectural description fragments precisely to the provided scoped IRIs.
-Always select the specific MaterialType subclass IRI for 'predicted_material_iri' and its broader parent class for 'predicted_function_iri'.
+
+Strictly adhere to these three semantic mapping property assignments for each layer item:
+1. 'predicted_function_iri': Must be an explicit subclass of bmp:LayerFunction (e.g., bmp:LoadBearing, bmp:Insulating, bmp:Finishing). Never use a material name here.
+2. 'predicted_category_iri': Must be the broad, top-level material class anchor (e.g., bmp:Concrete, bmp:Brick, bmp:MineralFibre).
+3. 'predicted_type_iri': Must be the highly specific sub-ordinary material type class (e.g., bmp:LightWeightConcrete, bmp:ExpandedPolystyrene, bmp:BrickMasonryUnit).
 
 Output a single, raw JSON object and NOTHING else. Do not wrap in markdown blocks or output introductory text.
 
@@ -482,8 +528,9 @@ Expected JSON Structure:
   "layers": [
     {
       "layer_index": 1,
-      "predicted_function_iri": "BROADER_PARENT_CATEGORY_IRI",
-      "predicted_material_iri": "SPECIFIC_SUBORDINARY_TYPE_IRI"
+      "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+      "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+      "predicted_type_iri": "https://w3id.org/bmp#LightWeightConcrete"
     }
   ]
 }
@@ -522,9 +569,9 @@ Valid Constraints Vocabulary (You must pull from these exact options):
 
 
 ##########################################################
-# GRAPH GENERATION LOGIC TIER
+# GRAPH GENERATION LOGIC TIER (UPDATED LAYERSET LITERALS)
 ##########################################################
-def compile_json_to_graph(graph_instance, element_uri, variants_data):
+def compile_json_to_graph(graph_instance, element_uri, variants_data, german_source_desc=None, english_source_desc=None):
     if not variants_data:
         return
 
@@ -557,26 +604,40 @@ def compile_json_to_graph(graph_instance, element_uri, variants_data):
         
         if "layer_topology" in json_data:
             graph_instance.add((layerset_uri, RDF.type, URIRef(json_data["layer_topology"])))
-        if "layer_set_description" in json_data:
+            
+        # --- ENHANCED SOURCE DESCRIPTION COUPLING ---
+        # If true source descriptions are passed through Python context, preserve them natively
+        if german_source_desc and "No German description found" not in german_source_desc:
+            graph_instance.add((layerset_uri, AT.hasDescription, Literal(german_source_desc, lang="de")))
+        elif "layer_set_description" in json_data:
+            # Fallback to LLM text if context arguments are missing
             graph_instance.add((layerset_uri, AT.hasDescription, Literal(json_data["layer_set_description"], lang="de")))
 
+        if english_source_desc and "No English translation found" not in english_source_desc:
+            graph_instance.add((layerset_uri, AT.hasDescription, Literal(english_source_desc, lang="en")))
+
+        # Process thickness node
         if "thickness_cm" in json_data and json_data["thickness_cm"]:
             thick_node = BNode()
             graph_instance.add((layerset_uri, BMP.hasThickness, thick_node))
             graph_instance.add((thick_node, RDF.value, Literal(float(json_data["thickness_cm"]), datatype=XSD.float)))
             graph_instance.add((thick_node, QUDT.unit, UNIT.CentiM))
 
+        # Process layer array data
         for i, layer_data in enumerate(json_data.get("layers", []), start=1):
             layer_uri = BBSR[f"{prefix}_layer_{instance_suffix}_var{idx}_0{i}"]
             graph_instance.add((layerset_uri, BMP.hasLayer, layer_uri))
             graph_instance.add((layer_uri, RDF.type, BMP.Layer))
             
-            if layer_data.get("predicted_function_iri"):
-                graph_instance.add((layer_uri, BMP.hasLayerFunction, URIRef(layer_data["predicted_function_iri"])))
-            if layer_data.get("predicted_material_iri"):
-                graph_instance.add((layer_uri, BMP.hasMaterialCategory, URIRef(layer_data["predicted_material_iri"])))
-
-
+        # --- THREE-PRONGED SEMANTIC PROPERTY BINDING ---
+        if layer_data.get("predicted_function_iri"):
+            graph_instance.add((layer_uri, BMP.hasLayerFunction, URIRef(layer_data["predicted_function_iri"])))
+            
+        if layer_data.get("predicted_category_iri"):
+            graph_instance.add((layer_uri, BMP.hasMaterialCategory, URIRef(layer_data["predicted_category_iri"])))
+            
+        if layer_data.get("predicted_type_iri"):
+            graph_instance.add((layer_uri, BMP.hasMaterialType, URIRef(layer_data["predicted_type_iri"])))
 ##########################################################
 # DETERMINISTIC PIPELINE EXECUTION ENGINE
 ##########################################################
@@ -625,8 +686,15 @@ for element in element_corpus:
     final_matches = unique_matches[:10]
     reasoned_json = llm_reasoning_to_rdf(uri_str, german_txt, english_txt, final_matches)
     
+# Enrich the existing in-memory graph instance safely using parent literal variables
     if reasoned_json:
-        compile_json_to_graph(g, uri_str, reasoned_json)
+        compile_json_to_graph(
+            graph_instance=g, 
+            element_uri=uri_str, 
+            variants_data=reasoned_json,
+            german_source_desc=german_txt,   # Passes the exact source German text
+            english_source_desc=english_txt  # Passes the exact source English text
+        )
 
 # 3. Save out the enriched structural master file once execution is complete
 out_path_enriched = BASE_DIR / "ttl" / "bbsr_buildings-enriched.ttl"

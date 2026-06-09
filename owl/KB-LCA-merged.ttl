@@ -5203,7 +5203,10 @@ Description: A heavy, dark, and exceptionally hard volcanic rock with a very fin
 
 ###  https://w3id.org/bmp#Brick
 bmp:Brick rdf:type owl:Class ;
-          rdfs:comment "https://www.iso.org/standard/32918.html"@en ;
+          rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
+                       """Material Category: Brick / Ceramics
+What it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. This plastic mixture is shaped into blocks and dried before being baked in a high-temperature kiln, which triggers a chemical sintering process that fuses the mineral particles into a durable, vitrified, rock-hard structure.
+Description: A traditional, rectangular masonry building block manufactured from raw earthen clays or silicates and hardened by extreme heat or chemical bonding, used for building structural walls and facades (Brick).""" ;
           rdfs:label "Brick"@en .
 
 
@@ -5247,7 +5250,10 @@ bmp:ClayUnit rdf:type owl:Class ;
 
 ###  https://w3id.org/bmp#Concrete
 bmp:Concrete rdf:type owl:Class ;
-             rdfs:comment "https://www.iso.org/standard/41260.html"@en ;
+             rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
+                          """Material Category: Concrete / Cementitious Composite
+What it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.
+Description: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete).""" ;
              rdfs:label "Concrete"@en .
 
 
@@ -5320,6 +5326,11 @@ What it is made of / How it's made: It is made from the exact same polystyrene p
 Description: High-density, rigid insulation boards with a completely waterproof, closed-cell structure (ExtrudedPolystyrene).""" .
 
 
+###  https://w3id.org/bmp#Finishing
+bmp:Finishing rdf:type owl:Class ;
+              rdfs:subClassOf bmp:LayerFunction .
+
+
 ###  https://w3id.org/bmp#FireClassification
 bmp:FireClassification rdf:type owl:Class ;
                        rdfs:subClassOf bmp:FireResistance ;
@@ -5363,6 +5374,11 @@ What it is made of / How it's made: It is made from silica sand and recycled gla
 Description: Fine, spun filaments of glass gathered into fluffy thermal insulation mats or structural reinforcement meshes (GlassFibres).""" .
 
 
+###  https://w3id.org/bmp#Glazing
+bmp:Glazing rdf:type owl:Class ;
+            rdfs:subClassOf bmp:LayerFunction .
+
+
 ###  https://w3id.org/bmp#GranitStone
 bmp:GranitStone rdf:type owl:Class ;
                 rdfs:subClassOf bmp:NaturalStone ;
@@ -5395,7 +5411,10 @@ Description: A specialized, high-density concrete mix designed primarily for rad
 
 ###  https://w3id.org/bmp#Hemp
 bmp:Hemp rdf:type owl:Class ;
-         rdfs:comment "https://www.iso.org/standard/78231.html"@en ;
+         rdfs:comment "https://www.iso.org/standard/78231.html"@en ,
+                      """Material Category: Hemp / Bio-composite / Plant Fiber
+What it is made of / How it's made: It is sourced from the fast-growing industrial hemp plant. Processing the plant's stalk yields two distinct materials: the tough, high-tensile outer skin is mechanically stripped to harvest raw plant threads, while the woody inner core is chopped into mulched pieces (hurds) and mixed with a formulated lime binder and water.
+Description: A highly sustainable, rapid-growth agricultural plant material processed into either flexible structural fibers or breathable, carbon-negative insulation composites used in green construction (Hemp).""" ;
          rdfs:label "Hemp"@en .
 
 
@@ -5427,6 +5446,21 @@ bmp:Hygric rdf:type owl:Class ;
                             bmp:Optical ,
                             bmp:Physical ,
                             bmp:Thermal .
+
+
+###  https://w3id.org/bmp#InbetweenLayer
+bmp:InbetweenLayer rdf:type owl:Class ;
+                   rdfs:subClassOf bmp:LayerLocation .
+
+
+###  https://w3id.org/bmp#InnerLayer
+bmp:InnerLayer rdf:type owl:Class ;
+               rdfs:subClassOf bmp:LayerLocation .
+
+
+###  https://w3id.org/bmp#Insulating
+bmp:Insulating rdf:type owl:Class ;
+               rdfs:subClassOf bmp:LayerFunction .
 
 
 ###  https://w3id.org/bmp#Layer
@@ -5485,6 +5519,11 @@ Description: A structural or insulating concrete formulated with air-filled aggr
 ###  https://w3id.org/bmp#LiquidTransportCoef
 bmp:LiquidTransportCoef rdf:type owl:Class ;
                         rdfs:subClassOf bmp:Hygric .
+
+
+###  https://w3id.org/bmp#LoadBearing
+bmp:LoadBearing rdf:type owl:Class ;
+                rdfs:subClassOf bmp:LayerFunction .
 
 
 ###  https://w3id.org/bmp#Material
@@ -5549,11 +5588,26 @@ bmp:NaturalStone rdf:type owl:Class ;
                  rdfs:label "NaturalStone"@en .
 
 
+###  https://w3id.org/bmp#NonLoadBearing
+bmp:NonLoadBearing rdf:type owl:Class ;
+                   rdfs:subClassOf bmp:LayerFunction .
+
+
+###  https://w3id.org/bmp#Opening
+bmp:Opening rdf:type owl:Class ;
+            rdfs:subClassOf bmp:LayerFunction .
+
+
 ###  https://w3id.org/bmp#Optical
 bmp:Optical rdf:type owl:Class ;
             rdfs:subClassOf bmp:MaterialProperty ;
             owl:disjointWith bmp:Physical ,
                              bmp:Thermal .
+
+
+###  https://w3id.org/bmp#OuterLayer
+bmp:OuterLayer rdf:type owl:Class ;
+               rdfs:subClassOf bmp:LayerLocation .
 
 
 ###  https://w3id.org/bmp#Physical

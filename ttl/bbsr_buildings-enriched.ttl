@@ -13,10 +13,7 @@ bbsr:building001 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3 - 5 Segmente gereiht, 45,40 m bis 74,80 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1958 (IW 58), vorgesehen vorwiegend für städtische Standorte"@de,
-        "Industrial housing construction in 1958 (IW 58), intended primarily for urban locations"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_001,
         bbsr:floor_001,
         bbsr:internal_wall_001,
@@ -31,10 +28,7 @@ bbsr:building002 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "regelrecht 4 Segmente gereiht, 57,60 m bis 67,20 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1963 (IW 63), vorgesehen für städtische Standorte in Berlin"@de,
-        "Industrial housing construction 1963 (IW 63), intended for urban locations in Berlin"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_002,
         bbsr:floor_002,
         bbsr:internal_wall_002,
@@ -49,10 +43,7 @@ bbsr:building003 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3 - 4 Segmente gereiht, 39,60 m bis 67,20 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für städtische Standorte, dazu Ratiostufen 1970 und 1974"@de,
-        "Industrial housing construction 1964 (IW 64), intended for urban locations, plus ratio levels 1970 and 1974"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_003,
         bbsr:floor_003,
         bbsr:internal_wall_003,
@@ -67,10 +58,7 @@ bbsr:building004 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3 Segmente gereiht, 36,00 m bis 54,00 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1964 (IW 64), vorgesehen für ländliche Standorte"@de,
-        "Industrial housing construction 1964 (IW 64), intended for rural locations"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_004,
         bbsr:floor_004,
         bbsr:internal_wall_004,
@@ -85,10 +73,7 @@ bbsr:building005 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "28,80 m - variabel (max. 67,20 m Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1977, weiterentwickelte Typenreihe IW 64 zur neuen Serie Brandenburg mit Ratio-Typen für innerstädtische und ländliche Standorte"@de,
-        "Industrial housing construction in 1977, further developed type series IW 64 to form the new Brandenburg series with ratio types for inner-city and rural locations"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_005,
         bbsr:floor_005,
         bbsr:internal_wall_005,
@@ -103,10 +88,7 @@ bbsr:building006 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3 4 Segmente gereiht, 39,60 m - variabel 67,20 m ... (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1965 (IW 65), weiterentwickelte Typenreihe der Blockbauweise 0,8 t, IW 64/Brandenburg"@de,
-        "Industrial housing construction 1965 (IW 65), further developed series of block construction 0.8 t, IW 64/Brandenburg"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_006,
         bbsr:floor_006,
         bbsr:internal_wall_006,
@@ -121,10 +103,7 @@ bbsr:building007 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "4 6 Segmente gereiht, 52,80 m variabel 72,00 m ... (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1961, (IW 61, auch IW 63), rste zentrale Entwicklung der Plattenbauweise (VEB Typenprojektierung Berlin, VEB Hochbau- projektierung Erfurt)"@de,
-        "Industrial housing construction 1961, (IW 61, also IW 63), first central development of prefabricated construction (VEB Typprojektierung Berlin, VEB Hochbauprojektierung Erfurt)"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_007,
         bbsr:floor_007,
         bbsr:internal_wall_007,
@@ -139,10 +118,7 @@ bbsr:building008 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3, tlw. 4 Segmente gereiht, 43,20 m bis 50,40 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1964, (IW 64), zentrale Weiterentwicklung der Serie IW 61...63/P1 durch Projekt IW 64/P-Halle (VEB Typenprojektierung Berlin)"@de,
-        "Industrial housing construction 1964, (IW 64), central further development of the IW 61...63/P1 series through the IW 64/P-Halle project (VEB Typprojektierung Berlin)"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_008,
         bbsr:floor_008,
         bbsr:internal_wall_008,
@@ -157,10 +133,7 @@ bbsr:building009 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "4 - 5 Segmente gereiht/5geschossig, 48,00 m bis 60,00 m; 2 Segmente mit Zusatzsegment (12 m) gereiht/11geschossig, 67,20 m, selten max. 3 Segmente gereiht, 82,80 m (Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1966 - 1977 (IW 66...77), zentral entwickelte Typenserie P2;"@de,
-        "Industrial housing construction 1966 - 1977 (IW 66...77), centrally developed type series P2;"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_009,
         bbsr:floor_009,
         bbsr:internal_wall_009,
@@ -175,10 +148,7 @@ bbsr:building010 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "Wohnblock A 103 (3 Segmente/117 WE), 65,27 m; A 104 (4 Segmente/156 WE), 84,44 m"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,70 m (Kellergeschoß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau 1961 - 1978, bezirkliche Entwick-"@de,
-        "Industrial housing construction 1961 - 1978, district development"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_010,
         bbsr:floor_010,
         bbsr:internal_wall_010,
@@ -193,10 +163,7 @@ bbsr:building011 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "} Einzelgebäude, (1) 22,22 m x 18,62 m, (2) 18,83 m x 37,84 m,"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)"@de,
-        "Industrial multi-story housing construction (1969 - 1978); PHH 16 (1969), WHH 17 (1977/78), PH 16 (1978)"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_011,
         bbsr:floor_011,
         bbsr:internal_wall_011,
@@ -211,10 +178,7 @@ bbsr:building012 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "3 - 5 Segmente gereiht, 36,00 m - variabel (max. 72,00 m Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller Wohnungsbau WBS 70 (Ersteinführung 1972),"@de,
-        "Industrial housing construction WBS 70 (first introduced in 1972),"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_012,
         bbsr:floor_012,
         bbsr:internal_wall_012,
@@ -228,10 +192,7 @@ bbsr:building013 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "2-3 Segmente gereiht, 48,00 m - variabel (max. 72,00 m Systemlänge)"@de ;
     om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau WBS 70 (Ersteinführung 1977), zentral entwickelte Serie;"@de,
-        "Industrial multi-storey residential building WBS 70 (first introduced in 1977), centrally developed series;"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_013,
         bbsr:floor_013,
         bbsr:internal_wall_013,
@@ -246,10 +207,7 @@ bbsr:building014 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "} Einzelgebäude,"@de ;
     om:hasStoreyHeight "2,80 m (Rohbau/Systemmaß)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau, Basis WBS 70 (Ausführung 1978), bezirkliche Entwicklung vom VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder"@de,
-        "Industrial multi-storey residential building, based on WBS 70 (execution in 1978), district development by VEB Wohnungs- und Gesellschaftsbaukombinat Frankfurt/Oder"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_014,
         bbsr:floor_014,
         bbsr:internal_wall_014,
@@ -264,10 +222,7 @@ bbsr:building015 a at:BuildingArchetype,
         bot:Building ;
     om:hasLength "} Einzelgebäude,"@de ;
     om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse), (Rohbau/Systemmaß) 4,20 m (Erdgeschoß, Gebäudetechnik)"@de ;
-    om:hasWidth "None"@de ;
-    at:hasBuildingType "Industrieller vielgeschossiger Wohnungsbau (Ausführung 1978), Typ WHH GT 18, bezirkliche Entwicklung vom VEB Wohnungsbaukombinat Berlin"@de,
-        "Industrial multi-storey residential building (execution in 1978), type WHH GT 18, district development by VEB Wohnungsbaukombinat Berlin"@en ;
-    at:hasDescription "None"@de ;
+    at:hasBuildingType at:ResidentialType ;
     at:hasElementArchetype bbsr:external_wall_015,
         bbsr:floor_015,
         bbsr:internal_wall_015,
@@ -279,343 +234,425 @@ bbsr:building015 a at:BuildingArchetype,
     bot:hasStorey "18 (nicht unterkellert), technisches Geschoß über dem 17. OG"@de .
 
 bbsr:ex_wall_layer_001_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:LightWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_001_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_002_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_002_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:HeavyWeightConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightAggregate .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_003_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_003_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:HeavyWeightConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightAggregate .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_004_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_004_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:HeavyWeightConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightAggregate .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_005_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_005_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_005_var3_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_006_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_006_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:HeavyWeightConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightAggregate .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_007_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:LightWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_007_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:HeavyWeightConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightAggregate .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_008_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_009_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 bbsr:ex_wall_layer_009_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_009_var3_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
-bbsr:ex_wall_layer_009_var4_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+bbsr:ex_wall_layer_009_var4_01 a bmp:Layer .
+
+bbsr:ex_wall_layer_009_var4_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExpandedPolystyrene .
 
 bbsr:ex_wall_layer_009_var5_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 bbsr:ex_wall_layer_010_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_010_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:RetainingWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_011_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_011_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:ElementedWall ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_011_var3_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:RetainingWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:ex_wall_layer_011_var4_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:RetainingWall ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:HeavyWeightConcrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
-bbsr:ex_wall_layer_012_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ThermalConductivity ;
-    bmp:hasMaterialCategory bmp:Concrete .
+bbsr:ex_wall_layer_012_var1_01 a bmp:Layer .
 
-bbsr:ex_wall_layer_013_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:Concrete .
+bbsr:ex_wall_layer_012_var1_02 a bmp:Layer .
 
-bbsr:ex_wall_layer_014_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ThermalConductivity ;
-    bmp:hasMaterialCategory bmp:Concrete .
+bbsr:ex_wall_layer_012_var1_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExtrudedPolystyrene .
 
-bbsr:ex_wall_layer_015_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ThermalConductivity ;
-    bmp:hasMaterialCategory bmp:Concrete .
+bbsr:ex_wall_layer_013_var1_01 a bmp:Layer .
+
+bbsr:ex_wall_layer_013_var1_02 a bmp:Layer .
+
+bbsr:ex_wall_layer_013_var1_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExtrudedPolystyrene .
+
+bbsr:ex_wall_layer_014_var1_01 a bmp:Layer .
+
+bbsr:ex_wall_layer_014_var1_02 a bmp:Layer .
+
+bbsr:ex_wall_layer_014_var1_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExtrudedPolystyrene .
+
+bbsr:ex_wall_layer_015_var1_01 a bmp:Layer .
+
+bbsr:ex_wall_layer_015_var1_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExtrudedPolystyrene .
 
 bbsr:ex_wall_layerset_001_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_001_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_001_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_001_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_002_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_002_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_002_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "cleaned on both sides"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_002_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_003_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_003_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_003_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "cleaned on both sides"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_003_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_004_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_004_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_004_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "cleaned on both sides"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_004_var2_01 ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_004_var2_01 .
 
 bbsr:ex_wall_layerset_005_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtzuschlagstoffbeton (LZS-Beton), einschichtig, 29 cm dick; dreischichtige Giebelwände, 26 cm dick, oder Porenbeton, 24 cm bzw. 30 cm dick; jeweils oberflächenfertig"@de,
+        "Light aggregate concrete (LZS concrete), single layer, 29 cm thick; three-layer gable walls, 26 cm thick, or aerated concrete, 24 cm or 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_005_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_005_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtzuschlagstoffbeton (LZS-Beton), einschichtig, 29 cm dick; dreischichtige Giebelwände, 26 cm dick, oder Porenbeton, 24 cm bzw. 30 cm dick; jeweils oberflächenfertig"@de,
+        "Light aggregate concrete (LZS concrete), single layer, 29 cm thick; three-layer gable walls, 26 cm thick, or aerated concrete, 24 cm or 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_005_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "26.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_005_var3 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "each surface-finished"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_005_var3_01 ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+    at:hasDescription "Leichtzuschlagstoffbeton (LZS-Beton), einschichtig, 29 cm dick; dreischichtige Giebelwände, 26 cm dick, oder Porenbeton, 24 cm bzw. 30 cm dick; jeweils oberflächenfertig"@de,
+        "Light aggregate concrete (LZS concrete), single layer, 29 cm thick; three-layer gable walls, 26 cm thick, or aerated concrete, 24 cm or 30 cm thick; each surface-finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_005_var3_01 .
 
 bbsr:ex_wall_layerset_006_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm (milde Klimazone) und 35 cm dick (strenge Klimazone); beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm (mild climate zone) and 35 cm thick (severe climate zone); cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_006_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_006_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "cleaned on both sides"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm (milde Klimazone) und 35 cm dick (strenge Klimazone); beiderseitig geputzt"@de,
+        "Lightweight concrete, single layer, 29 cm (mild climate zone) and 35 cm thick (severe climate zone); cleaned on both sides"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_006_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_007_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "haufwerksporiger Beton/Leichtbeton, einschichtig, 24 cm dick; Innen- und Außenputz"@de,
+        "porous concrete/lightweight concrete, single layer, 24 cm thick; Interior and exterior plastering"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_007_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_007_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "haufwerksporiger Beton/Leichtbeton, einschichtig, 24 cm dick; Innen- und Außenputz"@de,
+        "porous concrete/lightweight concrete, single layer, 24 cm thick; Interior and exterior plastering"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_007_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_008_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, einschichtig, 29 cm dick, oberflächenfertig"@de,
+        "Lightweight concrete, single layer, 29 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_008_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_009_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig"@de,
+        "1 to 3 layers depending on the level of development; 1 layer (lightweight concrete), 29 cm thick; 2-layer (lightweight concrete/HWL or normal concrete/internal or external insulation) 22 -29 cm thick; 3-layer (normal concrete/core insulation, foam polystyrene), 23 - 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_009_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_009_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig"@de,
+        "1 to 3 layers depending on the level of development; 1 layer (lightweight concrete), 29 cm thick; 2-layer (lightweight concrete/HWL or normal concrete/internal or external insulation) 22 -29 cm thick; 3-layer (normal concrete/core insulation, foam polystyrene), 23 - 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_009_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_009_var3 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig"@de,
+        "1 to 3 layers depending on the level of development; 1 layer (lightweight concrete), 29 cm thick; 2-layer (lightweight concrete/HWL or normal concrete/internal or external insulation) 22 -29 cm thick; 3-layer (normal concrete/core insulation, foam polystyrene), 23 - 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_009_var3_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_009_var4 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_009_var4_01 ;
+    at:hasDescription "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig"@de,
+        "1 to 3 layers depending on the level of development; 1 layer (lightweight concrete), 29 cm thick; 2-layer (lightweight concrete/HWL or normal concrete/internal or external insulation) 22 -29 cm thick; 3-layer (normal concrete/core insulation, foam polystyrene), 23 - 30 cm thick; each surface-finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_009_var4_01,
+        bbsr:ex_wall_layer_009_var4_02 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_009_var5 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "1- bis 3schichtig je nach Entwicklungsstand; 1schichtig (Leichtbeton), 29 cm dick; 2schichtig (Leichtbeton/HWL bzw. Normalbeton/Innen- oder Außendämmung) 22 -29 cm dick; 3schichtig (Normalbeton/Kerndämmung, Schaumpolystyrol), 23 - 30 cm dick; jeweils oberflächenfertig"@de,
+        "1 to 3 layers depending on the level of development; 1 layer (lightweight concrete), 29 cm thick; 2-layer (lightweight concrete/HWL or normal concrete/internal or external insulation) 22 -29 cm thick; 3-layer (normal concrete/core insulation, foam polystyrene), 23 - 30 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_009_var5_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_010_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Längswand, Leichtbeton, einschichtig, 28 cm dick; Giebelwand, Normalbeton/Kerndämmung (Schaumpolystyrol), 3schichtig, 30 cm dick, jeweils oberflächenfertig"@de,
+        "Longitudinal wall, lightweight concrete, single layer, 28 cm thick; Gable wall, normal concrete/core insulation (foam polystyrene), 3 layers, 30 cm thick, each surface finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_010_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "28.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_010_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Längswand, Leichtbeton, einschichtig, 28 cm dick; Giebelwand, Normalbeton/Kerndämmung (Schaumpolystyrol), 3schichtig, 30 cm dick, jeweils oberflächenfertig"@de,
+        "Longitudinal wall, lightweight concrete, single layer, 28 cm thick; Gable wall, normal concrete/core insulation (foam polystyrene), 3 layers, 30 cm thick, each surface finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_010_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_011_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig"@de,
+        "(1) Solid wall and parapet panels, lightweight concrete (foam concrete), single-layer, 29 cm thick; (2) Lightweight concrete, single layer, 32 cm thick; (3) Normal concrete with core insulation, 3 layers, 29 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_011_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_011_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "(2) Lightweight concrete, single layer, 32 cm thick"@de ;
+    at:hasDescription "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig"@de,
+        "(1) Solid wall and parapet panels, lightweight concrete (foam concrete), single-layer, 29 cm thick; (2) Lightweight concrete, single layer, 32 cm thick; (3) Normal concrete with core insulation, 3 layers, 29 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_011_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_011_var3 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "(3) Normal concrete with core insulation, 3 layers, 29 cm thick"@de ;
+    at:hasDescription "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig"@de,
+        "(1) Solid wall and parapet panels, lightweight concrete (foam concrete), single-layer, 29 cm thick; (2) Lightweight concrete, single layer, 32 cm thick; (3) Normal concrete with core insulation, 3 layers, 29 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_011_var3_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_011_var4 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "(1) Vollwand- und Brüstungsplatten, Leichtbeton (Schaumbeton) einschichtig, 29 cm dick; (2) Leichtbeton, einschichtig, 32 cm dick; (3) Normalbeton mit Kerndämmung, 3schichtig, 29 cm dick; jeweils ober- flächenfertig"@de,
+        "(1) Solid wall and parapet panels, lightweight concrete (foam concrete), single-layer, 29 cm thick; (2) Lightweight concrete, single layer, 32 cm thick; (3) Normal concrete with core insulation, 3 layers, 29 cm thick; each surface-finished"@en ;
     bmp:hasLayer bbsr:ex_wall_layer_011_var4_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_012_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_012_var1_01 ;
+    at:hasDescription "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig 26 cm dick, oberflächenfertig"@de,
+        "Normal concrete with core insulation (foam polystyrene or mineral wool, hydrophobic), 3 layers 26 cm thick, surface finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_012_var1_01,
+        bbsr:ex_wall_layer_012_var1_02,
+        bbsr:ex_wall_layer_012_var1_03 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "26.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_013_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_013_var1_01 ;
+    at:hasDescription "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 26 cm dick, oberflächenfertig"@de,
+        "Normal concrete with core insulation (foam polystyrene or mineral wool, hydrophobic), 3 layers, 26 cm thick, surface finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_013_var1_01,
+        bbsr:ex_wall_layer_013_var1_02,
+        bbsr:ex_wall_layer_013_var1_03 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "26.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_014_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_014_var1_01 ;
+    at:hasDescription "Normalbeton mit Kerndämmung (Schaumpolystyrol oder Mineralwolle, hydrophobiert), 3schichtig, 25 cm dick, oberflächenfertig"@de,
+        "Normal concrete with core insulation (foam polystyrene or mineral wool, hydrophobic), 3 layers, 25 cm thick, surface finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_014_var1_01,
+        bbsr:ex_wall_layer_014_var1_02,
+        bbsr:ex_wall_layer_014_var1_03 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "25.0"^^xsd:float ] .
 
 bbsr:ex_wall_layerset_015_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:ex_wall_layer_015_var1_01 ;
+    at:hasDescription "Normalbeton mit Kerndämmung (Schaumpolystyrol), 3schichtig, 21 cm dick, oberflächenfertig"@de,
+        "Normal concrete with core insulation (foam polystyrene), 3 layers, 21 cm thick, surface finished"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_015_var1_01,
+        bbsr:ex_wall_layer_015_var1_02 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "21.0"^^xsd:float ] .
 
@@ -801,64 +838,59 @@ bbsr:floor_015 a at:FloorArchetype,
     bmp:hasThickness "7,5 cm" .
 
 bbsr:floor_layer_001_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:floor_layer_002_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_003_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:floor_layer_004_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_005_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_006_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_007_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_008_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_009_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:floor_layer_010_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_011_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:floor_layer_012_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_013_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layer_014_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:floor_layer_015_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:floor_layerset_001_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
@@ -902,7 +934,7 @@ bbsr:floor_layerset_008_var1 a bmp:LayerSet,
 
 bbsr:floor_layerset_009_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "No German description found"@de ;
+    at:hasDescription ""@de ;
     bmp:hasLayer bbsr:floor_layer_009_var1_01 .
 
 bbsr:floor_layerset_010_var1 a bmp:LayerSet,
@@ -936,219 +968,255 @@ bbsr:floor_layerset_015_var1 a bmp:LayerSet,
     bmp:hasLayer bbsr:floor_layer_015_var1_01 .
 
 bbsr:int_wall_layer_001_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 bbsr:int_wall_layer_001_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:int_wall_layer_002_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:LightWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_002_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_003_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_003_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_004_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_005_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:EarthworksFill ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_006_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_006_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_007_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:EarthworksFill ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_008_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:EarthworksFill ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_009_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_010_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_011_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:int_wall_layer_011_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:int_wall_layer_012_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:EarthworksFill ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_013_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:EarthworksFill ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_014_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:int_wall_layer_015_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:int_wall_layerset_001_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "Ziegelblockelemente, 19 cm dick"@de ;
+    at:hasDescription "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt"@de,
+        "Brick block elements, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_001_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "19.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_001_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "cleaned on both sides"@de ;
+    at:hasDescription "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt"@de,
+        "Brick block elements, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_001_var2_01 .
 
 bbsr:int_wall_layerset_002_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_002_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_002_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Leichtbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_002_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_003_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Normal concrete, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_003_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_003_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Normal concrete, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_003_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_004_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 19 cm dick"@de,
+        "Normal concrete, 19 cm thick"@en ;
     bmp:hasLayer bbsr:int_wall_layer_004_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_005_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_005_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_006_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Normal concrete, 19 cm thick; cleaned on both sides"@en ;
     bmp:hasLayer bbsr:int_wall_layer_006_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_006_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
-    bmp:hasLayer bbsr:int_wall_layer_006_var2_01 ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+    at:hasDescription "Normalbeton, 19 cm dick; beiderseitig geputzt"@de,
+        "Normal concrete, 19 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayer bbsr:int_wall_layer_006_var2_01 .
 
 bbsr:int_wall_layerset_007_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_007_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_008_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_008_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_009_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_009_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_010_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig (im KG bewehrt)"@de,
+        "Normal concrete, 15 cm thick, surface finished (reinforced in the KG)"@en ;
     bmp:hasLayer bbsr:int_wall_layer_010_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_011_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "(1) Stahlbeton, 17 cm"@de ;
+    at:hasDescription "(1) Stahlbeton, 17 cm; (2/3) Stahlbeton, 15 cm dick, jeweils oberflächenfertig"@de,
+        "(1) reinforced concrete, 17 cm; (2/3) Reinforced concrete, 15 cm thick, each surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_011_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "17.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_011_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "(2/3) Stahlbeton, 15 cm dick, jeweils oberflächenfertig"@de ;
+    at:hasDescription "(1) Stahlbeton, 17 cm; (2/3) Stahlbeton, 15 cm dick, jeweils oberflächenfertig"@de,
+        "(1) reinforced concrete, 17 cm; (2/3) Reinforced concrete, 15 cm thick, each surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_011_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_012_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_012_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_013_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_013_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_014_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 15 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:int_wall_layer_014_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "15.0"^^xsd:float ] .
 
 bbsr:int_wall_layerset_015_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normal- und Stahlbeton, 19 cm dick, oberflächenfertig;"@de,
+        "Normal and reinforced concrete, 19 cm thick, surface finished;"@en ;
     bmp:hasLayer bbsr:int_wall_layer_015_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
@@ -1249,232 +1317,274 @@ bbsr:internal_wall_015 a at:WallArchetype,
     bmp:hasLayerSet bbsr:int_wall_layerset_015_var1 .
 
 bbsr:part_wall_layer_001_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:LongHoleBrickComposite .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:LongHoleBrick .
 
 bbsr:part_wall_layer_002_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:InsulationElement ;
-    bmp:hasMaterialCategory beo:Gipselement .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory beo:ArmourUnit ;
+    bmp:hasMaterialType beo:ArmourUnit .
 
 bbsr:part_wall_layer_003_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_003_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_004_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_004_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_005_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_005_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_006_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_007_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_008_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_009_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_009_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_010_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:InsulationElement ;
-    bmp:hasMaterialCategory beo:Gipselement .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory beo:BuildingElementPart ;
+    bmp:hasMaterialType beo:Plaster .
 
 bbsr:part_wall_layer_011_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_012_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_012_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_013_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_013_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction beo:BuildingElementPart ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_014_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Concrete ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layer_015_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:part_wall_layerset_001_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Langlochziegelverbund, 7,1 cm dick"@de,
+        "Long hole brick composite, 7.1 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_001_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.1"^^xsd:float ] .
 
 bbsr:part_wall_layerset_002_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "Gipselemente, 5 cm dick"@de ;
+    at:hasDescription "Gipselemente, 5 cm dick"@de,
+        "Plaster elements, 5 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_002_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_003_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Gips, 7 cm dick; Normalbeton, 6 cm dick"@de,
+        "plaster, 7 cm thick; Normal concrete, 6 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_003_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_003_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Gips, 7 cm dick; Normalbeton, 6 cm dick"@de,
+        "plaster, 7 cm thick; Normal concrete, 6 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_003_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "6.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_004_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Gips, 7 cm dick; Normalbeton, 6 cm dick"@de,
+        "plaster, 7 cm thick; Normal concrete, 6 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_004_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_004_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Gips, 7 cm dick; Normalbeton, 6 cm dick"@de,
+        "plaster, 7 cm thick; Normal concrete, 6 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_004_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "6.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_005_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm dick; Gips, 7 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 6 cm thick; Plaster, 7 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_005_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_005_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm dick; Gips, 7 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 6 cm thick; Plaster, 7 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_005_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_006_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Gips, 7 cm dick, und Normalbeton, 4 cm dick (Trennwand Küche/Bad), jeweils oberflächenfertig"@de,
+        "Plaster, 7 cm thick, and normal concrete, 4 cm thick (kitchen/bathroom partition), each surface-finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_006_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "11.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_007_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 10 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 10 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_007_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_008_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 4 cm (Trennwand Küche/Bad) und 7 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 4 cm (kitchen/bathroom partition) and 7 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_008_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_009_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 4, 6 und 7 cm dick; Gips, 7 cm dick"@de,
+        "Normal concrete, 4, 6 and 7 cm thick; Plaster, 7 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_009_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_009_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 4, 6 und 7 cm dick; Gips, 7 cm dick"@de,
+        "Normal concrete, 4, 6 and 7 cm thick; Plaster, 7 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_009_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_010_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "Gipselemente, 7 cm dick"@de ;
+    at:hasDescription "Gipselemente, 7 cm dick"@de,
+        "Plaster elements, 7 cm thick"@en ;
     bmp:hasLayer bbsr:part_wall_layer_010_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_011_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton oder Gips, 7 cm dick, oberflächenfertig"@de,
+        "Normal concrete or plaster, 7 cm thick, surface-finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_011_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_012_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig"@de,
+        "Normal concrete, 6 cm and 4 cm (sanitary room cell) thick; Plaster, 7 cm thick, each surface ready"@en ;
     bmp:hasLayer bbsr:part_wall_layer_012_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "10.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_012_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig"@de,
+        "Normal concrete, 6 cm and 4 cm (sanitary room cell) thick; Plaster, 7 cm thick, each surface ready"@en ;
     bmp:hasLayer bbsr:part_wall_layer_012_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_013_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig"@de,
+        "Normal concrete, 6 cm and 4 cm (sanitary room cell) thick; Plaster, 7 cm thick, each surface ready"@en ;
     bmp:hasLayer bbsr:part_wall_layer_013_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "10.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_013_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 6 cm und 4 cm (Sanitärraumzelle) dick; Gips, 7 cm dick, jeweils oberflächenfertig"@de,
+        "Normal concrete, 6 cm and 4 cm (sanitary room cell) thick; Plaster, 7 cm thick, each surface ready"@en ;
     bmp:hasLayer bbsr:part_wall_layer_013_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "7.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_014_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Normalbeton, 4 cm und 7 cm dick, oberflächenfertig"@de,
+        "Normal concrete, 4 cm and 7 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:part_wall_layer_014_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:part_wall_layerset_015_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "monolithischer Teil in Stahlbeton: Erdgeschoß"@de,
+        "monolithic part in reinforced concrete: ground floor"@en ;
     bmp:hasLayer bbsr:part_wall_layer_015_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
@@ -1681,221 +1791,257 @@ bbsr:slab_015 a at:ElementArchetype,
     bmp:hasLayerSet bbsr:slab_layerset_015_var1 .
 
 bbsr:slab_layer_001_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:Thermal ;
-    bmp:hasMaterialCategory bmp:VolumetricHeatCapacity .
+    bmp:hasLayerFunction bmp:LoadBearing .
 
 bbsr:slab_layer_002_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_002_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:slab_layer_003_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_003_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_004_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_004_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:slab_layer_005_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_006_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_007_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_008_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_009_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:PrestressedConcrete ;
-    bmp:hasMaterialCategory bmp:ReinforcedConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_009_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:slab_layer_010_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_011_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_013_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:PrestressedConcrete ;
-    bmp:hasMaterialCategory bmp:ReinforcedConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_013_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:slab_layer_014_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:PrestressedConcrete ;
-    bmp:hasMaterialCategory bmp:ReinforcedConcrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layer_014_var2_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 bbsr:slab_layer_015_var1_01 a bmp:Layer ;
-    bmp:hasLayerFunction bmp:ReinforcedConcrete ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 bbsr:slab_layerset_001_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "bivalve description short"@de ;
-    bmp:hasLayer bbsr:slab_layer_001_var1_01 ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+    at:hasDescription "zweischalig"@de,
+        "bivalve"@en ;
+    bmp:hasLayer bbsr:slab_layer_001_var1_01 .
 
 bbsr:slab_layerset_002_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Unterseite geputzt"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Underside cleaned"@en ;
     bmp:hasLayer bbsr:slab_layer_002_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:slab_layerset_002_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "Unterseite geputzt"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Unterseite geputzt"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Underside cleaned"@en ;
     bmp:hasLayer bbsr:slab_layer_002_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:slab_layerset_003_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Solid concrete ceiling, 14 cm thick"@en ;
     bmp:hasLayer bbsr:slab_layer_003_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:slab_layerset_003_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Solid concrete ceiling, 14 cm thick"@en ;
     bmp:hasLayer bbsr:slab_layer_003_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_004_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Solid concrete ceiling, 14 cm thick"@en ;
     bmp:hasLayer bbsr:slab_layer_004_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
 
 bbsr:slab_layerset_004_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 19 cm dick; Vollbetondecke, 14 cm dick"@de,
+        "Cavity ceiling, reinforced concrete, 19 cm thick; Solid concrete ceiling, 14 cm thick"@en ;
     bmp:hasLayer bbsr:slab_layer_004_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_005_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_005_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_006_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_006_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_007_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_007_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_008_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Hohlraumdecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Cavity ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_008_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_009_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m-Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_009_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:slab_layerset_009_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m-Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_009_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_010_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_010_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_011_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm bzw. bei (2) 15 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm or (2) 15 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_011_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "29.0"^^xsd:float ] .
+            rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_013_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_013_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:slab_layerset_013_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_013_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_014_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m - elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_014_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
 
 bbsr:slab_layerset_014_var2 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 6,00 m - Elemente in Spannbeton B 25 (B 300 alt); 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 6.00 m - elements in prestressed concrete B 25 (B 300 old); 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_014_var2_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 bbsr:slab_layerset_015_var1 a bmp:LayerSet,
         bmp:SingleLayer ;
-    at:hasDescription "German structural variant label description short"@de ;
+    at:hasDescription "Vollbetondecke, Stahlbeton, 14 cm dick, oberflächenfertig"@de,
+        "Solid concrete ceiling, reinforced concrete, 14 cm thick, surface finished"@en ;
     bmp:hasLayer bbsr:slab_layer_015_var1_01 ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
