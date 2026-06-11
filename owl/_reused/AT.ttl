@@ -144,8 +144,7 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/at#hasRenovationStatus
 :hasRenovationStatus rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Building ;
-                     rdfs:range :RenovationStatus .
+                     rdfs:domain :Building .
 
 
 ###  https://w3id.org/at#hasResidentialType
@@ -169,12 +168,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 #################################################################
 #    Data properties
 #################################################################
-
-###  https://w3id.org/at#hasHeatingDemand
-:hasHeatingDemand rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Building ;
-                  rdfs:range xsd:float .
-
 
 ###  https://w3id.org/at#isConstructedIn
 :isConstructedIn rdf:type owl:DatatypeProperty ;

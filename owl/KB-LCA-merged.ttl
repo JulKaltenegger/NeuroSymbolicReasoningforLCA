@@ -288,6 +288,36 @@ at:hasMaterial rdf:type owl:ObjectProperty ;
                rdfs:range at:Material .
 
 
+###  https://w3id.org/at#hasReferenceArea
+at:hasReferenceArea rdf:type owl:ObjectProperty ;
+                    rdfs:domain at:BuildingElement ;
+                    rdfs:range at:ReferenceArea .
+
+
+###  https://w3id.org/at#hasReferenceBuildingHeight
+at:hasReferenceBuildingHeight rdf:type owl:ObjectProperty ;
+                              rdfs:domain at:Building ;
+                              rdfs:range at:BuildingHeight .
+
+
+###  https://w3id.org/at#hasReferenceEnergyDemand
+at:hasReferenceEnergyDemand rdf:type owl:ObjectProperty ;
+                            rdfs:domain at:Building ;
+                            rdfs:range at:ReferenceEnergyDemand .
+
+
+###  https://w3id.org/at#hasReferenceEnergySupply
+at:hasReferenceEnergySupply rdf:type owl:ObjectProperty ;
+                            rdfs:domain at:Building ;
+                            rdfs:range at:ReferenceEnergySupply .
+
+
+###  https://w3id.org/at#hasReferenceFloorArea
+at:hasReferenceFloorArea rdf:type owl:ObjectProperty ;
+                         rdfs:domain at:Building ;
+                         rdfs:range at:FloorArea .
+
+
 ###  https://w3id.org/at#hasReferenceLayerSet
 at:hasReferenceLayerSet rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf owl:topObjectProperty ;
@@ -302,10 +332,18 @@ at:hasReferenceMaterial rdf:type owl:ObjectProperty ;
                         rdfs:range at:ReferenceMaterial .
 
 
+###  https://w3id.org/at#hasReferenceThickness
+at:hasReferenceThickness rdf:type owl:ObjectProperty ;
+                         rdfs:domain at:BuildingElement ;
+                         rdfs:range at:ReferenceThickness .
+
+
 ###  https://w3id.org/at#hasRenovationStatus
 at:hasRenovationStatus rdf:type owl:ObjectProperty ;
                        rdfs:domain at:Building ;
-                       rdfs:range at:RenovationStatus .
+                       rdfs:range at:MajorRenovation ,
+                                  at:MinorRenovation ,
+                                  at:NoRenovation .
 
 
 ###  https://w3id.org/at#hasResidentialType
@@ -1303,6 +1341,10 @@ lca:hasBuildingElement rdf:type owl:ObjectProperty ;
                        rdfs:range lca:BuildingElement .
 
 
+###  https://w3id.org/lca#hasClimateRegion
+lca:hasClimateRegion rdf:type owl:ObjectProperty .
+
+
 ###  https://w3id.org/lca#hasEnvironmentalIndicator
 lca:hasEnvironmentalIndicator rdf:type owl:ObjectProperty ,
                                        owl:FunctionalProperty ;
@@ -1398,10 +1440,28 @@ lca:hasSystemBoundary rdf:type owl:ObjectProperty ,
 #    Data properties
 #################################################################
 
-###  https://w3id.org/at#hasHeatingDemand
-at:hasHeatingDemand rdf:type owl:DatatypeProperty ;
-                    rdfs:domain at:Building ;
-                    rdfs:range xsd:float .
+###  https://w3id.org/at#hasArchetypeDescription
+at:hasArchetypeDescription rdf:type owl:DatatypeProperty ;
+                           rdfs:domain at:BuildingArchetype ;
+                           rdfs:range xsd:string .
+
+
+###  https://w3id.org/at#hasUnit
+at:hasUnit rdf:type owl:DatatypeProperty ;
+           rdfs:domain at:BuildingHeight ,
+                       at:FloorArea ,
+                       at:ReferenceEnergyDemand ,
+                       at:ReferenceEnergySupply ;
+           rdfs:range <http://qudt.org/schema/qudt/Unit> .
+
+
+###  https://w3id.org/at#hasValue
+at:hasValue rdf:type owl:DatatypeProperty ;
+            rdfs:domain at:BuildingHeight ,
+                        at:FloorArea ,
+                        at:ReferenceEnergyDemand ,
+                        at:ReferenceEnergySupply ;
+            rdfs:range xsd:float .
 
 
 ###  https://w3id.org/at#isConstructedIn
@@ -1616,13 +1676,17 @@ beo:treadLength rdf:type owl:DatatypeProperty ,
 
 
 ###  https://w3id.org/bmp#hasUnit
-bmp:hasUnit rdf:type owl:DatatypeProperty .
+bmp:hasUnit rdf:type owl:DatatypeProperty ;
+            rdfs:domain bmp:LayerProperty ,
+                        bmp:MaterialProperty ;
+            rdfs:range <http://qudt.org/schema/qudt/Unit> .
 
 
 ###  https://w3id.org/bmp#hasValue
 bmp:hasValue rdf:type owl:DatatypeProperty ;
              rdfs:domain bmp:LayerProperty ,
-                         bmp:MaterialProperty .
+                         bmp:MaterialProperty ;
+             rdfs:range xsd:float .
 
 
 ###  https://w3id.org/bot#hasSimple3DModel
@@ -1667,13 +1731,15 @@ bot:hasSimple3DModel rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/lca#hasUnit
 lca:hasUnit rdf:type owl:DatatypeProperty ;
-            rdfs:domain lca:EnvironmentalIndicator .
+            rdfs:domain lca:EnvironmentalIndicator ;
+            rdfs:range <http://qudt.org/schema/qudt/Unit> .
 
 
 ###  https://w3id.org/lca#hasValue
 lca:hasValue rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
-             rdfs:domain lca:EnvironmentalIndicator .
+             rdfs:domain lca:EnvironmentalIndicator ;
+             rdfs:range xsd:float .
 
 
 #################################################################
@@ -1695,9 +1761,7 @@ at:ApartmentHouse rdf:type owl:Class ;
 
 
 ###  https://w3id.org/at#Building
-at:Building rdf:type owl:Class ;
-            owl:equivalentClass bot:Building ,
-                                lca:Building .
+at:Building rdf:type owl:Class .
 
 
 ###  https://w3id.org/at#BuildingArchetype
@@ -1740,11 +1804,24 @@ at:BuildingArchetype rdf:type owl:Class ;
                      rdfs:comment "Building archetypes define and utilise core sets of representative construction structures and systems of a building type, formalised as exemplary buildings. BuildingArchetype os a controlled vocabulary (enumeration) containing named individuals (1..n)" .
 
 
+###  https://w3id.org/at#BuildingArchetypeProperty
+at:BuildingArchetypeProperty rdf:type owl:Class .
+
+
 ###  https://w3id.org/at#BuildingElement
 at:BuildingElement rdf:type owl:Class ;
                    owl:equivalentClass beo:BuiltElement ,
                                        bot:Element ,
                                        lca:BuildingElement .
+
+
+###  https://w3id.org/at#BuildingEnergyProperty
+at:BuildingEnergyProperty rdf:type owl:Class .
+
+
+###  https://w3id.org/at#BuildingHeight
+at:BuildingHeight rdf:type owl:Class ;
+                  rdfs:subClassOf at:BuildingArchetypeProperty .
 
 
 ###  https://w3id.org/at#BuildingType
@@ -1802,6 +1879,10 @@ at:ElementArchetype rdf:type owl:Class ;
                     rdfs:comment "A controlled vocabulary representing the standardized, representative building components (like walls, slabs, or floors) that make up a building archetype (ElementArchetype)." .
 
 
+###  https://w3id.org/at#ElementArchetypeProperty
+at:ElementArchetypeProperty rdf:type owl:Class .
+
+
 ###  https://w3id.org/at#FloorArchetype
 at:FloorArchetype rdf:type owl:Class ;
                   owl:equivalentClass [ rdf:type owl:Class ;
@@ -1826,6 +1907,11 @@ at:FloorArchetype rdf:type owl:Class ;
                   owl:disjointWith at:WallArchetype .
 
 
+###  https://w3id.org/at#FloorArea
+at:FloorArea rdf:type owl:Class ;
+             rdfs:subClassOf at:BuildingArchetypeProperty .
+
+
 ###  https://w3id.org/at#GalleryHouse
 at:GalleryHouse rdf:type owl:Class ;
                 rdfs:subClassOf at:MultifamilyHouse .
@@ -1848,16 +1934,46 @@ at:MaisonetteHouse rdf:type owl:Class ;
                    rdfs:subClassOf at:MultifamilyHouse .
 
 
+###  https://w3id.org/at#MajorRenovation
+at:MajorRenovation rdf:type owl:Class ;
+                   rdfs:subClassOf at:RenovationStatus .
+
+
 ###  https://w3id.org/at#Material
 at:Material rdf:type owl:Class ;
             owl:equivalentClass bmp:Material ,
                                 lca:Material .
 
 
+###  https://w3id.org/at#MinorRenovation
+at:MinorRenovation rdf:type owl:Class ;
+                   rdfs:subClassOf at:RenovationStatus .
+
+
 ###  https://w3id.org/at#MultifamilyHouse
 at:MultifamilyHouse rdf:type owl:Class ;
                     rdfs:subClassOf at:Residential ;
                     rdfs:comment "A residential building containing multiple independent dwelling units for separate households. A residential building designed to accommodate more than one household in separate dwelling units." .
+
+
+###  https://w3id.org/at#NoRenovation
+at:NoRenovation rdf:type owl:Class ;
+                rdfs:subClassOf at:RenovationStatus .
+
+
+###  https://w3id.org/at#ReferenceArea
+at:ReferenceArea rdf:type owl:Class ;
+                 rdfs:subClassOf at:ElementArchetypeProperty .
+
+
+###  https://w3id.org/at#ReferenceEnergyDemand
+at:ReferenceEnergyDemand rdf:type owl:Class ;
+                         rdfs:subClassOf at:BuildingEnergyProperty .
+
+
+###  https://w3id.org/at#ReferenceEnergySupply
+at:ReferenceEnergySupply rdf:type owl:Class ;
+                         rdfs:subClassOf at:BuildingEnergyProperty .
 
 
 ###  https://w3id.org/at#ReferenceLayerSet
@@ -1884,6 +2000,11 @@ at:ReferenceMaterial rdf:type owl:Class ;
                                                        at:ReferenceMaterial15
                                                      )
                                          ] .
+
+
+###  https://w3id.org/at#ReferenceThickness
+at:ReferenceThickness rdf:type owl:Class ;
+                      rdfs:subClassOf at:ElementArchetypeProperty .
 
 
 ###  https://w3id.org/at#RenovationStatus
