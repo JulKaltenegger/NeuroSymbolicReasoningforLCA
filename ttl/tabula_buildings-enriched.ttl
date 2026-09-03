@@ -735,19 +735,22 @@ tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedInd
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -783,47 +786,69 @@ tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndi
     bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -1081,19 +1106,22 @@ tabula:Building_DE_East_AB_06_HR_ReEx_001_Element_Window_1_Usual a owl:NamedIndi
 tabula:Building_DE_East_AB_06_HR_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -1129,47 +1157,75 @@ tabula:Building_DE_East_AB_06_HR_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndiv
     bmp:hasLayer tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -1478,44 +1534,63 @@ tabula:Building_DE_East_AB_07_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndi
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -1824,44 +1899,67 @@ tabula:Building_DE_East_AB_07_HR_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndiv
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -2141,7 +2239,7 @@ tabula:Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedI
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
@@ -2170,44 +2268,63 @@ tabula:Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndi
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -2516,44 +2633,71 @@ tabula:Building_DE_East_MFH_04_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedInd
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -2811,19 +2955,22 @@ tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIn
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -2859,47 +3006,67 @@ tabula:Building_DE_East_MFH_05_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedInd
     bmp:hasLayer tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -3157,19 +3324,22 @@ tabula:Building_DE_N_AB_03_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -3178,8 +3348,8 @@ tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndi
         tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
-        bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:Frame,
+        bmp:LayerSet ;
     bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
@@ -3191,61 +3361,91 @@ tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndivid
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L2,
-        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L3,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Wall_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
-        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2,
+        tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Usual_L3 .
 
-tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -3503,19 +3703,25 @@ tabula:Building_DE_N_AB_04_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L4,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3 .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
-        bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:Cavity,
+        bmp:LayerSet ;
+    bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3 .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3,
+        tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L4 .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -3551,47 +3757,69 @@ tabula:Building_DE_N_AB_04_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivid
     bmp:hasLayer tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L4 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L4_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L4_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L4 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L4_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Usual_L4_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -3900,44 +4128,71 @@ tabula:Building_DE_N_AB_05_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivid
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -4242,53 +4497,62 @@ tabula:Building_DE_N_AB_05_HR_ReEx_001_Element_Window_1_Usual a owl:NamedIndivid
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Advanced_L2,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Advanced_L3,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Floor_2_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Usual_L2 .
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Usual_L3 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Advanced_L2,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Advanced_L3,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1,
-        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Usual_L2 .
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2,
+        tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Usual_L3 .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -4307,61 +4571,70 @@ tabula:Building_DE_N_AB_05_HR_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividu
     bmp:hasLayer tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -4619,36 +4892,42 @@ tabula:Building_DE_N_AB_06_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2,
-        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L3,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
-        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2 .
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2,
+        tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3 .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -4667,47 +4946,70 @@ tabula:Building_DE_N_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivid
     bmp:hasLayer tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -4965,19 +5267,22 @@ tabula:Building_DE_N_AB_06_HR_ReEx_001_Element_Window_1_Usual a owl:NamedIndivid
 tabula:Building_DE_N_AB_06_HR_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -5013,47 +5318,71 @@ tabula:Building_DE_N_AB_06_HR_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividu
     bmp:hasLayer tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "12.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -5328,78 +5657,107 @@ tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndiv
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Roof_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Advanced_L2,
-        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Advanced_L3,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Roof_1_Existing a owl:NamedIndividual,
-        bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1 .
+        bmp:Frame,
+        bmp:LayerSet ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Roof_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
-        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Usual_L2 .
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Usual_L3 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L2,
-        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L3,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Wall_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
-        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2,
+        tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L3 .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Advanced_L2 a owl:NamedIndividual,
-        bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "30.0"^^xsd:float ] .
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
-tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Advanced_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:MineralFibre .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:NaturalStone .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -5704,36 +6062,42 @@ tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndiv
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Floor_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L2,
-        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L3,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Floor_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Floor_2_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1,
-        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L2 .
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L3 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Advanced_L2,
-        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Advanced_L3,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_1_Existing a owl:NamedIndividual,
-        bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1 .
+        bmp:Frame,
+        bmp:LayerSet ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1,
-        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Usual_L2 .
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2,
+        tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Usual_L3 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -5742,8 +6106,8 @@ tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedInd
         tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
-        bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:Frame,
+        bmp:LayerSet ;
     bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
@@ -5769,61 +6133,87 @@ tabula:Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
     bmp:hasLayer tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Advanced_L2 a owl:NamedIndividual,
-        bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "30.0"^^xsd:float ] .
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
-tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Advanced_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -6132,44 +6522,65 @@ tabula:Building_DE_N_MFH_04_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Facade .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -6478,44 +6889,71 @@ tabula:Building_DE_N_MFH_05_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -6773,19 +7211,22 @@ tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndiv
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2,
-        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
-        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 .
+        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
@@ -6821,47 +7262,77 @@ tabula:Building_DE_N_MFH_06_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
     bmp:hasLayer tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
         tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
 
-tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -7170,44 +7641,71 @@ tabula:Building_DE_N_MFH_07_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -7487,7 +7985,7 @@ tabula:Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedInd
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
@@ -7516,44 +8014,71 @@ tabula:Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -7833,7 +8358,7 @@ tabula:Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedInd
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Existing_L1 .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
@@ -7862,44 +8387,69 @@ tabula:Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "20.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -8162,7 +8712,7 @@ tabula:Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIn
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
+        bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Existing_L1 .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
@@ -8208,44 +8758,59 @@ tabula:Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "20.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Aggregates .
+
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Roof_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "30.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Insulating .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Roof_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -8537,61 +9102,90 @@ tabula:Building_DE_N_MFH_11_Gen_ReEx_001_LayerSet_Roof_1_Usual a owl:NamedIndivi
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L2,
-        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+    bmp:hasLayer tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L3,
+        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_LayerSet_Wall_1_Existing a owl:NamedIndividual,
         bmp:LayerSet,
-        bmp:SingleLayer ;
-    bmp:hasLayer tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2 .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividual,
         bmp:LayerSet,
         bmp:MultiLayer ;
     bmp:hasLayer tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
-        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
+        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2,
+        tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L3 .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "29.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Polymer .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "19.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Polymer .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Advanced_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Advanced_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "40.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Advanced_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:WoodTimber .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Usual_L2 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Usual_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "35.0"^^xsd:float ] .
 
-tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
-        bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "28.0"^^xsd:float ] .
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Usual_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
 
-tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L3 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
-    bmp:hasThickness [ qudt:unit unit:CentiM ;
-            rdf:value "24.0"^^xsd:float ] .
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Advanced_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L3_Mat .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Usual_L3_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
         at:MajorRenovation ;
@@ -8614,430 +9208,527 @@ tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Status_Usual a owl:NamedIndividual,
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "2.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "2.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "4.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "4.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_AB_07_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_AB_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat .
 
 tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_East_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "1.0"^^xsd:float ] .
+
+tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_East_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Facade ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_03_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:LoadBearing .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Air .
+
+tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Floor_1_Existing_L3_Mat .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_AB_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "1.0"^^xsd:float ] .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "1.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "1.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Floor_2_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
+tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Roof_2_Existing_L2_Mat .
+
 tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:LoadBearing .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_05_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "2.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "2.0"^^xsd:float ] .
+
+tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_AB_06_HR_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:LoadBearing .
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Roof_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_02_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L1_Mat .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Floor_2_Existing_L2_Mat .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_1_Existing_L2_Mat .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_03_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_04_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "1.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_05_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat .
+
+tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "2.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "5.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "4.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_07_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "6.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:LoadBearing ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterial tabula:Building_DE_N_MFH_08_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Roof_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_09_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "8.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Floor_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Roof_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "18.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
-    bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_10_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "14.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Floor_2_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "10.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:MineralFibre ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Roof_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "18.0"^^xsd:float ] .
 
 tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
         bmp:Layer ;
     bmp:hasLayerFunction bmp:Insulating ;
-    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat ;
     bmp:hasThickness [ qudt:unit unit:CentiM ;
             rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial tabula:Building_DE_N_MFH_11_Gen_ReEx_001_Layer_Wall_1_Existing_L2_Mat .
 
 at:RenovationStatus a owl:Class .
 

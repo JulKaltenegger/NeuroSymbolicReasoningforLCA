@@ -4,956 +4,936 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/bmp#> .
 
-<http://w3id.org/bmp#> rdf:type owl:Ontology ;
-                        <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8651-0671> ;
-                        <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-9383-7234> ;
-                        <http://purl.org/dc/terms/description> """The Building Material Performance ontology is created to enrich 
+<http://w3id.org/bmp#> a owl:Ontology ;
+	<http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8651-0671> ;
+	<http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-9383-7234> ;
+	<http://purl.org/dc/terms/description> """The Building Material Performance ontology is created to enrich 
 building information models with highly aggregated information with respect to material information modelling and material simulation.
 
 BMP classifies construction materials based on categories, types and property groups. Each property group describes parameters to be used as input values for simulation works."""@en ;
-                        <http://purl.org/dc/terms/title> "Building Material Performance"@en ;
-                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "bmp"@en ;
-                        <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/bmp#"@en ;
-                        rdfs:label "Building Material Performance" ;
-                        owl:versionInfo "1.0"@en .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://purl.org/dc/terms/contributor
-<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/creator
-<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/description
-<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/title
-<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespacePrefix
-<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespaceUri
-<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
-
-
-###  http://xmlns.com/foaf/0.1/name
-<http://xmlns.com/foaf/0.1/name> rdf:type owl:AnnotationProperty .
-
-
-###  http://xmlns.com/foaf/0.1/weblog
-<http://xmlns.com/foaf/0.1/weblog> rdf:type owl:AnnotationProperty .
-
-
-#################################################################
-#    Datatypes
-#################################################################
-
-###  http://qudt.org/schema/qudt/Unit
-<http://qudt.org/schema/qudt/Unit> rdf:type rdfs:Datatype .
-
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  https://w3id.org/bmp#adjacentLayer
-:adjacentLayer rdf:type owl:ObjectProperty ;
-               rdfs:domain :Layer ;
-               rdfs:range :Layer .
-
-
-###  https://w3id.org/bmp#hasAdsorptionC
-:hasAdsorptionC rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                rdfs:domain :WaterVapourSorptionIsotherm ;
-                rdfs:range :AdsorptionC .
-
-
-###  https://w3id.org/bmp#hasAdsorptionK
-:hasAdsorptionK rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                rdfs:domain :WaterVapourSorptionIsotherm ;
-                rdfs:range :AdsorptionK .
-
-
-###  https://w3id.org/bmp#hasAdsorptionWm
-:hasAdsorptionWm rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                 rdfs:domain :WaterVapourSorptionIsotherm ;
-                 rdfs:range :AdsorptionWm .
-
-
-###  https://w3id.org/bmp#hasBulkDensity
-:hasBulkDensity rdf:type owl:ObjectProperty ;
-                rdfs:domain :Physical ;
-                rdfs:range :BulkDensity .
-
-
-###  https://w3id.org/bmp#hasDesorptionC
-:hasDesorptionC rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                rdfs:domain :WaterVapourSorptionIsotherm ;
-                rdfs:range :DesorptionC .
-
-
-###  https://w3id.org/bmp#hasDesorptionK
-:hasDesorptionK rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                rdfs:domain :WaterVapourSorptionIsotherm ;
-                rdfs:range :DesorptionK .
-
-
-###  https://w3id.org/bmp#hasDesorptionWm
-:hasDesorptionWm rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
-                 rdfs:domain :WaterVapourSorptionIsotherm ;
-                 rdfs:range :DesorptionWm .
-
-
-###  https://w3id.org/bmp#hasDropping
-:hasDropping rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :hasFireResistance ;
-             rdfs:domain :FireResistance ;
-             rdfs:range :Dropping .
-
-
-###  https://w3id.org/bmp#hasEffectiveGasPermeability
-:hasEffectiveGasPermeability rdf:type owl:ObjectProperty ;
-                             rdfs:domain :Physical ;
-                             rdfs:range :EffectiveGasPermeability .
-
-
-###  https://w3id.org/bmp#hasFireClassification
-:hasFireClassification rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :hasFireResistance ;
-                       rdfs:domain :FireResistance ;
-                       rdfs:range :FireClassification .
-
-
-###  https://w3id.org/bmp#hasFireResistance
-:hasFireResistance rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:domain :Durability ;
-                   rdfs:range :FireResistance .
-
-
-###  https://w3id.org/bmp#hasInnerLayer
-:hasInnerLayer rdf:type owl:ObjectProperty ;
-               rdfs:domain :LayerSet ;
-               rdfs:range :Layer .
-
-
-###  https://w3id.org/bmp#hasLayer
-:hasLayer rdf:type owl:ObjectProperty ;
-          rdfs:domain :LayerSet ;
-          rdfs:range :Layer .
-
-
-###  https://w3id.org/bmp#hasLayerFunction
-:hasLayerFunction rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Layer ;
-                  rdfs:range :LayerFunction .
-
-
-###  https://w3id.org/bmp#hasLifeSpan
-:hasLifeSpan rdf:type owl:ObjectProperty ;
-             rdfs:domain :Durability ;
-             rdfs:range :LifeSpan .
-
-
-###  https://w3id.org/bmp#hasLiquidTransportCoef
-:hasLiquidTransportCoef rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Hygric ;
-                        rdfs:range :LiquidTransportCoef .
-
-
-###  https://w3id.org/bmp#hasMaterialCategory
-:hasMaterialCategory rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Material .
-
-
-###  https://w3id.org/bmp#hasMaterialProperty
-:hasMaterialProperty rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Material ;
-                     rdfs:range :MaterialProperty .
-
-
-###  https://w3id.org/bmp#hasMaterialType
-:hasMaterialType rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Material .
-
-
-###  https://w3id.org/bmp#hasMoistureContent
-:hasMoistureContent rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :hasThermalConductivity ;
-                    rdfs:domain :ThermalConductivity ;
-                    rdfs:range :MoistureContent .
-
-
-###  https://w3id.org/bmp#hasOuterLayer
-:hasOuterLayer rdf:type owl:ObjectProperty ;
-               rdfs:domain :LayerSet ;
-               rdfs:range :Layer .
-
-
-###  https://w3id.org/bmp#hasPorosity
-:hasPorosity rdf:type owl:ObjectProperty ;
-             rdfs:domain :Physical ;
-             rdfs:range :Porosity .
-
-
-###  https://w3id.org/bmp#hasRcValue
-:hasRcValue rdf:type owl:ObjectProperty ;
-            rdfs:domain :Layer ,
-                        :LayerSet ;
-            rdfs:range [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasUnit ;
-                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasValue ;
-                         owl:someValuesFrom xsd:float
-                       ] .
-
-
-###  https://w3id.org/bmp#hasRelativeGasDiffusivity
-:hasRelativeGasDiffusivity rdf:type owl:ObjectProperty ;
-                           rdfs:domain :Physical ;
-                           rdfs:range :RelativeGasDiffusivity .
-
-
-###  https://w3id.org/bmp#hasSmokeDevelopment
-:hasSmokeDevelopment rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :hasFireResistance ;
-                     rdfs:domain :FireResistance ;
-                     rdfs:range :SmokeDevelopment .
-
-
-###  https://w3id.org/bmp#hasSolarTransmittance
-:hasSolarTransmittance rdf:type owl:ObjectProperty ;
-                       rdfs:domain :Thermal ;
-                       rdfs:range :SolarTransmittance .
-
-
-###  https://w3id.org/bmp#hasSpecificHeatCapacity
-:hasSpecificHeatCapacity rdf:type owl:ObjectProperty ;
-                         rdfs:domain :Thermal ;
-                         rdfs:range :SpecificHeatCapacity .
-
-
-###  https://w3id.org/bmp#hasTemperatureCondition
-:hasTemperatureCondition rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf :hasThermalConductivity ;
-                         rdfs:domain :ThermalConductivity ;
-                         rdfs:range :TempCondition .
-
-
-###  https://w3id.org/bmp#hasThermalConductivity
-:hasThermalConductivity rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Thermal ;
-                        rdfs:range :ThermalConductivity .
-
-
-###  https://w3id.org/bmp#hasThermalDiffusivity
-:hasThermalDiffusivity rdf:type owl:ObjectProperty ;
-                       rdfs:domain :Thermal ;
-                       rdfs:range :ThermalDiffusivity .
-
-
-###  https://w3id.org/bmp#hasThermalExpansionCoef
-:hasThermalExpansionCoef rdf:type owl:ObjectProperty ;
-                         rdfs:domain :Thermal ;
-                         rdfs:range :ThermalExpansionCoef .
-
-
-###  https://w3id.org/bmp#hasThickness
-:hasThickness rdf:type owl:ObjectProperty ;
-              rdfs:domain :Layer ,
-                          :LayerSet ;
-              rdfs:range [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasUnit ;
-                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasValue ;
-                           owl:someValuesFrom xsd:float
-                         ] .
-
-
-###  https://w3id.org/bmp#hasUValue
-:hasUValue rdf:type owl:ObjectProperty ;
-           rdfs:domain :Layer ,
-                       :LayerSet ;
-           rdfs:range [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasUnit ;
-                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasValue ;
-                        owl:someValuesFrom xsd:float
-                      ] .
-
-
-###  https://w3id.org/bmp#hasVolumetricHeatCapacity
-:hasVolumetricHeatCapacity rdf:type owl:ObjectProperty ;
-                           rdfs:domain :Thermal ;
-                           rdfs:range :VolumetricHeatCapacity .
-
-
-###  https://w3id.org/bmp#hasWaterVapourDiffusionThickness
-:hasWaterVapourDiffusionThickness rdf:type owl:ObjectProperty ;
-                                  rdfs:domain :Hygric ;
-                                  rdfs:range :WaterVapourDiffusionThickness .
-
-
-###  https://w3id.org/bmp#hasWaterVapourDiffusivity
-:hasWaterVapourDiffusivity rdf:type owl:ObjectProperty ;
-                           rdfs:domain :Hygric ;
-                           rdfs:range :WaterVapourDiffusivity .
-
-
-###  https://w3id.org/bmp#hasWaterVapourPermeability
-:hasWaterVapourPermeability rdf:type owl:ObjectProperty ;
-                            rdfs:domain :Hygric ;
-                            rdfs:range :WaterVapourPermeability .
-
-
-###  https://w3id.org/bmp#hasWaterVapourResistanceFactor
-:hasWaterVapourResistanceFactor rdf:type owl:ObjectProperty ;
-                                rdfs:domain :Hygric ;
-                                rdfs:range :WaterVapourResistanceFactor .
-
-
-###  https://w3id.org/bmp#hasWaterVapourSorptionIsotherm
-:hasWaterVapourSorptionIsotherm rdf:type owl:ObjectProperty ;
-                                rdfs:domain :Hygric ;
-                                rdfs:range :WaterVapourSorptionIsotherm .
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  https://w3id.org/bmp#hasUnit
-:hasUnit rdf:type owl:DatatypeProperty .
-
-
-###  https://w3id.org/bmp#hasValue
-:hasValue rdf:type owl:DatatypeProperty ;
-          rdfs:domain :LayerProperty ,
-                      :MaterialProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  https://w3id.org/bmp#Accoustic
-:Accoustic rdf:type owl:Class ;
-           rdfs:subClassOf :MaterialProperty ;
-           owl:disjointWith :Durability ,
-                            :Hygric ,
-                            :Mechanical ,
-                            :Optical ,
-                            :Physical ,
-                            :Thermal ;
-           rdfs:label "Accoustic"@en .
-
-
-###  https://w3id.org/bmp#AdsorptionC
-:AdsorptionC rdf:type owl:Class ;
-             rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#AdsorptionK
-:AdsorptionK rdf:type owl:Class ;
-             rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#AdsorptionWm
-:AdsorptionWm rdf:type owl:Class ;
-              rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#AirDryTimber
-:AirDryTimber rdf:type owl:Class ;
-              rdfs:subClassOf :WoodTimber ;
-              rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                           "Material Category: Wood / TimberWhat it is made of / How it's made: It is made of natural wood logs (like oak, pine, or spruce) composed of cellulose fibers and lignin. It is produced by stacking freshly cut lumber outdoors under a roof for months or years, allowing the natural wind and air circulation to evaporate the moisture level down to a stable $12\\text{--}15\\%$ without using artificial kiln heat.Description: Natural wood lumber that has been seasoned by outdoor air circulation to reduce moisture and prevent warping (AirDryTimber)." ;
-              rdfs:label "AirDryTimber"@en .
-
-
-###  https://w3id.org/bmp#BasaltStone
-:BasaltStone rdf:type owl:Class ;
-             rdfs:subClassOf :NaturalStone ;
-             rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                          """Material Category: Natural Stone (Igneous Rock)
+	<http://purl.org/dc/terms/title> "Building Material Performance"@en ;
+	<http://purl.org/vocab/vann/preferredNamespacePrefix> "bmp"@en ;
+	<http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/bmp#"@en ;
+	rdfs:label "Building Material Performance" ;
+	owl:versionInfo "1.0"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/contributor
+
+<http://purl.org/dc/terms/contributor> a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/creator
+
+<http://purl.org/dc/terms/creator> a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/description
+
+<http://purl.org/dc/terms/description> a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/title
+
+<http://purl.org/dc/terms/title> a owl:AnnotationProperty .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a owl:AnnotationProperty .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+
+<http://purl.org/vocab/vann/preferredNamespaceUri> a owl:AnnotationProperty .
+# 
+# http://xmlns.com/foaf/0.1/name
+
+<http://xmlns.com/foaf/0.1/name> a owl:AnnotationProperty .
+# 
+# http://xmlns.com/foaf/0.1/weblog
+
+<http://xmlns.com/foaf/0.1/weblog> a owl:AnnotationProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/schema/qudt/Unit
+
+<http://qudt.org/schema/qudt/Unit> a rdfs:Datatype .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/bmp#adjacentLayer
+
+:adjacentLayer a owl:ObjectProperty ;
+	rdfs:domain :Layer ;
+	rdfs:range :Layer .
+# 
+# https://w3id.org/bmp#hasAdsorptionC
+
+:hasAdsorptionC a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :AdsorptionC .
+# 
+# https://w3id.org/bmp#hasAdsorptionK
+
+:hasAdsorptionK a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :AdsorptionK .
+# 
+# https://w3id.org/bmp#hasAdsorptionWm
+
+:hasAdsorptionWm a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :AdsorptionWm .
+# 
+# https://w3id.org/bmp#hasBulkDensity
+
+:hasBulkDensity a owl:ObjectProperty ;
+	rdfs:domain :Physical ;
+	rdfs:range :BulkDensity .
+# 
+# https://w3id.org/bmp#hasDesorptionC
+
+:hasDesorptionC a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :DesorptionC .
+# 
+# https://w3id.org/bmp#hasDesorptionK
+
+:hasDesorptionK a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :DesorptionK .
+# 
+# https://w3id.org/bmp#hasDesorptionWm
+
+:hasDesorptionWm a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasWaterVapourSorptionIsotherm ;
+	rdfs:domain :WaterVapourSorptionIsotherm ;
+	rdfs:range :DesorptionWm .
+# 
+# https://w3id.org/bmp#hasDropping
+
+:hasDropping a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasFireResistance ;
+	rdfs:domain :FireResistance ;
+	rdfs:range :Dropping .
+# 
+# https://w3id.org/bmp#hasEffectiveGasPermeability
+
+:hasEffectiveGasPermeability a owl:ObjectProperty ;
+	rdfs:domain :Physical ;
+	rdfs:range :EffectiveGasPermeability .
+# 
+# https://w3id.org/bmp#hasFireClassification
+
+:hasFireClassification a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasFireResistance ;
+	rdfs:domain :FireResistance ;
+	rdfs:range :FireClassification .
+# 
+# https://w3id.org/bmp#hasFireResistance
+
+:hasFireResistance a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :Durability ;
+	rdfs:range :FireResistance .
+# 
+# https://w3id.org/bmp#hasInnerLayer
+
+:hasInnerLayer a owl:ObjectProperty ;
+	rdfs:domain :LayerSet ;
+	rdfs:range :Layer .
+# 
+# https://w3id.org/bmp#hasLayer
+
+:hasLayer a owl:ObjectProperty ;
+	rdfs:domain :LayerSet ;
+	rdfs:range :Layer .
+# 
+# https://w3id.org/bmp#hasLayerFunction
+
+:hasLayerFunction a owl:ObjectProperty ;
+	rdfs:domain :Layer ;
+	rdfs:range :LayerFunction .
+# 
+# https://w3id.org/bmp#hasLifeSpan
+
+:hasLifeSpan a owl:ObjectProperty ;
+	rdfs:domain :Durability ;
+	rdfs:range :LifeSpan .
+# 
+# https://w3id.org/bmp#hasLiquidTransportCoef
+
+:hasLiquidTransportCoef a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :LiquidTransportCoef .
+# 
+# https://w3id.org/bmp#hasMaterialCategory
+
+:hasMaterialCategory a owl:ObjectProperty .
+# 
+# https://w3id.org/bmp#hasMaterialProperty
+
+:hasMaterialProperty a owl:ObjectProperty ;
+	rdfs:domain :Material ;
+	rdfs:range :MaterialProperty .
+# 
+# https://w3id.org/bmp#hasMaterialType
+
+:hasMaterialType a owl:ObjectProperty .
+# 
+# https://w3id.org/bmp#hasMoistureContent
+
+:hasMoistureContent a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasThermalConductivity ;
+	rdfs:domain :ThermalConductivity ;
+	rdfs:range :MoistureContent .
+# 
+# https://w3id.org/bmp#hasOuterLayer
+
+:hasOuterLayer a owl:ObjectProperty ;
+	rdfs:domain :LayerSet ;
+	rdfs:range :Layer .
+# 
+# https://w3id.org/bmp#hasPorosity
+
+:hasPorosity a owl:ObjectProperty ;
+	rdfs:domain :Physical ;
+	rdfs:range :Porosity .
+# 
+# https://w3id.org/bmp#hasRcValue
+
+:hasRcValue a owl:ObjectProperty ;
+	rdfs:domain :Layer , :LayerSet ;
+	rdfs:range _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :hasUnit ;
+	owl:someValuesFrom <http://qudt.org/schema/qudt/Unit> .
+
+:hasRcValue rdfs:range _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty :hasValue ;
+	owl:someValuesFrom xsd:float .
+# 
+# https://w3id.org/bmp#hasRelativeGasDiffusivity
+
+:hasRelativeGasDiffusivity a owl:ObjectProperty ;
+	rdfs:domain :Physical ;
+	rdfs:range :RelativeGasDiffusivity .
+# 
+# https://w3id.org/bmp#hasSmokeDevelopment
+
+:hasSmokeDevelopment a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasFireResistance ;
+	rdfs:domain :FireResistance ;
+	rdfs:range :SmokeDevelopment .
+# 
+# https://w3id.org/bmp#hasSolarTransmittance
+
+:hasSolarTransmittance a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :SolarTransmittance .
+# 
+# https://w3id.org/bmp#hasSpecificHeatCapacity
+
+:hasSpecificHeatCapacity a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :SpecificHeatCapacity .
+# 
+# https://w3id.org/bmp#hasTemperatureCondition
+
+:hasTemperatureCondition a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasThermalConductivity ;
+	rdfs:domain :ThermalConductivity ;
+	rdfs:range :TempCondition .
+# 
+# https://w3id.org/bmp#hasThermalConductivity
+
+:hasThermalConductivity a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :ThermalConductivity .
+# 
+# https://w3id.org/bmp#hasThermalDiffusivity
+
+:hasThermalDiffusivity a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :ThermalDiffusivity .
+# 
+# https://w3id.org/bmp#hasThermalExpansionCoef
+
+:hasThermalExpansionCoef a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :ThermalExpansionCoef .
+# 
+# https://w3id.org/bmp#hasThickness
+
+:hasThickness a owl:ObjectProperty ;
+	rdfs:domain :Layer , :LayerSet ;
+	rdfs:range _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty :hasUnit ;
+	owl:someValuesFrom <http://qudt.org/schema/qudt/Unit> .
+
+:hasThickness rdfs:range _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :hasValue ;
+	owl:someValuesFrom xsd:float .
+# 
+# https://w3id.org/bmp#hasUValue
+
+:hasUValue a owl:ObjectProperty ;
+	rdfs:domain :Layer , :LayerSet ;
+	rdfs:range _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :hasUnit ;
+	owl:someValuesFrom <http://qudt.org/schema/qudt/Unit> .
+
+:hasUValue rdfs:range _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty :hasValue ;
+	owl:someValuesFrom xsd:float .
+# 
+# https://w3id.org/bmp#hasVolumetricHeatCapacity
+
+:hasVolumetricHeatCapacity a owl:ObjectProperty ;
+	rdfs:domain :Thermal ;
+	rdfs:range :VolumetricHeatCapacity .
+# 
+# https://w3id.org/bmp#hasWaterVapourDiffusionThickness
+
+:hasWaterVapourDiffusionThickness a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :WaterVapourDiffusionThickness .
+# 
+# https://w3id.org/bmp#hasWaterVapourDiffusivity
+
+:hasWaterVapourDiffusivity a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :WaterVapourDiffusivity .
+# 
+# https://w3id.org/bmp#hasWaterVapourPermeability
+
+:hasWaterVapourPermeability a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :WaterVapourPermeability .
+# 
+# https://w3id.org/bmp#hasWaterVapourResistanceFactor
+
+:hasWaterVapourResistanceFactor a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :WaterVapourResistanceFactor .
+# 
+# https://w3id.org/bmp#hasWaterVapourSorptionIsotherm
+
+:hasWaterVapourSorptionIsotherm a owl:ObjectProperty ;
+	rdfs:domain :Hygric ;
+	rdfs:range :WaterVapourSorptionIsotherm .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/bmp#hasUnit
+
+:hasUnit a owl:DatatypeProperty .
+# 
+# https://w3id.org/bmp#hasValue
+
+:hasValue a owl:DatatypeProperty ;
+	rdfs:domain :LayerProperty , :MaterialProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/bmp#Accoustic
+
+:Accoustic a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Durability , :Hygric , :Mechanical , :Optical , :Physical , :Thermal ;
+	rdfs:label "Accoustic"@en .
+# 
+# https://w3id.org/bmp#AdsorptionC
+
+:AdsorptionC a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#AdsorptionK
+
+:AdsorptionK a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#AdsorptionWm
+
+:AdsorptionWm a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#Aggregates
+
+:Aggregates a owl:Class .
+# 
+# https://w3id.org/bmp#AirDryTimber
+
+:AirDryTimber a owl:Class ;
+	rdfs:subClassOf :WoodTimber ;
+	rdfs:comment "Material Category: Wood / TimberWhat it is made of / How it's made: It is made of natural wood logs (like oak, pine, or spruce) composed of cellulose fibers and lignin. It is produced by stacking freshly cut lumber outdoors under a roof for months or years, allowing the natural wind and air circulation to evaporate the moisture level down to a stable $12\\text{--}15\\%$ without using artificial kiln heat.Description: Natural wood lumber that has been seasoned by outdoor air circulation to reduce moisture and prevent warping (AirDryTimber)." , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "AirDryTimber"@en .
+# 
+# https://w3id.org/bmp#BasaltStone
+
+:BasaltStone a owl:Class ;
+	rdfs:subClassOf :NaturalStone ;
+	rdfs:comment """Material Category: Natural Stone (Igneous Rock)
 What it is made of / How it's made: It is made of dense, dark minerals rich in iron and magnesium (like pyroxene and plagioclase). It is formed when molten volcanic lava erupts onto the Earth's surface or ocean floor and cools very rapidly, leaving no time for large crystals to grow.
-Description: A heavy, dark, and exceptionally hard volcanic rock with a very fine-grained texture (BasaltStone).""" ;
-             rdfs:label "BasaltStone"@en .
+Description: A heavy, dark, and exceptionally hard volcanic rock with a very fine-grained texture (BasaltStone).""" , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "BasaltStone"@en .
+# 
+# https://w3id.org/bmp#Brick
 
+:Brick a owl:Class ;
+	rdfs:comment "https://www.iso.org/standard/32918.html"@en ;
+	rdfs:label "Brick"@en .
+# 
+# https://w3id.org/bmp#BrickMasonryUnit
 
-###  https://w3id.org/bmp#Brick
-:Brick rdf:type owl:Class ;
-       rdfs:comment "https://www.iso.org/standard/32918.html"@en ;
-       rdfs:label "Brick"@en .
-
-
-###  https://w3id.org/bmp#BrickMasonryUnit
-:BrickMasonryUnit rdf:type owl:Class ;
-                  rdfs:subClassOf :Brick ;
-                  rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                               """Material Category: Brick / Ceramics
+:BrickMasonryUnit a owl:Class ;
+	rdfs:subClassOf :Brick ;
+	rdfs:comment """Material Category: Brick / Ceramics
 What it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. It is pressed or extruded into a rectangular block shape and then dried and baked in a high-temperature kiln until the minerals chemically fuse into a vitrified, rock-hard structure.
-Description: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit).""" ;
-                  rdfs:label "BrickMasonryUnit"@en .
+Description: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit).""" , "https://www.iso.org/standard/32918.html"@en ;
+	rdfs:label "BrickMasonryUnit"@en .
+# 
+# https://w3id.org/bmp#BulkDensity
 
+:BulkDensity a owl:Class ;
+	rdfs:subClassOf :Physical .
+# 
+# https://w3id.org/bmp#CalciumSilicateUnit
 
-###  https://w3id.org/bmp#BulkDensity
-:BulkDensity rdf:type owl:Class ;
-             rdfs:subClassOf :Physical .
-
-
-###  https://w3id.org/bmp#CalciumSilicateUnit
-:CalciumSilicateUnit rdf:type owl:Class ;
-                     rdfs:subClassOf :Brick ;
-                     rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                                  """Material Category: Brick / Masonry
+:CalciumSilicateUnit a owl:Class ;
+	rdfs:subClassOf :Brick ;
+	rdfs:comment """Material Category: Brick / Masonry
 What it is made of / How it's made: It is made from a precise mixture of lime (calcium oxide), quartz sand, and water. Instead of being fired in a kiln like clay bricks, these units are compressed heavily into molds and then cured inside a pressurized steam chamber (an autoclave) to trigger a chemical bonding process.
-Description: A durable, highly uniform, sand-lime building block cured using high-pressure steam (CalciumSilicateUnit).""" ;
-                     rdfs:label "CalciumSilicateUnit"@en .
+Description: A durable, highly uniform, sand-lime building block cured using high-pressure steam (CalciumSilicateUnit).""" , "https://www.iso.org/standard/32918.html"@en ;
+	rdfs:label "CalciumSilicateUnit"@en .
+# 
+# https://w3id.org/bmp#ClayUnit
 
+:ClayUnit a owl:Class ;
+	rdfs:subClassOf :Brick ;
+	rdfs:comment "Material Category: Brick / CeramicsWhat it is made of / How it's made: It is made strictly from natural kiln-firing clays and silicates. It is molded and baked at temperatures exceeding 1000 degree C, which gives it its characteristic terracotta-red or brown color and excellent weather resistance.Description: A traditional building block or tile manufactured exclusively from fired natural clay (ClayUnit)." , "https://www.iso.org/standard/32918.html"@en ;
+	rdfs:label "ClayUnit"@en .
+# 
+# https://w3id.org/bmp#Concrete
 
-###  https://w3id.org/bmp#ClayUnit
-:ClayUnit rdf:type owl:Class ;
-          rdfs:subClassOf :Brick ;
-          rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                       "Material Category: Brick / CeramicsWhat it is made of / How it's made: It is made strictly from natural kiln-firing clays and silicates. It is molded and baked at temperatures exceeding 1000 degree C, which gives it its characteristic terracotta-red or brown color and excellent weather resistance.Description: A traditional building block or tile manufactured exclusively from fired natural clay (ClayUnit)." ;
-          rdfs:label "ClayUnit"@en .
+:Concrete a owl:Class ;
+	rdfs:comment "https://www.iso.org/standard/41260.html"@en ;
+	rdfs:label "Concrete"@en .
+# 
+# https://w3id.org/bmp#DesorptionC
 
+:DesorptionC a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#DesorptionK
 
-###  https://w3id.org/bmp#Concrete
-:Concrete rdf:type owl:Class ;
-          rdfs:comment "https://www.iso.org/standard/41260.html"@en ;
-          rdfs:label "Concrete"@en .
+:DesorptionK a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#DesorptionWm
 
+:DesorptionWm a owl:Class ;
+	rdfs:subClassOf :WaterVapourSorptionIsotherm .
+# 
+# https://w3id.org/bmp#DrawnSheetGlass
 
-###  https://w3id.org/bmp#DesorptionC
-:DesorptionC rdf:type owl:Class ;
-             rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#DesorptionK
-:DesorptionK rdf:type owl:Class ;
-             rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#DesorptionWm
-:DesorptionWm rdf:type owl:Class ;
-              rdfs:subClassOf :WaterVapourSorptionIsotherm .
-
-
-###  https://w3id.org/bmp#DrawnSheetGlass
-:DrawnSheetGlass rdf:type owl:Class ;
-                 rdfs:subClassOf :Glass ;
-                 rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                              """Material Category: Glass
+:DrawnSheetGlass a owl:Class ;
+	rdfs:subClassOf :Glass ;
+	rdfs:comment """Material Category: Glass
 What it is made of / How it's made: It is made of melted silica sand, soda ash, and limestone. It is produced by a classic industrial method where the molten glass is physically pulled vertically upward out of the furnace by rollers, cooling in the air as a continuous sheet before being cut.
-Description: Flat glass produced by drawing a molten ribbon vertically, known for having a slight, wave-like optical distortion (DrawnSheetGlass).""" ;
-                 rdfs:label "DrawnSheetGlass"@en .
+Description: Flat glass produced by drawing a molten ribbon vertically, known for having a slight, wave-like optical distortion (DrawnSheetGlass).""" , "https://www.iso.org/standard/46375.html"@en ;
+	rdfs:label "DrawnSheetGlass"@en .
+# 
+# https://w3id.org/bmp#Dropping
 
+:Dropping a owl:Class ;
+	rdfs:subClassOf :FireResistance ;
+	rdfs:label "Dropping"@en .
+# 
+# https://w3id.org/bmp#Durability
 
-###  https://w3id.org/bmp#Dropping
-:Dropping rdf:type owl:Class ;
-          rdfs:subClassOf :FireResistance ;
-          rdfs:label "Dropping"@en .
+:Durability a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Hygric , :Mechanical , :Optical , :Physical , :Thermal ;
+	rdfs:label "Durability"@en .
+# 
+# https://w3id.org/bmp#ESG
 
+:ESG a owl:Class ;
+	rdfs:subClassOf :Glass ;
+	rdfs:comment "Material Category: Glass / Toughened Safety GlassWhat it is made of / How it's made: It is made from a standard sheet of float glass (silica sand, soda ash, and limestone) that undergoes a thermal tempering process. The glass is heated up to an intense temperature of around $600^\\circ\\text{C}$ and then blasted uniformly with cold air. This rapid cooling locks the outside layers in a state of high compression while the inside remains under high tension, drastically increasing its strength.Description: A single pane of highly toughened safety glass designed to withstand heavy impacts and break into thousands of tiny, blunt, relatively harmless pebbles instead of sharp shards (ESG)." .
+# 
+# https://w3id.org/bmp#EffectiveGasPermeability
 
-###  https://w3id.org/bmp#Durability
-:Durability rdf:type owl:Class ;
-            rdfs:subClassOf :MaterialProperty ;
-            owl:disjointWith :Hygric ,
-                             :Mechanical ,
-                             :Optical ,
-                             :Physical ,
-                             :Thermal ;
-            rdfs:label "Durability"@en .
+:EffectiveGasPermeability a owl:Class ;
+	rdfs:subClassOf :Physical .
+# 
+# https://w3id.org/bmp#ExpandedPolystyrene
 
-
-###  https://w3id.org/bmp#ESG
-:ESG rdf:type owl:Class ;
-     rdfs:subClassOf :Glass ;
-     rdfs:comment "Material Category: Glass / Toughened Safety GlassWhat it is made of / How it's made: It is made from a standard sheet of float glass (silica sand, soda ash, and limestone) that undergoes a thermal tempering process. The glass is heated up to an intense temperature of around $600^\\circ\\text{C}$ and then blasted uniformly with cold air. This rapid cooling locks the outside layers in a state of high compression while the inside remains under high tension, drastically increasing its strength.Description: A single pane of highly toughened safety glass designed to withstand heavy impacts and break into thousands of tiny, blunt, relatively harmless pebbles instead of sharp shards (ESG)." .
-
-
-###  https://w3id.org/bmp#EffectiveGasPermeability
-:EffectiveGasPermeability rdf:type owl:Class ;
-                          rdfs:subClassOf :Physical .
-
-
-###  https://w3id.org/bmp#ExpandedPolystyrene
-:ExpandedPolystyrene rdf:type owl:Class ;
-                     rdfs:subClassOf :Polymer ;
-                     rdfs:comment """Material Category: Polymer / Plastic Foam
+:ExpandedPolystyrene a owl:Class ;
+	rdfs:subClassOf :Polymer ;
+	rdfs:comment """Material Category: Polymer / Plastic Foam
 What it is made of / How it's made: It is made from raw polystyrene plastic beads containing a pocketed gas blowing agent. The beads are placed in a mold and hit with hot steam, causing them to puff up drastically, multiply in size, and press together to fuse into a lightweight white foam block.
 Description: The classic white, beaded insulation foam made by expanding plastic spheres with steam (ExpandedPolystyrene).""" .
+# 
+# https://w3id.org/bmp#ExtrudedPolystyrene
 
-
-###  https://w3id.org/bmp#ExtrudedPolystyrene
-:ExtrudedPolystyrene rdf:type owl:Class ;
-                     rdfs:subClassOf :Polymer ;
-                     rdfs:comment """Material Category: Polymer / Plastic Foam
+:ExtrudedPolystyrene a owl:Class ;
+	rdfs:subClassOf :Polymer ;
+	rdfs:comment """Material Category: Polymer / Plastic Foam
 What it is made of / How it's made: It is made from the exact same polystyrene plastic resin, but it is melted together with a gas and continuously forced (extruded) through a straight shaping die. This completely eliminates any gaps between beads, creating a smooth, solid, closed-cell foam board.
 Description: High-density, rigid insulation boards with a completely waterproof, closed-cell structure (ExtrudedPolystyrene).""" .
+# 
+# https://w3id.org/bmp#FireClassification
 
+:FireClassification a owl:Class ;
+	rdfs:subClassOf :FireResistance ;
+	rdfs:label "FireClassification"@en .
+# 
+# https://w3id.org/bmp#FireResistance
 
-###  https://w3id.org/bmp#FireClassification
-:FireClassification rdf:type owl:Class ;
-                    rdfs:subClassOf :FireResistance ;
-                    rdfs:label "FireClassification"@en .
+:FireResistance a owl:Class ;
+	rdfs:subClassOf :Durability ;
+	rdfs:comment "https://www.peroni.com/lang_UK/_download/EN_Reaction_to_Fire_Classification.pdf"@en ;
+	rdfs:label "FireResistance"@en .
+# 
+# https://w3id.org/bmp#FloatGlass
 
-
-###  https://w3id.org/bmp#FireResistance
-:FireResistance rdf:type owl:Class ;
-                rdfs:subClassOf :Durability ;
-                rdfs:comment "https://www.peroni.com/lang_UK/_download/EN_Reaction_to_Fire_Classification.pdf"@en ;
-                rdfs:label "FireResistance"@en .
-
-
-###  https://w3id.org/bmp#FloatGlass
-:FloatGlass rdf:type owl:Class ;
-            rdfs:subClassOf :Glass ;
-            rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                         """Material Category: Glass
+:FloatGlass a owl:Class ;
+	rdfs:subClassOf :Glass ;
+	rdfs:comment """Material Category: Glass
 What it is made of / How it's made: It is made of silica sand, soda ash, dolomite, and limestone. It is produced by pouring the liquid glass mixture out of a furnace directly onto a bath of molten liquid tin, where it floats, spreads out, and cools into a perfectly flat, uniform sheet.
-Description: Standard modern window glass manufactured by floating liquid glass over a smooth bed of molten tin (FloatGlass).""" ;
-            rdfs:label "FloatGlass"@en .
+Description: Standard modern window glass manufactured by floating liquid glass over a smooth bed of molten tin (FloatGlass).""" , "https://www.iso.org/standard/46375.html"@en ;
+	rdfs:label "FloatGlass"@en .
+# 
+# https://w3id.org/bmp#Glass
 
+:Glass a owl:Class ;
+	rdfs:comment "Glass materials are rigid, non-crystalline solids used extensively for windows, facades, and partitions. The category features basic manufactured flat glass (float glass), toughened single-pane safety glass (ESG), and shatterproof laminated safety glass (VSG). In multi-pane window systems, the airtight gaps between these glass layers are frequently injected with dense, invisible gases like argon to drastically improve the building's energy efficiency." , "https://www.iso.org/standard/46375.html"@en ;
+	rdfs:label "Glass"@en .
+# 
+# https://w3id.org/bmp#GlassFibres
 
-###  https://w3id.org/bmp#Glass
-:Glass rdf:type owl:Class ;
-       rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                    "Glass materials are rigid, non-crystalline solids used extensively for windows, facades, and partitions. The category features basic manufactured flat glass (float glass), toughened single-pane safety glass (ESG), and shatterproof laminated safety glass (VSG). In multi-pane window systems, the airtight gaps between these glass layers are frequently injected with dense, invisible gases like argon to drastically improve the building's energy efficiency." ;
-       rdfs:label "Glass"@en .
-
-
-###  https://w3id.org/bmp#GlassFibres
-:GlassFibres rdf:type owl:Class ;
-             rdfs:subClassOf :MineralFibre ;
-             rdfs:comment """Material Category: Mineral Fibre
+:GlassFibres a owl:Class ;
+	rdfs:subClassOf :MineralFibre ;
+	rdfs:comment """Material Category: Mineral Fibre
 What it is made of / How it's made: It is made from silica sand and recycled glass materials. The ingredients are melted in a furnace at extreme temperatures and then forced through microscopic holes while being blasted with air, spinning them into highly flexible glass threads.
 Description: Fine, spun filaments of glass gathered into fluffy thermal insulation mats or structural reinforcement meshes (GlassFibres).""" .
+# 
+# https://w3id.org/bmp#GranitStone
 
-
-###  https://w3id.org/bmp#GranitStone
-:GranitStone rdf:type owl:Class ;
-             rdfs:subClassOf :NaturalStone ;
-             rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                          """Material Category: Natural Stone (Igneous Rock)
+:GranitStone a owl:Class ;
+	rdfs:subClassOf :NaturalStone ;
+	rdfs:comment """Material Category: Natural Stone (Igneous Rock)
 What it is made of / How it's made: It is made of crystalline minerals like quartz, feldspar, and mica. It is formed deep underground where molten magma gets trapped and cools incredibly slowly over millions of years, allowing large, visible mineral crystals to develop.
-Description: A hard, heavy, and coarse-grained igneous rock with a distinctly speckled multi-colored appearance (GranitStone).""" ;
-             rdfs:label "GranitStone"@en .
+Description: A hard, heavy, and coarse-grained igneous rock with a distinctly speckled multi-colored appearance (GranitStone).""" , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "GranitStone"@en .
+# 
+# https://w3id.org/bmp#HeavyWeightAggregate
 
+:HeavyWeightAggregate a owl:Class ;
+	rdfs:subClassOf :Aggregates .
+# 
+# https://w3id.org/bmp#HeavyWeightConcrete
 
-###  https://w3id.org/bmp#HeavyWeightAggregate
-:HeavyWeightAggregate rdf:type owl:Class ;
-                      rdfs:subClassOf :Concrete ;
-                      rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                   """Material Category: Concrete Component
-What it is made of / How it's made: It is made from crushing exceptionally dense natural minerals or industrial materials like magnetite, barite, hematite, or iron shot. These dense stones are washed and graded by size to be used specifically as the coarse filler material inside heavy concrete mixes.
-Description: High-density stone or metal fragments used as raw aggregate filler to produce maximum-density concrete (HeavyWeightAggregate).""" ;
-                      rdfs:label "HeavyWeightAggregate"@en .
-
-
-###  https://w3id.org/bmp#HeavyWeightConcrete
-:HeavyWeightConcrete rdf:type owl:Class ;
-                     rdfs:subClassOf :Concrete ;
-                     rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                  """Material Category: Concrete
+:HeavyWeightConcrete a owl:Class ;
+	rdfs:subClassOf :Concrete ;
+	rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made by mixing standard cement, water, sand, and heavy-density stone aggregate fillers (like barite or magnetite). The resulting mix is incredibly dense and massive compared to regular structural concrete.
-Description: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete).""" ;
-                     rdfs:label "HeavyWeightConcrete"@en .
+Description: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete).""" , "https://www.iso.org/standard/41260.html"@en ;
+	rdfs:label "HeavyWeightConcrete"@en .
+# 
+# https://w3id.org/bmp#Hemp
 
+:Hemp a owl:Class ;
+	rdfs:comment "https://www.iso.org/standard/78231.html"@en ;
+	rdfs:label "Hemp"@en .
+# 
+# https://w3id.org/bmp#HempFibre
 
-###  https://w3id.org/bmp#Hemp
-:Hemp rdf:type owl:Class ;
-      rdfs:comment "https://www.iso.org/standard/78231.html"@en ;
-      rdfs:label "Hemp"@en .
-
-
-###  https://w3id.org/bmp#HempFibre
-:HempFibre rdf:type owl:Class ;
-           rdfs:subClassOf :Hemp ;
-           rdfs:comment "https://www.iso.org/standard/78231.html"@en ,
-                        """Material Category: Hemp / Natural Plant Fiber
+:HempFibre a owl:Class ;
+	rdfs:subClassOf :Hemp ;
+	rdfs:comment """Material Category: Hemp / Natural Plant Fiber
 What it is made of / How it's made: It is made from the long, tough outer skin of the industrial hemp plant stalk. These outer strands are separated from the woody core through mechanical stripping, cleaned, and combed out into strong textile-like plant threads.
-Description: Raw, high-tensile plant fibers woven into flexible acoustic insulation batts or structural reinforcing mats (HempFibre).""" ;
-           rdfs:label "HempFibre"@en .
+Description: Raw, high-tensile plant fibers woven into flexible acoustic insulation batts or structural reinforcing mats (HempFibre).""" , "https://www.iso.org/standard/78231.html"@en ;
+	rdfs:label "HempFibre"@en .
+# 
+# https://w3id.org/bmp#Hempcrete
 
-
-###  https://w3id.org/bmp#Hempcrete
-:Hempcrete rdf:type owl:Class ;
-           rdfs:subClassOf :Hemp ;
-           rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                        "https://www.iso.org/standard/78231.html"@en ,
-                        """Material Category: Hemp / Bio-composite
+:Hempcrete a owl:Class ;
+	rdfs:subClassOf :Hemp ;
+	rdfs:comment """Material Category: Hemp / Bio-composite
 What it is made of / How it's made: It is made by mixing the chopped, woody inner core of the industrial hemp plant (called hurds) with a binder made of slaked lime and water. The lime undergoes a chemical reaction with the air, turning back into stone and trapping the hemp fibers inside.
-Description: A sustainable, breathable, and carbon-negative building insulation material made of hemp hurds and lime (Hempcrete).""" ;
-           rdfs:label "Hempcrete"@en .
+Description: A sustainable, breathable, and carbon-negative building insulation material made of hemp hurds and lime (Hempcrete).""" , "https://www.iso.org/standard/41260.html"@en , "https://www.iso.org/standard/78231.html"@en ;
+	rdfs:label "Hempcrete"@en .
+# 
+# https://w3id.org/bmp#Hygric
 
+:Hygric a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Mechanical , :Optical , :Physical , :Thermal .
+# 
+# https://w3id.org/bmp#Layer
 
-###  https://w3id.org/bmp#Hygric
-:Hygric rdf:type owl:Class ;
-        rdfs:subClassOf :MaterialProperty ;
-        owl:disjointWith :Mechanical ,
-                         :Optical ,
-                         :Physical ,
-                         :Thermal .
+:Layer a owl:Class ;
+	owl:disjointWith :Material , :MaterialCategory , :MaterialProperty , :MaterialType .
+# 
+# https://w3id.org/bmp#LayerFunction
 
+:LayerFunction a owl:Class ;
+	rdfs:comment "The Layer Function class is used to give a first-time identification of building components, such as a layer, in building models."@en ;
+	rdfs:label "LayerFunction"@en .
+# 
+# https://w3id.org/bmp#LayerLocation
 
-###  https://w3id.org/bmp#Layer
-:Layer rdf:type owl:Class ;
-       owl:disjointWith :Material ,
-                        :MaterialCategory ,
-                        :MaterialProperty ,
-                        :MaterialType .
+:LayerLocation a owl:Class .
+# 
+# https://w3id.org/bmp#LayerProperty
 
+:LayerProperty a owl:Class .
+# 
+# https://w3id.org/bmp#LayerSet
 
-###  https://w3id.org/bmp#LayerFunction
-:LayerFunction rdf:type owl:Class ;
-               rdfs:comment "The Layer Function class is used to give a first-time identification of building components, such as a layer, in building models."@en ;
-               rdfs:label "LayerFunction"@en .
+:LayerSet a owl:Class .
+# 
+# https://w3id.org/bmp#LifeSpan
 
+:LifeSpan a owl:Class ;
+	rdfs:subClassOf :Durability ;
+	rdfs:comment "Service life time of a material or a product"@en ;
+	rdfs:label "LifeSpan"@en .
+# 
+# https://w3id.org/bmp#LightWeightAggregate
 
-###  https://w3id.org/bmp#LayerLocation
-:LayerLocation rdf:type owl:Class .
+:LightWeightAggregate a owl:Class ;
+	rdfs:subClassOf :Aggregates ;
+	rdfs:label "LightWeightAggregate"@en .
+# 
+# https://w3id.org/bmp#LightWeightConcrete
 
-
-###  https://w3id.org/bmp#LayerProperty
-:LayerProperty rdf:type owl:Class .
-
-
-###  https://w3id.org/bmp#LayerSet
-:LayerSet rdf:type owl:Class .
-
-
-###  https://w3id.org/bmp#LifeSpan
-:LifeSpan rdf:type owl:Class ;
-          rdfs:subClassOf :Durability ;
-          rdfs:comment "Service life time of a material or a product"@en ;
-          rdfs:label "LifeSpan"@en .
-
-
-###  https://w3id.org/bmp#LightWeightAggregate
-:LightWeightAggregate rdf:type owl:Class ;
-                      rdfs:subClassOf :Concrete ;
-                      rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                   """Material Category: Concrete Component
-What it is made of / How it's made: It is made from porous, low-density materials like expanded clay, shale, slate, pumice, or volcanic perlite. These materials are fired in a rotary kiln, causing gases inside them to expand and leave thousands of microscopic air pockets inside each stone.
-Description: Highly porous, low-density stone fragments used as concrete filler to minimize dead weight (LightWeightAggregate).""" ;
-                      rdfs:label "LightWeightAggregate"@en .
-
-
-###  https://w3id.org/bmp#LightWeightConcrete
-:LightWeightConcrete rdf:type owl:Class ;
-                     rdfs:subClassOf :Concrete ;
-                     rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                  """Material Category: Concrete
+:LightWeightConcrete a owl:Class ;
+	rdfs:subClassOf :Concrete ;
+	rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made by mixing cement, water, sand, and porous aggregates (like expanded clay or pumice). Alternatively, it can be made by injecting stable foam directly into a standard cement slurry to fill the structure with tiny bubbles.
-Description: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete).""" ;
-                     rdfs:label "LightWeightConcrete"@en .
+Description: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete).""" , "https://www.iso.org/standard/41260.html"@en ;
+	rdfs:label "LightWeightConcrete"@en .
+# 
+# https://w3id.org/bmp#LiquidTransportCoef
 
+:LiquidTransportCoef a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#Material
 
-###  https://w3id.org/bmp#LiquidTransportCoef
-:LiquidTransportCoef rdf:type owl:Class ;
-                     rdfs:subClassOf :Hygric .
+:Material a owl:Class ;
+	owl:disjointWith :MaterialCategory , :MaterialProperty , :MaterialType ;
+	rdfs:comment "Material class is used to describe a material as a non-living entity that manifest properties that can be measured or characterised."@en ;
+	rdfs:label "Material"@en .
+# 
+# https://w3id.org/bmp#MaterialCategory
 
+:MaterialCategory a owl:Class ;
+	owl:disjointWith :MaterialProperty ;
+	rdfs:comment "Material Category class is used to describe material categories in a higher aggregated level."@en ;
+	rdfs:label "MaterialCategory"@en .
+# 
+# https://w3id.org/bmp#MaterialProperty
 
-###  https://w3id.org/bmp#Material
-:Material rdf:type owl:Class ;
-          owl:disjointWith :MaterialCategory ,
-                           :MaterialProperty ,
-                           :MaterialType ;
-          rdfs:comment "Material class is used to describe a material as a non-living entity that manifest properties that can be measured or characterised."@en ;
-          rdfs:label "Material"@en .
+:MaterialProperty a owl:Class ;
+	owl:disjointWith :MaterialType ;
+	rdfs:comment "A property is an inherent or acquired feature of an item and cannot be part of several property sets."@en ;
+	rdfs:label "MaterialProperty"@en .
+# 
+# https://w3id.org/bmp#MaterialType
 
+:MaterialType a owl:Class ;
+	rdfs:comment "Material Types class is used to describe material typologies and sub typologies in low aggregated level."@en ;
+	rdfs:label "MaterialType"@en .
+# 
+# https://w3id.org/bmp#Mechanical
 
-###  https://w3id.org/bmp#MaterialCategory
-:MaterialCategory rdf:type owl:Class ;
-                  owl:disjointWith :MaterialProperty ,
-                                   :MaterialType ;
-                  rdfs:comment "Material Category class is used to describe material categories in a higher aggregated level."@en ;
-                  rdfs:label "MaterialCategory"@en .
+:Mechanical a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Optical , :Physical , :Thermal .
+# 
+# https://w3id.org/bmp#MineralFibre
 
+:MineralFibre a owl:Class ;
+	rdfs:comment "The mineral fiber category includes insulation and reinforcing materials made by melting down rock, glass, or industrial byproducts and spinning them into fine, wool-like threads. This category covers glass-based fibers (GlassFibres), stone-based insulation (Rockwool), and fibers created from iron-blasting furnace waste (Slagwool)." , "https://www.iso.org/standard/15229.html"@en ;
+	rdfs:label "MineralFibre"@en .
+# 
+# https://w3id.org/bmp#MoistureContent
 
-###  https://w3id.org/bmp#MaterialProperty
-:MaterialProperty rdf:type owl:Class ;
-                  owl:disjointWith :MaterialType ;
-                  rdfs:comment "A property is an inherent or acquired feature of an item and cannot be part of several property sets."@en ;
-                  rdfs:label "MaterialProperty"@en .
+:MoistureContent a owl:Class ;
+	rdfs:subClassOf :ThermalConductivity .
+# 
+# https://w3id.org/bmp#NaturalStone
 
+:NaturalStone a owl:Class ;
+	rdfs:comment "The natural stone category includes building materials harvested directly from the earth, formed over millions of years by intense geological heat, pressure, or mineral accumulation. This category covers grainy, compacted sand rock (SandStone), coarse and highly durable speckled volcanic rock (GranitStone), and fine-grained, dark volcanic rock (BasaltStone)." , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "NaturalStone"@en .
+# 
+# https://w3id.org/bmp#Optical
 
-###  https://w3id.org/bmp#MaterialType
-:MaterialType rdf:type owl:Class ;
-              rdfs:comment "Material Types class is used to describe material typologies and sub typologies in low aggregated level."@en ;
-              rdfs:label "MaterialType"@en .
+:Optical a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Physical , :Thermal .
+# 
+# https://w3id.org/bmp#Physical
 
+:Physical a owl:Class ;
+	rdfs:subClassOf :MaterialProperty ;
+	owl:disjointWith :Thermal .
+# 
+# https://w3id.org/bmp#Polymer
 
-###  https://w3id.org/bmp#Mechanical
-:Mechanical rdf:type owl:Class ;
-            rdfs:subClassOf :MaterialProperty ;
-            owl:disjointWith :Optical ,
-                             :Physical ,
-                             :Thermal .
+:Polymer a owl:Class ;
+	rdfs:comment "The polymer category includes versatile, oil-based synthetic plastics engineered for highly effective moisture resistance and heat insulation. This category specifically covers rigid blue or pink foam boards squeezed out through a manufacturing die (extrudedPolystyrene), and standard white beadboard made from pre-foamed beads compressed together into blocks (expandedPolysteren)." , "synthetic polymerized thermoplastic resin using the Styrene monomer" .
+# 
+# https://w3id.org/bmp#Porosity
 
+:Porosity a owl:Class ;
+	rdfs:subClassOf :Physical .
+# 
+# https://w3id.org/bmp#PrestressedConcrete
 
-###  https://w3id.org/bmp#MineralFibre
-:MineralFibre rdf:type owl:Class ;
-              rdfs:comment "https://www.iso.org/standard/15229.html"@en ,
-                           "The mineral fiber category includes insulation and reinforcing materials made by melting down rock, glass, or industrial byproducts and spinning them into fine, wool-like threads. This category covers glass-based fibers (GlassFibres), stone-based insulation (Rockwool), and fibers created from iron-blasting furnace waste (Slagwool)." ;
-              rdfs:label "MineralFibre"@en .
-
-
-###  https://w3id.org/bmp#MoistureContent
-:MoistureContent rdf:type owl:Class ;
-                 rdfs:subClassOf :ThermalConductivity .
-
-
-###  https://w3id.org/bmp#NaturalStone
-:NaturalStone rdf:type owl:Class ;
-              rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                           "The natural stone category includes building materials harvested directly from the earth, formed over millions of years by intense geological heat, pressure, or mineral accumulation. This category covers grainy, compacted sand rock (SandStone), coarse and highly durable speckled volcanic rock (GranitStone), and fine-grained, dark volcanic rock (BasaltStone)." ;
-              rdfs:label "NaturalStone"@en .
-
-
-###  https://w3id.org/bmp#Optical
-:Optical rdf:type owl:Class ;
-         rdfs:subClassOf :MaterialProperty ;
-         owl:disjointWith :Physical ,
-                          :Thermal .
-
-
-###  https://w3id.org/bmp#Physical
-:Physical rdf:type owl:Class ;
-          rdfs:subClassOf :MaterialProperty ;
-          owl:disjointWith :Thermal .
-
-
-###  https://w3id.org/bmp#Polymer
-:Polymer rdf:type owl:Class ;
-         rdfs:comment "The polymer category includes versatile, oil-based synthetic plastics engineered for highly effective moisture resistance and heat insulation. This category specifically covers rigid blue or pink foam boards squeezed out through a manufacturing die (extrudedPolystyrene), and standard white beadboard made from pre-foamed beads compressed together into blocks (expandedPolysteren)." ,
-                      "synthetic polymerized thermoplastic resin using the Styrene monomer" .
-
-
-###  https://w3id.org/bmp#Porosity
-:Porosity rdf:type owl:Class ;
-          rdfs:subClassOf :Physical .
-
-
-###  https://w3id.org/bmp#PrestressedConcrete
-:PrestressedConcrete rdf:type owl:Class ;
-                     rdfs:subClassOf :Concrete ;
-                     rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                  """Material Category: Concrete
+:PrestressedConcrete a owl:Class ;
+	rdfs:subClassOf :Concrete ;
+	rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made of high-strength structural concrete cast around high-tensile steel cables. The steel cables are stretched tight by hydraulic jacks, the concrete is poured around them, and once the concrete hardens, the tension on the cables is released, instantly clamping the concrete block tight.
-Description: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete).""" ;
-                     rdfs:label "PrestressedConcrete"@en .
+Description: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete).""" , "https://www.iso.org/standard/41260.html"@en ;
+	rdfs:label "PrestressedConcrete"@en .
+# 
+# https://w3id.org/bmp#RcValue
 
+:RcValue a owl:Class ;
+	rdfs:subClassOf :LayerProperty .
+# 
+# https://w3id.org/bmp#ReinforcedConcrete
 
-###  https://w3id.org/bmp#RcValue
-:RcValue rdf:type owl:Class ;
-         rdfs:subClassOf :LayerProperty .
-
-
-###  https://w3id.org/bmp#ReinforcedConcrete
-:ReinforcedConcrete rdf:type owl:Class ;
-                    rdfs:subClassOf :Concrete ;
-                    rdfs:comment """Material Category: Concrete / Composite Material
+:ReinforcedConcrete a owl:Class ;
+	rdfs:subClassOf :Concrete ;
+	rdfs:comment """Material Category: Concrete / Composite Material
 What it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.
 Description: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete).""" .
+# 
+# https://w3id.org/bmp#RelativeGasDiffusivity
 
+:RelativeGasDiffusivity a owl:Class ;
+	rdfs:subClassOf :Physical .
+# 
+# https://w3id.org/bmp#Rockwool
 
-###  https://w3id.org/bmp#RelativeGasDiffusivity
-:RelativeGasDiffusivity rdf:type owl:Class ;
-                        rdfs:subClassOf :Physical .
+:Rockwool a owl:Class ;
+	rdfs:subClassOf :MineralFibre ;
+	rdfs:comment "Material Category: Mineral FibreWhat it is made of / How it's made: It is made from natural volcanic basalt rock and chalk. The stones are melted down into liquid magma at around $1,600^\\circ\\text{C}$ and poured onto high-speed spinning wheels, which fling the liquid out into long, interlocking fuzzy fibers.Description: Stone wool insulation made by melting volcanic rock and spinning it into fireproof, acoustic mats (Rockwool)." ;
+	rdfs:label "Rockwool" .
+# 
+# https://w3id.org/bmp#SandStone
 
-
-###  https://w3id.org/bmp#Rockwool
-:Rockwool rdf:type owl:Class ;
-          rdfs:subClassOf :MineralFibre ;
-          rdfs:comment "Material Category: Mineral FibreWhat it is made of / How it's made: It is made from natural volcanic basalt rock and chalk. The stones are melted down into liquid magma at around $1,600^\\circ\\text{C}$ and poured onto high-speed spinning wheels, which fling the liquid out into long, interlocking fuzzy fibers.Description: Stone wool insulation made by melting volcanic rock and spinning it into fireproof, acoustic mats (Rockwool)." ;
-          rdfs:label "Rockwool" .
-
-
-###  https://w3id.org/bmp#SandStone
-:SandStone rdf:type owl:Class ;
-           rdfs:subClassOf :NaturalStone ;
-           rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                        """Material Category: Natural Stone (Sedimentary Rock)
+:SandStone a owl:Class ;
+	rdfs:subClassOf :NaturalStone ;
+	rdfs:comment """Material Category: Natural Stone (Sedimentary Rock)
 What it is made of / How it's made: It is made of small, grainy mineral particles—mostly quartz and feldspar. It is formed over vast geological eras as layers of sand accumulate at the bottoms of rivers or deserts, where they are slowly compressed by overlying weight and cemented together by natural silica or calcium deposits.
-Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" ;
-           rdfs:label "SandStone"@en .
+Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "SandStone"@en .
+# 
+# https://w3id.org/bmp#Slagwool
 
-
-###  https://w3id.org/bmp#Slagwool
-:Slagwool rdf:type owl:Class ;
-          rdfs:subClassOf :MineralFibre ;
-          rdfs:comment """Material Category: Mineral Fibre
+:Slagwool a owl:Class ;
+	rdfs:subClassOf :MineralFibre ;
+	rdfs:comment """Material Category: Mineral Fibre
 
 What it is made of / How it's made: It is made from blast-furnace slag, which is the molten mineral waste byproduct left over from smelting iron ore into steel. This liquid waste is collected, reheated, and spun using air pressure or spinning rotors into soft, fibrous wool insulation.
 
 Description: Mineral wool insulation manufactured by spinning molten industrial iron-smelting waste into thermal fibers (Slagwool).""" ;
-          rdfs:label "Slagwool" .
+	rdfs:label "Slagwool" .
+# 
+# https://w3id.org/bmp#SmokeDevelopment
 
+:SmokeDevelopment a owl:Class ;
+	rdfs:subClassOf :FireResistance ;
+	rdfs:label "SmokeDevelopment"@en .
+# 
+# https://w3id.org/bmp#SolarTransmittance
 
-###  https://w3id.org/bmp#SmokeDevelopment
-:SmokeDevelopment rdf:type owl:Class ;
-                  rdfs:subClassOf :FireResistance ;
-                  rdfs:label "SmokeDevelopment"@en .
+:SolarTransmittance a owl:Class ;
+	rdfs:subClassOf :Thermal .
+# 
+# https://w3id.org/bmp#SpecificHeatCapacity
 
+:SpecificHeatCapacity a owl:Class ;
+	rdfs:subClassOf :Thermal .
+# 
+# https://w3id.org/bmp#TempCondition
 
-###  https://w3id.org/bmp#SolarTransmittance
-:SolarTransmittance rdf:type owl:Class ;
-                    rdfs:subClassOf :Thermal .
+:TempCondition a owl:Class ;
+	rdfs:subClassOf :ThermalConductivity .
+# 
+# https://w3id.org/bmp#Thermal
 
+:Thermal a owl:Class ;
+	rdfs:subClassOf :MaterialProperty , :VolumetricHeatCapacity .
+# 
+# https://w3id.org/bmp#ThermalConductivity
 
-###  https://w3id.org/bmp#SpecificHeatCapacity
-:SpecificHeatCapacity rdf:type owl:Class ;
-                      rdfs:subClassOf :Thermal .
+:ThermalConductivity a owl:Class ;
+	rdfs:subClassOf :Thermal .
+# 
+# https://w3id.org/bmp#ThermalDiffusivity
 
+:ThermalDiffusivity a owl:Class ;
+	rdfs:subClassOf :Thermal .
+# 
+# https://w3id.org/bmp#ThermalExpansionCoef
 
-###  https://w3id.org/bmp#TempCondition
-:TempCondition rdf:type owl:Class ;
-               rdfs:subClassOf :ThermalConductivity .
+:ThermalExpansionCoef a owl:Class ;
+	rdfs:subClassOf :Thermal .
+# 
+# https://w3id.org/bmp#Thickness
 
+:Thickness a owl:Class ;
+	rdfs:subClassOf :LayerProperty .
+# 
+# https://w3id.org/bmp#UValue
 
-###  https://w3id.org/bmp#Thermal
-:Thermal rdf:type owl:Class ;
-         rdfs:subClassOf :MaterialProperty ,
-                         :VolumetricHeatCapacity .
+:UValue a owl:Class ;
+	rdfs:subClassOf :LayerProperty .
+# 
+# https://w3id.org/bmp#VSG
 
-
-###  https://w3id.org/bmp#ThermalConductivity
-:ThermalConductivity rdf:type owl:Class ;
-                     rdfs:subClassOf :Thermal .
-
-
-###  https://w3id.org/bmp#ThermalDiffusivity
-:ThermalDiffusivity rdf:type owl:Class ;
-                    rdfs:subClassOf :Thermal .
-
-
-###  https://w3id.org/bmp#ThermalExpansionCoef
-:ThermalExpansionCoef rdf:type owl:Class ;
-                      rdfs:subClassOf :Thermal .
-
-
-###  https://w3id.org/bmp#Thickness
-:Thickness rdf:type owl:Class ;
-           rdfs:subClassOf :LayerProperty .
-
-
-###  https://w3id.org/bmp#UValue
-:UValue rdf:type owl:Class ;
-        rdfs:subClassOf :LayerProperty .
-
-
-###  https://w3id.org/bmp#VSG
-:VSG rdf:type owl:Class ;
-     rdfs:subClassOf :Glass ;
-     rdfs:comment """Material Category: Glass / Laminated Safety Glass
+:VSG a owl:Class ;
+	rdfs:subClassOf :Glass ;
+	rdfs:comment """Material Category: Glass / Laminated Safety Glass
 What it is made of / How it's made: It is made by creating a \"sandwich\" of two or more sheets of glass (which can be standard float glass or tempered ESG) bound together by an internal layer of tough, sticky plastic film—typically Polyvinyl Butyral (PVB). The layers are pressed together under intense heat and pressure in a specialized oven to make the plastic completely transparent and permanently fuse the panes together.
 Description: A laminated safety glass composite consisting of multiple glass sheets bonded together by a sticky plastic interlayer that prevents the pane from falling apart or shattering when broken (VSG).""" .
+# 
+# https://w3id.org/bmp#VolumetricHeatCapacity
 
+:VolumetricHeatCapacity a owl:Class ;
+	rdfs:subClassOf :MaterialProperty , :Thermal .
+# 
+# https://w3id.org/bmp#WaterVapourDiffusionThickness
 
-###  https://w3id.org/bmp#VolumetricHeatCapacity
-:VolumetricHeatCapacity rdf:type owl:Class ;
-                        rdfs:subClassOf :MaterialProperty ,
-                                        :Thermal .
+:WaterVapourDiffusionThickness a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#WaterVapourDiffusivity
 
+:WaterVapourDiffusivity a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#WaterVapourPermeability
 
-###  https://w3id.org/bmp#WaterVapourDiffusionThickness
-:WaterVapourDiffusionThickness rdf:type owl:Class ;
-                               rdfs:subClassOf :Hygric .
+:WaterVapourPermeability a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#WaterVapourResistanceFactor
 
+:WaterVapourResistanceFactor a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#WaterVapourSorptionIsotherm
 
-###  https://w3id.org/bmp#WaterVapourDiffusivity
-:WaterVapourDiffusivity rdf:type owl:Class ;
-                        rdfs:subClassOf :Hygric .
+:WaterVapourSorptionIsotherm a owl:Class ;
+	rdfs:subClassOf :Hygric .
+# 
+# https://w3id.org/bmp#WoodHard
 
-
-###  https://w3id.org/bmp#WaterVapourPermeability
-:WaterVapourPermeability rdf:type owl:Class ;
-                         rdfs:subClassOf :Hygric .
-
-
-###  https://w3id.org/bmp#WaterVapourResistanceFactor
-:WaterVapourResistanceFactor rdf:type owl:Class ;
-                             rdfs:subClassOf :Hygric .
-
-
-###  https://w3id.org/bmp#WaterVapourSorptionIsotherm
-:WaterVapourSorptionIsotherm rdf:type owl:Class ;
-                             rdfs:subClassOf :Hygric .
-
-
-###  https://w3id.org/bmp#WoodHard
-:WoodHard rdf:type owl:Class ;
-          rdfs:subClassOf :WoodTimber ;
-          rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                       """Material Category: Wood / Timber
+:WoodHard a owl:Class ;
+	rdfs:subClassOf :WoodTimber ;
+	rdfs:comment """Material Category: Wood / Timber
 What it is made of / How it's made: It is made of complex cellulose fibers derived from angiosperm trees (broad-leaved deciduous trees like Oak, Beech, Maple, and Ash). These trees grow very slowly, resulting in highly packed, tight growth rings with a dense, heavy microscopic pore structure.
-Description: High-density, tough timber harvested from slow-growing, broad-leaved deciduous trees (WoodHard).""" ;
-          rdfs:label "WoodHard"@en .
+Description: High-density, tough timber harvested from slow-growing, broad-leaved deciduous trees (WoodHard).""" , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "WoodHard"@en .
+# 
+# https://w3id.org/bmp#WoodSoft
 
-
-###  https://w3id.org/bmp#WoodSoft
-:WoodSoft rdf:type owl:Class ;
-          rdfs:subClassOf :WoodTimber ;
-          rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                       """Material Category: Wood / Timber
+:WoodSoft a owl:Class ;
+	rdfs:subClassOf :WoodTimber ;
+	rdfs:comment """Material Category: Wood / Timber
 What it is made of / How it's made: It is made of simpler cellulose structures derived from gymnosperm trees (needle-bearing evergreen conifers like Pine, Spruce, Fir, and Cedar). These trees grow rapidly, resulting in wider growth rings and a lighter, more flexible wood matrix.
-Description: Lightweight, flexible timber harvested from fast-growing, needle-bearing coniferous evergreen trees (WoodSoft).""" ;
-          rdfs:label "WoodSoft"@en .
+Description: Lightweight, flexible timber harvested from fast-growing, needle-bearing coniferous evergreen trees (WoodSoft).""" , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "WoodSoft"@en .
+# 
+# https://w3id.org/bmp#WoodTimber
 
+:WoodTimber a owl:Class ;
+	rdfs:comment "The wood and timber category includes organic, structural materials harvested from trees, consisting of complex cellulose fibers bound together by a natural glue called lignin. This category covers seasoned lumber dried naturally by open-air circulation (airdrytimber), flexible and fast-growing wood from cone-bearing evergreen trees (woodsoft), and dense, slow-growing wood from broad-leaved deciduous trees (woodhard)." , "https://www.iso.org/standard/77077.html"@en ;
+	rdfs:label "Timber"@en , "Wood"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://orcid.org/0000-0002-8651-0671
 
-###  https://w3id.org/bmp#WoodTimber
-:WoodTimber rdf:type owl:Class ;
-            rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                         "The wood and timber category includes organic, structural materials harvested from trees, consisting of complex cellulose fibers bound together by a natural glue called lignin. This category covers seasoned lumber dried naturally by open-air circulation (airdrytimber), flexible and fast-growing wood from cone-bearing evergreen trees (woodsoft), and dense, slow-growing wood from broad-leaved deciduous trees (woodhard)." ;
-            rdfs:label "Timber"@en ,
-                       "Wood"@en .
+<https://orcid.org/0000-0002-8651-0671> a owl:NamedIndividual ;
+	rdfs:comment "Ekaterina Petrova" ;
+	rdfs:label "Ekaterina Petrova" ;
+	<http://xmlns.com/foaf/0.1/name> "Ekaterina Petrova" ;
+	<http://xmlns.com/foaf/0.1/weblog> "https://research.tue.nl/en/persons/ekaterina-petrova" .
+# 
+# https://orcid.org/0000-0002-9383-7234
 
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  https://orcid.org/0000-0002-8651-0671
-<https://orcid.org/0000-0002-8651-0671> rdf:type owl:NamedIndividual ;
-                                        rdfs:comment "Ekaterina Petrova" ;
-                                        rdfs:label "Ekaterina Petrova" ;
-                                        <http://xmlns.com/foaf/0.1/name> "Ekaterina Petrova" ;
-                                        <http://xmlns.com/foaf/0.1/weblog> "https://research.tue.nl/en/persons/ekaterina-petrova" .
-
-
-###  https://orcid.org/0000-0002-9383-7234
-<https://orcid.org/0000-0002-9383-7234> rdf:type owl:NamedIndividual ;
-                                        rdfs:comment "Julia Kaltenegger" ;
-                                        rdfs:label "Julia Kaltenegger" ;
-                                        <http://xmlns.com/foaf/0.1/name> "Julia Kaltenegger" ;
-                                        <http://xmlns.com/foaf/0.1/weblog> "https://linktr.ee/julkaltenegger" .
-
-
-###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+<https://orcid.org/0000-0002-9383-7234> a owl:NamedIndividual ;
+	rdfs:comment "Julia Kaltenegger" ;
+	rdfs:label "Julia Kaltenegger" ;
+	<http://xmlns.com/foaf/0.1/name> "Julia Kaltenegger" ;
+	<http://xmlns.com/foaf/0.1/weblog> "https://linktr.ee/julkaltenegger" .
+# 
+# Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

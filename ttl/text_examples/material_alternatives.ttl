@@ -1,0 +1,86 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix test: <https://namedgraphs.org/test#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:wall_alternatives_001 a at:ElementArchetype,
+        beo:Wall ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayerSet test:wall_alternatives_001_layerset_var1,
+        test:wall_alternatives_001_layerset_var2 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+test:wall_alternatives_001_layer_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var1_01 .
+
+test:wall_alternatives_001_layer_var1_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var1_02 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+test:wall_alternatives_001_layer_var1_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var1_03 .
+
+test:wall_alternatives_001_layer_var2_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var2_01 .
+
+test:wall_alternatives_001_layer_var2_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var2_02 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+test:wall_alternatives_001_layer_var2_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasMaterial test:wall_alternatives_001_mat_var2_03 .
+
+test:wall_alternatives_001_layerset_var1 a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:wall_alternatives_001_layer_var1_01,
+        test:wall_alternatives_001_layer_var1_02,
+        test:wall_alternatives_001_layer_var1_03 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+test:wall_alternatives_001_layerset_var2 a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:wall_alternatives_001_layer_var2_01,
+        test:wall_alternatives_001_layer_var2_02,
+        test:wall_alternatives_001_layer_var2_03 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+test:wall_alternatives_001_mat_var1_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
+
+test:wall_alternatives_001_mat_var1_02 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
+
+test:wall_alternatives_001_mat_var1_03 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
+
+test:wall_alternatives_001_mat_var2_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
+
+test:wall_alternatives_001_mat_var2_02 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
+
+test:wall_alternatives_001_mat_var2_03 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
+

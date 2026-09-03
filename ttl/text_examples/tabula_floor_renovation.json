@@ -1,0 +1,215 @@
+{
+  "id": "tabula_floor_renovation",
+  "label": "TABULA floor: existing + usual/advanced insulation add-on (EN)",
+  "english": "Existing: concrete ceiling with 1 cm insulation. Usual: add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation). Advanced: add 12 cm insulation below / alternatively: on top of ceiling / combination of both.",
+  "renovation_states": [
+    {
+      "id": "existing",
+      "english": "concrete ceiling with 1 cm insulation",
+      "layer_sets": [
+        {
+          "kind": "given",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usual",
+      "english": "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)",
+      "layer_sets": [
+        {
+          "kind": "below",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 8
+            }
+          ]
+        },
+        {
+          "kind": "top",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 8
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "english": "add 12 cm insulation below / alternatively: on top of ceiling / combination of both",
+      "layer_sets": [
+        {
+          "kind": "below",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 12
+            }
+          ]
+        },
+        {
+          "kind": "top",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 12
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            }
+          ]
+        },
+        {
+          "kind": "both",
+          "layers": [
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 12
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+              "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+              "predicted_type_iri": null,
+              "thickness_cm": null
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 1.0
+            },
+            {
+              "predicted_function_iri": "https://w3id.org/bmp#Insulating",
+              "predicted_category_iri": null,
+              "predicted_type_iri": null,
+              "thickness_cm": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "iri": "https://w3id.org/bmp#Concrete",
+      "branch": "Material",
+      "text": "Concrete | Material Category: Concrete / Cementitious Composite\r\nWhat it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.\r\nDescription: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#ReinforcedConcrete",
+      "branch": "Material",
+      "text": "ReinforcedConcrete | Reinforced Concrete | Material Category: Concrete / Composite Material\r\nWhat it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.\r\nDescription: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete)."
+    },
+    {
+      "iri": "https://w3id.org/bmp#PrestressedConcrete",
+      "branch": "Material",
+      "text": "PrestressedConcrete | Prestressed Concrete | PrestressedConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made of high-strength structural concrete cast around high-tensile steel cables. The steel cables are stretched tight by hydraulic jacks, the concrete is poured around them, and once the concrete hardens, the tension on the cables is released, instantly clamping the concrete block tight.\r\nDescription: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#HeavyWeightConcrete",
+      "branch": "Material",
+      "text": "HeavyWeightConcrete | Heavy Weight Concrete | HeavyWeightConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made by mixing standard cement, water, sand, and heavy-density stone aggregate fillers (like barite or magnetite). The resulting mix is incredibly dense and massive compared to regular structural concrete.\r\nDescription: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#LightWeightConcrete",
+      "branch": "Material",
+      "text": "LightWeightConcrete | Light Weight Concrete | LightWeightConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made by mixing cement, water, sand, and porous aggregates (like expanded clay or pumice). Alternatively, it can be made by injecting stable foam directly into a standard cement slurry to fill the structure with tiny bubbles.\r\nDescription: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#SingleLayer",
+      "branch": "LayerSet",
+      "text": "SingleLayer | Single Layer | A solid, monolithic wall construction without separate cavities or insulation layers."
+    },
+    {
+      "iri": "https://w3id.org/bmp#HeavyWeightAggregate",
+      "branch": "Material",
+      "text": "HeavyWeightAggregate | Heavy Weight Aggregate | HeavyWeightAggregate | What it is made of / How it's made: It is made by mining natural, high-density minerals and metallic ores—such as Barite, Magnetite, Hematite, or Ilmenite—or by utilizing manufactured industrial bi-products like steel shot. These raw materials are crushed and strictly graded to maintain a specific gravity significantly higher than standard gravel (typically above 3.5 to 6.0).\r\nDescription: A specialized, ultra-high-density category of loose mineral aggregates engineered explicitly to add mass and block radiation when mixed into heavy-duty composite structures."
+    },
+    {
+      "iri": "https://w3id.org/bmp#LightWeightAggregate",
+      "branch": "Material",
+      "text": "LightWeightAggregate | Light Weight Aggregate | What it is made of / How it's made: It is made by minerally processing natural volcanic rocks (like pumice or scoria) or by thermally expanding raw clays, shales, or slates inside a high-temperature rotary kiln. The rapid heating causes embedded gases to expand, bloating the mineral structure into porous, structural pellets with a highly cellular, air-trapping internal matrix.\r\nDescription: A specialized category of low-density, highly porous mineral aggregates engineered to drastically reduce dead weight and enhance thermal insulation when substituted for standard stone or gravel in composite matrices."
+    },
+    {
+      "iri": "https://w3id.org/bmp#MultiLayer",
+      "branch": "LayerSet",
+      "text": "MultiLayer | Multi Layer | A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Facade",
+      "branch": "Function",
+      "text": "Facade"
+    }
+  ]
+}

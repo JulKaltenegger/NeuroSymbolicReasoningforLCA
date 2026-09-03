@@ -1,0 +1,56 @@
+{
+  "source": "gold",
+  "ttl": null,
+  "owl_validity_pct": null,
+  "gold_is_100_when_matched": true,
+  "rows": [
+    {
+      "source": "gold",
+      "case_id": "cavity_wall",
+      "cosine": 0.5956934491793314,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    },
+    {
+      "source": "gold",
+      "case_id": "multi_layered_wall",
+      "cosine": 0.7127386132876078,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    },
+    {
+      "source": "gold",
+      "case_id": "concrete_floor",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    },
+    {
+      "source": "gold",
+      "case_id": "cavity_wall_materials",
+      "cosine": 0.90727565685908,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    },
+    {
+      "source": "gold",
+      "case_id": "material_alternatives",
+      "cosine": 0.9211705327033997,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    },
+    {
+      "source": "gold",
+      "case_id": "tabula_floor_renovation",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": 100.0,
+      "owl_validity": null,
+      "composite": 100.0
+    }
+  ]
+}

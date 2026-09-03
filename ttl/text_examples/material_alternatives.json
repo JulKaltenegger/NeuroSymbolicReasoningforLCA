@@ -1,0 +1,117 @@
+{
+  "id": "material_alternatives",
+  "label": "BBSR-style material alternatives (DE+EN)",
+  "german": "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt",
+  "english": "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides",
+  "element_thickness_cm": 29.0,
+  "layer_json": [
+    {
+      "layer_topology": "https://w3id.org/bmp#MultiLayer",
+      "layer_set_description": null,
+      "thickness_cm": 29,
+      "layers": [
+        {
+          "layer_index": 1,
+          "predicted_function_iri": "https://w3id.org/bmp#Finishing",
+          "predicted_category_iri": "https://w3id.org/bmp#Binders",
+          "predicted_type_iri": "https://w3id.org/bmp#GypsumPlaster",
+          "thickness_cm": null
+        },
+        {
+          "layer_index": 2,
+          "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+          "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+          "predicted_type_iri": "https://w3id.org/bmp#LightWeightConcrete",
+          "thickness_cm": 29
+        },
+        {
+          "layer_index": 3,
+          "predicted_function_iri": "https://w3id.org/bmp#Finishing",
+          "predicted_category_iri": "https://w3id.org/bmp#Binders",
+          "predicted_type_iri": "https://w3id.org/bmp#GypsumPlaster",
+          "thickness_cm": null
+        }
+      ]
+    },
+    {
+      "layer_topology": "https://w3id.org/bmp#MultiLayer",
+      "layer_set_description": null,
+      "thickness_cm": 29,
+      "layers": [
+        {
+          "layer_index": 1,
+          "predicted_function_iri": "https://w3id.org/bmp#Finishing",
+          "predicted_category_iri": "https://w3id.org/bmp#Binders",
+          "predicted_type_iri": "https://w3id.org/bmp#GypsumPlaster",
+          "thickness_cm": null
+        },
+        {
+          "layer_index": 2,
+          "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+          "predicted_category_iri": "https://w3id.org/bmp#Brick",
+          "predicted_type_iri": "https://w3id.org/bmp#BrickMasonryUnit",
+          "thickness_cm": 29
+        },
+        {
+          "layer_index": 3,
+          "predicted_function_iri": "https://w3id.org/bmp#Finishing",
+          "predicted_category_iri": "https://w3id.org/bmp#Binders",
+          "predicted_type_iri": "https://w3id.org/bmp#GypsumPlaster",
+          "thickness_cm": null
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "iri": "https://w3id.org/bmp#Concrete",
+      "branch": "Material",
+      "text": "Concrete | Material Category: Concrete / Cementitious Composite\r\nWhat it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.\r\nDescription: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#Brick",
+      "branch": "Material",
+      "text": "Brick | Material Category: Brick / Ceramics\r\nWhat it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. This plastic mixture is shaped into blocks and dried before being baked in a high-temperature kiln, which triggers a chemical sintering process that fuses the mineral particles into a durable, vitrified, rock-hard structure.\r\nDescription: A traditional, rectangular masonry building block manufactured from raw earthen clays or silicates and hardened by extreme heat or chemical bonding, used for building structural walls and facades (Brick). | https://www.iso.org/standard/32918.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#HeavyWeightConcrete",
+      "branch": "Material",
+      "text": "HeavyWeightConcrete | Heavy Weight Concrete | HeavyWeightConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made by mixing standard cement, water, sand, and heavy-density stone aggregate fillers (like barite or magnetite). The resulting mix is incredibly dense and massive compared to regular structural concrete.\r\nDescription: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#GypsumPlaster",
+      "branch": "Material",
+      "text": "GypsumPlaster | Gypsum Plaster | GypsumPlaster | What it is made of / How it's made: It is made from natural gypsum stone (calcium sulfate dihydrate) that is mined, crushed, and partially dehydrated by heating (calcining) to drive off water, turning it into a hemihydrate powder. When re-introduced to water, it rapidly re-hydrates, undergoes a crystallization process, and expands slightly to fill space as it sets into a solid form.\r\nDescription: A rapid-setting, non-hydraulic mineral binder prized for its smooth finish, fire-resistant properties, and dimensional accuracy when casting architectural details, wall plasters, and internal boards."
+    },
+    {
+      "iri": "https://w3id.org/bmp#ReinforcedConcrete",
+      "branch": "Material",
+      "text": "ReinforcedConcrete | Reinforced Concrete | Material Category: Concrete / Composite Material\r\nWhat it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.\r\nDescription: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete)."
+    },
+    {
+      "iri": "https://w3id.org/bmp#BrickMasonryUnit",
+      "branch": "Material",
+      "text": "BrickMasonryUnit | Brick Masonry Unit | BrickMasonryUnit | Material Category: Brick / Ceramics\r\nWhat it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. It is pressed or extruded into a rectangular block shape and then dried and baked in a high-temperature kiln until the minerals chemically fuse into a vitrified, rock-hard structure.\r\nDescription: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit). | https://www.iso.org/standard/32918.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#LightWeightConcrete",
+      "branch": "Material",
+      "text": "LightWeightConcrete | Light Weight Concrete | LightWeightConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made by mixing cement, water, sand, and porous aggregates (like expanded clay or pumice). Alternatively, it can be made by injecting stable foam directly into a standard cement slurry to fill the structure with tiny bubbles.\r\nDescription: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#PrestressedConcrete",
+      "branch": "Material",
+      "text": "PrestressedConcrete | Prestressed Concrete | PrestressedConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made of high-strength structural concrete cast around high-tensile steel cables. The steel cables are stretched tight by hydraulic jacks, the concrete is poured around them, and once the concrete hardens, the tension on the cables is released, instantly clamping the concrete block tight.\r\nDescription: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#SingleLayer",
+      "branch": "LayerSet",
+      "text": "SingleLayer | Single Layer | A solid, monolithic wall construction without separate cavities or insulation layers."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Glazing",
+      "branch": "Function",
+      "text": "Glazing"
+    }
+  ]
+}

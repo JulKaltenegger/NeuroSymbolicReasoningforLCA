@@ -1,0 +1,1712 @@
+{
+  "source": "tabula",
+  "ttl": "C:\\Users\\20180031\\Dropbox\\_PhD\\11_KnowledgeBaseLCA\\NeuroSymbolicReasoningforLCA\\ttl\\tabula_buildings-enriched.ttl",
+  "owl_validity_pct": 100.0,
+  "gold_is_100_when_matched": true,
+  "rows": [
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_06_HR_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_07_HR_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_AB_08_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.810994565486908,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 81.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.9122111002604166,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 91.2
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_03_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5581307212511698,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 55.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7692705194155375,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.6256476640701294,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 62.6
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_04_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5584860940774282,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 55.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7692705194155375,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5595017572244009,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.0
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.4735793670018514,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 47.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.47112423181533813,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 47.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7561415831247965,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.6
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6961662769317627,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.6
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.4847480158011119,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 48.5
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.45160800218582153,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.2
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_2_Usual",
+      "cosine": 0.4847480158011119,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 48.5
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_05_HR_ReEx_001_Element_Floor_2_Advanced",
+      "cosine": 0.445226530234019,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 44.5
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5595017572244009,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.0
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_AB_06_HR_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7692705194155375,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_04_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.552254835764567,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 55.2
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_East_MFH_05_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.552254835764567,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 55.2
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Roof_1_Existing",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Roof_1_Usual",
+      "cosine": 0.43722538153330487,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 43.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Roof_1_Advanced",
+      "cosine": 0.45818503697713214,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.8510979612668356,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.7545126080513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.5
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.8587302366892496,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.579733669757843,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 58.0
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_02_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5626986821492513,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_1_Existing",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_1_Usual",
+      "cosine": 0.43722538153330487,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 43.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_1_Advanced",
+      "cosine": 0.45818503697713214,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7442582050959269,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Floor_2_Existing",
+      "cosine": 0.9122111002604166,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 91.2
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Floor_2_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_03_Gen_ReEx_001_Element_Floor_2_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7692705194155375,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_04_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7692705194155375,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_05_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7442582050959269,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_06_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7509405811627706,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_07_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7509405811627706,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_08_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632108847300211,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Roof_2_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Roof_2_Usual",
+      "cosine": 0.5490307013193766,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Roof_2_Advanced",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7477323015530905,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_09_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5632661978403727,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Roof_1_Existing",
+      "cosine": 0.4594519833723704,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.9
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Roof_1_Usual",
+      "cosine": 0.43722538153330487,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 43.7
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Roof_1_Advanced",
+      "cosine": 0.45818503697713214,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.7442582050959269,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.6908389528592428,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Floor_1_Existing",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Floor_1_Usual",
+      "cosine": 0.5633414189020792,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.3
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_10_Gen_ReEx_001_Element_Floor_1_Advanced",
+      "cosine": 0.5662213166554769,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.6
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Roof_1_Existing",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Roof_1_Usual",
+      "cosine": 0.5482040643692017,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 54.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Roof_1_Advanced",
+      "cosine": 0.557704230149587,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 55.8
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Wall_1_Existing",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Wall_1_Usual",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Wall_1_Advanced",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Floor_2_Existing",
+      "cosine": 0.5797210733095804,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 58.0
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Floor_2_Usual",
+      "cosine": 0.565929631392161,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.6
+    },
+    {
+      "source": "tabula",
+      "case_id": "Building_DE_N_MFH_11_Gen_ReEx_001_Element_Floor_2_Advanced",
+      "cosine": 0.5685237050056458,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.9
+    }
+  ]
+}

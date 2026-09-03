@@ -1,0 +1,773 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix bpo: <https://w3id.org/bpo#> .
+@prefix lca: <https://w3id.org/lca#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix slice: <https://w3id.org/slice#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+slice:element_inst_01 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Wall ;
+    rdfs:label "EW05 CLT + str blown"^^xsd:string ;
+    at:hasArchetypeDescription "External wall - loadbearing | Primary part | Panel | CLT (160 mm) | Screwed"^^xsd:string,
+        "Wall - external finish | Cladding | Panel | Cork (32-80 mm)"^^xsd:string,
+        "Wall - external finish | Infrastructure | Board | Bituminised wood fibre (22 mm) | Screwed"^^xsd:string,
+        "Wall - external finish | Thermal insulation | Flakes | Straw (Blow-in 160 mm) | For cavity wall"^^xsd:string ;
+    bmp:hasLayerSet slice:layerSet_01 .
+
+slice:material_inst_layer1_1 bmp:hasLifeCycleStage slice:material_inst_layer1_1_LCSA1A2A3,
+        slice:material_inst_layer1_1_LCSA4,
+        slice:material_inst_layer1_1_LCSA5,
+        slice:material_inst_layer1_1_LCSB2_3,
+        slice:material_inst_layer1_1_LCSC2,
+        slice:material_inst_layer1_1_LCSC3,
+        slice:material_inst_layer1_1_LCSC4 .
+
+slice:material_inst_layer1_2 bmp:hasLifeCycleStage slice:material_inst_layer1_2_LCSA1A2A3,
+        slice:material_inst_layer1_2_LCSA4,
+        slice:material_inst_layer1_2_LCSA5,
+        slice:material_inst_layer1_2_LCSC2,
+        slice:material_inst_layer1_2_LCSC3,
+        slice:material_inst_layer1_2_LCSC4 .
+
+slice:material_inst_layer1_3 bmp:hasLifeCycleStage slice:material_inst_layer1_3_LCSA1A2A3,
+        slice:material_inst_layer1_3_LCSA4,
+        slice:material_inst_layer1_3_LCSA5,
+        slice:material_inst_layer1_3_LCSC2,
+        slice:material_inst_layer1_3_LCSC3,
+        slice:material_inst_layer1_3_LCSC4 .
+
+slice:material_inst_layer1_4 bmp:hasLifeCycleStage slice:material_inst_layer1_4_LCSA1A2A3,
+        slice:material_inst_layer1_4_LCSA4,
+        slice:material_inst_layer1_4_LCSA5,
+        slice:material_inst_layer1_4_LCSC2,
+        slice:material_inst_layer1_4_LCSC3,
+        slice:material_inst_layer1_4_LCSC4 .
+
+slice:Layer_inst_01_01 a bmp:Layer,
+        bpo:Component ;
+    at:hasArchetypeDescription "Wall - external finish | Cladding | Panel | Cork (32-80 mm)"^^xsd:string ;
+    bmp:hasLayerFunction bmp:Finishing ;
+    bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
+            bmp:hasValue "32-80"^^xsd:string ] ;
+    bpo:isPartOf slice:layerSet_01 .
+
+slice:Layer_inst_01_02 a bmp:Layer,
+        bpo:Component ;
+    at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | Bituminised wood fibre (22 mm) | Screwed"^^xsd:string ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
+            bmp:hasValue "22.0"^^xsd:float ] ;
+    bpo:isPartOf slice:layerSet_01 .
+
+slice:Layer_inst_01_03 a bmp:Layer,
+        bpo:Component ;
+    at:hasArchetypeDescription "Wall - external finish | Thermal insulation | Flakes | Straw (Blow-in 160 mm) | For cavity wall"^^xsd:string ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
+            bmp:hasValue "160.0"^^xsd:float ] ;
+    bpo:isPartOf slice:layerSet_01 .
+
+slice:Layer_inst_01_04 a bmp:Layer,
+        bpo:Component ;
+    at:hasArchetypeDescription "External wall - loadbearing | Primary part | Panel | CLT (160 mm) | Screwed"^^xsd:string ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
+            bmp:hasValue "160.0"^^xsd:float ] ;
+    bpo:isPartOf slice:layerSet_01 .
+
+slice:material_inst_layer1_1_LCSA1A2A3 a owl:NamedIndividual,
+        lca:A1,
+        lca:A2,
+        lca:A3 ;
+    lca:declaredUnitAmount "11.2"^^xsd:float ;
+    lca:hasAP "0.0922768"^^xsd:float ;
+    lca:hasActivityType lca:MaterialIn ;
+    lca:hasEP "0.00987"^^xsd:float ;
+    lca:hasET_fw "10.1827936"^^xsd:float ;
+    lca:hasGWP "15.8"^^xsd:float ;
+    lca:hasHT_c "1.624e-07"^^xsd:float ;
+    lca:hasHT_nc "1.288e-06"^^xsd:float ;
+    lca:hasIR "1.125376"^^xsd:float ;
+    lca:hasLU_agr "0.0176848"^^xsd:float ;
+    lca:hasLU_bio "21.0057904"^^xsd:float ;
+    lca:hasLU_for "189.446096"^^xsd:float ;
+    lca:hasLU_osom "381.646272"^^xsd:float ;
+    lca:hasLU_tagr "-0.009744"^^xsd:float ;
+    lca:hasLU_tbio "-0.302848"^^xsd:float ;
+    lca:hasLU_tsom "19.0473472"^^xsd:float ;
+    lca:hasLU_turb "0.0016912"^^xsd:float ;
+    lca:hasLU_urb "0.174272"^^xsd:float ;
+    lca:hasLifeCycleStage "A1-3: Product stage"@en ;
+    lca:hasPM "0.0144"^^xsd:float ;
+    lca:hasPOCP "0.0088256"^^xsd:float ;
+    lca:hasTechflowDescription "Cork slab {RER}| production | Alloc Rec, U"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.0767312"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSA4 a owl:NamedIndividual,
+        lca:A4 ;
+    lca:declaredUnitAmount "1.48"^^xsd:float ;
+    lca:hasAP "0.0005365971"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "8.815e-05"^^xsd:float ;
+    lca:hasET_fw "0.493303749"^^xsd:float ;
+    lca:hasGWP "0.16534"^^xsd:float ;
+    lca:hasHT_c "1.1589215999999999e-09"^^xsd:float ;
+    lca:hasHT_nc "2.7546489999999998e-08"^^xsd:float ;
+    lca:hasIR "0.012360003"^^xsd:float ;
+    lca:hasLU_agr "1.79109e-05"^^xsd:float ;
+    lca:hasLU_bio "0.01136139"^^xsd:float ;
+    lca:hasLU_for "0.002141963"^^xsd:float ;
+    lca:hasLU_osom "0.196187676"^^xsd:float ;
+    lca:hasLU_tagr "-2.438994e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.00046289270000000003"^^xsd:float ;
+    lca:hasLU_tsom "0.540660769"^^xsd:float ;
+    lca:hasLU_turb "6.0218139999999995e-05"^^xsd:float ;
+    lca:hasLU_urb "0.013220444999999999"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "8.463e-05"^^xsd:float ;
+    lca:hasPOCP "4.910028e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "2.6643113e-05"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSA5 a owl:NamedIndividual,
+        lca:A5 ;
+    lca:declaredUnitAmount "1.79"^^xsd:float ;
+    lca:hasAP "0.004796729544"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.0005334361999999999"^^xsd:float ;
+    lca:hasET_fw "0.572295149"^^xsd:float ;
+    lca:hasGWP "0.8146783000000001"^^xsd:float ;
+    lca:hasHT_c "8.793506125e-09"^^xsd:float ;
+    lca:hasHT_nc "7.094110942999999e-08"^^xsd:float ;
+    lca:hasIR "0.0580628951"^^xsd:float ;
+    lca:hasLU_agr "0.0008871191383"^^xsd:float ;
+    lca:hasLU_bio "1.05153588146"^^xsd:float ;
+    lca:hasLU_for "9.47287978704"^^xsd:float ;
+    lca:hasLU_osom "19.1039041917"^^xsd:float ;
+    lca:hasLU_tagr "-0.0004909671158"^^xsd:float ;
+    lca:hasLU_tbio "-0.015106999059"^^xsd:float ;
+    lca:hasLU_tsom "1.028359312"^^xsd:float ;
+    lca:hasLU_turb "9.230566145e-05"^^xsd:float ;
+    lca:hasLU_urb "0.01011812464"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.0007446457"^^xsd:float ;
+    lca:hasPOCP "0.00045731942050000003"^^xsd:float ;
+    lca:hasTechflowDescription "Cork slab {RER}| production | Alloc Rec, U | Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Sorting of waste combustible other [BE] | Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "0.0038769043024"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSB2_3 a owl:NamedIndividual,
+        lca:B2 ;
+    lca:declaredUnitAmount "0.0"^^xsd:float ;
+    lca:hasAP "0.00856284"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "0.0012785"^^xsd:float ;
+    lca:hasET_fw "1.7224058250000003"^^xsd:float ;
+    lca:hasGWP "1.421"^^xsd:float ;
+    lca:hasHT_c "5.344499999999999e-08"^^xsd:float ;
+    lca:hasHT_nc "2.90025e-07"^^xsd:float ;
+    lca:hasIR "0.08243971"^^xsd:float ;
+    lca:hasLU_agr "0.004765005"^^xsd:float ;
+    lca:hasLU_bio "4.487164065"^^xsd:float ;
+    lca:hasLU_for "37.230544925000004"^^xsd:float ;
+    lca:hasLU_osom "80.17172777500001"^^xsd:float ;
+    lca:hasLU_tagr "-0.0025937100000000004"^^xsd:float ;
+    lca:hasLU_tbio "0.03905113500000001"^^xsd:float ;
+    lca:hasLU_tsom "24.503856374999994"^^xsd:float ;
+    lca:hasLU_turb "0.0056944125"^^xsd:float ;
+    lca:hasLU_urb "0.4599090049999999"^^xsd:float ;
+    lca:hasLifeCycleStage "B1-4: Use stage (embodied)"@en ;
+    lca:hasPM "0.0048614999999999995"^^xsd:float ;
+    lca:hasPOCP "0.0007843774999999999"^^xsd:float ;
+    lca:hasTechflowDescription "Chromium steel, screws [RER]| production | Softwood, laths, dried (u=10%), planed [BE]| production, MIX"@en ;
+    lca:hasUnit unit:M3 ;
+    lca:hasWU "-0.001496695"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSC2 a owl:NamedIndividual,
+        lca:C2 ;
+    lca:declaredUnitAmount "1.4"^^xsd:float ;
+    lca:hasAP "0.000737853"^^xsd:float ;
+    lca:hasActivityType lca:TransportEoL ;
+    lca:hasEP "0.00012"^^xsd:float ;
+    lca:hasET_fw "0.56839209"^^xsd:float ;
+    lca:hasGWP "0.228"^^xsd:float ;
+    lca:hasHT_c "1.66966e-09"^^xsd:float ;
+    lca:hasHT_nc "3.35693e-08"^^xsd:float ;
+    lca:hasIR "0.016143725"^^xsd:float ;
+    lca:hasLU_agr "2.83583e-05"^^xsd:float ;
+    lca:hasLU_bio "0.01081565"^^xsd:float ;
+    lca:hasLU_for "0.002701941"^^xsd:float ;
+    lca:hasLU_osom "0.186853282"^^xsd:float ;
+    lca:hasLU_tagr "-3.11546e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.000634819"^^xsd:float ;
+    lca:hasLU_tsom "0.682872736"^^xsd:float ;
+    lca:hasLU_turb "7.90869e-05"^^xsd:float ;
+    lca:hasLU_urb "0.01248312"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.000108"^^xsd:float ;
+    lca:hasPOCP "6.29787e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "2.90332e-05"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSC3 a owl:NamedIndividual,
+        lca:C3 ;
+    lca:declaredUnitAmount "0.56"^^xsd:float ;
+    lca:hasAP "3.60909e-06"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "7.04e-07"^^xsd:float ;
+    lca:hasET_fw "0.00034274"^^xsd:float ;
+    lca:hasGWP "0.000906"^^xsd:float ;
+    lca:hasHT_c "1.94419e-11"^^xsd:float ;
+    lca:hasHT_nc "7.34927e-11"^^xsd:float ;
+    lca:hasIR "0.000231423"^^xsd:float ;
+    lca:hasLU_agr "3.50923e-07"^^xsd:float ;
+    lca:hasLU_bio "6.42112e-05"^^xsd:float ;
+    lca:hasLU_for "0.000223598"^^xsd:float ;
+    lca:hasLU_osom "0.001142713"^^xsd:float ;
+    lca:hasLU_tagr "-2.56141e-07"^^xsd:float ;
+    lca:hasLU_tbio "-8.88825e-06"^^xsd:float ;
+    lca:hasLU_tsom "0.005827123"^^xsd:float ;
+    lca:hasLU_turb "1.33789e-07"^^xsd:float ;
+    lca:hasLU_urb "4.66807e-05"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "5.34e-07"^^xsd:float ;
+    lca:hasPOCP "2.38469e-07"^^xsd:float ;
+    lca:hasTechflowDescription "Sorting of waste combustible other [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "1.81899e-06"^^xsd:float .
+
+slice:material_inst_layer1_1_LCSC4 a owl:NamedIndividual,
+        lca:C4 ;
+    lca:declaredUnitAmount "21.28"^^xsd:float ;
+    lca:hasAP "0.0023797247"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "0.0006004"^^xsd:float ;
+    lca:hasET_fw "0.20107077699999998"^^xsd:float ;
+    lca:hasGWP "0.1192"^^xsd:float ;
+    lca:hasHT_c "1.0622096e-08"^^xsd:float ;
+    lca:hasHT_nc "6.963286000000001e-08"^^xsd:float ;
+    lca:hasIR "0.007146751"^^xsd:float ;
+    lca:hasLU_agr "1.096274e-05"^^xsd:float ;
+    lca:hasLU_bio "0.002685958"^^xsd:float ;
+    lca:hasLU_for "0.006432228999999999"^^xsd:float ;
+    lca:hasLU_osom "0.047628169"^^xsd:float ;
+    lca:hasLU_tagr "-1.954158e-05"^^xsd:float ;
+    lca:hasLU_tbio "-0.000380806"^^xsd:float ;
+    lca:hasLU_tsom "0.290478416"^^xsd:float ;
+    lca:hasLU_turb "1.5474590000000002e-05"^^xsd:float ;
+    lca:hasLU_urb "0.002340241"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.0003211"^^xsd:float ;
+    lca:hasPOCP "0.00020847192"^^xsd:float ;
+    lca:hasTechflowDescription "Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Sorting of waste combustible other [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.0007493907"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSA1A2A3 a owl:NamedIndividual,
+        lca:A1,
+        lca:A2,
+        lca:A3 ;
+    lca:declaredUnitAmount "0.04"^^xsd:float ;
+    lca:hasAP "0.021049298"^^xsd:float ;
+    lca:hasActivityType lca:MaterialIn ;
+    lca:hasEP "0.0025678"^^xsd:float ;
+    lca:hasET_fw "2.481616948"^^xsd:float ;
+    lca:hasGWP "4.016"^^xsd:float ;
+    lca:hasHT_c "7.29933e-08"^^xsd:float ;
+    lca:hasHT_nc "8.691334e-07"^^xsd:float ;
+    lca:hasIR "0.399118519"^^xsd:float ;
+    lca:hasLU_agr "0.001706243"^^xsd:float ;
+    lca:hasLU_bio "3.977107965"^^xsd:float ;
+    lca:hasLU_for "26.357858611999998"^^xsd:float ;
+    lca:hasLU_osom "68.238774693"^^xsd:float ;
+    lca:hasLU_tagr "-0.0010408563"^^xsd:float ;
+    lca:hasLU_tbio "0.35008608399999996"^^xsd:float ;
+    lca:hasLU_tsom "70.992847782"^^xsd:float ;
+    lca:hasLU_turb "0.0176624936"^^xsd:float ;
+    lca:hasLU_urb "1.280691778"^^xsd:float ;
+    lca:hasLifeCycleStage "A1-3: Product stage"@en ;
+    lca:hasPM "0.002597"^^xsd:float ;
+    lca:hasPOCP "0.0041365295000000005"^^xsd:float ;
+    lca:hasTechflowDescription "Chromium steel, screws [RER]| production | Fibreboard, soft, bitumised [RER]| production | Alloc Rec, U"@en ;
+    lca:hasUnit unit:M3 ;
+    lca:hasWU "0.017059055"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSA4 a owl:NamedIndividual,
+        lca:A4 ;
+    lca:declaredUnitAmount "0.67"^^xsd:float ;
+    lca:hasAP "0.0002774620633"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "4.536231e-05"^^xsd:float ;
+    lca:hasET_fw "0.2401833545"^^xsd:float ;
+    lca:hasGWP "0.0856069"^^xsd:float ;
+    lca:hasHT_c "6.10031625e-10"^^xsd:float ;
+    lca:hasHT_nc "1.3661510339999999e-08"^^xsd:float ;
+    lca:hasIR "0.006276064006"^^xsd:float ;
+    lca:hasLU_agr "9.77503911e-06"^^xsd:float ;
+    lca:hasLU_bio "0.0052282248889999995"^^xsd:float ;
+    lca:hasLU_for "0.0010753184839999996"^^xsd:float ;
+    lca:hasLU_osom "0.09029264919999999"^^xsd:float ;
+    lca:hasLU_tagr "-1.2300869239999999e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.00023872067250000001"^^xsd:float ;
+    lca:hasLU_tsom "0.27139900740000006"^^xsd:float ;
+    lca:hasLU_turb "3.063468232e-05"^^xsd:float ;
+    lca:hasLU_urb "0.00606987629"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "4.262263e-05"^^xsd:float ;
+    lca:hasPOCP "2.478088272e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "1.2737705677999998e-05"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSA5 a owl:NamedIndividual,
+        lca:A5 ;
+    lca:declaredUnitAmount "0.51"^^xsd:float ;
+    lca:hasAP "0.0012233065278873998"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.00015656912321"^^xsd:float ;
+    lca:hasET_fw "0.21835721723926999"^^xsd:float ;
+    lca:hasGWP "0.25654831709000003"^^xsd:float ;
+    lca:hasHT_c "5.548370375969e-09"^^xsd:float ;
+    lca:hasHT_nc "4.9653687397488e-08"^^xsd:float ;
+    lca:hasIR "0.02121814058013"^^xsd:float ;
+    lca:hasLU_agr "9.788611614794e-05"^^xsd:float ;
+    lca:hasLU_bio "0.19964953362935298"^^xsd:float ;
+    lca:hasLU_for "1.31872015650137"^^xsd:float ;
+    lca:hasLU_osom "3.425831935419"^^xsd:float ;
+    lca:hasLU_tagr "-6.410963861596e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.017201135190452004"^^xsd:float ;
+    lca:hasLU_tsom "3.6036077424763997"^^xsd:float ;
+    lca:hasLU_turb "0.000888287107936108"^^xsd:float ;
+    lca:hasLU_urb "0.06485444427856403"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.00015582060084000002"^^xsd:float ;
+    lca:hasPOCP "0.00023798414374262997"^^xsd:float ;
+    lca:hasTechflowDescription "Chromium steel, screws [RER]| production | Fibreboard, soft, bitumised [RER]| production | Alloc Rec, U | Incineration of waste wood, composite [BE]| municipal incineration | Alloc Rec, U | Landfilling of scrap steel [BE]| inert material landfill | Alloc Rec, U | Sorting of waste metals (steel) [BE] | Sorting of waste wooden product, composite [BE] | Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "0.0008835073520921002"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSC2 a owl:NamedIndividual,
+        lca:C2 ;
+    lca:declaredUnitAmount "0.7"^^xsd:float ;
+    lca:hasAP "0.000367863193"^^xsd:float ;
+    lca:hasActivityType lca:TransportEoL ;
+    lca:hasEP "6.00524e-05"^^xsd:float ;
+    lca:hasET_fw "0.28337672"^^xsd:float ;
+    lca:hasGWP "0.1140993"^^xsd:float ;
+    lca:hasHT_c "8.32425817e-10"^^xsd:float ;
+    lca:hasHT_nc "1.6736313e-08"^^xsd:float ;
+    lca:hasIR "0.008048591479999999"^^xsd:float ;
+    lca:hasLU_agr "1.41382446e-05"^^xsd:float ;
+    lca:hasLU_bio "0.0053922341300000004"^^xsd:float ;
+    lca:hasLU_for "0.00134707617"^^xsd:float ;
+    lca:hasLU_osom "0.0931572955"^^xsd:float ;
+    lca:hasLU_tagr "-1.55323618e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.000316494341"^^xsd:float ;
+    lca:hasLU_tsom "0.340452021"^^xsd:float ;
+    lca:hasLU_turb "3.94294271e-05"^^xsd:float ;
+    lca:hasLU_urb "0.006223565990000001"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "5.36469e-05"^^xsd:float ;
+    lca:hasPOCP "3.13986151e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "1.44747384e-05"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSC3 a owl:NamedIndividual,
+        lca:C3 ;
+    lca:declaredUnitAmount "0.17"^^xsd:float ;
+    lca:hasAP "1.48419828e-06"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "3.0237000000000003e-07"^^xsd:float ;
+    lca:hasET_fw "0.00010140778999999999"^^xsd:float ;
+    lca:hasGWP "0.00027608"^^xsd:float ;
+    lca:hasHT_c "5.8882998e-12"^^xsd:float ;
+    lca:hasHT_nc "1.7970609e-11"^^xsd:float ;
+    lca:hasIR "4.905928e-05"^^xsd:float ;
+    lca:hasLU_agr "6.63055e-08"^^xsd:float ;
+    lca:hasLU_bio "1.6319556e-05"^^xsd:float ;
+    lca:hasLU_for "4.137111e-05"^^xsd:float ;
+    lca:hasLU_osom "0.00028963283"^^xsd:float ;
+    lca:hasLU_tagr "-4.8146959999999995e-08"^^xsd:float ;
+    lca:hasLU_tbio "-1.2965955e-06"^^xsd:float ;
+    lca:hasLU_tsom "0.0019066089999999999"^^xsd:float ;
+    lca:hasLU_turb "5.8616983e-08"^^xsd:float ;
+    lca:hasLU_urb "1.3919574e-05"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "2.39928e-07"^^xsd:float ;
+    lca:hasPOCP "9.5878172e-08"^^xsd:float ;
+    lca:hasTechflowDescription "Sorting of waste metals (steel) [BE] | Sorting of waste wooden product, composite [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "3.2420851e-07"^^xsd:float .
+
+slice:material_inst_layer1_2_LCSC4 a owl:NamedIndividual,
+        lca:C4 ;
+    lca:declaredUnitAmount "8.48"^^xsd:float ;
+    lca:hasAP "0.002770038821267"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "0.0004587364622"^^xsd:float ;
+    lca:hasET_fw "1.3618659096013"^^xsd:float ;
+    lca:hasGWP "0.916185152"^^xsd:float ;
+    lca:hasHT_c "3.652556307398e-08"^^xsd:float ;
+    lca:hasHT_nc "9.35246041018e-08"^^xsd:float ;
+    lca:hasIR "0.010870572846699999"^^xsd:float ;
+    lca:hasLU_agr "0.0002274983177708"^^xsd:float ;
+    lca:hasLU_bio "0.0052459424811"^^xsd:float ;
+    lca:hasLU_for "0.0140807511665"^^xsd:float ;
+    lca:hasLU_osom "0.09412442718000001"^^xsd:float ;
+    lca:hasLU_tagr "-0.0002134549532612"^^xsd:float ;
+    lca:hasLU_tbio "-0.00661728619976"^^xsd:float ;
+    lca:hasLU_tsom "0.46554943653"^^xsd:float ;
+    lca:hasLU_turb "3.313178642020001e-05"^^xsd:float ;
+    lca:hasLU_urb "0.0040897271282999996"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.0004225556489"^^xsd:float ;
+    lca:hasPOCP "0.0005668781131606"^^xsd:float ;
+    lca:hasTechflowDescription "Incineration of waste wood, composite [BE]| municipal incineration | Alloc Rec, U | Landfilling of scrap steel [BE]| inert material landfill | Alloc Rec, U | Sorting of waste metals (steel) [BE] | Sorting of waste wooden product, composite [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.0005835623604639999"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSA1A2A3 a owl:NamedIndividual,
+        lca:A1,
+        lca:A2,
+        lca:A3 ;
+    lca:declaredUnitAmount "15.139999999999999"^^xsd:float ;
+    lca:hasAP "0.017328608000000002"^^xsd:float ;
+    lca:hasActivityType lca:MaterialIn ;
+    lca:hasEP "0.0072"^^xsd:float ;
+    lca:hasET_fw "-14.533988"^^xsd:float ;
+    lca:hasGWP "3.52"^^xsd:float ;
+    lca:hasHT_c "-4.8704000000000004e-08"^^xsd:float ;
+    lca:hasHT_nc "-3.13936e-05"^^xsd:float ;
+    lca:hasIR "0.157394544"^^xsd:float ;
+    lca:hasLU_agr "75.60717846399999"^^xsd:float ;
+    lca:hasLU_bio "91.97922879999999"^^xsd:float ;
+    lca:hasLU_for "54.23365144"^^xsd:float ;
+    lca:hasLU_osom "495.01657680000005"^^xsd:float ;
+    lca:hasLU_tagr "-0.00431368"^^xsd:float ;
+    lca:hasLU_tbio "0.050451871999999995"^^xsd:float ;
+    lca:hasLU_tsom "38.85236472"^^xsd:float ;
+    lca:hasLU_turb "0.008721344"^^xsd:float ;
+    lca:hasLU_urb "0.6853460800000001"^^xsd:float ;
+    lca:hasLifeCycleStage "A1-3: Product stage"@en ;
+    lca:hasPM "0.007601"^^xsd:float ;
+    lca:hasPOCP "0.001594888"^^xsd:float ;
+    lca:hasTechflowDescription "Softwood, untreated timber [BE]| production, MIX | Straw, stand-alone production [RER]| production | Alloc Rec, U"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.05544872"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSA4 a owl:NamedIndividual,
+        lca:A4 ;
+    lca:declaredUnitAmount "2.6"^^xsd:float ;
+    lca:hasAP "0.0010666814"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.00017465999999999998"^^xsd:float ;
+    lca:hasET_fw "0.923364332"^^xsd:float ;
+    lca:hasGWP "0.32967"^^xsd:float ;
+    lca:hasHT_c "2.3452127e-09"^^xsd:float ;
+    lca:hasHT_nc "5.252059699999999e-08"^^xsd:float ;
+    lca:hasIR "0.02412779"^^xsd:float ;
+    lca:hasLU_agr "3.7579298e-05"^^xsd:float ;
+    lca:hasLU_bio "0.020099461000000002"^^xsd:float ;
+    lca:hasLU_for "0.0041339724"^^xsd:float ;
+    lca:hasLU_osom "0.347122356"^^xsd:float ;
+    lca:hasLU_tagr "-4.7289632e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.0009177389500000001"^^xsd:float ;
+    lca:hasLU_tsom "1.0433702379999998"^^xsd:float ;
+    lca:hasLU_turb "0.00011777246999999999"^^xsd:float ;
+    lca:hasLU_urb "0.023335120999999997"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.00016376000000000002"^^xsd:float ;
+    lca:hasPOCP "9.526798e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "4.8969015000000006e-05"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSA5 a owl:NamedIndividual,
+        lca:A5 ;
+    lca:declaredUnitAmount "5.22"^^xsd:float ;
+    lca:hasAP "0.0011882906109999998"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.0004298379999999999"^^xsd:float ;
+    lca:hasET_fw "-0.6171120567"^^xsd:float ;
+    lca:hasGWP "0.22304059999999998"^^xsd:float ;
+    lca:hasHT_c "-1.3227939799999995e-09"^^xsd:float ;
+    lca:hasHT_nc "-1.55872352815e-06"^^xsd:float ;
+    lca:hasIR "0.011158636"^^xsd:float ;
+    lca:hasLU_agr "3.7803640832874006"^^xsd:float ;
+    lca:hasLU_bio "4.601087755619999"^^xsd:float ;
+    lca:hasLU_for "2.712642336"^^xsd:float ;
+    lca:hasLU_osom "24.787659965499998"^^xsd:float ;
+    lca:hasLU_tagr "-0.000222197796"^^xsd:float ;
+    lca:hasLU_tbio "0.0026080935170000002"^^xsd:float ;
+    lca:hasLU_tsom "2.081758201"^^xsd:float ;
+    lca:hasLU_turb "0.0004505872753"^^xsd:float ;
+    lca:hasLU_urb "0.03666588220999999"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.0004259372"^^xsd:float ;
+    lca:hasPOCP "0.0001073359115"^^xsd:float ;
+    lca:hasTechflowDescription "Blowing in (cellulose fibre) insulation [BE]| processing | Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Softwood, untreated timber [BE]| production, MIX | Sorting of waste combustible other [BE] | Sorting of waste wooden product [BE] | Straw, stand-alone production [RER]| production | Alloc Rec, U | Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Alloc Rec, U | Transport, freight, lorry >32 metric ton, EURO5 {RER}| transport, freight, lorry >32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "0.002836466840699999"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSC2 a owl:NamedIndividual,
+        lca:C2 ;
+    lca:declaredUnitAmount "2.32"^^xsd:float ;
+    lca:hasAP "0.001221463"^^xsd:float ;
+    lca:hasActivityType lca:TransportEoL ;
+    lca:hasEP "0.0001993"^^xsd:float ;
+    lca:hasET_fw "0.940932505"^^xsd:float ;
+    lca:hasGWP "0.3774"^^xsd:float ;
+    lca:hasHT_c "2.764011e-09"^^xsd:float ;
+    lca:hasHT_nc "5.5571690000000003e-08"^^xsd:float ;
+    lca:hasIR "0.026724784"^^xsd:float ;
+    lca:hasLU_agr "4.694509e-05"^^xsd:float ;
+    lca:hasLU_bio "0.017904536999999998"^^xsd:float ;
+    lca:hasLU_for "0.00447287"^^xsd:float ;
+    lca:hasLU_osom "0.309322262"^^xsd:float ;
+    lca:hasLU_tagr "-5.157426e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.001050898"^^xsd:float ;
+    lca:hasLU_tsom "1.130447037"^^xsd:float ;
+    lca:hasLU_turb "0.0001309227"^^xsd:float ;
+    lca:hasLU_urb "0.020664913"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.00017810000000000002"^^xsd:float ;
+    lca:hasPOCP "0.0001042567"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "4.806248e-05"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSC3 a owl:NamedIndividual,
+        lca:C3 ;
+    lca:declaredUnitAmount "2.88"^^xsd:float ;
+    lca:hasAP "3.00651e-05"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "6.18e-06"^^xsd:float ;
+    lca:hasET_fw "0.001885383"^^xsd:float ;
+    lca:hasGWP "0.00531"^^xsd:float ;
+    lca:hasHT_c "1.07809e-10"^^xsd:float ;
+    lca:hasHT_nc "3.28131e-10"^^xsd:float ;
+    lca:hasIR "0.000865305"^^xsd:float ;
+    lca:hasLU_agr "1.12503e-06"^^xsd:float ;
+    lca:hasLU_bio "0.000277313"^^xsd:float ;
+    lca:hasLU_for "0.000696626"^^xsd:float ;
+    lca:hasLU_osom "0.00492129"^^xsd:float ;
+    lca:hasLU_tagr "-8.14941e-07"^^xsd:float ;
+    lca:hasLU_tbio "-1.74994e-05"^^xsd:float ;
+    lca:hasLU_tsom "0.033882555"^^xsd:float ;
+    lca:hasLU_turb "1.19883e-06"^^xsd:float ;
+    lca:hasLU_urb "0.000237369"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "4.93e-06"^^xsd:float ;
+    lca:hasPOCP "1.92885e-06"^^xsd:float ;
+    lca:hasTechflowDescription "Sorting of waste wooden product [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "5.3811e-06"^^xsd:float .
+
+slice:material_inst_layer1_3_LCSC4 a owl:NamedIndividual,
+        lca:C4 ;
+    lca:declaredUnitAmount "32.8"^^xsd:float ;
+    lca:hasAP "0.0037392771"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "0.00094326"^^xsd:float ;
+    lca:hasET_fw "0.315617568"^^xsd:float ;
+    lca:hasGWP "0.18666999999999997"^^xsd:float ;
+    lca:hasHT_c "1.66722272e-08"^^xsd:float ;
+    lca:hasHT_nc "1.0932237700000001e-07"^^xsd:float ;
+    lca:hasIR "0.010857835000000001"^^xsd:float ;
+    lca:hasLU_agr "1.6599546e-05"^^xsd:float ;
+    lca:hasLU_bio "0.0041297676"^^xsd:float ;
+    lca:hasLU_for "0.009701148000000001"^^xsd:float ;
+    lca:hasLU_osom "0.0732198"^^xsd:float ;
+    lca:hasLU_tagr "-3.0247997e-05"^^xsd:float ;
+    lca:hasLU_tbio "-0.00057884714"^^xsd:float ;
+    lca:hasLU_tsom "0.45111134399999997"^^xsd:float ;
+    lca:hasLU_turb "2.4334568999999998e-05"^^xsd:float ;
+    lca:hasLU_urb "0.0036232699999999996"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.00050474"^^xsd:float ;
+    lca:hasPOCP "0.00032756041899999997"^^xsd:float ;
+    lca:hasTechflowDescription "Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Sorting of waste combustible other [BE] | Sorting of waste wooden product [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.0011742102999999999"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSA1A2A3 a owl:NamedIndividual,
+        lca:A1,
+        lca:A2,
+        lca:A3 ;
+    lca:declaredUnitAmount "16.0"^^xsd:float ;
+    lca:hasAP "0.169536"^^xsd:float ;
+    lca:hasActivityType lca:MaterialIn ;
+    lca:hasEP "0.0262"^^xsd:float ;
+    lca:hasET_fw "42.8652"^^xsd:float ;
+    lca:hasGWP "29.5"^^xsd:float ;
+    lca:hasHT_c "1.088e-06"^^xsd:float ;
+    lca:hasHT_nc "1.4896e-05"^^xsd:float ;
+    lca:hasIR "1.368544"^^xsd:float ;
+    lca:hasLU_agr "0.077072"^^xsd:float ;
+    lca:hasLU_bio "65.400048"^^xsd:float ;
+    lca:hasLU_for "541.80112"^^xsd:float ;
+    lca:hasLU_osom "1168.40096"^^xsd:float ;
+    lca:hasLU_tagr "-0.0408"^^xsd:float ;
+    lca:hasLU_tbio "0.464448"^^xsd:float ;
+    lca:hasLU_tsom "365.56944"^^xsd:float ;
+    lca:hasLU_turb "0.0832"^^xsd:float ;
+    lca:hasLU_urb "6.801536"^^xsd:float ;
+    lca:hasLifeCycleStage "A1-3: Product stage"@en ;
+    lca:hasPM "0.0807"^^xsd:float ;
+    lca:hasPOCP "0.016032"^^xsd:float ;
+    lca:hasTechflowDescription "CLT, cross laminated timber, panel, parameterised thickness 1 cm, screwed [RER]| production"@en ;
+    lca:hasUnit unit:M2 ;
+    lca:hasWU "-0.00448"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSA4 a owl:NamedIndividual,
+        lca:A4 ;
+    lca:declaredUnitAmount "6.59"^^xsd:float ;
+    lca:hasAP "0.003472901"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.000567"^^xsd:float ;
+    lca:hasET_fw "2.675287122"^^xsd:float ;
+    lca:hasGWP "1.07"^^xsd:float ;
+    lca:hasHT_c "7.85872e-09"^^xsd:float ;
+    lca:hasHT_nc "1.58003e-07"^^xsd:float ;
+    lca:hasIR "0.075984694"^^xsd:float ;
+    lca:hasLU_agr "0.000133476"^^xsd:float ;
+    lca:hasLU_bio "0.050906708"^^xsd:float ;
+    lca:hasLU_for "0.012717398"^^xsd:float ;
+    lca:hasLU_osom "0.879474201"^^xsd:float ;
+    lca:hasLU_tagr "-0.000146637"^^xsd:float ;
+    lca:hasLU_tbio "0.002987943"^^xsd:float ;
+    lca:hasLU_tsom "3.214120444"^^xsd:float ;
+    lca:hasLU_turb "0.000372243"^^xsd:float ;
+    lca:hasLU_urb "0.058755091"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.000507"^^xsd:float ;
+    lca:hasPOCP "0.000296426"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "0.000136653"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSA5 a owl:NamedIndividual,
+        lca:A5 ;
+    lca:declaredUnitAmount "4.1"^^xsd:float ;
+    lca:hasAP "0.00894550159"^^xsd:float ;
+    lca:hasActivityType lca:TransportToSite ;
+    lca:hasEP "0.00140354"^^xsd:float ;
+    lca:hasET_fw "2.366950428"^^xsd:float ;
+    lca:hasGWP "1.574772"^^xsd:float ;
+    lca:hasHT_c "5.5876751099999996e-08"^^xsd:float ;
+    lca:hasHT_nc "7.625529106e-07"^^xsd:float ;
+    lca:hasIR "0.07512282799999999"^^xsd:float ;
+    lca:hasLU_agr "0.003865049105"^^xsd:float ;
+    lca:hasLU_bio "3.2742515011"^^xsd:float ;
+    lca:hasLU_for "27.091688827000002"^^xsd:float ;
+    lca:hasLU_osom "58.493591544000004"^^xsd:float ;
+    lca:hasLU_tagr "-0.002053059817"^^xsd:float ;
+    lca:hasLU_tbio "0.023425547550000002"^^xsd:float ;
+    lca:hasLU_tsom "18.564739578"^^xsd:float ;
+    lca:hasLU_turb "0.004190672939"^^xsd:float ;
+    lca:hasLU_urb "0.3449057567"^^xsd:float ;
+    lca:hasLifeCycleStage "A4-5: Construction process stage"@en ;
+    lca:hasPM "0.0041066850000000005"^^xsd:float ;
+    lca:hasPOCP "0.000841684877"^^xsd:float ;
+    lca:hasTechflowDescription "CLT, cross laminated timber, panel, parameterised thickness 1 cm, screwed [RER]| production | Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Sorting of waste wooden product [BE] | Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "-0.00015437802999999998"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSC2 a owl:NamedIndividual,
+        lca:C2 ;
+    lca:declaredUnitAmount "3.62"^^xsd:float ;
+    lca:hasAP "0.001910095"^^xsd:float ;
+    lca:hasActivityType lca:TransportEoL ;
+    lca:hasEP "0.000312"^^xsd:float ;
+    lca:hasET_fw "1.471407917"^^xsd:float ;
+    lca:hasGWP "0.591"^^xsd:float ;
+    lca:hasHT_c "4.32229e-09"^^xsd:float ;
+    lca:hasHT_nc "8.69016e-08"^^xsd:float ;
+    lca:hasIR "0.041791582"^^xsd:float ;
+    lca:hasLU_agr "7.34117e-05"^^xsd:float ;
+    lca:hasLU_bio "0.027998689"^^xsd:float ;
+    lca:hasLU_for "0.006994569"^^xsd:float ;
+    lca:hasLU_osom "0.48371081"^^xsd:float ;
+    lca:hasLU_tagr "-8.06505e-05"^^xsd:float ;
+    lca:hasLU_tbio "0.001643369"^^xsd:float ;
+    lca:hasLU_tsom "1.767766244"^^xsd:float ;
+    lca:hasLU_turb "0.000204734"^^xsd:float ;
+    lca:hasLU_urb "0.0323153"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.000279"^^xsd:float ;
+    lca:hasPOCP "0.000163034"^^xsd:float ;
+    lca:hasTechflowDescription "Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Alloc Rec, U"@en ;
+    lca:hasUnit unit:TONNE-KM ;
+    lca:hasWU "7.51589e-05"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSC3 a owl:NamedIndividual,
+        lca:C3 ;
+    lca:declaredUnitAmount "29.65"^^xsd:float ;
+    lca:hasAP "0.000309552"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "6.36e-05"^^xsd:float ;
+    lca:hasET_fw "0.01941199"^^xsd:float ;
+    lca:hasGWP "0.0547"^^xsd:float ;
+    lca:hasHT_c "1.11e-09"^^xsd:float ;
+    lca:hasHT_nc "3.37845e-09"^^xsd:float ;
+    lca:hasIR "0.008909224"^^xsd:float ;
+    lca:hasLU_agr "1.15834e-05"^^xsd:float ;
+    lca:hasLU_bio "0.002855225"^^xsd:float ;
+    lca:hasLU_for "0.007172497"^^xsd:float ;
+    lca:hasLU_osom "0.050669819"^^xsd:float ;
+    lca:hasLU_tagr "-8.39067e-06"^^xsd:float ;
+    lca:hasLU_tbio "-0.000180175"^^xsd:float ;
+    lca:hasLU_tsom "0.348856312"^^xsd:float ;
+    lca:hasLU_turb "1.23432e-05"^^xsd:float ;
+    lca:hasLU_urb "0.002443961"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "5.07e-05"^^xsd:float ;
+    lca:hasPOCP "1.98595e-05"^^xsd:float ;
+    lca:hasTechflowDescription "Sorting of waste wooden product [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "5.5404e-05"^^xsd:float .
+
+slice:material_inst_layer1_4_LCSC4 a owl:NamedIndividual,
+        lca:C4 ;
+    lca:declaredUnitAmount "26.35"^^xsd:float ;
+    lca:hasAP "0.003681488"^^xsd:float ;
+    lca:hasActivityType lca:Process ;
+    lca:hasEP "0.0009291999999999999"^^xsd:float ;
+    lca:hasET_fw "0.30770154299999997"^^xsd:float ;
+    lca:hasGWP "0.1762"^^xsd:float ;
+    lca:hasHT_c "1.6244001e-08"^^xsd:float ;
+    lca:hasHT_nc "1.0677514999999999e-07"^^xsd:float ;
+    lca:hasIR "0.007227056000000001"^^xsd:float ;
+    lca:hasLU_agr "1.0511299999999999e-05"^^xsd:float ;
+    lca:hasLU_bio "0.0032214319999999998"^^xsd:float ;
+    lca:hasLU_for "0.00577207"^^xsd:float ;
+    lca:hasLU_osom "0.057016048"^^xsd:float ;
+    lca:hasLU_tagr "-2.551769e-05"^^xsd:float ;
+    lca:hasLU_tbio "-0.0003881823"^^xsd:float ;
+    lca:hasLU_tsom "0.394608556"^^xsd:float ;
+    lca:hasLU_turb "2.4137590000000003e-05"^^xsd:float ;
+    lca:hasLU_urb "0.0030647770000000003"^^xsd:float ;
+    lca:hasLifeCycleStage "C1-4: End of life stage"@en ;
+    lca:hasPM "0.0004979"^^xsd:float ;
+    lca:hasPOCP "0.00032237683"^^xsd:float ;
+    lca:hasTechflowDescription "Incineration of waste wood, not preserved [BE]| municipal incineration | Alloc Rec, U | Sorting of waste wooden product [BE]"@en ;
+    lca:hasUnit unit:KiloGM ;
+    lca:hasWU "0.001125223"^^xsd:float .
+
+slice:layerSet_01 a bmp:LayerSet,
+        bpo:Product ;
+    bmp:hasLayer slice:Layer_inst_01_01,
+        slice:Layer_inst_01_02,
+        slice:Layer_inst_01_03,
+        slice:Layer_inst_01_04 .
+

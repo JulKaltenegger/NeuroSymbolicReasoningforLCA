@@ -19,8 +19,8 @@
                                     beo: ,
                                     lca: ;
                         <http://creativecommons.org/ns#license> "http://creativecommons.org/licenses/by/3.0/" ;
-                        <http://purl.org/dc/elements/1.1/abstract> "This Ontology is automatically using the IFCExpress2BEO custom converter developed  by Carlos Ramonell (carlos.ramonell@upc.edu)" ;
-                        <http://purl.org/dc/elements/1.1/creator> "Carlos Ramonell Cazador (carlos.ramonell@upc.edu)" ;
+                        <http://purl.org/dc/elements/1.1/abstract> "This Ontology is automatically using the IFCExpress2BEO custom converter developed  by Carlos Ramonell (carlos.ramonell at upc.edu)" ;
+                        <http://purl.org/dc/elements/1.1/creator> "Carlos Ramonell Cazador (carlos.ramonell at upc.edu)" ;
                         <http://purl.org/dc/elements/1.1/date> "2024/04/11" ;
                         <http://purl.org/dc/elements/1.1/description> "OWL ontology to describe built elements in the built environment. It is based on the Product ontology descibed in IFC (Insutry Foundation Classes) schema." ;
                         <http://purl.org/dc/elements/1.1/identifier> "Built Element Ontology" ;
@@ -77,25 +77,25 @@ Mads Holten Rasmussen, Pieter Pauwels, Christian Anker Hviid and Jan Karlshøj (
                         <http://purl.org/dc/terms/modified> "2020-07-31T08:51:00"^^xsd:dateTime ;
                         <http://purl.org/dc/terms/title> "Building Archetype Ontology"@en ,
                                                          "Building Material Performance"@en ,
-                                                         "The Building Topology Ontology (BOT)"@en ,
-                                                         "Life Cycle Assessment Ontology for building material performance" ;
+                                                         "Life Cycle Assessment Ontology for building material performance" ,
+                                                         "The Building Topology Ontology (BOT)"@en ;
                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "at"@en ,
-                                                                              "bmp"@en ,
                                                                               "beo" ,
+                                                                              "bmp"@en ,
                                                                               "bot" ;
                         <http://purl.org/vocab/vann/preferredNamespaceUri> bot: ,
                                                                            "https://w3id.org/at#"@en ,
-                                                                           "https://w3id.org/bmp#"@en ,
-                                                                           "https://w3id.org/beo#" ;
+                                                                           "https://w3id.org/beo#" ,
+                                                                           "https://w3id.org/bmp#"@en ;
                         rdfs:label "" ,
                                    "Building Material Performance" ;
                         rdfs:seeAlso <http://www.semantic-web-journal.net/system/files/swj2279.pdf> ,
                                      <https://doi.org/10.24928/JC3-2017/0153> ,
                                      <https://www.researchgate.net/publication/320631574_Recent_changes_in_the_Building_Topology_Ontology> ;
                         owl:priorVersion <https://w3id.org/bot-0.3.1> ;
-                        owl:versionInfo "1.0"@en ,
-                                        1.0 ,
-                                        "0.3.2" ;
+                        owl:versionInfo "0.3.2" ,
+                                        "1.0"@en ,
+                                        1.0 ;
                         lca:preferredNamespaceUri "https://w3id.org/lca#" ;
                         <https://w3id.org/lca#:preferredNamespacePrefix> "lca" .
 
@@ -478,14 +478,7 @@ bmp:hasLiquidTransportCoef rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/bmp#hasMaterialCategory
 bmp:hasMaterialCategory rdf:type owl:ObjectProperty ;
                         rdfs:domain bmp:Material ;
-                        rdfs:range bmp:Brick ,
-                                   bmp:Concrete ,
-                                   bmp:Glass ,
-                                   bmp:Hemp ,
-                                   bmp:MineralFibre ,
-                                   bmp:NaturalStone ,
-                                   bmp:Polymer ,
-                                   bmp:WoodTimber .
+                        rdfs:range bmp:MaterialCategory .
 
 
 ###  https://w3id.org/bmp#hasMaterialProperty
@@ -497,32 +490,7 @@ bmp:hasMaterialProperty rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/bmp#hasMaterialType
 bmp:hasMaterialType rdf:type owl:ObjectProperty ;
                     rdfs:domain bmp:Material ;
-                    rdfs:range bmp:AirDryTimber ,
-                               bmp:BasaltStone ,
-                               bmp:BrickMasonryUnit ,
-                               bmp:CalciumSilicateUnit ,
-                               bmp:ClayUnit ,
-                               bmp:DrawnSheetGlass ,
-                               bmp:ESG ,
-                               bmp:ExpandedPolystyrene ,
-                               bmp:ExtrudedPolystyrene ,
-                               bmp:FloatGlass ,
-                               bmp:GlassFibres ,
-                               bmp:GranitStone ,
-                               bmp:HeavyWeightAggregate ,
-                               bmp:HeavyWeightConcrete ,
-                               bmp:HempFibre ,
-                               bmp:Hempcrete ,
-                               bmp:LightWeightAggregate ,
-                               bmp:LightWeightConcrete ,
-                               bmp:PrestressedConcrete ,
-                               bmp:ReinforcedConcrete ,
-                               bmp:Rockwool ,
-                               bmp:SandStone ,
-                               bmp:Slagwool ,
-                               bmp:VSG ,
-                               bmp:WoodHard ,
-                               bmp:WoodSoft .
+                    rdfs:range bmp:MaterialType .
 
 
 ###  https://w3id.org/bmp#hasMoistureContent
@@ -1434,6 +1402,10 @@ lca:hasSystemBoundary rdf:type owl:ObjectProperty ,
                                owl:FunctionalProperty ;
                       rdfs:domain lca:Building ;
                       rdfs:range lca:SystemBoundary .
+
+
+###  https://w3id.org/lca#hasTechflowDescription
+lca:hasTechflowDescription rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -5304,40 +5276,63 @@ bmp:AdsorptionWm rdf:type owl:Class ;
                  rdfs:subClassOf bmp:WaterVapourSorptionIsotherm .
 
 
+###  https://w3id.org/bmp#Aggregates
+bmp:Aggregates rdf:type owl:Class ;
+               rdfs:subClassOf bmp:MaterialCategory ;
+               rdfs:comment """Material Category: Mineral Aggregates & Fillers
+What it is made of / How it's made: It is made from natural geological deposits of sand, gravel, and heavy minerals, or from crushed rock and industrial by-products. These loose particles are mechanically washed, crushed, and strictly graded by particle size and density without altering their inherent chemical composition.
+Description: A category of loose, chemically inert granular materials (ranging from fine sand to coarse gravel and high-density heavyweight minerals) that provide the bulk volume, structural stability, and compressive mass within composite matrices like concrete and mortar."""@en ;
+               rdfs:label "Mineral Aggregates & Fillers"@en .
+
+
+###  https://w3id.org/bmp#Air
+bmp:Air rdf:type owl:Class ;
+        rdfs:subClassOf bmp:LayerFunction .
+
+
 ###  https://w3id.org/bmp#AirDryTimber
 bmp:AirDryTimber rdf:type owl:Class ;
                  rdfs:subClassOf bmp:WoodTimber ;
-                 rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                              "Material Category: Wood / TimberWhat it is made of / How it's made: It is made of natural wood logs (like oak, pine, or spruce) composed of cellulose fibers and lignin. It is produced by stacking freshly cut lumber outdoors under a roof for months or years, allowing the natural wind and air circulation to evaporate the moisture level down to a stable $12\\text{--}15\\%$ without using artificial kiln heat.Description: Natural wood lumber that has been seasoned by outdoor air circulation to reduce moisture and prevent warping (AirDryTimber)." ;
+                 rdfs:comment "Material Category: Wood / TimberWhat it is made of / How it's made: It is made of natural wood logs (like oak, pine, or spruce) composed of cellulose fibers and lignin. It is produced by stacking freshly cut lumber outdoors under a roof for months or years, allowing the natural wind and air circulation to evaporate the moisture level down to a stable $12\\text{--}15\\%$ without using artificial kiln heat.Description: Natural wood lumber that has been seasoned by outdoor air circulation to reduce moisture and prevent warping (AirDryTimber)." ,
+                              "https://www.iso.org/standard/77077.html"@en ;
                  rdfs:label "AirDryTimber"@en .
 
 
 ###  https://w3id.org/bmp#BasaltStone
 bmp:BasaltStone rdf:type owl:Class ;
                 rdfs:subClassOf bmp:NaturalStone ;
-                rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                             """Material Category: Natural Stone (Igneous Rock)
+                rdfs:comment """Material Category: Natural Stone (Igneous Rock)
 What it is made of / How it's made: It is made of dense, dark minerals rich in iron and magnesium (like pyroxene and plagioclase). It is formed when molten volcanic lava erupts onto the Earth's surface or ocean floor and cools very rapidly, leaving no time for large crystals to grow.
-Description: A heavy, dark, and exceptionally hard volcanic rock with a very fine-grained texture (BasaltStone).""" ;
+Description: A heavy, dark, and exceptionally hard volcanic rock with a very fine-grained texture (BasaltStone).""" ,
+                             "https://www.iso.org/standard/77077.html"@en ;
                 rdfs:label "BasaltStone"@en .
+
+
+###  https://w3id.org/bmp#Binders
+bmp:Binders rdf:type owl:Class ;
+            rdfs:subClassOf bmp:MaterialCategory ;
+            rdfs:comment """What it is made of / How it's made: It consists of finely ground mineral powders—such as calcium sulfate, calcium hydroxide, or aluminum silicates—produced by mining, crushing, and often thermally processing natural sedimentary rocks. When mixed with water, these powders undergo chemical hydration, carbonation, or physical drying to transform from a workable paste into a hard, solid adhesive matrix.
+Description: A category of fine, chemically active mineral powders (including cement, gypsum, lime, and raw clay) engineered to act as the primary binding matrix that glues loose aggregates together in construction and manufacturing applications.""" ;
+            rdfs:label "Mineral & Clay Binders" .
 
 
 ###  https://w3id.org/bmp#Brick
 bmp:Brick rdf:type owl:Class ;
-          rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                       """Material Category: Brick / Ceramics
+          rdfs:subClassOf bmp:MaterialCategory ;
+          rdfs:comment """Material Category: Brick / Ceramics
 What it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. This plastic mixture is shaped into blocks and dried before being baked in a high-temperature kiln, which triggers a chemical sintering process that fuses the mineral particles into a durable, vitrified, rock-hard structure.
-Description: A traditional, rectangular masonry building block manufactured from raw earthen clays or silicates and hardened by extreme heat or chemical bonding, used for building structural walls and facades (Brick).""" ;
+Description: A traditional, rectangular masonry building block manufactured from raw earthen clays or silicates and hardened by extreme heat or chemical bonding, used for building structural walls and facades (Brick).""" ,
+                       "https://www.iso.org/standard/32918.html"@en ;
           rdfs:label "Brick"@en .
 
 
 ###  https://w3id.org/bmp#BrickMasonryUnit
 bmp:BrickMasonryUnit rdf:type owl:Class ;
                      rdfs:subClassOf bmp:Brick ;
-                     rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                                  """Material Category: Brick / Ceramics
+                     rdfs:comment """Material Category: Brick / Ceramics
 What it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. It is pressed or extruded into a rectangular block shape and then dried and baked in a high-temperature kiln until the minerals chemically fuse into a vitrified, rock-hard structure.
-Description: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit).""" ;
+Description: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit).""" ,
+                              "https://www.iso.org/standard/32918.html"@en ;
                      rdfs:label "BrickMasonryUnit"@en .
 
 
@@ -5349,33 +5344,57 @@ bmp:BulkDensity rdf:type owl:Class ;
 ###  https://w3id.org/bmp#CalciumSilicateUnit
 bmp:CalciumSilicateUnit rdf:type owl:Class ;
                         rdfs:subClassOf bmp:Brick ;
-                        rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                                     """Material Category: Brick / Masonry
+                        rdfs:comment """Material Category: Brick / Masonry
 What it is made of / How it's made: It is made from a precise mixture of lime (calcium oxide), quartz sand, and water. Instead of being fired in a kiln like clay bricks, these units are compressed heavily into molds and then cured inside a pressurized steam chamber (an autoclave) to trigger a chemical bonding process.
-Description: A durable, highly uniform, sand-lime building block cured using high-pressure steam (CalciumSilicateUnit).""" ;
+Description: A durable, highly uniform, sand-lime building block cured using high-pressure steam (CalciumSilicateUnit).""" ,
+                                     "https://www.iso.org/standard/32918.html"@en ;
                         rdfs:label "CalciumSilicateUnit"@en .
 
 
 ###  https://w3id.org/bmp#Cavity
 bmp:Cavity rdf:type owl:Class ;
-           rdfs:subClassOf bmp:LayerSet .
+           rdfs:subClassOf bmp:LayerSet ;
+           rdfs:label "Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss." .
+
+
+###  https://w3id.org/bmp#ClayBinder
+bmp:ClayBinder rdf:type owl:Class ;
+               rdfs:subClassOf bmp:Binders ;
+               rdfs:comment """What it is made of / How it's made: It is made from naturally occurring, fine-grained sedimentary soil deposits composed of hydrated aluminum silicates. It relies entirely on a physical drying process where water evaporates, causing the tiny, plate-like clay particles to contract and mechanically interlock with each other without undergoing a permanent chemical reaction.
+Description: A traditional, completely reversible, and eco-friendly binder that remains plastic and moldable when wet, used extensively in earthen plasters, adobe brick production, and ceramic pottery bases."""@en ;
+               rdfs:label "ClayBinder"@en .
 
 
 ###  https://w3id.org/bmp#ClayUnit
 bmp:ClayUnit rdf:type owl:Class ;
              rdfs:subClassOf bmp:Brick ;
-             rdfs:comment "https://www.iso.org/standard/32918.html"@en ,
-                          "Material Category: Brick / CeramicsWhat it is made of / How it's made: It is made strictly from natural kiln-firing clays and silicates. It is molded and baked at temperatures exceeding 1000 degree C, which gives it its characteristic terracotta-red or brown color and excellent weather resistance.Description: A traditional building block or tile manufactured exclusively from fired natural clay (ClayUnit)." ;
+             rdfs:comment "Material Category: Brick / CeramicsWhat it is made of / How it's made: It is made strictly from natural kiln-firing clays and silicates. It is molded and baked at temperatures exceeding 1000 degree C, which gives it its characteristic terracotta-red or brown color and excellent weather resistance.Description: A traditional building block or tile manufactured exclusively from fired natural clay (ClayUnit)." ,
+                          "https://www.iso.org/standard/32918.html"@en ;
              rdfs:label "ClayUnit"@en .
 
 
 ###  https://w3id.org/bmp#Concrete
 bmp:Concrete rdf:type owl:Class ;
-             rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                          """Material Category: Concrete / Cementitious Composite
+             rdfs:subClassOf bmp:MaterialCategory ;
+             rdfs:comment """Material Category: Concrete / Cementitious Composite
 What it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.
-Description: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete).""" ;
+Description: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete).""" ,
+                          "https://www.iso.org/standard/41260.html"@en ;
              rdfs:label "Concrete"@en .
+
+
+###  https://w3id.org/bmp#Cork
+bmp:Cork rdf:type owl:Class ;
+         rdfs:subClassOf bmp:MaterialCategory ;
+         rdfs:comment """Material Category: Cork / Plant Bark
+What it is made of / How it's made: Harvested from the outer bark of cork oak trees, boiled, pressed, and cut into boards or granules for cladding and insulation panels.
+Description: Lightweight, breathable plant-bark panels and boards used for external cladding and thermal insulation (Cork).""" ;
+         rdfs:label "Cork"@en .
+
+
+###  https://w3id.org/bmp#CorkType
+bmp:CorkType rdf:type owl:Class ;
+             rdfs:subClassOf bmp:Cork .
 
 
 ###  https://w3id.org/bmp#DesorptionC
@@ -5396,10 +5415,10 @@ bmp:DesorptionWm rdf:type owl:Class ;
 ###  https://w3id.org/bmp#DrawnSheetGlass
 bmp:DrawnSheetGlass rdf:type owl:Class ;
                     rdfs:subClassOf bmp:Glass ;
-                    rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                                 """Material Category: Glass
+                    rdfs:comment """Material Category: Glass
 What it is made of / How it's made: It is made of melted silica sand, soda ash, and limestone. It is produced by a classic industrial method where the molten glass is physically pulled vertically upward out of the furnace by rollers, cooling in the air as a continuous sheet before being cut.
-Description: Flat glass produced by drawing a molten ribbon vertically, known for having a slight, wave-like optical distortion (DrawnSheetGlass).""" ;
+Description: Flat glass produced by drawing a molten ribbon vertically, known for having a slight, wave-like optical distortion (DrawnSheetGlass).""" ,
+                                 "https://www.iso.org/standard/46375.html"@en ;
                     rdfs:label "DrawnSheetGlass"@en .
 
 
@@ -5447,6 +5466,11 @@ What it is made of / How it's made: It is made from the exact same polystyrene p
 Description: High-density, rigid insulation boards with a completely waterproof, closed-cell structure (ExtrudedPolystyrene).""" .
 
 
+###  https://w3id.org/bmp#Facade
+bmp:Facade rdf:type owl:Class ;
+           rdfs:subClassOf bmp:LayerFunction .
+
+
 ###  https://w3id.org/bmp#Finishing
 bmp:Finishing rdf:type owl:Class ;
               rdfs:subClassOf bmp:LayerFunction .
@@ -5468,22 +5492,24 @@ bmp:FireResistance rdf:type owl:Class ;
 ###  https://w3id.org/bmp#FloatGlass
 bmp:FloatGlass rdf:type owl:Class ;
                rdfs:subClassOf bmp:Glass ;
-               rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                            """Material Category: Glass
+               rdfs:comment """Material Category: Glass
 What it is made of / How it's made: It is made of silica sand, soda ash, dolomite, and limestone. It is produced by pouring the liquid glass mixture out of a furnace directly onto a bath of molten liquid tin, where it floats, spreads out, and cools into a perfectly flat, uniform sheet.
-Description: Standard modern window glass manufactured by floating liquid glass over a smooth bed of molten tin (FloatGlass).""" ;
+Description: Standard modern window glass manufactured by floating liquid glass over a smooth bed of molten tin (FloatGlass).""" ,
+                            "https://www.iso.org/standard/46375.html"@en ;
                rdfs:label "FloatGlass"@en .
 
 
 ###  https://w3id.org/bmp#Frame
 bmp:Frame rdf:type owl:Class ;
-          rdfs:subClassOf bmp:LayerSet .
+          rdfs:subClassOf bmp:LayerSet ;
+          rdfs:label "A skeletal or frame structure of wood or steel." .
 
 
 ###  https://w3id.org/bmp#Glass
 bmp:Glass rdf:type owl:Class ;
-          rdfs:comment "https://www.iso.org/standard/46375.html"@en ,
-                       "Glass materials are rigid, non-crystalline solids used extensively for windows, facades, and partitions. The category features basic manufactured flat glass (float glass), toughened single-pane safety glass (ESG), and shatterproof laminated safety glass (VSG). In multi-pane window systems, the airtight gaps between these glass layers are frequently injected with dense, invisible gases like argon to drastically improve the building's energy efficiency." ;
+          rdfs:subClassOf bmp:MaterialCategory ;
+          rdfs:comment "Glass materials are rigid, non-crystalline solids used extensively for windows, facades, and partitions. The category features basic manufactured flat glass (float glass), toughened single-pane safety glass (ESG), and shatterproof laminated safety glass (VSG). In multi-pane window systems, the airtight gaps between these glass layers are frequently injected with dense, invisible gases like argon to drastically improve the building's energy efficiency." ,
+                       "https://www.iso.org/standard/46375.html"@en ;
           rdfs:label "Glass"@en .
 
 
@@ -5503,60 +5529,75 @@ bmp:Glazing rdf:type owl:Class ;
 ###  https://w3id.org/bmp#GranitStone
 bmp:GranitStone rdf:type owl:Class ;
                 rdfs:subClassOf bmp:NaturalStone ;
-                rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                             """Material Category: Natural Stone (Igneous Rock)
+                rdfs:comment """Material Category: Natural Stone (Igneous Rock)
 What it is made of / How it's made: It is made of crystalline minerals like quartz, feldspar, and mica. It is formed deep underground where molten magma gets trapped and cools incredibly slowly over millions of years, allowing large, visible mineral crystals to develop.
-Description: A hard, heavy, and coarse-grained igneous rock with a distinctly speckled multi-colored appearance (GranitStone).""" ;
+Description: A hard, heavy, and coarse-grained igneous rock with a distinctly speckled multi-colored appearance (GranitStone).""" ,
+                             "https://www.iso.org/standard/77077.html"@en ;
                 rdfs:label "GranitStone"@en .
+
+
+###  https://w3id.org/bmp#Gravel
+bmp:Gravel rdf:type owl:Class ;
+           rdfs:subClassOf bmp:Aggregates ;
+           rdfs:comment """What it is made of / How it's made: It is made either by harvesting naturally rounded riverbed gravel deposits or by blasting and mechanically crushing massive rock formations (such as limestone, basalt, or granite). These stones are washed and mechanically sorted by size fractions, generally ranging from 4 mm to over 40 mm, to meet specific engineering gradations.
+Description: A dense, high-strength coarse mineral aggregate that provides the primary structural skeletal mass, volume, and mechanical interlocking capability inside standard concrete matrices."""@en ;
+           rdfs:label "Gravel & Crushed Stone"@en .
+
+
+###  https://w3id.org/bmp#GypsumPlaster
+bmp:GypsumPlaster rdf:type owl:Class ;
+                  rdfs:subClassOf bmp:Binders ;
+                  rdfs:comment """What it is made of / How it's made: It is made from natural gypsum stone (calcium sulfate dihydrate) that is mined, crushed, and partially dehydrated by heating (calcining) to drive off water, turning it into a hemihydrate powder. When re-introduced to water, it rapidly re-hydrates, undergoes a crystallization process, and expands slightly to fill space as it sets into a solid form.
+Description: A rapid-setting, non-hydraulic mineral binder prized for its smooth finish, fire-resistant properties, and dimensional accuracy when casting architectural details, wall plasters, and internal boards."""@en ;
+                  rdfs:label "GypsumPlaster"@en .
 
 
 ###  https://w3id.org/bmp#HeavyWeightAggregate
 bmp:HeavyWeightAggregate rdf:type owl:Class ;
-                         rdfs:subClassOf bmp:Concrete ;
-                         rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                      """Material Category: Concrete Component
-What it is made of / How it's made: It is made from crushing exceptionally dense natural minerals or industrial materials like magnetite, barite, hematite, or iron shot. These dense stones are washed and graded by size to be used specifically as the coarse filler material inside heavy concrete mixes.
-Description: High-density stone or metal fragments used as raw aggregate filler to produce maximum-density concrete (HeavyWeightAggregate).""" ;
+                         rdfs:subClassOf bmp:Aggregates ;
+                         rdfs:comment """What it is made of / How it's made: It is made by mining natural, high-density minerals and metallic ores—such as Barite, Magnetite, Hematite, or Ilmenite—or by utilizing manufactured industrial bi-products like steel shot. These raw materials are crushed and strictly graded to maintain a specific gravity significantly higher than standard gravel (typically above 3.5 to 6.0).
+Description: A specialized, ultra-high-density category of loose mineral aggregates engineered explicitly to add mass and block radiation when mixed into heavy-duty composite structures."""@en ;
                          rdfs:label "HeavyWeightAggregate"@en .
 
 
 ###  https://w3id.org/bmp#HeavyWeightConcrete
 bmp:HeavyWeightConcrete rdf:type owl:Class ;
                         rdfs:subClassOf bmp:Concrete ;
-                        rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                     """Material Category: Concrete
+                        rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made by mixing standard cement, water, sand, and heavy-density stone aggregate fillers (like barite or magnetite). The resulting mix is incredibly dense and massive compared to regular structural concrete.
-Description: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete).""" ;
+Description: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete).""" ,
+                                     "https://www.iso.org/standard/41260.html"@en ;
                         rdfs:label "HeavyWeightConcrete"@en .
 
 
 ###  https://w3id.org/bmp#Hemp
 bmp:Hemp rdf:type owl:Class ;
-         rdfs:comment "https://www.iso.org/standard/78231.html"@en ,
-                      """Material Category: Hemp / Bio-composite / Plant Fiber
+         rdfs:subClassOf bmp:MaterialCategory ;
+         rdfs:comment """Material Category: Hemp / Bio-composite / Plant Fiber
 What it is made of / How it's made: It is sourced from the fast-growing industrial hemp plant. Processing the plant's stalk yields two distinct materials: the tough, high-tensile outer skin is mechanically stripped to harvest raw plant threads, while the woody inner core is chopped into mulched pieces (hurds) and mixed with a formulated lime binder and water.
-Description: A highly sustainable, rapid-growth agricultural plant material processed into either flexible structural fibers or breathable, carbon-negative insulation composites used in green construction (Hemp).""" ;
+Description: A highly sustainable, rapid-growth agricultural plant material processed into either flexible structural fibers or breathable, carbon-negative insulation composites used in green construction (Hemp).""" ,
+                      "https://www.iso.org/standard/78231.html"@en ;
          rdfs:label "Hemp"@en .
 
 
 ###  https://w3id.org/bmp#HempFibre
 bmp:HempFibre rdf:type owl:Class ;
               rdfs:subClassOf bmp:Hemp ;
-              rdfs:comment "https://www.iso.org/standard/78231.html"@en ,
-                           """Material Category: Hemp / Natural Plant Fiber
+              rdfs:comment """Material Category: Hemp / Natural Plant Fiber
 What it is made of / How it's made: It is made from the long, tough outer skin of the industrial hemp plant stalk. These outer strands are separated from the woody core through mechanical stripping, cleaned, and combed out into strong textile-like plant threads.
-Description: Raw, high-tensile plant fibers woven into flexible acoustic insulation batts or structural reinforcing mats (HempFibre).""" ;
+Description: Raw, high-tensile plant fibers woven into flexible acoustic insulation batts or structural reinforcing mats (HempFibre).""" ,
+                           "https://www.iso.org/standard/78231.html"@en ;
               rdfs:label "HempFibre"@en .
 
 
 ###  https://w3id.org/bmp#Hempcrete
 bmp:Hempcrete rdf:type owl:Class ;
               rdfs:subClassOf bmp:Hemp ;
-              rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                           "https://www.iso.org/standard/78231.html"@en ,
-                           """Material Category: Hemp / Bio-composite
+              rdfs:comment """Material Category: Hemp / Bio-composite
 What it is made of / How it's made: It is made by mixing the chopped, woody inner core of the industrial hemp plant (called hurds) with a binder made of slaked lime and water. The lime undergoes a chemical reaction with the air, turning back into stone and trapping the hemp fibers inside.
-Description: A sustainable, breathable, and carbon-negative building insulation material made of hemp hurds and lime (Hempcrete).""" ;
+Description: A sustainable, breathable, and carbon-negative building insulation material made of hemp hurds and lime (Hempcrete).""" ,
+                           "https://www.iso.org/standard/41260.html"@en ,
+                           "https://www.iso.org/standard/78231.html"@en ;
               rdfs:label "Hempcrete"@en .
 
 
@@ -5619,22 +5660,27 @@ bmp:LifeSpan rdf:type owl:Class ;
 
 ###  https://w3id.org/bmp#LightWeightAggregate
 bmp:LightWeightAggregate rdf:type owl:Class ;
-                         rdfs:subClassOf bmp:Concrete ;
-                         rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                      """Material Category: Concrete Component
-What it is made of / How it's made: It is made from porous, low-density materials like expanded clay, shale, slate, pumice, or volcanic perlite. These materials are fired in a rotary kiln, causing gases inside them to expand and leave thousands of microscopic air pockets inside each stone.
-Description: Highly porous, low-density stone fragments used as concrete filler to minimize dead weight (LightWeightAggregate).""" ;
-                         rdfs:label "LightWeightAggregate"@en .
+                         rdfs:subClassOf bmp:Aggregates ;
+                         rdfs:comment """What it is made of / How it's made: It is made by minerally processing natural volcanic rocks (like pumice or scoria) or by thermally expanding raw clays, shales, or slates inside a high-temperature rotary kiln. The rapid heating causes embedded gases to expand, bloating the mineral structure into porous, structural pellets with a highly cellular, air-trapping internal matrix.
+Description: A specialized category of low-density, highly porous mineral aggregates engineered to drastically reduce dead weight and enhance thermal insulation when substituted for standard stone or gravel in composite matrices."""@en .
 
 
 ###  https://w3id.org/bmp#LightWeightConcrete
 bmp:LightWeightConcrete rdf:type owl:Class ;
                         rdfs:subClassOf bmp:Concrete ;
-                        rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                     """Material Category: Concrete
+                        rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made by mixing cement, water, sand, and porous aggregates (like expanded clay or pumice). Alternatively, it can be made by injecting stable foam directly into a standard cement slurry to fill the structure with tiny bubbles.
-Description: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete).""" ;
+Description: A structural or insulating concrete formulated with air-filled aggregates to drastically reduce its total weight (LightWeightConcrete).""" ,
+                                     "https://www.iso.org/standard/41260.html"@en ;
                         rdfs:label "LightWeightConcrete"@en .
+
+
+###  https://w3id.org/bmp#Lime
+bmp:Lime rdf:type owl:Class ;
+         rdfs:subClassOf bmp:Binders ;
+         rdfs:comment """What it is made of / How it's made: It is made by burning pure limestone (calcium carbonate) in a kiln to create quicklime, which is then treated with a precise amount of water (slaked) to form a stable calcium hydroxide powder. It hardens slowly over time through a process called carbonation, where it absorbs carbon dioxide directly from the surrounding air to revert back into limestone.
+Description: A traditional, highly breathable, and flexible mineral binder that imparts excellent workability, moisture regulation, and self-healing properties to historical masonry mortars and interior renders."""@en ;
+         rdfs:label "HydratedLime"@en .
 
 
 ###  https://w3id.org/bmp#LiquidTransportCoef
@@ -5687,8 +5733,9 @@ bmp:Mechanical rdf:type owl:Class ;
 
 ###  https://w3id.org/bmp#MineralFibre
 bmp:MineralFibre rdf:type owl:Class ;
-                 rdfs:comment "https://www.iso.org/standard/15229.html"@en ,
-                              "The mineral fiber category includes insulation and reinforcing materials made by melting down rock, glass, or industrial byproducts and spinning them into fine, wool-like threads. This category covers glass-based fibers (GlassFibres), stone-based insulation (Rockwool), and fibers created from iron-blasting furnace waste (Slagwool)." ;
+                 rdfs:subClassOf bmp:MaterialCategory ;
+                 rdfs:comment "The mineral fiber category includes insulation and reinforcing materials made by melting down rock, glass, or industrial byproducts and spinning them into fine, wool-like threads. This category covers glass-based fibers (GlassFibres), stone-based insulation (Rockwool), and fibers created from iron-blasting furnace waste (Slagwool)." ,
+                              "https://www.iso.org/standard/15229.html"@en ;
                  rdfs:label "MineralFibre"@en .
 
 
@@ -5699,13 +5746,15 @@ bmp:MoistureContent rdf:type owl:Class ;
 
 ###  https://w3id.org/bmp#MultiLayer
 bmp:MultiLayer rdf:type owl:Class ;
-               rdfs:subClassOf bmp:LayerSet .
+               rdfs:subClassOf bmp:LayerSet ;
+               rdfs:label "A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)." .
 
 
 ###  https://w3id.org/bmp#NaturalStone
 bmp:NaturalStone rdf:type owl:Class ;
-                 rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                              "The natural stone category includes building materials harvested directly from the earth, formed over millions of years by intense geological heat, pressure, or mineral accumulation. This category covers grainy, compacted sand rock (SandStone), coarse and highly durable speckled volcanic rock (GranitStone), and fine-grained, dark volcanic rock (BasaltStone)." ;
+                 rdfs:subClassOf bmp:MaterialCategory ;
+                 rdfs:comment "The natural stone category includes building materials harvested directly from the earth, formed over millions of years by intense geological heat, pressure, or mineral accumulation. This category covers grainy, compacted sand rock (SandStone), coarse and highly durable speckled volcanic rock (GranitStone), and fine-grained, dark volcanic rock (BasaltStone)." ,
+                              "https://www.iso.org/standard/77077.html"@en ;
                  rdfs:label "NaturalStone"@en .
 
 
@@ -5739,6 +5788,7 @@ bmp:Physical rdf:type owl:Class ;
 
 ###  https://w3id.org/bmp#Polymer
 bmp:Polymer rdf:type owl:Class ;
+            rdfs:subClassOf bmp:MaterialCategory ;
             rdfs:comment "The polymer category includes versatile, oil-based synthetic plastics engineered for highly effective moisture resistance and heat insulation. This category specifically covers rigid blue or pink foam boards squeezed out through a manufacturing die (extrudedPolystyrene), and standard white beadboard made from pre-foamed beads compressed together into blocks (expandedPolysteren)." ,
                          "synthetic polymerized thermoplastic resin using the Styrene monomer" .
 
@@ -5748,14 +5798,30 @@ bmp:Porosity rdf:type owl:Class ;
              rdfs:subClassOf bmp:Physical .
 
 
+###  https://w3id.org/bmp#PortlandCement
+bmp:PortlandCement rdf:type owl:Class ;
+                   rdfs:subClassOf bmp:Binders ;
+                   rdfs:comment """What it is made of / How it's made: It is made by crushing and heating a precise mixture of limestone, clay, and shale in a high-temperature kiln to create a clinker, which is then finely ground with a small amount of gypsum. When mixed with water, it triggers an irreversible exothermic hydration reaction that forms calcium silicate hydrate gel, crystalline structures that lock components into a rigid stone matrix.
+Description: A highly reactive, hydraulic mineral powder that serves as the premier industrial binding agent worldwide, capable of setting and hardening underwater to provide exceptional structural strength."""@en ;
+                   rdfs:label "Portland Cement"@en .
+
+
 ###  https://w3id.org/bmp#PrestressedConcrete
 bmp:PrestressedConcrete rdf:type owl:Class ;
                         rdfs:subClassOf bmp:Concrete ;
-                        rdfs:comment "https://www.iso.org/standard/41260.html"@en ,
-                                     """Material Category: Concrete
+                        rdfs:comment """Material Category: Concrete
 What it is made of / How it's made: It is made of high-strength structural concrete cast around high-tensile steel cables. The steel cables are stretched tight by hydraulic jacks, the concrete is poured around them, and once the concrete hardens, the tension on the cables is released, instantly clamping the concrete block tight.
-Description: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete).""" ;
+Description: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete).""" ,
+                                     "https://www.iso.org/standard/41260.html"@en ;
                         rdfs:label "PrestressedConcrete"@en .
+
+
+###  https://w3id.org/bmp#QuartzSand
+bmp:QuartzSand rdf:type owl:Class ;
+               rdfs:subClassOf bmp:Aggregates ;
+               rdfs:comment """What it is made of / How it's made: It is made from the natural weathering and erosion of silica-rich rocks (like granite), or by mechanically crushing quartz gravel. The raw material is washed to remove impurities and dynamically screened through fine mesh sieves to ensure a uniform distribution of particle sizes, typically ranging from 0.06 mm to 2 mm.
+Description: A chemically inert, fine mineral aggregate composed primarily of silicon dioxide (SiO₂) that serves to fill the microscopic voids between coarse aggregates and binder pastes in mortars, grouts, and concrete mixtures."""@en ;
+               rdfs:label "QuartzSand"@en .
 
 
 ###  https://w3id.org/bmp#RcValue
@@ -5786,16 +5852,17 @@ bmp:Rockwool rdf:type owl:Class ;
 ###  https://w3id.org/bmp#SandStone
 bmp:SandStone rdf:type owl:Class ;
               rdfs:subClassOf bmp:NaturalStone ;
-              rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                           """Material Category: Natural Stone (Sedimentary Rock)
+              rdfs:comment """Material Category: Natural Stone (Sedimentary Rock)
 What it is made of / How it's made: It is made of small, grainy mineral particles—mostly quartz and feldspar. It is formed over vast geological eras as layers of sand accumulate at the bottoms of rivers or deserts, where they are slowly compressed by overlying weight and cemented together by natural silica or calcium deposits.
-Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" ;
+Description: A grainy, layered sedimentary rock formed by the natural compaction and cementing of sand particles (SandStone).""" ,
+                           "https://www.iso.org/standard/77077.html"@en ;
               rdfs:label "SandStone"@en .
 
 
 ###  https://w3id.org/bmp#SingleLayer
 bmp:SingleLayer rdf:type owl:Class ;
-                rdfs:subClassOf bmp:LayerSet .
+                rdfs:subClassOf bmp:LayerSet ;
+                rdfs:label "A solid, monolithic wall construction without separate cavities or insulation layers." .
 
 
 ###  https://w3id.org/bmp#Slagwool
@@ -5900,30 +5967,37 @@ bmp:WaterVapourSorptionIsotherm rdf:type owl:Class ;
                                 rdfs:subClassOf bmp:Hygric .
 
 
+###  https://w3id.org/bmp#WoodFibre
+bmp:WoodFibre rdf:type owl:Class ;
+              rdfs:subClassOf bmp:WoodTimber ;
+              rdfs:label "WoodFibre"@en .
+
+
 ###  https://w3id.org/bmp#WoodHard
 bmp:WoodHard rdf:type owl:Class ;
              rdfs:subClassOf bmp:WoodTimber ;
-             rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                          """Material Category: Wood / Timber
+             rdfs:comment """Material Category: Wood / Timber
 What it is made of / How it's made: It is made of complex cellulose fibers derived from angiosperm trees (broad-leaved deciduous trees like Oak, Beech, Maple, and Ash). These trees grow very slowly, resulting in highly packed, tight growth rings with a dense, heavy microscopic pore structure.
-Description: High-density, tough timber harvested from slow-growing, broad-leaved deciduous trees (WoodHard).""" ;
+Description: High-density, tough timber harvested from slow-growing, broad-leaved deciduous trees (WoodHard).""" ,
+                          "https://www.iso.org/standard/77077.html"@en ;
              rdfs:label "WoodHard"@en .
 
 
 ###  https://w3id.org/bmp#WoodSoft
 bmp:WoodSoft rdf:type owl:Class ;
              rdfs:subClassOf bmp:WoodTimber ;
-             rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                          """Material Category: Wood / Timber
+             rdfs:comment """Material Category: Wood / Timber
 What it is made of / How it's made: It is made of simpler cellulose structures derived from gymnosperm trees (needle-bearing evergreen conifers like Pine, Spruce, Fir, and Cedar). These trees grow rapidly, resulting in wider growth rings and a lighter, more flexible wood matrix.
-Description: Lightweight, flexible timber harvested from fast-growing, needle-bearing coniferous evergreen trees (WoodSoft).""" ;
+Description: Lightweight, flexible timber harvested from fast-growing, needle-bearing coniferous evergreen trees (WoodSoft).""" ,
+                          "https://www.iso.org/standard/77077.html"@en ;
              rdfs:label "WoodSoft"@en .
 
 
 ###  https://w3id.org/bmp#WoodTimber
 bmp:WoodTimber rdf:type owl:Class ;
-               rdfs:comment "https://www.iso.org/standard/77077.html"@en ,
-                            "The wood and timber category includes organic, structural materials harvested from trees, consisting of complex cellulose fibers bound together by a natural glue called lignin. This category covers seasoned lumber dried naturally by open-air circulation (airdrytimber), flexible and fast-growing wood from cone-bearing evergreen trees (woodsoft), and dense, slow-growing wood from broad-leaved deciduous trees (woodhard)." ;
+               rdfs:subClassOf bmp:MaterialCategory ;
+               rdfs:comment "The wood and timber category includes organic, structural materials harvested from trees, consisting of complex cellulose fibers bound together by a natural glue called lignin. This category covers seasoned lumber dried naturally by open-air circulation (airdrytimber), flexible and fast-growing wood from cone-bearing evergreen trees (woodsoft), and dense, slow-growing wood from broad-leaved deciduous trees (woodhard)." ,
+                            "https://www.iso.org/standard/77077.html"@en ;
                rdfs:label "Timber"@en ,
                           "Wood"@en .
 
@@ -7799,6 +7873,192 @@ at:WindowArchetype32 rdf:type owl:NamedIndividual ,
                                     at:ConstructionPeriod .
 
 
+#################################################################
+#    Individuals — material category / type role punning
+#    Same IRI as the class: owl:Class (tree) + owl:NamedIndividual (role).
+#################################################################
+
+###  https://w3id.org/bmp#Aggregates
+bmp:Aggregates rdf:type owl:NamedIndividual ,
+                        bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Binders
+bmp:Binders rdf:type owl:NamedIndividual ,
+                    bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Brick
+bmp:Brick rdf:type owl:NamedIndividual ,
+                   bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Concrete
+bmp:Concrete rdf:type owl:NamedIndividual ,
+                      bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Cork
+bmp:Cork rdf:type owl:NamedIndividual ,
+                  bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Glass
+bmp:Glass rdf:type owl:NamedIndividual ,
+                   bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Hemp
+bmp:Hemp rdf:type owl:NamedIndividual ,
+                  bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#MineralFibre
+bmp:MineralFibre rdf:type owl:NamedIndividual ,
+                          bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#NaturalStone
+bmp:NaturalStone rdf:type owl:NamedIndividual ,
+                          bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#Polymer
+bmp:Polymer rdf:type owl:NamedIndividual ,
+                     bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#WoodTimber
+bmp:WoodTimber rdf:type owl:NamedIndividual ,
+                        bmp:MaterialCategory .
+
+###  https://w3id.org/bmp#AirDryTimber
+bmp:AirDryTimber rdf:type owl:NamedIndividual ,
+                          bmp:MaterialType .
+
+###  https://w3id.org/bmp#BasaltStone
+bmp:BasaltStone rdf:type owl:NamedIndividual ,
+                         bmp:MaterialType .
+
+###  https://w3id.org/bmp#BrickMasonryUnit
+bmp:BrickMasonryUnit rdf:type owl:NamedIndividual ,
+                              bmp:MaterialType .
+
+###  https://w3id.org/bmp#CalciumSilicateUnit
+bmp:CalciumSilicateUnit rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#ClayBinder
+bmp:ClayBinder rdf:type owl:NamedIndividual ,
+                        bmp:MaterialType .
+
+###  https://w3id.org/bmp#ClayUnit
+bmp:ClayUnit rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+###  https://w3id.org/bmp#CorkType
+bmp:CorkType rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+###  https://w3id.org/bmp#DrawnSheetGlass
+bmp:DrawnSheetGlass rdf:type owl:NamedIndividual ,
+                             bmp:MaterialType .
+
+###  https://w3id.org/bmp#ESG
+bmp:ESG rdf:type owl:NamedIndividual ,
+                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#ExpandedPolystyrene
+bmp:ExpandedPolystyrene rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#ExtrudedPolystyrene
+bmp:ExtrudedPolystyrene rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#FloatGlass
+bmp:FloatGlass rdf:type owl:NamedIndividual ,
+                        bmp:MaterialType .
+
+###  https://w3id.org/bmp#GlassFibres
+bmp:GlassFibres rdf:type owl:NamedIndividual ,
+                         bmp:MaterialType .
+
+###  https://w3id.org/bmp#GranitStone
+bmp:GranitStone rdf:type owl:NamedIndividual ,
+                         bmp:MaterialType .
+
+###  https://w3id.org/bmp#Gravel
+bmp:Gravel rdf:type owl:NamedIndividual ,
+                    bmp:MaterialType .
+
+###  https://w3id.org/bmp#GypsumPlaster
+bmp:GypsumPlaster rdf:type owl:NamedIndividual ,
+                           bmp:MaterialType .
+
+###  https://w3id.org/bmp#HeavyWeightAggregate
+bmp:HeavyWeightAggregate rdf:type owl:NamedIndividual ,
+                                  bmp:MaterialType .
+
+###  https://w3id.org/bmp#HeavyWeightConcrete
+bmp:HeavyWeightConcrete rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#HempFibre
+bmp:HempFibre rdf:type owl:NamedIndividual ,
+                       bmp:MaterialType .
+
+###  https://w3id.org/bmp#Hempcrete
+bmp:Hempcrete rdf:type owl:NamedIndividual ,
+                       bmp:MaterialType .
+
+###  https://w3id.org/bmp#LightWeightAggregate
+bmp:LightWeightAggregate rdf:type owl:NamedIndividual ,
+                                  bmp:MaterialType .
+
+###  https://w3id.org/bmp#LightWeightConcrete
+bmp:LightWeightConcrete rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#Lime
+bmp:Lime rdf:type owl:NamedIndividual ,
+                  bmp:MaterialType .
+
+###  https://w3id.org/bmp#PortlandCement
+bmp:PortlandCement rdf:type owl:NamedIndividual ,
+                            bmp:MaterialType .
+
+###  https://w3id.org/bmp#PrestressedConcrete
+bmp:PrestressedConcrete rdf:type owl:NamedIndividual ,
+                                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#QuartzSand
+bmp:QuartzSand rdf:type owl:NamedIndividual ,
+                        bmp:MaterialType .
+
+###  https://w3id.org/bmp#ReinforcedConcrete
+bmp:ReinforcedConcrete rdf:type owl:NamedIndividual ,
+                                bmp:MaterialType .
+
+###  https://w3id.org/bmp#Rockwool
+bmp:Rockwool rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+###  https://w3id.org/bmp#SandStone
+bmp:SandStone rdf:type owl:NamedIndividual ,
+                       bmp:MaterialType .
+
+###  https://w3id.org/bmp#Slagwool
+bmp:Slagwool rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+###  https://w3id.org/bmp#VSG
+bmp:VSG rdf:type owl:NamedIndividual ,
+                 bmp:MaterialType .
+
+###  https://w3id.org/bmp#WoodFibre
+bmp:WoodFibre rdf:type owl:NamedIndividual ,
+                       bmp:MaterialType .
+
+###  https://w3id.org/bmp#WoodHard
+bmp:WoodHard rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+###  https://w3id.org/bmp#WoodSoft
+bmp:WoodSoft rdf:type owl:NamedIndividual ,
+                      bmp:MaterialType .
+
+
 ###  https://w3id.org/bot#
 bot: rdf:type <http://purl.org/vocommons/voaf#Vocabulary> .
 
@@ -7813,4 +8073,17 @@ lca:Martin_Röck rdf:type owl:NamedIndividual ;
                 rdfs:label "Martin Röck" .
 
 
-###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+#################################################################
+#    Annotations
+#################################################################
+
+at:MajorRenovation rdfs:label "Major renovation: Major renovation involves comprehensive upgrades of both the building envelope and heating system. Significant insulation thicknesses are installed on external walls, roofs, and floors, substantially lowering U-values (thus increasing Rc Value) and minimizing heat losses. The existing heating system is replaced by a highly efficient low-carbon technology, such as a heat pump or district heating, resulting in major reductions in heating energy demand." .
+
+
+at:MinorRenovation rdfs:label "Minor renovation: Minor renovation includes targeted improvements to the building envelope and heating system. Moderate insulation thicknesses are added to external elements, reducing U-values (thus increase Rc Value) and heat losses, while windows may be upgraded to more energy-efficient alternatives. The heating system is typically improved or replaced with a more efficient conventional technology, leading to moderate energy savings." .
+
+
+at:NoRenovation rdfs:label "No renovation: No renovation assumes that the building remains in its original condition. The thermal properties of the external walls, roof, floor, and windows are unchanged, resulting in the same heat losses and heating demand as before. The existing heating system is retained without significant upgrades." .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

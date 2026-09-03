@@ -1,0 +1,480 @@
+{
+  "source": "bbsr",
+  "ttl": "C:\\Users\\20180031\\Dropbox\\_PhD\\11_KnowledgeBaseLCA\\NeuroSymbolicReasoningforLCA\\ttl\\bbsr_buildings-enriched.ttl",
+  "owl_validity_pct": 100.0,
+  "gold_is_100_when_matched": true,
+  "rows": [
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_001",
+      "cosine": 0.9211705327033997,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 92.1
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_001",
+      "cosine": 0.853794793287913,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_002",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_002",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_003",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_003",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_004",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_004",
+      "cosine": 0.7566779653231303,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.7
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_005",
+      "cosine": 0.8697768449783325,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 87.0
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_005",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_006",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_006",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_007",
+      "cosine": 0.8839207887649536,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 88.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_007",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_008",
+      "cosine": 0.8774218956629435,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 87.7
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_008",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_009",
+      "cosine": 0.8448587854703268,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_009",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_010",
+      "cosine": 0.8478458523750305,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.8
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_010",
+      "cosine": 0.7445409099260966,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_011",
+      "cosine": 0.8478458523750305,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.8
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_011",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_012",
+      "cosine": 0.7669302821159363,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.7
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_012",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_013",
+      "cosine": 0.7669302821159363,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.7
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_013",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_014",
+      "cosine": 0.7669302821159363,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 76.7
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_014",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "external_wall_015",
+      "cosine": 0.7521015803019205,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 75.2
+    },
+    {
+      "source": "bbsr",
+      "case_id": "internal_wall_015",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_001",
+      "cosine": 0.48753585418065387,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 48.8
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_002",
+      "cosine": 0.9141146540641785,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 91.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_003",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_004",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_005",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_006",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_007",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_008",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_009",
+      "cosine": 0.9452708959579468,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 94.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_010",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_011",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_013",
+      "cosine": 0.9452708959579468,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 94.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_014",
+      "cosine": 0.9452708959579468,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 94.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "slab_015",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_001",
+      "cosine": 0.7442582050959269,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 74.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_002",
+      "cosine": 0.6646515925725301,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 66.5
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_003",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_004",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_005",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_006",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_007",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_008",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_009",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_010",
+      "cosine": 0.6643443504969279,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 66.4
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_011",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_012",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_013",
+      "cosine": 0.7926300565401713,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 79.3
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_014",
+      "cosine": 0.7393428285916647,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 73.9
+    },
+    {
+      "source": "bbsr",
+      "case_id": "partition_wall_015",
+      "cosine": 0.8994127313296,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 89.9
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+BUILDING
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001 a owl:NamedIndividual,
+        at:BuildingArchetype,
+        bot:Building ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001"^^xsd:string ;
+    dc1: "DE.East.AB.06.Gen.ReEx.001"^^xsd:string ;
+    tabula:hasElement tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1 ;
+    at:hasConstructionPeriod "1969-1978"^^xsd:string ;
+    at:hasImage "DE.East.AB.06.Gen.ReEx.001.png"^^xsd:string ;
+    at:hasReferenceEnergySupply "gas central heating"^^xsd:string ;
+    at:hasReferenceFloorArea "3108.0"^^xsd:float ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Usual ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasSourceJSON "DE.East.AB.06.Gen.ReEx.001.json"^^xsd:string ;
+    lca:hasClimateRegion "Default (National (EnEV 2009))"^^xsd:string .
+
+
+ELEMENT
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuildingElement,
+        beo:Wall ;
+    rdfs:label "Wall 1"^^xsd:string ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Usual ;
+    at:hasSurfaceArea [ qudt:unit unit:M2 ;
+            at:hasValue "1599.7"^^xsd:float ] .
+
+
+ELEMENT SCENARIO RENOVATION ADVANCDE
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced a owl:NamedIndividual,
+        at:MajorRenovation ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Wall 1 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade"@de,
+        "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall"@en ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.13"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:LayerSet_Wall_1_Advanced .
+
+
+LAYERSET 
+tabula:LayerSet_Wall_1_Advanced a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:SingleLayer ;
+    bmp:hasLayer tabula:Layer_Wall_1_Advanced_L1 .
+
+
+LAYER in LAYERSET 
+tabula:Layer_Wall_1_Advanced_L1 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "24.0"^^xsd:float ] .
+
+
+
+
+slice:element_inst_01 (from element_name)
+    a beo:Element, at:ElementArchetype, owl:NamedIndividual,
+    rdfs:label "EW05 CLT + str blown"^^xsd:string ;
+    rdf:type beo:Wall ;
+    bmp:hasLyerSet slice:layerSet_01 ;
+    at:hasArchetypeDescription "External wall - loadbearing | Demolition | Panel | Wood (per m²)"^^xsd:string ; 
+    at:hasArchetypeDescription "Wall - external finish | Cladding | Panel | Cork (32-80 mm)"^^xsd:string ; 
+    at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | Bituminised wood fibre (22 mm) | Screwed"^^xsd:string ; 
+    at:hasArchetypeDescription "Wall - external finish | Thermal insulation | Flakes | Straw (Blow-in 160 mm) | For cavity wall"^^xsd:string ; 
+    and so on... for all worksection_names for the related element class. 
+    for the complete set, we create a layerset, then for each instnance of the above we create one seperate layer. 
+
+slice:layerSet_01 
+    rdf:type bpo:Product ;
+    rdf:type bmp:LayerSet ;
+
+    bmp:hasLayer slice:Layer_inst_01 ;
+    bmp:hasLayer slice:Layer_inst_02 ;
+    bmp:hasLayer slice:Layer_inst_03 ;
+    bmp:hasLayer slice:Layer_inst_04 ;
+    etc .
+
+slice:Layer_inst_01 
+    rdf:type bpo:Component, bmp:Layer ;
+    bpo:isPartOf slice:layerSet_01 ;
+    at:hasArchetypeDescription "External wall - loadbearing | Demolition | Panel | Wood (per m²)"^^xsd:string ; 
+    bmp:hasLayerFunction bmp:Loadbearing ;
+    bmp:hasMaterial slice:material_inst_layer1_1 .
+
+slice:Layer_inst_02 
+    rdf:type bpo:Component, bmp:Layer  ;
+    bpo:isPartOf slice:layerSet_01 ;
+    at:hasArchetypeDescription "Wall - external finish | Cladding | Panel | Cork (32-80 mm)"^^xsd:string ;
+    bmp:hasLayerFunction bmp:Finishing ; (here we extract the layer function from the text)
+    bmp:hasMaterial slice:material_inst_layer1_2 .
+
+slice:material_inst_layer1_1 
+    rdf:type bmp:Material ;
+    bmp:hasMaterialCategory bmp:Wood ; (here we extract the material category from the text)
+    bmp:hasLifeCycleStage slice:material_inst_layer1_1_LCSA1A2A3 , 
+            slice:material_inst_layer1_1_LCSA4, 
+            slice:material_inst_layer1_1_LCSA5, 
+            slice:material_inst_layer1_1_LCSC1, 
+            slice:material_inst_layer1_1_LCSC2,
+            slice:material_inst_layer1_1_LCSC3,
+            slice:material_inst_layer1_1_LCSC4 .
+
+slice:material_inst_layer1_1_LCSA1A2A3  
+    rdf:type at:lcaA1 ; (here we extract the A1, A2, A3 cause the LCM code shows A1-3)
+    rdf:type at:lcaA2 ;
+    rdf:type at:lcaA3 ;
+    lca:hasLifeCycleStage "A1-3: Product stage"@en ;
+    lca:hasTechflowDescription "No impact material"@en .
+    lca:hasActivityType lca:MaterialIn ;
+    lca:hasUnit qudt:KG ;
+    lca:declaredUnitAmount "0.16"^^xsd:float ;
+    lca:hasGWP "0.0"^^xsd:float ;
+    lca:hasPM "0.0"^^xsd:float ;
+    lca:hasAP "0.0"^^xsd:float ;
+    lca:hasEP "0.0"^^xsd:float ;
+    lca:hasPOCP "0.0"^^xsd:float ;
+    lca:hasHT_c "0.0"^^xsd:float ;
+    lca:hasET_fw "0.0"^^xsd:float ;
+    lca:hasHT_nc "0.0"^^xsd:float ;
+    lca:hasIR "0.0"^^xsd:float ;
+    lca:hasLU_agr "0.0"^^xsd:float ;
+    lca:hasLU_bio "0.0"^^xsd:float ;
+    lca:hasLU_for "0.0"^^xsd:float ;
+    lca:hasLU_osom "0.0"^^xsd:float ;
+    lca:hasLU_tagr "0.0"^^xsd:float ;
+    lca:hasLU_tbio "0.0"^^xsd:float ;
+    lca:hasLU_tsom "0.0"^^xsd:float ;
+    lca:hasLU_turb "0.0"^^xsd:float ;
+    lca:hasLU_urb "0.0"^^xsd:float ;
+    lca:hasWU "0.0"^^xsd:float ;
+
+    here keep in mind we wamt a good translation
+    SLiCE Excel Column HeaderFull Environmental Indicator NameTarget Ontology Property / Class Alignmentindicator_GWPGlobal Warming Potential (total)lca:hasGWP / lca:GlobalWarmingPotentialindicator_PMParticulate Matter emissionslca:hasPM / lca:ParticulateMatterindicator_EPEutrophication Potentiallca:hasEP / lca:EutrophicationPotentialindicator_aciAcidification Potentiallca:hasAP / lca:AcidificationPotentialindicator_pofPhotochemical Ozone Formation (Smog)lca:hasPOCP / lca:PhotochemicalOzoneCreationPotentialindicator_HTcHuman Toxicity, cancer effectslca:hasHT_c / lca:HumanToxicityCancerindicator_HTncHuman Toxicity, non-cancer effectslca:hasHT_nc / lca:HumanToxicityNonCancerindicator_irhhIonising Radiation, human healthlca:hasIR / lca:IonisingRadiationindicator_ecofwEcotoxicity, freshwaterlca:hasET_fw / lca:FreshwaterEcotoxicityindicator_wsWater Scarcity / Water Uselca:hasWU / lca:WaterUse

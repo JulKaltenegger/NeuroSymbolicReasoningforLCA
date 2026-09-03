@@ -1,0 +1,214 @@
+{
+  "shapes": "owl/shapes/composition.shacl.ttl",
+  "files": [
+    {
+      "source": "bbsr",
+      "path": "ttl/bbsr_buildings-enriched.ttl",
+      "owl_range_issues": 0,
+      "owl_issue_kinds": {},
+      "shacl_conforms": false,
+      "shacl_violations": 9,
+      "shacl_warnings": 0,
+      "shacl_results": [
+        {
+          "severity": "violation",
+          "focus": "ex_wall_layerset_005_var2",
+          "focus_iri": "https://namedgraphs.org/bbsr#ex_wall_layerset_005_var2",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "ex_wall_layerset_005_var3",
+          "focus_iri": "https://namedgraphs.org/bbsr#ex_wall_layerset_005_var3",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "ex_wall_layerset_005_var4",
+          "focus_iri": "https://namedgraphs.org/bbsr#ex_wall_layerset_005_var4",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "ex_wall_layerset_006_var2",
+          "focus_iri": "https://namedgraphs.org/bbsr#ex_wall_layerset_006_var2",
+          "message": "bmp:SingleLayer must have exactly one bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "ex_wall_layerset_011_var3",
+          "focus_iri": "https://namedgraphs.org/bbsr#ex_wall_layerset_011_var3",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "part_wall_layerset_008_var1",
+          "focus_iri": "https://namedgraphs.org/bbsr#part_wall_layerset_008_var1",
+          "message": "bmp:SingleLayer must have exactly one bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "slab_layerset_003_var1",
+          "focus_iri": "https://namedgraphs.org/bbsr#slab_layerset_003_var1",
+          "message": "bmp:Cavity must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "slab_layerset_004_var1",
+          "focus_iri": "https://namedgraphs.org/bbsr#slab_layerset_004_var1",
+          "message": "bmp:Cavity must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "slab_layerset_008_var1",
+          "focus_iri": "https://namedgraphs.org/bbsr#slab_layerset_008_var1",
+          "message": "bmp:Cavity must have at least two bmp:hasLayer"
+        }
+      ]
+    },
+    {
+      "source": "tabula",
+      "path": "ttl/tabula_buildings-enriched.ttl",
+      "owl_range_issues": 0,
+      "owl_issue_kinds": {},
+      "shacl_conforms": false,
+      "shacl_violations": 6,
+      "shacl_warnings": 0,
+      "shacl_results": [
+        {
+          "severity": "violation",
+          "focus": "Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_East_AB_08_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_N_AB_03_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "message": "bmp:Frame must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_N_MFH_03_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "message": "bmp:Frame must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_N_MFH_08_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_N_MFH_09_Gen_ReEx_001_LayerSet_Roof_2_Existing",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        },
+        {
+          "severity": "violation",
+          "focus": "Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Floor_1_Existing",
+          "focus_iri": "https://namedgraphs.org/tabula#Building_DE_N_MFH_10_Gen_ReEx_001_LayerSet_Floor_1_Existing",
+          "message": "bmp:MultiLayer must have at least two bmp:hasLayer"
+        }
+      ]
+    },
+    {
+      "source": "slice",
+      "path": "ttl/slice_data_instantiated.ttl",
+      "owl_range_issues": 0,
+      "owl_issue_kinds": {},
+      "shacl_conforms": true,
+      "shacl_violations": 0,
+      "shacl_warnings": 14,
+      "shacl_results": [
+        {
+          "severity": "warning",
+          "focus": "layerSet_01",
+          "focus_iri": "https://w3id.org/slice#layerSet_01",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_02",
+          "focus_iri": "https://w3id.org/slice#layerSet_02",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_03",
+          "focus_iri": "https://w3id.org/slice#layerSet_03",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_04",
+          "focus_iri": "https://w3id.org/slice#layerSet_04",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_05",
+          "focus_iri": "https://w3id.org/slice#layerSet_05",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_06",
+          "focus_iri": "https://w3id.org/slice#layerSet_06",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_07",
+          "focus_iri": "https://w3id.org/slice#layerSet_07",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_08",
+          "focus_iri": "https://w3id.org/slice#layerSet_08",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_09",
+          "focus_iri": "https://w3id.org/slice#layerSet_09",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_10",
+          "focus_iri": "https://w3id.org/slice#layerSet_10",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_11",
+          "focus_iri": "https://w3id.org/slice#layerSet_11",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_12",
+          "focus_iri": "https://w3id.org/slice#layerSet_12",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_13",
+          "focus_iri": "https://w3id.org/slice#layerSet_13",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        },
+        {
+          "severity": "warning",
+          "focus": "layerSet_14",
+          "focus_iri": "https://w3id.org/slice#layerSet_14",
+          "message": "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)"
+        }
+      ]
+    }
+  ],
+  "owl_range_issues": 0,
+  "shacl_files_with_violations": 2
+}

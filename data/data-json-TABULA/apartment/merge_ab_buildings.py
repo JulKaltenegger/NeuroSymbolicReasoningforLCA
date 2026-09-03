@@ -1,5 +1,3 @@
-"""Merge individual apartment-building JSON files into one combined file."""
-
 import json
 from pathlib import Path
 

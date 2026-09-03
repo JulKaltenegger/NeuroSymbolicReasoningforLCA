@@ -18,6 +18,7 @@ pytesseract
 pyvis
 PyYAML
 rdflib
+pyshacl
 requests
 rich
 scikit-learn

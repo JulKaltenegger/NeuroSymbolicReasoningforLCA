@@ -1,5 +1,8 @@
+"""BBSR JSON → enriched TTL. Pipeline step: python graphBuilder/run_pipeline.py --bbsr"""
 import json
+import os
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from rdflib import Graph, Literal, Namespace, URIRef, XSD, BNode
@@ -10,13 +13,21 @@ import ollama
 from pyvis.network import Network
 import torch
 
-# Model Setup & Hardware Acceleration Routing
-device = "cuda" if torch.cuda.is_available() else "cpu"
-embedder_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2", device=device)
-print("Using device:", device)
+BASE_DIR = Path(__file__).resolve().parents[2]
+_GRAPH_BUILDER_DIR = Path(__file__).resolve().parents[1]
+if str(_GRAPH_BUILDER_DIR) not in sys.path:
+    sys.path.insert(0, str(_GRAPH_BUILDER_DIR))
 
-LLM_MODEL = "llama3"  # Change this to "llama3.1", "mistral", etc. depending on local setup
-BASE_DIR = Path(__file__).resolve().parent.parent
+from ontology_reasoning import load_ontology_corpus, load_ontology_graph, ontology_source_label, process_description
+from ontology_reasoning.chunking import combined_description
+from ontology_reasoning.rdf_layers import emit_enforced_layer
+from ontology_reasoning.validators import extract_thickness_cm
+from ontology_reasoning.validation_report import begin_report, finalize_report, record_ctx
+from adapters.bbsr import iter_bbsr_descriptions
+
+# Smoke test: 1-based page index (1 = first building in page_boxes.json); None = all pages.
+TEST_BUILDING_INDEX = None
+
 print(f"Base Directory: {BASE_DIR}")
 
 # TRANSLATOR 
@@ -59,14 +70,23 @@ for file_path in json_files:
 
 print(f"Total BBSR referenced buildings: {len(all_data)}")
 
+if TEST_BUILDING_INDEX is None and os.environ.get("BBSR_TEST_INDEX"):
+    TEST_BUILDING_INDEX = int(os.environ["BBSR_TEST_INDEX"])
+
+if TEST_BUILDING_INDEX is not None:
+    if TEST_BUILDING_INDEX < 1 or TEST_BUILDING_INDEX > len(all_data):
+        raise ValueError(f"BBSR_TEST_INDEX must be 1..{len(all_data)}, got {TEST_BUILDING_INDEX}")
+    all_data = [all_data[TEST_BUILDING_INDEX - 1]]
+    print(f"TEST MODE: processing BBSR building page {TEST_BUILDING_INDEX} only")
+
+BBSR_TEST_MODE = TEST_BUILDING_INDEX is not None
+
 
 ########################################################
 #### GRAPH BUILDING CONFIGURATION & NAMESPACES
 ########################################################
-ontology_g = Graph()
-ontology_path = (BASE_DIR / "owl" / "KB-LCA-merged.ttl").resolve()
-print(f"Ontology path: {ontology_path}")
-ontology_g.parse(location=ontology_path.as_uri(), format="ttl")
+ontology_g = load_ontology_graph(BASE_DIR / "owl")
+print(f"Ontology: {ontology_source_label(BASE_DIR / 'owl')}")
 
 # Namespaces & Graph Setup
 BBSR = Namespace("https://namedgraphs.org/bbsr#")
@@ -122,16 +142,16 @@ for page_record in all_data:
     # 1. Force structural classification type straight to at:ResidentialType
     g.add((building_uri, AT.hasBuildingType, AT.ResidentialType))
 
-    # 2. Map textual metadata directly into at:hasDescription instead of hasBuildingType
+    # 2. Map textual metadata directly into at:hasArchetypeDescription instead of hasBuildingType
     if main_title:
-        g.add((building_uri, AT.hasDescription, Literal(main_title, lang="de")))
+        g.add((building_uri, AT.hasArchetypeDescription, Literal(main_title, lang="de")))
         if main_title_en := translate_safely(main_title):
-            g.add((building_uri, AT.hasDescription, Literal(main_title_en, lang="en")))
+            g.add((building_uri, AT.hasArchetypeDescription, Literal(main_title_en, lang="en")))
             
     if subseries_title:
-        g.add((building_uri, AT.hasDescription, Literal(subseries_title, lang="de")))
+        g.add((building_uri, AT.hasArchetypeDescription, Literal(subseries_title, lang="de")))
         if subseries_title_en := translate_safely(subseries_title):
-            g.add((building_uri, AT.hasDescription, Literal(subseries_title_en, lang="en")))
+            g.add((building_uri, AT.hasArchetypeDescription, Literal(subseries_title_en, lang="en")))
 
     # Proceed natively with deep structural element processing loops
     structured_sections = page_record.get("structured_sections", [])
@@ -154,15 +174,15 @@ for page_record in all_data:
                 slab_construction = slab.get("bauweise")
                 slab_thickness = slab.get("dicke")
                 if slab_construction is not None:
-                    g.add((slab_uri, AT.hasDescription, Literal(slab_construction, lang="de")))
+                    g.add((slab_uri, AT.hasArchetypeDescription, Literal(slab_construction, lang="de")))
                     if slab_construction_en := translate_safely(slab_construction):
-                        g.add((slab_uri, AT.hasDescription, Literal(slab_construction_en, lang="en")))
+                        g.add((slab_uri, AT.hasArchetypeDescription, Literal(slab_construction_en, lang="en")))
                 if slab_thickness is not None:
                     g.add((slab_uri, BMP.hasThickness, Literal(slab_thickness)))
             elif isinstance(slab, str):
-                g.add((slab_uri, AT.hasDescription, Literal(slab, lang="de")))
+                g.add((slab_uri, AT.hasArchetypeDescription, Literal(slab, lang="de")))
                 if slab_en := translate_safely(slab):
-                    g.add((slab_uri, AT.hasDescription, Literal(slab_en, lang="en")))
+                    g.add((slab_uri, AT.hasArchetypeDescription, Literal(slab_en, lang="en")))
             
             fallback_thickness = properties.get("Deckendicke") or properties.get("Dicke")
             if fallback_thickness is not None:
@@ -180,27 +200,27 @@ for page_record in all_data:
             external_wall_uri = BBSR[f"external_wall_{instance_counter:03d}"]
             g.add((building_uri, AT.hasElementArchetype, external_wall_uri))
             g.add((external_wall_uri, RDF.type, BEO.Wall))
-            g.add((external_wall_uri, AT.hasDescription, Literal(external_wall, lang="de")))
+            g.add((external_wall_uri, AT.hasArchetypeDescription, Literal(external_wall, lang="de")))
             if ext_wall_en := translate_safely(external_wall):
-                g.add((external_wall_uri, AT.hasDescription, Literal(ext_wall_en, lang="en")))
+                g.add((external_wall_uri, AT.hasArchetypeDescription, Literal(ext_wall_en, lang="en")))
 
         ### Internal Wall Processing
         if internal_wall is not None:
             internal_wall_uri = BBSR[f"internal_wall_{instance_counter:03d}"]
             g.add((building_uri, AT.hasElementArchetype, internal_wall_uri))
             g.add((internal_wall_uri, RDF.type, BEO.Wall))
-            g.add((internal_wall_uri, AT.hasDescription, Literal(internal_wall, lang="de")))
+            g.add((internal_wall_uri, AT.hasArchetypeDescription, Literal(internal_wall, lang="de")))
             if int_wall_en := translate_safely(internal_wall):
-                g.add((internal_wall_uri, AT.hasDescription, Literal(int_wall_en, lang="en")))
+                g.add((internal_wall_uri, AT.hasArchetypeDescription, Literal(int_wall_en, lang="en")))
 
         ### Partition Wall Processing
         if partition_wall is not None:
             partition_wall_uri = BBSR[f"partition_wall_{instance_counter:03d}"]
             g.add((building_uri, AT.hasElementArchetype, partition_wall_uri))
             g.add((partition_wall_uri, RDF.type, BEO.WallPARTITIONING))
-            g.add((partition_wall_uri, AT.hasDescription, Literal(partition_wall, lang="de")))
+            g.add((partition_wall_uri, AT.hasArchetypeDescription, Literal(partition_wall, lang="de")))
             if part_wall_en := translate_safely(partition_wall):
-                g.add((partition_wall_uri, AT.hasDescription, Literal(part_wall_en, lang="en")))
+                g.add((partition_wall_uri, AT.hasArchetypeDescription, Literal(part_wall_en, lang="en")))
 
         # Core dimensional layout specifications
         builiding_length = properties.get("Gebäudelängen")
@@ -240,8 +260,8 @@ def create_graph_embeddings(graph_instance):
             element_subjects.add(subject)
 
     for s in element_subjects:
-        de_descs = [str(d) for d in graph_instance.objects(s, AT.hasDescription) if getattr(d, 'language', None) == 'de']
-        en_descs = [str(d) for d in graph_instance.objects(s, AT.hasDescription) if getattr(d, 'language', None) == 'en']
+        de_descs = [str(d) for d in graph_instance.objects(s, AT.hasArchetypeDescription) if getattr(d, 'language', None) == 'de']
+        en_descs = [str(d) for d in graph_instance.objects(s, AT.hasArchetypeDescription) if getattr(d, 'language', None) == 'en']
         thicknesses = [f"{thick}" for thick in graph_instance.objects(s, BMP.hasThickness)]
 
         combined_text = " | ".join(de_descs + en_descs + thicknesses)
@@ -538,6 +558,8 @@ Expected JSON Structure:
     compiled_variants_results = []
 
     for idx, (de_var, en_var) in enumerate(zip(de_variants, en_variants), start=1):
+
+
         user_prompt = f"""
 Analyze Element Configuration:
 - Subject Element URI: <{element_uri}>
@@ -571,7 +593,14 @@ Valid Constraints Vocabulary (You must pull from these exact options):
 ##########################################################
 # GRAPH GENERATION LOGIC TIER (UPDATED LAYERSET LITERALS)
 ##########################################################
-def compile_json_to_graph(graph_instance, element_uri, variants_data, german_source_desc=None, english_source_desc=None):
+def compile_json_to_graph(
+    graph_instance,
+    element_uri,
+    variants_data,
+    german_source_desc=None,
+    english_source_desc=None,
+    element_thickness_cm=None,
+):
     if not variants_data:
         return
 
@@ -597,6 +626,16 @@ def compile_json_to_graph(graph_instance, element_uri, variants_data, german_sou
 
     graph_instance.add((element_ref, RDF.type, archetype_class))
 
+    if element_thickness_cm is None:
+        element_thickness_cm = extract_thickness_cm(
+            combined_description(german_source_desc, english_source_desc)
+        )
+    if element_thickness_cm:
+        elem_thick = BNode()
+        graph_instance.add((element_ref, BMP.hasThickness, elem_thick))
+        graph_instance.add((elem_thick, RDF.value, Literal(float(element_thickness_cm), datatype=XSD.float)))
+        graph_instance.add((elem_thick, QUDT.unit, UNIT.CentiM))
+
     for idx, json_data in enumerate(variants_data, start=1):
         layerset_uri = BBSR[f"{prefix}_layerset_{instance_suffix}_var{idx}"]
         graph_instance.add((element_ref, BMP.hasLayerSet, layerset_uri))
@@ -608,154 +647,183 @@ def compile_json_to_graph(graph_instance, element_uri, variants_data, german_sou
         # --- ENHANCED SOURCE DESCRIPTION COUPLING ---
         # If true source descriptions are passed through Python context, preserve them natively
         if german_source_desc and "No German description found" not in german_source_desc:
-            graph_instance.add((layerset_uri, AT.hasDescription, Literal(german_source_desc, lang="de")))
+            graph_instance.add((layerset_uri, AT.hasArchetypeDescription, Literal(german_source_desc, lang="de")))
         elif "layer_set_description" in json_data:
             # Fallback to LLM text if context arguments are missing
-            graph_instance.add((layerset_uri, AT.hasDescription, Literal(json_data["layer_set_description"], lang="de")))
+            graph_instance.add((layerset_uri, AT.hasArchetypeDescription, Literal(json_data["layer_set_description"], lang="de")))
 
         if english_source_desc and "No English translation found" not in english_source_desc:
-            graph_instance.add((layerset_uri, AT.hasDescription, Literal(english_source_desc, lang="en")))
+            graph_instance.add((layerset_uri, AT.hasArchetypeDescription, Literal(english_source_desc, lang="en")))
 
-        # Process thickness node
-        if "thickness_cm" in json_data and json_data["thickness_cm"]:
+        source_thickness = extract_thickness_cm(
+            combined_description(german_source_desc, english_source_desc)
+        )
+        thickness_cm = json_data.get("thickness_cm") or source_thickness
+        if thickness_cm:
             thick_node = BNode()
             graph_instance.add((layerset_uri, BMP.hasThickness, thick_node))
-            graph_instance.add((thick_node, RDF.value, Literal(float(json_data["thickness_cm"]), datatype=XSD.float)))
+            graph_instance.add((thick_node, RDF.value, Literal(float(thickness_cm), datatype=XSD.float)))
             graph_instance.add((thick_node, QUDT.unit, UNIT.CentiM))
 
         # Process layer array data
         for i, layer_data in enumerate(json_data.get("layers", []), start=1):
             layer_uri = BBSR[f"{prefix}_layer_{instance_suffix}_var{idx}_0{i}"]
             graph_instance.add((layerset_uri, BMP.hasLayer, layer_uri))
-            graph_instance.add((layer_uri, RDF.type, BMP.Layer))
-            
-        # --- THREE-PRONGED SEMANTIC PROPERTY BINDING ---
-        if layer_data.get("predicted_function_iri"):
-            graph_instance.add((layer_uri, BMP.hasLayerFunction, URIRef(layer_data["predicted_function_iri"])))
-            
-        if layer_data.get("predicted_category_iri"):
-            graph_instance.add((layer_uri, BMP.hasMaterialCategory, URIRef(layer_data["predicted_category_iri"])))
-            
-        if layer_data.get("predicted_type_iri"):
-            graph_instance.add((layer_uri, BMP.hasMaterialType, URIRef(layer_data["predicted_type_iri"])))
+
+            material_uri = BBSR[f"{prefix}_mat_{instance_suffix}_var{idx}_0{i}"]
+            emit_enforced_layer(
+                graph_instance,
+                layer_uri=layer_uri,
+                material_uri=material_uri,
+                function_iri=layer_data.get("predicted_function_iri"),
+                category_iri=layer_data.get("predicted_category_iri"),
+                type_iri=layer_data.get("predicted_type_iri"),
+                ontology_graph=ontology_g,
+                layer_types=(BMP.Layer,),
+            )
+            layer_thickness = layer_data.get("thickness_cm")
+            if layer_thickness:
+                layer_thick = BNode()
+                graph_instance.add((layer_uri, BMP.hasThickness, layer_thick))
+                graph_instance.add((layer_thick, RDF.value, Literal(float(layer_thickness), datatype=XSD.float)))
+                graph_instance.add((layer_thick, QUDT.unit, UNIT.CentiM))
+            # --- previous partial binding (function/material optional) ---
+            # graph_instance.add((layer_uri, RDF.type, BMP.Layer))
+            # if layer_data.get("predicted_function_iri"):
+            #     graph_instance.add((layer_uri, BMP.hasLayerFunction, URIRef(...)))
+            # if category_iri or type_iri:
+            #     emit_material_instance_triples(...)
 ##########################################################
 # DETERMINISTIC PIPELINE EXECUTION ENGINE
 ##########################################################
 
 # 1. Serialize the baseline initialization graph configuration
-out_path_init = BASE_DIR / "ttl" / "bbsr_buildings-init.ttl"
-out_path_init.parent.mkdir(parents=True, exist_ok=True)
+out_dir = BASE_DIR / "ttl"
+out_dir.mkdir(parents=True, exist_ok=True)
+if BBSR_TEST_MODE:
+    out_path_init = out_dir / f"bbsr_building{TEST_BUILDING_INDEX:03d}_test-init.ttl"
+    out_path_enriched = out_dir / f"bbsr_building{TEST_BUILDING_INDEX:03d}_test-enriched.ttl"
+else:
+    out_path_init = out_dir / "bbsr_buildings-init.ttl"
+    out_path_enriched = out_dir / "bbsr_buildings-enriched.ttl"
+
 if out_path_init.is_file():
     out_path_init.unlink()
 g.serialize(destination=out_path_init, format="turtle")
 print(f"Successfully generated clean initialization graph: {out_path_init.name}")
 
-# 2. Extract targets using our graph-mined taxonomy structures
-element_corpus = create_graph_embeddings(g)
-ontology_corpus = create_ontology_embeddings(ontology_g)
+# 2. Shared OWL-constructed NLP pipeline (ontology_reasoning package)
+print("Loading shared ontology corpus for NLP pipeline...")
+ontology_corpus = load_ontology_corpus(ontology_g)
+begin_report("bbsr")
 
 print("\n==================================================")
-print("RUNNING HIERARCHICAL COGNITIVE TAXONOMY LOOP")
+print("RUNNING SHARED OWL-CONSTRUCTED NLP PIPELINE (BBSR)")
 print("==================================================")
 
-for element in element_corpus:
-    uri_str = element['element_uri']
-    element_uri_ref = URIRef(uri_str)
-    
-    de_descriptions = [str(d) for d in g.objects(element_uri_ref, AT.hasDescription) if getattr(d, 'language', None) == 'de']
-    en_descriptions = [str(d) for d in g.objects(element_uri_ref, AT.hasDescription) if getattr(d, 'language', None) == 'en']
-    
-    german_txt = de_descriptions[0] if de_descriptions else "No German description found"
-    english_txt = en_descriptions[0] if en_descriptions else "No English translation found"
+for record in iter_bbsr_descriptions(g):
+    uri_str = record.subject_uri
+    german_txt = record.german_desc or "No German description found"
+    english_txt = record.english_desc or "No English translation found"
 
     print(f"Processing structural entity: {uri_str}")
-    
-    # Query our tiered lookup system for context assembly
-    aggregated_matches = []
-    for chunk_data in element["chunk_embeddings"]:
-        matches = retrieve_hierarchical_matches(chunk_data["embedding"], ontology_corpus, top_k=4)
-        aggregated_matches.extend(matches)
-    
-    seen_uris = set()
-    unique_matches = []
-    for m in sorted(aggregated_matches, key=lambda x: x["score"], reverse=True):
-        if m["entity_uri"] not in seen_uris:
-            seen_uris.add(m["entity_uri"])
-            unique_matches.append(m)
-            
-    final_matches = unique_matches[:10]
-    reasoned_json = llm_reasoning_to_rdf(uri_str, german_txt, english_txt, final_matches)
-    
-# Enrich the existing in-memory graph instance safely using parent literal variables
+
+    nlp_ctx = process_description(
+        subject_uri=uri_str,
+        german_desc=record.german_desc,
+        english_desc=record.english_desc,
+        ontology_corpus=ontology_corpus,
+        profile="bbsr",
+        extra_text=record.extra_text,
+        ontology_graph=ontology_g,
+        element_type_iri=record.metadata.get("element_type_iri"),
+    )
+    record_ctx(uri_str, nlp_ctx, source="bbsr")
+
+    reasoned_json = nlp_ctx.layer_json if nlp_ctx and isinstance(nlp_ctx.layer_json, list) else None
+    element_thickness = getattr(nlp_ctx, "element_thickness_cm", None) if nlp_ctx else None
+
     if reasoned_json:
+        layer_count = sum(len(v.get("layers", [])) for v in reasoned_json)
+        print(f"  -> NLP OK: {len(reasoned_json)} variant(s), {layer_count} layer(s) mapped")
         compile_json_to_graph(
-            graph_instance=g, 
-            element_uri=uri_str, 
+            graph_instance=g,
+            element_uri=uri_str,
             variants_data=reasoned_json,
-            german_source_desc=german_txt,   # Passes the exact source German text
-            english_source_desc=english_txt  # Passes the exact source English text
+            german_source_desc=german_txt,
+            english_source_desc=english_txt,
+            element_thickness_cm=element_thickness,
         )
+    else:
+        print("  -> NLP: no layer JSON returned (check Ollama / descriptions)")
+
+# --- previous inline pipeline (kept for reference) ---
+# element_corpus = create_graph_embeddings(g)
+# ontology_corpus = create_ontology_embeddings(ontology_g)
+# for element in element_corpus:
+#     ...
+#     reasoned_json = llm_reasoning_to_rdf(uri_str, german_txt, english_txt, final_matches)
 
 # 3. Save out the enriched structural master file once execution is complete
-out_path_enriched = BASE_DIR / "ttl" / "bbsr_buildings-enriched.ttl"
 if out_path_enriched.is_file():
     out_path_enriched.unlink()
 g.serialize(destination=out_path_enriched, format="turtle")
+finalize_report(data_graph=g, ontology_graph=ontology_g, ttl_path=out_path_enriched)
 
+layerset_count = sum(1 for _ in g.subjects(RDF.type, BMP.LayerSet))
+layer_count = sum(1 for _ in g.subjects(RDF.type, BMP.Layer))
 print("==================================================")
-print(f"COMPLETE: Saved completely enriched graph to {out_path_enriched.name}")
+print(f"COMPLETE: Saved enriched graph to {out_path_enriched}")
+print(f"Summary: {layerset_count} layer sets | {layer_count} layers | {len(g)} triples")
 print("==================================================\n")
 
 
-##########################################################
-# INTERACTIVE GEOMETRIC NETWORK VISUALIZATION
-##########################################################
-OUTPUT_HTML = BASE_DIR / "ttl" / "graph_visualization.html"
+if not BBSR_TEST_MODE:
+    OUTPUT_HTML = BASE_DIR / "ttl" / "graph_visualization.html"
 
-net = Network(height="850px", width="100%", bgcolor="#222222", font_color="white", directed=True)
-net.force_atlas_2based(gravity=-50, central_gravity=0.01, spring_length=100, spring_strength=0.08, damping=0.4)
+    net = Network(height="850px", width="100%", bgcolor="#222222", font_color="white", directed=True)
+    net.force_atlas_2based(gravity=-50, central_gravity=0.01, spring_length=100, spring_strength=0.08, damping=0.4)
 
-COLOR_MAP = {
-    "Building": "#FF5733", "Wall": "#33FF57", "Slab": "#3357FF", 
-    "Floor": "#F3FF33", "LayerSet": "#9B59B6", "Layer": "#1ABC9C", 
-    "Default_Class": "#E67E22", "Literal": "#BDC3C7"
-}
+    COLOR_MAP = {
+        "Building": "#FF5733", "Wall": "#33FF57", "Slab": "#3357FF",
+        "Floor": "#F3FF33", "LayerSet": "#9B59B6", "Layer": "#1ABC9C",
+        "Default_Class": "#E67E22", "Literal": "#BDC3C7"
+    }
 
-def get_node_style(node, graph_instance):
-    if not isinstance(node, str) and hasattr(node, 'datatype'):
-        return str(node), COLOR_MAP["Literal"], 15
-        
-    node_str = str(node)
-    label = node_str.split("#")[-1].split("/")[-1]
-    node_types = [str(t) for t in graph_instance.objects(node, RDF.type)]
-    
-    if str(BOT.Building) in node_types:
-        return f"🏢 {label}", COLOR_MAP["Building"], 35
-    elif str(BEO.Wall) in node_types or str(BEO.WallPARTITIONING) in node_types:
-        return f"🧱 {label}", COLOR_MAP["Wall"], 28
-    elif str(BEO.Slab) in node_types:
-        return f"🥞 {label}", COLOR_MAP["Slab"], 28
-    elif str(BEO.Floor) in node_types:
-        return f"📐 {label}", COLOR_MAP["Floor"], 28
-    elif str(BMP.LayerSet) in node_types:
-        return f"📦 {label}", COLOR_MAP["LayerSet"], 22
-    elif str(BMP.Layer) in node_types:
-        return f"🥞 {label}", COLOR_MAP["Layer"], 18
-    elif "https://w3id.org/" in node_str or "http://" in node_str:
-        return label, COLOR_MAP["Default_Class"], 20
-        
-    return label, "#7F8C8D", 15
+    def get_node_style(node, graph_instance):
+        if not isinstance(node, str) and hasattr(node, 'datatype'):
+            return str(node), COLOR_MAP["Literal"], 15
 
-# Populate layout straight using our updated clean memory reference
-for s, p, o in g:
-    s_label, s_color, s_size = get_node_style(s, g)
-    net.add_node(str(s), label=s_label, color=s_color, size=s_size, title=str(s))
-    
-    o_label, o_color, o_size = get_node_style(o, g)
-    net.add_node(str(o), label=o_color, color=o_color, size=o_size, title=str(o))
-    
-    edge_label = p.split("#")[-1].split("/")[-1]
-    net.add_edge(str(s), str(o), label=edge_label, color="#95A5A6", weight=1)
+        node_str = str(node)
+        label = node_str.split("#")[-1].split("/")[-1]
+        node_types = [str(t) for t in graph_instance.objects(node, RDF.type)]
 
-net.write_html(str(OUTPUT_HTML))
-print(f"Successfully generated dynamic HTML serialization layout visualization at:\n -> {OUTPUT_HTML.resolve()}")
+        if str(BOT.Building) in node_types:
+            return f"🏢 {label}", COLOR_MAP["Building"], 35
+        elif str(BEO.Wall) in node_types or str(BEO.WallPARTITIONING) in node_types:
+            return f"🧱 {label}", COLOR_MAP["Wall"], 28
+        elif str(BEO.Slab) in node_types:
+            return f"🥞 {label}", COLOR_MAP["Slab"], 28
+        elif str(BEO.Floor) in node_types:
+            return f"📐 {label}", COLOR_MAP["Floor"], 28
+        elif str(BMP.LayerSet) in node_types:
+            return f"📦 {label}", COLOR_MAP["LayerSet"], 22
+        elif str(BMP.Layer) in node_types:
+            return f"🥞 {label}", COLOR_MAP["Layer"], 18
+        elif "https://w3id.org/" in node_str or "http://" in node_str:
+            return label, COLOR_MAP["Default_Class"], 20
+
+        return label, "#7F8C8D", 15
+
+    for s, p, o in g:
+        s_label, s_color, s_size = get_node_style(s, g)
+        net.add_node(str(s), label=s_label, color=s_color, size=s_size, title=str(s))
+
+        o_label, o_color, o_size = get_node_style(o, g)
+        net.add_node(str(o), label=o_color, color=o_color, size=o_size, title=str(o))
+
+        edge_label = p.split("#")[-1].split("/")[-1]
+        net.add_edge(str(s), str(o), label=edge_label, color="#95A5A6", weight=1)
+
+    net.write_html(str(OUTPUT_HTML))
+    print(f"Successfully generated dynamic HTML serialization layout visualization at:\n -> {OUTPUT_HTML.resolve()}")

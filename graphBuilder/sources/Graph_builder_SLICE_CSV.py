@@ -1,5 +1,8 @@
+"""SLiCE CSV → enriched TTL. Pipeline step: python graphBuilder/run_pipeline.py --slice"""
 import json
+import os
 import re
+import sys
 from pathlib import Path
 
 try:
@@ -27,7 +30,18 @@ except ImportError:
 
 LLM_MODEL = "llama3"
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
+_GRAPH_BUILDER_DIR = Path(__file__).resolve().parents[1]
+if str(_GRAPH_BUILDER_DIR) not in sys.path:
+    sys.path.insert(0, str(_GRAPH_BUILDER_DIR))
+
+from ontology_reasoning import load_ontology_corpus, load_ontology_graph, process_description
+from ontology_reasoning.material_axioms import ensure_layer_material_pair
+from ontology_reasoning.rdf_layers import emit_enforced_layer, material_pair_from_nlp
+from ontology_reasoning.validation_report import begin_report, finalize_report, record_ctx
+
+# Smoke test: one element name from the CSV; None = full dataset.
+TEST_ELEMENT_NAME = None
 
 ########################################################
 # NAMESPACES & GRAPH INITIALIZATION
@@ -142,10 +156,7 @@ worksection_axiom_cache = {}
 ########################################################
 # ONTOLOGY INDEXING (BBSR-style full TBox mining)
 ########################################################
-ontology_g = Graph()
-ontology_path = (BASE_DIR / "owl" / "KB-LCA-merged.ttl").resolve()
-if ontology_path.is_file():
-    ontology_g.parse(location=ontology_path.as_uri(), format="ttl")
+ontology_g = load_ontology_graph(BASE_DIR / "owl")
 
 MATERIAL_ANCHOR_URIS = {
     str(uri) for uri in ontology_g.objects(BMP.hasMaterialCategory, RDFS.range)
@@ -257,12 +268,12 @@ def create_material_ontology_corpus(ontology_graph):
 
 
 if EMBEDDINGS_AVAILABLE:
-    print("Indexing LayerFunction branch and BMP material corpus...")
+    print("Indexing LayerFunction branch and shared ontology corpus...")
     LAYER_FUNCTION_CORPUS = index_taxonomy_branch(LAYER_FUNCTION_URI)
-    ONTOLOGY_CORPUS = create_material_ontology_corpus(ontology_g)
+    ONTOLOGY_CORPUS = load_ontology_corpus(ontology_g)
     print(
         f"  LayerFunction items: {len(LAYER_FUNCTION_CORPUS)} | "
-        f"Material classes: {len(ONTOLOGY_CORPUS)} | "
+        f"Ontology corpus: {len(ONTOLOGY_CORPUS)} | "
         f"Material anchors: {len(MATERIAL_ANCHOR_URIS)}"
     )
 else:
@@ -345,7 +356,7 @@ def retrieve_material_hierarchical_matches(material_hint, worksection_name="", t
 
 MATERIAL_HINT_BOOSTS = {
     "straw": ["https://w3id.org/bmp#Hemp", "https://w3id.org/bmp#HempFibre"],
-    "cork": ["https://w3id.org/bmp#NaturalStone"],
+    "cork": ["https://w3id.org/bmp#Cork"],
     "clt": ["https://w3id.org/bmp#WoodTimber"],
     "wood": ["https://w3id.org/bmp#WoodTimber"],
 }
@@ -587,7 +598,7 @@ Rules:
 4. Both IRIs MUST come from the scoped ontology options list.
 5. Examples:
    - Infrastructure + "Bituminised wood fibre" -> type WoodFibre (category WoodTimber)
-   - Cladding + "Cork" -> category NaturalStone
+   - Cladding + "Cork" -> category Cork
    - Insulating + "Straw" -> category Hemp
    - LoadBearing + "CLT" -> category WoodTimber
    - Demolition + "Wood" -> category WoodTimber
@@ -631,21 +642,34 @@ Return only raw JSON:
     return None
 
 
-def resolve_material_category(worksection_name, function_iri):
+def resolve_material_assignment(worksection_name, function_iri):
     material_hint = extract_material_hint(worksection_name)
-    matches = retrieve_material_hierarchical_matches(material_hint, worksection_name)
+    if not EMBEDDINGS_AVAILABLE or not ONTOLOGY_CORPUS:
+        return None, None
 
-    if matches:
-        if matches[0]["score"] >= 0.9:
-            return URIRef(matches[0]["entity_uri"])
-        llm_pick = llm_resolve_material_category(
-            worksection_name, function_iri, material_hint, matches
+    ctx = process_description(
+        subject_uri=f"https://w3id.org/slice#material/{abs(hash(worksection_name)) % 10**8}",
+        german_desc=worksection_name,
+        english_desc=material_hint,
+        ontology_corpus=ONTOLOGY_CORPUS,
+        profile="slice",
+        extra_text=material_hint,
+        ontology_graph=ontology_g,
+    )
+    record_ctx(worksection_name, ctx, source="slice")
+    cat, typ = material_pair_from_nlp(ctx, ontology_g) if ctx else (None, None)
+    pair = ensure_layer_material_pair(ontology_g, category_iri=cat, type_iri=typ)
+    if pair[0] is None:
+        print(
+            f"  WARNING: no material mapped for '{worksection_name[:60]}' "
+            f"(layer function {function_iri} is not a material — check NLP/retrieval)"
         )
-        if llm_pick is not None:
-            return llm_pick
-        return URIRef(matches[0]["entity_uri"])
+    return pair
 
-    return BMP.MineralFibre
+
+# Kept for reference — previous single-IRI resolver
+# def resolve_material_category(worksection_name, function_iri):
+#     ...
 
 
 def infer_element_type(element_name, worksections, sfb_class):
@@ -713,7 +737,7 @@ def mine_worksection_axioms(worksection_name):
         return worksection_axiom_cache[worksection_name]
 
     function_iri = resolve_layer_function(worksection_name)
-    category_iri = resolve_material_category(worksection_name, function_iri)
+    category_iri, type_iri = resolve_material_assignment(worksection_name, function_iri)
 
     parsed_thickness = parse_thickness_from_text(worksection_name)
     if parsed_thickness:
@@ -725,7 +749,8 @@ def mine_worksection_axioms(worksection_name):
 
     result = {
         "function_iri": function_iri if isinstance(function_iri, URIRef) else URIRef(function_iri),
-        "category_iri": category_iri if isinstance(category_iri, URIRef) else URIRef(str(category_iri)),
+        "category_iri": category_iri,
+        "type_iri": type_iri,
         "thickness_value": thickness_value,
         "thickness_unit": thickness_unit if thickness_value is not None else None,
         "thickness_datatype": thickness_datatype if thickness_value is not None else None,
@@ -735,7 +760,6 @@ def mine_worksection_axioms(worksection_name):
 
 
 def add_layer_axiom_triples(layer_uri, worksection_name, axioms):
-    g.add((layer_uri, BMP.hasLayerFunction, axioms["function_iri"]))
     if axioms["thickness_value"] is not None:
         thick_node = BNode()
         g.add((layer_uri, BMP.hasThickness, thick_node))
@@ -812,11 +836,22 @@ def process_slice_dataset(csv_path):
     g.bind("xsd", XSD)
 
     print(f"Beginning SLiCE CSV to TTL pipeline: {csv_path.name}")
+    begin_report("slice")
     df = pd.read_csv(csv_path)
     df = df[df["element_name"].notna()].copy()
 
     element_names = list(dict.fromkeys(df["element_name"].tolist()))
-    print(f"Found {len(element_names)} building elements across {len(df)} rows.")
+
+    test_element = TEST_ELEMENT_NAME
+    if test_element is None and os.environ.get("SLICE_TEST_ELEMENT"):
+        test_element = os.environ["SLICE_TEST_ELEMENT"]
+    if test_element:
+        element_names = [n for n in element_names if n == test_element]
+        if not element_names:
+            raise ValueError(f"SLICE test element not found in CSV: {test_element!r}")
+        print(f"TEST MODE: processing SLiCE element {test_element!r} only")
+
+    print(f"Found {len(element_names)} building element(s) to process.")
 
     for el_idx, element_name in enumerate(element_names, start=1):
         element_df = df[df["element_name"] == element_name]
@@ -864,10 +899,21 @@ def process_slice_dataset(csv_path):
 
             axioms = mine_worksection_axioms(worksection_name)
             add_layer_axiom_triples(layer_uri, worksection_name, axioms)
+            cat_label = str(axioms["category_iri"]).split("#")[-1] if axioms["category_iri"] else "-"
+            typ_label = str(axioms["type_iri"]).split("#")[-1] if axioms["type_iri"] else "-"
+            ws_short = worksection_name if len(worksection_name) <= 60 else worksection_name[:60] + "..."
+            print(f"    layer {layer_idx}: {ws_short} -> bmp:{cat_label} / bmp:{typ_label}")
 
-            g.add((layer_uri, BMP.hasMaterial, material_uri))
-            g.add((material_uri, RDF.type, BMP.Material))
-            g.add((material_uri, BMP.hasMaterialCategory, axioms["category_iri"]))
+            emit_enforced_layer(
+                g,
+                layer_uri=layer_uri,
+                material_uri=material_uri,
+                function_iri=axioms["function_iri"],
+                category_iri=axioms["category_iri"],
+                type_iri=axioms["type_iri"],
+                ontology_graph=ontology_g,
+                layer_types=(BPO.Component, BMP.Layer),
+            )
 
             layer_rows = element_df[element_df["worksection_name"] == worksection_name]
             for lcm_code, lcm_rows in layer_rows.groupby(
@@ -881,10 +927,19 @@ def process_slice_dataset(csv_path):
             f"{len(worksections)} layers, {len(element_df)} impact rows"
         )
 
-    out_path = BASE_DIR / "ttl" / "slice_data_instantiated.ttl"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_dir = BASE_DIR / "ttl"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    if test_element:
+        safe_name = re.sub(r"[^\w]+", "_", test_element).strip("_")[:40]
+        out_path = out_dir / f"slice_{safe_name}_test.ttl"
+    else:
+        out_path = out_dir / "slice_data_instantiated.ttl"
     g.serialize(destination=out_path, format="turtle")
+    finalize_report(data_graph=g, ontology_graph=ontology_g, ttl_path=out_path)
+    layerset_count = sum(1 for _ in g.subjects(RDF.type, BMP.LayerSet))
+    layer_count = sum(1 for _ in g.subjects(RDF.type, BMP.Layer))
     print(f"\nProcessing complete. SLiCE graph saved to: {out_path}")
+    print(f"Summary: {layerset_count} layer sets | {layer_count} layers | {len(g)} triples")
     return out_path
 
 

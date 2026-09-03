@@ -1,0 +1,89 @@
+{
+  "id": "cavity_wall",
+  "label": "Cavity wall with air gap, functions only (EN)",
+  "german": "",
+  "english": "The wall element is overall 25 cm thick, with a cavity wall, where the in-between layer is an air gap of 5 cm, the outer layer is 5 cm facade, and inner layer is 15 cm load bearing.",
+  "element_thickness_cm": 25.0,
+  "layer_json": [
+    {
+      "layer_topology": "https://w3id.org/bmp#Cavity",
+      "layer_set_description": null,
+      "thickness_cm": 25,
+      "layers": [
+        {
+          "layer_index": 1,
+          "predicted_function_iri": "https://w3id.org/bmp#Facade",
+          "predicted_category_iri": null,
+          "predicted_type_iri": null,
+          "thickness_cm": 5
+        },
+        {
+          "layer_index": 2,
+          "predicted_function_iri": "https://w3id.org/bmp#Air",
+          "predicted_category_iri": null,
+          "predicted_type_iri": null,
+          "thickness_cm": 5
+        },
+        {
+          "layer_index": 3,
+          "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+          "predicted_category_iri": null,
+          "predicted_type_iri": null,
+          "thickness_cm": 15
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "iri": "https://w3id.org/bmp#Brick",
+      "branch": "Material",
+      "text": "Brick | Material Category: Brick / Ceramics\r\nWhat it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. This plastic mixture is shaped into blocks and dried before being baked in a high-temperature kiln, which triggers a chemical sintering process that fuses the mineral particles into a durable, vitrified, rock-hard structure.\r\nDescription: A traditional, rectangular masonry building block manufactured from raw earthen clays or silicates and hardened by extreme heat or chemical bonding, used for building structural walls and facades (Brick). | https://www.iso.org/standard/32918.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#SingleLayer",
+      "branch": "LayerSet",
+      "text": "SingleLayer | Single Layer | A solid, monolithic wall construction without separate cavities or insulation layers."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Frame",
+      "branch": "LayerSet",
+      "text": "Frame | A skeletal or frame structure of wood or steel."
+    },
+    {
+      "iri": "https://w3id.org/bmp#MultiLayer",
+      "branch": "LayerSet",
+      "text": "MultiLayer | Multi Layer | A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Cavity",
+      "branch": "LayerSet",
+      "text": "Cavity | Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss."
+    },
+    {
+      "iri": "https://w3id.org/bmp#HeavyWeightAggregate",
+      "branch": "Material",
+      "text": "HeavyWeightAggregate | Heavy Weight Aggregate | HeavyWeightAggregate | What it is made of / How it's made: It is made by mining natural, high-density minerals and metallic ores—such as Barite, Magnetite, Hematite, or Ilmenite—or by utilizing manufactured industrial bi-products like steel shot. These raw materials are crushed and strictly graded to maintain a specific gravity significantly higher than standard gravel (typically above 3.5 to 6.0).\r\nDescription: A specialized, ultra-high-density category of loose mineral aggregates engineered explicitly to add mass and block radiation when mixed into heavy-duty composite structures."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Facade",
+      "branch": "Function",
+      "text": "Facade"
+    },
+    {
+      "iri": "https://w3id.org/bmp#LightWeightAggregate",
+      "branch": "Material",
+      "text": "LightWeightAggregate | Light Weight Aggregate | What it is made of / How it's made: It is made by minerally processing natural volcanic rocks (like pumice or scoria) or by thermally expanding raw clays, shales, or slates inside a high-temperature rotary kiln. The rapid heating causes embedded gases to expand, bloating the mineral structure into porous, structural pellets with a highly cellular, air-trapping internal matrix.\r\nDescription: A specialized category of low-density, highly porous mineral aggregates engineered to drastically reduce dead weight and enhance thermal insulation when substituted for standard stone or gravel in composite matrices."
+    },
+    {
+      "iri": "https://w3id.org/bmp#BrickMasonryUnit",
+      "branch": "Material",
+      "text": "BrickMasonryUnit | Brick Masonry Unit | BrickMasonryUnit | Material Category: Brick / Ceramics\r\nWhat it is made of / How it's made: It is made from natural surface clay, shale, or refined earthen minerals mixed with water. It is pressed or extruded into a rectangular block shape and then dried and baked in a high-temperature kiln until the minerals chemically fuse into a vitrified, rock-hard structure.\r\nDescription: A standard, kiln-fired rectangular building block used for laying structural or facing brickwork (BrickMasonryUnit). | https://www.iso.org/standard/32918.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#Concrete",
+      "branch": "Material",
+      "text": "Concrete | Material Category: Concrete / Cementitious Composite\r\nWhat it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.\r\nDescription: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete). | https://www.iso.org/standard/41260.html"
+    }
+  ]
+}

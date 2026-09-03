@@ -2,5 +2,9 @@
 __pycache__/
 *.pyc
 
+# Local secrets (API keys) — copy from .env.example
+.env
+graphBuilder/.env
+
 # Large local BIM/LCA case data (not for git)
 data/data-BIM-LCA/

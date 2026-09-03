@@ -1,0 +1,429 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix bot: <https://w3id.org/bot#> .
+@prefix dc1: <http://purl.org/dc/elements/1.1/identifier> .
+@prefix lca: <https://w3id.org/lca#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tabula: <https://namedgraphs.org/tabula#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001 a owl:NamedIndividual,
+        at:BuildingArchetype,
+        bot:Building ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001"^^xsd:string ;
+    dc1: "DE.East.AB.06.Gen.ReEx.001"^^xsd:string ;
+    at:hasConstructionPeriod "1969-1978"^^xsd:string ;
+    at:hasElementArchetype tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1 ;
+    at:hasImage "DE.East.AB.06.Gen.ReEx.001.png"^^xsd:string ;
+    at:hasReferenceEnergySupply "gas central heating"^^xsd:string ;
+    at:hasReferenceFloorArea "3108.0"^^xsd:float ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Usual ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasSourceJSON "DE.East.AB.06.Gen.ReEx.001.json"^^xsd:string ;
+    lca:hasClimateRegion "Default (National (EnEV 2009))"^^xsd:string .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Door ;
+    rdfs:label "Door 1"^^xsd:string ;
+    at:hasReferenceArea [ qudt:unit unit:M2 ;
+            at:hasValue "2.0"^^xsd:float ] ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Advanced a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Door ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Door 1 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Haustür mit Dämmkern (U = 0,8 W/(m²K))"@de,
+        "mount new door with insulation layer (U = 0.8 W/(m²K))"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.8"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Opening .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Existing a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Door ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Door 1 (Existing State)"^^xsd:string ;
+    at:hasArchetypeDescription "Metalltür"@de,
+        "metal door"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "4.0"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Opening .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Door_1_Usual a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Door ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Door 1 (Usual Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Haustür mit Dämmkern (U = 1,3 W/(m²K))"@de,
+        "entry door with insulation layer (U = 1.3 W/(m²K))"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "1.3"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Opening .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Slab ;
+    rdfs:label "Floor 1"^^xsd:string ;
+    at:hasReferenceArea [ qudt:unit unit:M2 ;
+            at:hasValue "598.3"^^xsd:float ] ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Advanced a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Slab ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Floor 1 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 12 cm (WLS 035) unter der Decke (bei ausreichender Kellerraumhöhe) / alternativ: auf der Decke (im Fall einer Fußbodensanierung) oder Kombination unter/auf"@de,
+        "add 12 cm insulation below (in case of sufficient cellar height) / alternatively: on top of ceiling / combination of both"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.21"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Advanced .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Existing a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Slab ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Floor 1 (Existing State)"^^xsd:string ;
+    at:hasArchetypeDescription "(Stahl-)Betondecke mit schwimmendem Estrich auf 2 cm Dämmung"@de,
+        "concrete ceiling with 2 cm insulation"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.77"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Existing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Floor_1_Usual a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Slab ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Floor 1 (Usual Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 8 cm (WLS 035) unter der Decke / alternativ: auf der Decke (im Fall einer Fußbodensanierung)"@de,
+        "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.28"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Roof ;
+    rdfs:label "Roof 2"^^xsd:string ;
+    at:hasReferenceArea [ qudt:unit unit:M2 ;
+            at:hasValue "598.3"^^xsd:float ] ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Advanced a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Roof ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Roof 2 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 30 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)"@de,
+        "add 30 cm insulation above (+ flooring if necessary)"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.09"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Advanced .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Existing a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Roof ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Roof 2 (Existing State)"^^xsd:string ;
+    at:hasArchetypeDescription "Betondecke mit 5 cm Dämmung"@de,
+        "concrete ceiling with 5 cm insulation"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.51"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Existing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Roof_2_Usual a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Roof ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Roof 2 (Usual Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 12 cm (WLS 035) auf der Decke (+ begehbare Platten sofern notwendig)"@de,
+        "add 12 cm insulation above (+ flooring if necessary)"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.19"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Wall ;
+    rdfs:label "Wall 1"^^xsd:string ;
+    at:hasReferenceArea [ qudt:unit unit:M2 ;
+            at:hasValue "1599.7"^^xsd:float ] ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Advanced a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Wall ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Wall 1 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 24 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade"@de,
+        "add 24 cm insulation + plaster (external insulated render system), alternative: curtain wall"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.13"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Advanced .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Existing a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Wall ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Wall 1 (Existing State)"^^xsd:string ;
+    at:hasArchetypeDescription "Beton-Fertigteile"@de,
+        "concrete panels"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "1.1"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Existing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Wall_1_Usual a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Wall ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Wall 1 (Usual Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Dämmung 12 cm (WLS 035) + Verputz (Wärmedämmverbundsystem), alternativ: hinterlüftete Fassade (z. B. Zellulose zwischen Tragholzen, größere Dämmstärke für gleichen Wärmeschutz)"@de,
+        "add 12 cm insulation + plaster (external insulated render system), alternative: curtain wall"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.23"^^xsd:float ] ;
+    bmp:hasLayerSet tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1 a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Window ;
+    rdfs:label "Window 1"^^xsd:string ;
+    at:hasReferenceArea [ qudt:unit unit:M2 ;
+            at:hasValue "461.0"^^xsd:float ] ;
+    at:hasRenovationStatus tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Advanced,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Existing,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Usual .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Advanced a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Window ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Window 1 (Advanced Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Fenster mit 3-Scheiben-Wärmeschutz-Verglasung und gedämmtem Rahmen (Passivhaus-Fenster)"@de,
+        "windows with triple glazing, argon filled, low-E, insulated frame"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "0.8"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Glazing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Existing a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Window ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Window 1 (Existing State)"^^xsd:string ;
+    at:hasArchetypeDescription "Verbundfenster: 2 Scheiben im Holzrahmen"@de,
+        "composite window with two single panes in wooden frames"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "2.7"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Glazing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Element_Window_1_Usual a owl:NamedIndividual,
+        at:ElementArchetype,
+        beo:BuiltElement,
+        beo:Window ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Window 1 (Usual Refurbishment)"^^xsd:string ;
+    at:hasArchetypeDescription "Fenster mit 2-Scheiben-Wärmeschutz-Verglasung"@de,
+        "windows with double glazing, argon filled, low-E"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    at:hasUValue [ qudt:unit unit:W-PER-M2-K ;
+            at:hasValue "1.3"^^xsd:float ] ;
+    bmp:hasLayerFunction bmp:Glazing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Advanced a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Existing a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Floor_1_Usual a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Advanced a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L3,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Existing a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Roof_2_Usual a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Advanced a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Existing a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:SingleLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_LayerSet_Wall_1_Usual a owl:NamedIndividual,
+        bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1,
+        tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Advanced_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Usual_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "8.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Advanced_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "30.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Usual_L3 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Advanced_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "24.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Usual_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Advanced a owl:NamedIndividual,
+        at:MajorRenovation ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Advanced Refurbishment"^^xsd:string ;
+    at:hasReferenceEnergyDemand [ qudt:unit unit:KiloW-HR-PER-M2 ;
+            at:hasValue "38.7"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Existing a owl:NamedIndividual,
+        at:NoRenovation ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Existing State"^^xsd:string ;
+    at:hasReferenceEnergyDemand [ qudt:unit unit:KiloW-HR-PER-M2 ;
+            at:hasValue "94.5"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Status_Usual a owl:NamedIndividual,
+        at:MinorRenovation ;
+    rdfs:label "DE.East.AB.06.Gen.ReEx.001 - Usual Refurbishment"^^xsd:string ;
+    at:hasReferenceEnergyDemand [ qudt:unit unit:KiloW-HR-PER-M2 ;
+            at:hasValue "58.1"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L1 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "2.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Floor_1_Existing_L2_Mat .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L1 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "5.0"^^xsd:float ] .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Roof_2_Existing_L2_Mat .
+
+tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1 a owl:NamedIndividual,
+        bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial tabula:Building_DE_East_AB_06_Gen_ReEx_001_Layer_Wall_1_Existing_L1_Mat .
+
+at:RenovationStatus a owl:Class .
+
+at:MajorRenovation a owl:Class ;
+    rdfs:subClassOf at:RenovationStatus .
+
+at:MinorRenovation a owl:Class ;
+    rdfs:subClassOf at:RenovationStatus .
+
+at:NoRenovation a owl:Class ;
+    rdfs:subClassOf at:RenovationStatus .
+

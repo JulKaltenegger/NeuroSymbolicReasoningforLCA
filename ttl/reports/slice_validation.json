@@ -1,0 +1,360 @@
+{
+  "source": "slice",
+  "ttl": "C:\\Users\\20180031\\Dropbox\\_PhD\\11_KnowledgeBaseLCA\\NeuroSymbolicReasoningforLCA\\ttl\\slice_data_instantiated.ttl",
+  "owl_validity_pct": 100.0,
+  "gold_is_100_when_matched": true,
+  "rows": [
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Cladding | Panel | Cork (32-80 mm)",
+      "cosine": 0.7876114050547282,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 78.8
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Board | Bituminised wood fibre (22 mm)",
+      "cosine": 0.8560334046681722,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.6
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Thermal insulation | Flakes | Straw (Blow-in 160 mm) | ",
+      "cosine": 0.8515650908152262,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.2
+    },
+    {
+      "source": "slice",
+      "case_id": "External wall - loadbearing | Primary part | Panel | CLT (160 mm) | Screwed",
+      "cosine": 0.6995964388052623,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 70.0
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Cladding | Thick coating | Lime plaster (15 mm)",
+      "cosine": 0.6842129627863566,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 68.4
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Board | Insulating wood fibre (18 mm) ",
+      "cosine": 0.8560334046681722,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.6
+    },
+    {
+      "source": "slice",
+      "case_id": "External wall - loadbearing | Primary part | Frame | Straw (Blow-in (300 mm)) - ",
+      "cosine": 0.9504760185877482,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 95.0
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Board | OSB (18 mm) | Screwed",
+      "cosine": 0.6565849085648855,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 65.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - internal finish | Cladding | Thick coating | Clay plaster (15 mm)",
+      "cosine": 0.6909837325414022,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.1
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Cladding | Bricks | Fired clay (210 x 100 x 65 mm) | La",
+      "cosine": 0.7855579257011414,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 78.6
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Cavity ties | Steel (180 x 3.5 mm)",
+      "cosine": 0.6725175778071085,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 67.3
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Board | Wood fibre (22 mm) | Screwed",
+      "cosine": 0.8560334046681722,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.6
+    },
+    {
+      "source": "slice",
+      "case_id": "External wall - loadbearing | Primary part | Frame | Hemp (Mats (290 mm)) - Timb",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - internal finish | Cladding | Thick coating | Clay plaster (5 mm)",
+      "cosine": 0.6936922470728556,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 69.4
+    },
+    {
+      "source": "slice",
+      "case_id": "Internal wall - loadbearing | Primary part | Panel | Thoma H100 - D21 (212 mm)",
+      "cosine": 0.5381966133912405,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 53.8
+    },
+    {
+      "source": "slice",
+      "case_id": "Internal wall - loadbearing | Primary part | Panel | Straw (180 mm)",
+      "cosine": 0.8515650908152262,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 85.2
+    },
+    {
+      "source": "slice",
+      "case_id": "Internal wall - loadbearing | Primary part | Blocks | Hempcrete (200 mm) - Timbe",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Wall - external finish | Infrastructure | Bracket | Steel (12 mm) | Screwed | Fo",
+      "cosine": 0.6797214945157369,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 68.0
+    },
+    {
+      "source": "slice",
+      "case_id": "Floor finish | Cladding | Parquet | Hardwood (22 mm) | Glued | Surface treated |",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Floor finish | Screed | Thick coating | Cement (80 mm)",
+      "cosine": 0.6392917434374491,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 63.9
+    },
+    {
+      "source": "slice",
+      "case_id": "Floor finish | Vapour barrier | Proofing sheet | PE (0.2 mm) | Stapled",
+      "cosine": 0.477835077047348,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 47.8
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Thermal insulation | Board | EPS (110 mm) | Loose laid | On roof f",
+      "cosine": 0.6432117501894633,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 64.3
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Panel | Thoma H100-D21 (212 mm)",
+      "cosine": 0.5345450937747955,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 53.5
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Board | OSB (18 mm) | Nailed",
+      "cosine": 0.5345450937747955,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 53.5
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Beams - Straw infill | Timber (140 x 220 mm- c.t.c. 600 mm) -",
+      "cosine": 0.9504760185877482,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 95.0
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Beams - Hempcrete infill | Timber (140 x 220 mm- c.t.c. 600 m",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Cladding - horizontal surfaces | Loose filling | Gravel (50 mm)",
+      "cosine": 0.46723334888617196,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 46.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Cladding - horizontal surfaces | Proofing sheet | EPDM (1.2 mm) | ",
+      "cosine": 0.4464344084262848,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 44.6
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Sloping layer | Thick coating | Poor concrete (mean 50 mm)",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Thermal insulation | Blocks | Hempcrete (320 mm) | Placed on roof ",
+      "cosine": 0.5345450937747955,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 53.5
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Vapour barrier | Proofing sheet | Bitumen - Glass fibre (3 mm) | L",
+      "cosine": 0.5028659711281459,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 50.3
+    },
+    {
+      "source": "slice",
+      "case_id": "Balcony | Cladding | Rigid tiles | Concrete (600 x 600 x 40 mm) | On tile carrie",
+      "cosine": 0.8328530788421631,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 83.3
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Boarding | Board | Softwood (24 mm) | Nailed | For zinc tiles, zin",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Counter battens | Battens | Softwood (30 x 15 mm) | Nailed | Treat",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Vapour barrier | Proofing sheet | PP (0.25 mm) | Stapled",
+      "cosine": 0.48232773939768475,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 48.2
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Thermal insulation | Board | Wood fibre (60 mm) | Mechanically att",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Beams - Strawbales | Timber - Straw (310 mm)",
+      "cosine": 0.9504760185877482,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 95.0
+    },
+    {
+      "source": "slice",
+      "case_id": "Ceiling finish | Cladding | Thick coating | Clay plaster (15 mm) | On OSB",
+      "cosine": 0.6371787905693055,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 63.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Thermal insulation | Board | Stone wool (120 mm)",
+      "cosine": 0.45625928044319153,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 45.6
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Sloping layer | Profiles | Softwood (mean 50 mm - c.t.c. 400 mm) |",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Flat roof | Slab | Beams - Hempcrete infill | Timber (65 x 210 mm - c.t.c. 412 m",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    },
+    {
+      "source": "slice",
+      "case_id": "Roof finish | Vapour barrier | Proofing sheet | PP (0.22 mm) | Stapled",
+      "cosine": 0.48083990812301636,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 48.1
+    },
+    {
+      "source": "slice",
+      "case_id": "Ceiling finish | Support structure | Profiles | Galvanised steel | Screwed | For",
+      "cosine": 0.5637684653202693,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 56.4
+    },
+    {
+      "source": "slice",
+      "case_id": "Ceiling finish | Cladding | Board | Plywood (19 mm) | Screwed | Including joint ",
+      "cosine": 0.846810539563497,
+      "gold_fidelity": null,
+      "owl_validity": 100.0,
+      "composite": 84.7
+    }
+  ]
+}

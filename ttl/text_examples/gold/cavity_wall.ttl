@@ -1,0 +1,50 @@
+#  GOLD / EXPECTED output for EXAMPLE_CASES id = "cavity_wall"
+#  Source text (EN): "The wall element is overall 25 cm thick, with a cavity wall, where the
+#  in-between layer is an air gap of 5 cm, the outer layer is 5 cm facade, and inner layer
+#  is 15 cm load bearing."
+#
+#  This case tests topology + function only. No material is named, so no bmp:Material
+#  individuals. 5 + 5 + 15 = 25 = element thickness.
+#
+#  DELTA vs pipeline: none on structure. Pipeline already emits Cavity, Facade / Air /
+#  LoadBearing, and the three thicknesses. Gold freezes that reading so a later run cannot
+#  silently invent materials from retrieval noise (Glass, ReinforcedConcrete, ESG).
+
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix test: <https://namedgraphs.org/test#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:wall_cavity_001 a at:ElementArchetype,
+        beo:Wall ;
+    at:hasDescription "The wall element is overall 25 cm thick, with a cavity wall, where the in-between layer is an air gap of 5 cm, the outer layer is 5 cm facade, and inner layer is 15 cm load bearing."@en ;
+    bmp:hasLayerSet test:wall_cavity_001_layerset_var1 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "25.0"^^xsd:float ] .
+
+test:wall_cavity_001_layerset_var1 a bmp:Cavity,
+        bmp:LayerSet ;
+    bmp:hasLayer test:wall_cavity_001_layer_var1_01,
+        test:wall_cavity_001_layer_var1_02,
+        test:wall_cavity_001_layer_var1_03 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "25.0"^^xsd:float ] .
+
+test:wall_cavity_001_layer_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Facade ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "5.0"^^xsd:float ] .
+
+test:wall_cavity_001_layer_var1_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Air ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "5.0"^^xsd:float ] .
+
+test:wall_cavity_001_layer_var1_03 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "15.0"^^xsd:float ] .

@@ -1,0 +1,147 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix bbsr: <https://namedgraphs.org/bbsr#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix bot: <https://w3id.org/bot#> .
+@prefix om: <http://ontology.eil.utoronto.ca/icity/OM#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bbsr:building001 a at:BuildingArchetype,
+        bot:Building ;
+    om:hasLength "3 - 5 Segmente gereiht, 45,40 m bis 74,80 m (Systemlänge)"@de ;
+    om:hasStoreyHeight "2,80 m (Normal- bzw. Obergeschosse) (Rohbau/Systemmaß) 2,40 m (Kellergeschoß)"@de ;
+    at:hasBuildingType at:ResidentialType ;
+    at:hasElementArchetype bbsr:external_wall_001,
+        bbsr:floor_001,
+        bbsr:internal_wall_001,
+        bbsr:partition_wall_001,
+        bbsr:slab_001 ;
+    at:hasResidentialType at:ApartmentHouse ;
+    at:hasRoofShape "steilgeneigtes Satteldach; Kaltdachlösung"@de,
+        "steeply sloping gable roof; Cold roof solution"@en ;
+    bot:hasStorey "4"@de .
+
+bbsr:ex_wall_layer_001_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial bbsr:ex_wall_mat_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+bbsr:ex_wall_layer_001_var2_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial bbsr:ex_wall_mat_001_var2_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+bbsr:ex_wall_layerset_001_var1 a bmp:LayerSet,
+        bmp:SingleLayer ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+bbsr:ex_wall_layerset_001_var2 a bmp:LayerSet,
+        bmp:SingleLayer ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayer bbsr:ex_wall_layer_001_var2_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+bbsr:ex_wall_mat_001_var1_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
+
+bbsr:ex_wall_mat_001_var2_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
+
+bbsr:external_wall_001 a at:WallArchetype,
+        beo:Wall ;
+    at:hasDescription "Leichtbeton- oder Hohllochziegelelemente, inschichtig, 29 cm dick; beiderseitig geputzt"@de,
+        "Lightweight concrete or hollow-hole brick elements, single-layer, 29 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayerSet bbsr:ex_wall_layerset_001_var1,
+        bbsr:ex_wall_layerset_001_var2 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "29.0"^^xsd:float ] .
+
+bbsr:floor_001 a beo:Floor ;
+    bmp:hasThickness "7,5 cm" .
+
+bbsr:int_wall_layer_001_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial bbsr:int_wall_mat_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "19.0"^^xsd:float ] .
+
+bbsr:int_wall_layerset_001_var1 a bmp:LayerSet,
+        bmp:SingleLayer ;
+    at:hasDescription "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt"@de,
+        "Brick block elements, 19 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayer bbsr:int_wall_layer_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "19.0"^^xsd:float ] .
+
+bbsr:int_wall_mat_001_var1_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
+
+bbsr:internal_wall_001 a at:WallArchetype,
+        beo:Wall ;
+    at:hasDescription "Ziegelblockelemente, 19 cm dick; beiderseitig geputzt"@de,
+        "Brick block elements, 19 cm thick; cleaned on both sides"@en ;
+    bmp:hasLayerSet bbsr:int_wall_layerset_001_var1 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "19.0"^^xsd:float ] .
+
+bbsr:part_wall_layer_001_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial bbsr:part_wall_mat_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "7.1"^^xsd:float ] .
+
+bbsr:part_wall_layerset_001_var1 a bmp:LayerSet,
+        bmp:SingleLayer ;
+    at:hasDescription "Langlochziegelverbund, 7,1 cm dick"@de,
+        "Long hole brick composite, 7.1 cm thick"@en ;
+    bmp:hasLayer bbsr:part_wall_layer_001_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "7.1"^^xsd:float ] .
+
+bbsr:part_wall_mat_001_var1_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
+
+bbsr:partition_wall_001 a at:WallArchetype,
+        beo:WallPARTITIONING ;
+    at:hasDescription "Langlochziegelverbund, 7,1 cm dick"@de,
+        "Long hole brick composite, 7.1 cm thick"@en ;
+    bmp:hasLayerSet bbsr:part_wall_layerset_001_var1 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "7.1"^^xsd:float ] .
+
+bbsr:slab_001 a at:ElementArchetype,
+        at:SlabArchetype,
+        beo:Slab ;
+    at:hasDescription "zweischalig"@de,
+        "bivalve"@en ;
+    bmp:hasLayerSet bbsr:slab_layerset_001_var1 ;
+    bmp:hasThickness "21,5 cm" .
+
+bbsr:slab_layer_001_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Facade .
+
+bbsr:slab_layer_001_var1_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating .
+
+bbsr:slab_layerset_001_var1 a bmp:LayerSet,
+        bmp:MultiLayer ;
+    at:hasDescription "zweischalig"@de,
+        "bivalve"@en ;
+    bmp:hasLayer bbsr:slab_layer_001_var1_01,
+        bbsr:slab_layer_001_var1_02 .
+

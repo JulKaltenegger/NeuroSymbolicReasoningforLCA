@@ -1,0 +1,75 @@
+{
+  "id": "concrete_floor",
+  "label": "Hollow concrete block floor (EN)",
+  "german": "",
+  "english": "The floor element is overall 30 cm thick, made out of hollow concrete blocks.",
+  "element_thickness_cm": 30.0,
+  "layer_json": [
+    {
+      "layer_topology": "https://w3id.org/bmp#SingleLayer",
+      "layer_set_description": null,
+      "thickness_cm": 30,
+      "layers": [
+        {
+          "layer_index": 1,
+          "predicted_function_iri": "https://w3id.org/bmp#LoadBearing",
+          "predicted_category_iri": "https://w3id.org/bmp#Concrete",
+          "predicted_type_iri": null,
+          "thickness_cm": 30
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "iri": "https://w3id.org/bmp#Concrete",
+      "branch": "Material",
+      "text": "Concrete | Material Category: Concrete / Cementitious Composite\r\nWhat it is made of / How it's made: It is made from a precise mixture of cement binder, water, sand, and gravel aggregates. Mixing these ingredients triggers a chemical hydration reaction, causing the cement paste to harden into an artificial stone matrix that permanently locks the loose mineral aggregates into a rigid, solid structure.\r\nDescription: A heavy, artificial stone material engineered from cement, water, and mineral aggregates, known for its exceptional compressive strength once cured (Concrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#ReinforcedConcrete",
+      "branch": "Material",
+      "text": "ReinforcedConcrete | Reinforced Concrete | Material Category: Concrete / Composite Material\r\nWhat it is made of / How it's made: It is made by casting fluid concrete—a mixture of cement, water, sand, and gravel aggregates—directly around a structured grid of high-tensile steel bars (rebar) or mesh. As the concrete cures and hardens into an artificial stone, it bonds tightly to the ridges on the steel bars, locking them together into a single structural unit.\r\nDescription: A high-strength composite material combining concrete to resist squeezing forces and embedded steel bars to resist pulling or bending forces (ReinforcedConcrete)."
+    },
+    {
+      "iri": "https://w3id.org/bmp#PrestressedConcrete",
+      "branch": "Material",
+      "text": "PrestressedConcrete | Prestressed Concrete | PrestressedConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made of high-strength structural concrete cast around high-tensile steel cables. The steel cables are stretched tight by hydraulic jacks, the concrete is poured around them, and once the concrete hardens, the tension on the cables is released, instantly clamping the concrete block tight.\r\nDescription: Concrete elements structurally pre-compressed using tensioned steel tendons to handle massive bending loads (PrestressedConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#HeavyWeightConcrete",
+      "branch": "Material",
+      "text": "HeavyWeightConcrete | Heavy Weight Concrete | HeavyWeightConcrete | Material Category: Concrete\r\nWhat it is made of / How it's made: It is made by mixing standard cement, water, sand, and heavy-density stone aggregate fillers (like barite or magnetite). The resulting mix is incredibly dense and massive compared to regular structural concrete.\r\nDescription: A specialized, high-density concrete mix designed primarily for radiation shielding and massive gravity counterweights (HeavyWeightConcrete). | https://www.iso.org/standard/41260.html"
+    },
+    {
+      "iri": "https://w3id.org/bmp#SingleLayer",
+      "branch": "LayerSet",
+      "text": "SingleLayer | Single Layer | A solid, monolithic wall construction without separate cavities or insulation layers."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Facade",
+      "branch": "Function",
+      "text": "Facade"
+    },
+    {
+      "iri": "https://w3id.org/bmp#Frame",
+      "branch": "LayerSet",
+      "text": "Frame | A skeletal or frame structure of wood or steel."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Cavity",
+      "branch": "LayerSet",
+      "text": "Cavity | Two masonry leaves separated by an air space (cavity), sometimes filled with insulation to prevent moisture and heat loss."
+    },
+    {
+      "iri": "https://w3id.org/bmp#Air",
+      "branch": "Function",
+      "text": "Air"
+    },
+    {
+      "iri": "https://w3id.org/bmp#MultiLayer",
+      "branch": "LayerSet",
+      "text": "MultiLayer | Multi Layer | A wall assembly with several distinct layers, often combining structure, insulation, and cladding (e.g., sandwich panels)."
+    }
+  ]
+}

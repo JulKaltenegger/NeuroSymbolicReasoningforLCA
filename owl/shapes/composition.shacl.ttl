@@ -1,0 +1,187 @@
+# Composition SHACL shapes for generated LCA TTL.
+#
+# Gold examples (ttl/text_examples/gold/) check *meaning*.
+# These shapes check *graph structure* on any emitted TTL:
+#   Element --bmp:hasLayerSet--> LayerSet
+#     LayerSet rdf:type bmp:LayerSet + one topology (Cavity | Frame | MultiLayer | SingleLayer)
+#     LayerSet --bmp:hasLayer--> Layer
+#       Layer --bmp:hasLayerFunction--> one LayerFunction
+#       Layer --bmp:hasMaterial--> Material   (forbidden when function is Air)
+#         Material --bmp:hasMaterialCategory--> category
+#
+# Vocabulary membership (is Facade a LayerFunction? is Brick a category?)
+# stays in ontology_reasoning.validators.audit_graph — SHACL here does not
+# duplicate the OWL subclass trees.
+#
+# Usage: python graphBuilder/run_pipeline.py --validate
+
+@prefix bmp:  <https://w3id.org/bmp#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------------------------------------------------------------------------
+# LayerSet
+# ---------------------------------------------------------------------------
+
+bmp:LayerSetShape a sh:NodeShape ;
+    sh:targetClass bmp:LayerSet ;
+    sh:property [
+        sh:path bmp:hasLayer ;
+        sh:minCount 1 ;
+        sh:class bmp:Layer ;
+        sh:message "LayerSet must have at least one bmp:Layer via bmp:hasLayer" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasThickness ;
+        sh:node bmp:ThicknessNodeShape ;
+    ] ;
+    sh:sparql [
+        sh:severity sh:Warning ;
+        sh:message "LayerSet should also be typed as exactly one topology (Cavity, Frame, MultiLayer, or SingleLayer)" ;
+        sh:select """
+            PREFIX bmp: <https://w3id.org/bmp#>
+            SELECT $this WHERE {
+              $this a bmp:LayerSet .
+              FILTER NOT EXISTS { $this a bmp:Cavity }
+              FILTER NOT EXISTS { $this a bmp:Frame }
+              FILTER NOT EXISTS { $this a bmp:MultiLayer }
+              FILTER NOT EXISTS { $this a bmp:SingleLayer }
+            }
+        """ ;
+    ] ;
+    sh:sparql [
+        sh:message "LayerSet must not mix topology classes (Cavity / Frame / MultiLayer / SingleLayer)" ;
+        sh:select """
+            PREFIX bmp: <https://w3id.org/bmp#>
+            SELECT $this WHERE {
+              $this a ?t1 .
+              $this a ?t2 .
+              FILTER(STR(?t1) < STR(?t2))
+              FILTER(?t1 IN (bmp:Cavity, bmp:Frame, bmp:MultiLayer, bmp:SingleLayer))
+              FILTER(?t2 IN (bmp:Cavity, bmp:Frame, bmp:MultiLayer, bmp:SingleLayer))
+            }
+        """ ;
+    ] .
+
+bmp:SingleLayerShape a sh:NodeShape ;
+    sh:targetClass bmp:SingleLayer ;
+    sh:property [
+        sh:path bmp:hasLayer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "bmp:SingleLayer must have exactly one bmp:hasLayer" ;
+    ] .
+
+bmp:MultiLayerShape a sh:NodeShape ;
+    sh:targetClass bmp:MultiLayer ;
+    sh:property [
+        sh:path bmp:hasLayer ;
+        sh:minCount 2 ;
+        sh:message "bmp:MultiLayer must have at least two bmp:hasLayer" ;
+    ] .
+
+bmp:CavityShape a sh:NodeShape ;
+    sh:targetClass bmp:Cavity ;
+    sh:property [
+        sh:path bmp:hasLayer ;
+        sh:minCount 2 ;
+        sh:message "bmp:Cavity must have at least two bmp:hasLayer" ;
+    ] .
+
+bmp:FrameShape a sh:NodeShape ;
+    sh:targetClass bmp:Frame ;
+    sh:property [
+        sh:path bmp:hasLayer ;
+        sh:minCount 2 ;
+        sh:message "bmp:Frame must have at least two bmp:hasLayer" ;
+    ] .
+
+# ---------------------------------------------------------------------------
+# Layer
+# ---------------------------------------------------------------------------
+
+bmp:LayerShape a sh:NodeShape ;
+    sh:targetClass bmp:Layer ;
+    sh:property [
+        sh:path bmp:hasLayerFunction ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Layer must have exactly one bmp:hasLayerFunction" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasMaterial ;
+        sh:class bmp:Material ;
+        sh:message "bmp:hasMaterial on a Layer must point at a bmp:Material individual" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasMaterialCategory ;
+        sh:maxCount 0 ;
+        sh:message "hasMaterialCategory belongs on bmp:Material, not on bmp:Layer" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasMaterialType ;
+        sh:maxCount 0 ;
+        sh:message "hasMaterialType belongs on bmp:Material, not on bmp:Layer" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasThickness ;
+        sh:node bmp:ThicknessNodeShape ;
+    ] ;
+    sh:sparql [
+        sh:message "Air layer must not carry bmp:hasMaterial" ;
+        sh:select """
+            PREFIX bmp: <https://w3id.org/bmp#>
+            SELECT $this WHERE {
+              $this bmp:hasLayerFunction bmp:Air .
+              $this bmp:hasMaterial ?material .
+            }
+        """ ;
+    ] .
+
+# ---------------------------------------------------------------------------
+# Material
+# ---------------------------------------------------------------------------
+
+bmp:MaterialShape a sh:NodeShape ;
+    sh:targetClass bmp:Material ;
+    sh:property [
+        sh:path bmp:hasMaterialCategory ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Material must have exactly one bmp:hasMaterialCategory" ;
+    ] ;
+    sh:property [
+        sh:path bmp:hasMaterialType ;
+        sh:maxCount 1 ;
+        sh:message "Material may have at most one bmp:hasMaterialType" ;
+    ] .
+
+# ---------------------------------------------------------------------------
+# hasLayerSet object is a LayerSet
+# ---------------------------------------------------------------------------
+
+bmp:HasLayerSetShape a sh:NodeShape ;
+    sh:targetSubjectsOf bmp:hasLayerSet ;
+    sh:property [
+        sh:path bmp:hasLayerSet ;
+        sh:class bmp:LayerSet ;
+        sh:message "bmp:hasLayerSet must point at a bmp:LayerSet" ;
+    ] .
+
+# ---------------------------------------------------------------------------
+# Thickness blank node: value + unit (gold/BBSR use qudt; SLiCE uses bmp:hasValue/hasUnit)
+# ---------------------------------------------------------------------------
+
+bmp:ThicknessNodeShape a sh:NodeShape ;
+    sh:or (
+        [ sh:path rdf:value ; sh:minCount 1 ]
+        [ sh:path bmp:hasValue ; sh:minCount 1 ]
+    ) ;
+    sh:or (
+        [ sh:path qudt:unit ; sh:minCount 1 ]
+        [ sh:path bmp:hasUnit ; sh:minCount 1 ]
+    ) ;
+    sh:message "Thickness node needs a value (rdf:value or bmp:hasValue) and a unit (qudt:unit or bmp:hasUnit)" .

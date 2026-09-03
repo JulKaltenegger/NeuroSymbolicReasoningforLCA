@@ -1,0 +1,165 @@
+#  GOLD / EXPECTED output for EXAMPLE_CASES id = "tabula_floor_renovation"
+#  Source texts (TABULA DE.N.AB.05.HR.ReEx.001 Floor 1):
+#    Existing:  "concrete ceiling with 1 cm insulation"
+#    Usual:     "add 8 cm insulation below / alternatively: on top of ceiling
+#                (in case of floor renovation)"
+#    Advanced:  "add 12 cm insulation below / alternatively: on top of ceiling
+#                / combination of both"
+#
+#  PATTERN this gold freezes:
+#    1. Existing is the given build-up. Usual and Advanced do not replace it; they
+#       REUSE the existing layer URIs and append insulation.
+#    2. "/" / "alternatively" splits placement into separate LayerSets on that
+#       renovation state (same idea as "oder" in material_alternatives).
+#    3. Combination of both = insulation on top AND below, each 12 cm.
+#
+#  What the current tabula_buildings-enriched.ttl does wrong for this floor:
+#    - invents an 11 cm concrete thickness the text never states
+#    - puts bmp:Thermal (a MaterialProperty) in hasLayerFunction
+#    - assigns Concrete/HeavyWeightConcrete to the 1 cm insulation layer
+#    - collapses below / on top / combination into a single added layer
+#
+#  Materials:
+#    - "concrete ceiling" names only bmp:Concrete. No type is asserted.
+#    - "insulation" names the LayerFunction bmp:Insulating only; no binder/fibre is named
+
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix test: <https://namedgraphs.org/test#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:floor_renovation_001 a at:ElementArchetype,
+        beo:Slab ;
+    rdfs:label "Floor 1" ;
+    at:hasRenovationStatus test:floor_renovation_001_existing,
+        test:floor_renovation_001_usual,
+        test:floor_renovation_001_advanced .
+
+# ---------------------------------------------------------------------------
+# Existing — given case
+# ---------------------------------------------------------------------------
+
+test:floor_renovation_001_existing a at:ElementArchetype,
+        beo:Slab ;
+    rdfs:label "Floor 1 (Existing State)" ;
+    at:hasDescription "concrete ceiling with 1 cm insulation"@en ;
+    at:hasRenovationStatus at:NoRenovation ;
+    bmp:hasLayerSet test:floor_renovation_001_existing_layerset .
+
+test:floor_renovation_001_existing_layerset a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02 .
+
+test:floor_renovation_001_existing_layer_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial test:floor_renovation_001_existing_mat_01 .
+
+test:floor_renovation_001_existing_layer_02 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "1.0"^^xsd:float ] .
+
+test:floor_renovation_001_existing_mat_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
+# ---------------------------------------------------------------------------
+# Usual — reuse existing layers; 8 cm added below XOR on top
+# ---------------------------------------------------------------------------
+
+test:floor_renovation_001_usual a at:ElementArchetype,
+        beo:Slab ;
+    rdfs:label "Floor 1 (Usual Refurbishment)" ;
+    at:hasDescription "add 8 cm insulation below / alternatively: on top of ceiling (in case of floor renovation)"@en ;
+    at:hasRenovationStatus at:MinorRenovation ;
+    bmp:hasLayerSet test:floor_renovation_001_usual_layerset_below,
+        test:floor_renovation_001_usual_layerset_top .
+
+#  variant 1: 8 cm below (soffit)
+
+test:floor_renovation_001_usual_layerset_below a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02,
+        test:floor_renovation_001_usual_layer_insul_below .
+
+test:floor_renovation_001_usual_layer_insul_below a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "8.0"^^xsd:float ] .
+
+#  variant 2: 8 cm on top of ceiling
+
+test:floor_renovation_001_usual_layerset_top a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_usual_layer_insul_top,
+        test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02 .
+
+test:floor_renovation_001_usual_layer_insul_top a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "8.0"^^xsd:float ] .
+
+# ---------------------------------------------------------------------------
+# Advanced — reuse existing layers; 12 cm below XOR on top XOR both
+# ---------------------------------------------------------------------------
+
+test:floor_renovation_001_advanced a at:ElementArchetype,
+        beo:Slab ;
+    rdfs:label "Floor 1 (Advanced Refurbishment)" ;
+    at:hasDescription "add 12 cm insulation below / alternatively: on top of ceiling / combination of both"@en ;
+    at:hasRenovationStatus at:MajorRenovation ;
+    bmp:hasLayerSet test:floor_renovation_001_advanced_layerset_below,
+        test:floor_renovation_001_advanced_layerset_top,
+        test:floor_renovation_001_advanced_layerset_both .
+
+#  variant 1: 12 cm below
+
+test:floor_renovation_001_advanced_layerset_below a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02,
+        test:floor_renovation_001_advanced_layer_insul_below .
+
+test:floor_renovation_001_advanced_layer_insul_below a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .
+
+#  variant 2: 12 cm on top
+
+test:floor_renovation_001_advanced_layerset_top a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_advanced_layer_insul_top,
+        test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02 .
+
+test:floor_renovation_001_advanced_layer_insul_top a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .
+
+#  variant 3: combination of both — 12 cm on top and 12 cm below
+
+test:floor_renovation_001_advanced_layerset_both a bmp:LayerSet,
+        bmp:MultiLayer ;
+    bmp:hasLayer test:floor_renovation_001_advanced_layer_insul_both_top,
+        test:floor_renovation_001_existing_layer_01,
+        test:floor_renovation_001_existing_layer_02,
+        test:floor_renovation_001_advanced_layer_insul_both_below .
+
+test:floor_renovation_001_advanced_layer_insul_both_top a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .
+
+test:floor_renovation_001_advanced_layer_insul_both_below a bmp:Layer ;
+    bmp:hasLayerFunction bmp:Insulating ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "12.0"^^xsd:float ] .

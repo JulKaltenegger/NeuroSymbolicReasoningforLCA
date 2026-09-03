@@ -1,5 +1,5 @@
 """
-TABULA JSON → enriched TTL graph builder.
+TABULA JSON → enriched TTL. Pipeline step: python graphBuilder/run_pipeline.py --tabula
 
 Renovation-aware layer model
 ----------------------------
@@ -10,13 +10,24 @@ Renovation-aware layer model
 """
 
 import json
+import os
 import re
+import sys
 from pathlib import Path
 
 from rdflib import BNode, Graph, Literal, Namespace, URIRef, XSD
 from rdflib.namespace import OWL, RDF, RDFS
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
+_GRAPH_BUILDER_DIR = Path(__file__).resolve().parents[1]
+if str(_GRAPH_BUILDER_DIR) not in sys.path:
+    sys.path.insert(0, str(_GRAPH_BUILDER_DIR))
+
+from ontology_reasoning import load_ontology_corpus, load_ontology_graph, process_description
+from adapters.tabula import iter_tabula_stage_descriptions
+from ontology_reasoning.material_axioms import ensure_layer_material_pair, resolve_category_and_type
+from ontology_reasoning.rdf_layers import emit_enforced_layer, nlp_layer_json_to_tabula_layerset
+from ontology_reasoning.validation_report import begin_report, finalize_report, record_ctx
 
 # Set to a building id to process/print one building only; None for full dataset.
 #TEST_BUILDING_ID = "DE.N.MFH.03.Gen.ReEx.001"
@@ -120,18 +131,41 @@ def resolve_existing_layer_function(text, element_label):
     return BMP_LOAD_BEARING
 
 
-def make_layer(layer_index, function_iri, material_iri=None, thickness_cm=None):
+def make_layer(
+    layer_index,
+    function_iri,
+    material_category_iri=None,
+    material_type_iri=None,
+    thickness_cm=None,
+    *,
+    material_iri=None,
+    ontology_graph=None,
+):
     layer = {
         "layer_index": layer_index,
         "function_iri": function_iri,
         "thickness_cm": thickness_cm,
     }
-    if material_iri is not None:
-        layer["material_iri"] = material_iri
+    if material_category_iri is None and material_iri is not None:
+        material_category_iri = material_iri
+    if ontology_graph is not None and (
+        material_category_iri is not None or material_type_iri is not None or material_iri is not None
+    ):
+        cat, typ = ensure_layer_material_pair(
+            ontology_graph,
+            category_iri=material_category_iri or material_iri,
+            type_iri=material_type_iri,
+        )
+        if cat is not None:
+            layer["material_category_iri"] = cat
+            layer["material_type_iri"] = typ
+    elif material_category_iri is not None:
+        layer["material_category_iri"] = material_category_iri
+        layer["material_type_iri"] = material_type_iri or material_category_iri
     return layer
 
 
-def build_existing_layerset(construction_de, construction_eng, element_label):
+def build_existing_layerset(construction_de, construction_eng, element_label, ontology_graph=None):
     """
     Existing renovation state: exactly one layer from the as-built description.
     Example: 'Vollziegel-Mauerwerk' / 'brickwork' → LoadBearing + Brick.
@@ -146,11 +180,19 @@ def build_existing_layerset(construction_de, construction_eng, element_label):
 
     return {
         "topology": BMP_SINGLE_LAYER,
-        "layers": [make_layer(1, function_iri, material_iri, thickness_cm)],
+        "layers": [
+            make_layer(
+                1,
+                function_iri,
+                material_iri,
+                thickness_cm=thickness_cm,
+                ontology_graph=ontology_graph,
+            )
+        ],
     }
 
 
-def build_renovation_delta_layer(measure_de, measure_eng, element_label, layer_index):
+def build_renovation_delta_layer(measure_de, measure_eng, element_label, layer_index, ontology_graph=None):
     """Extract the refurbishment addition from usual/advanced measure text."""
     combined = combined_description(measure_de, measure_eng)
     if not combined:
@@ -160,13 +202,19 @@ def build_renovation_delta_layer(measure_de, measure_eng, element_label, layer_i
 
     if "window" in label_lower or "fenster" in combined.lower():
         if GLAZING_PATTERN.search(combined):
-            return make_layer(layer_index, BMP_GLAZING, BMP.Glass, None)
+            return make_layer(
+                layer_index,
+                BMP_GLAZING,
+                BMP.Glass,
+                ontology_graph=ontology_graph,
+            )
         if mentions_insulation(combined):
             return make_layer(
                 layer_index,
                 BMP_INSULATING,
                 BMP.MineralFibre,
-                extract_thickness_cm(combined),
+                thickness_cm=extract_thickness_cm(combined),
+                ontology_graph=ontology_graph,
             )
 
     if mentions_insulation(combined):
@@ -174,16 +222,24 @@ def build_renovation_delta_layer(measure_de, measure_eng, element_label, layer_i
             layer_index,
             BMP_INSULATING,
             BMP.MineralFibre,
-            extract_thickness_cm(combined),
+            thickness_cm=extract_thickness_cm(combined),
+            ontology_graph=ontology_graph,
         )
 
     if GLAZING_PATTERN.search(combined):
-        return make_layer(layer_index, BMP_GLAZING, BMP.Glass, None)
+        return make_layer(
+            layer_index,
+            BMP_GLAZING,
+            BMP.Glass,
+            ontology_graph=ontology_graph,
+        )
 
     return None
 
 
-def build_refurbishment_layerset(existing_layer_uris, measure_de, measure_eng, element_label):
+def build_refurbishment_layerset(
+    existing_layer_uris, measure_de, measure_eng, element_label, ontology_graph=None
+):
     """
     Usual/Advanced: link to existing layer URI(s), then append new refurbishment layer(s).
     The as-built layer is not duplicated — only the delta layer is minted.
@@ -197,13 +253,86 @@ def build_refurbishment_layerset(existing_layer_uris, measure_de, measure_eng, e
     ]
 
     delta_layer = build_renovation_delta_layer(
-        measure_de, measure_eng, element_label, layer_index=len(layers) + 1
+        measure_de,
+        measure_eng,
+        element_label,
+        layer_index=len(layers) + 1,
+        ontology_graph=ontology_graph,
     )
     if delta_layer:
         layers.append(delta_layer)
 
     topology = BMP_MULTI_LAYER if len(layers) > 1 else BMP_SINGLE_LAYER
     return {"topology": topology, "layers": layers}
+
+
+def layerset_from_nlp(desc_de, desc_eng, subject_uri, ontology_corpus, profile="tabula", ontology_graph=None):
+    """Run OWL NLP when descriptions exist; return TABULA layerset dict or None."""
+    if not combined_description(desc_de, desc_eng):
+        return None
+    ctx = process_description(
+        subject_uri=subject_uri,
+        german_desc=desc_de,
+        english_desc=desc_eng,
+        ontology_corpus=ontology_corpus,
+        profile=profile,
+        ontology_graph=ontology_graph,
+    )
+    record_ctx(subject_uri, ctx, source="tabula")
+    if not ctx or not ctx.layer_json:
+        return None
+    layer_json = ctx.layer_json
+    if isinstance(layer_json, list):
+        layer_json = next((item for item in layer_json if item), None)
+    if not isinstance(layer_json, dict):
+        return None
+    return nlp_layer_json_to_tabula_layerset(layer_json, ontology_graph=ontology_graph)
+
+
+def nlp_delta_layer(desc_de, desc_eng, subject_uri, ontology_corpus, layer_index, ontology_graph=None):
+    layerset = layerset_from_nlp(
+        desc_de, desc_eng, subject_uri, ontology_corpus, ontology_graph=ontology_graph
+    )
+    if not layerset or not layerset.get("layers"):
+        return None
+    delta = layerset["layers"][-1]
+    delta["layer_index"] = layer_index
+    return delta
+
+
+def build_refurbishment_layerset_with_nlp(
+    existing_layer_uris,
+    measure_de,
+    measure_eng,
+    element_label,
+    subject_uri,
+    ontology_corpus,
+    ontology_graph=None,
+):
+    layerset = build_refurbishment_layerset(
+        existing_layer_uris,
+        measure_de,
+        measure_eng,
+        element_label,
+        ontology_graph=ontology_graph,
+    )
+    if not layerset:
+        return layerset
+
+    nlp_layer = nlp_delta_layer(
+        measure_de,
+        measure_eng,
+        subject_uri,
+        ontology_corpus,
+        layer_index=len(layerset["layers"]),
+        ontology_graph=ontology_graph,
+    )
+    if nlp_layer and layerset["layers"] and not layerset["layers"][-1].get("reuse_uri"):
+        layerset["layers"][-1] = nlp_layer
+    elif nlp_layer:
+        layerset["layers"].append(nlp_layer)
+        layerset["topology"] = BMP_MULTI_LAYER if len(layerset["layers"]) > 1 else BMP_SINGLE_LAYER
+    return layerset
 
 
 def init_graph():
@@ -238,8 +367,14 @@ def load_tabula_buildings():
     data_ab = json.loads(ab_path.read_text(encoding="utf-8"))
     data_mfh = json.loads(mfh_path.read_text(encoding="utf-8"))
     buildings = data_ab["buildings"] + data_mfh["buildings"]
-    if TEST_BUILDING_ID:
-        buildings = [b for b in buildings if b["building"]["id"] == TEST_BUILDING_ID]
+
+    test_id = TEST_BUILDING_ID
+    if test_id is None and os.environ.get("TABULA_TEST_BUILDING_ID"):
+        test_id = os.environ["TABULA_TEST_BUILDING_ID"]
+    if test_id:
+        buildings = [b for b in buildings if b["building"]["id"] == test_id]
+        if not buildings:
+            raise ValueError(f"TABULA test building not found: {test_id!r}")
     return buildings
 
 
@@ -335,22 +470,31 @@ def layer_uri(safe_id, state_suffix, layer_index):
     return URIRef(TABULA[f"Building_{safe_id}_Layer_{state_suffix}_L{layer_index}"])
 
 
-def emit_layer_triples(g, layer_uri, layer):
-    g.add((layer_uri, RDF.type, OWL.NamedIndividual))
-    g.add((layer_uri, RDF.type, BMP.Layer))
-    g.add((layer_uri, BMP.hasLayerFunction, layer["function_iri"]))
+def emit_layer_triples(g, layer_uri_ref, layer, ontology_graph=None):
+    g.add((layer_uri_ref, RDF.type, OWL.NamedIndividual))
+    if ontology_graph is None:
+        raise ValueError("ontology_graph is required to emit enforced layer/material RDF")
 
-    if layer.get("material_iri") is not None:
-        g.add((layer_uri, BMP.hasMaterialCategory, layer["material_iri"]))
+    material_uri = URIRef(f"{layer_uri_ref}_Mat")
+    emit_enforced_layer(
+        g,
+        layer_uri=layer_uri_ref,
+        material_uri=material_uri,
+        function_iri=layer["function_iri"],
+        category_iri=layer.get("material_category_iri") or layer.get("material_iri"),
+        type_iri=layer.get("material_type_iri"),
+        ontology_graph=ontology_graph,
+        layer_types=(BMP.Layer,),
+    )
 
     if layer.get("thickness_cm") is not None:
         thick_node = BNode()
-        g.add((layer_uri, BMP.hasThickness, thick_node))
+        g.add((layer_uri_ref, BMP.hasThickness, thick_node))
         g.add((thick_node, RDF.value, Literal(float(layer["thickness_cm"]), datatype=XSD.float)))
         g.add((thick_node, QUDT.unit, UNIT["CentiM"]))
 
 
-def emit_layerset(g, safe_id, state_suffix, element_state_uri, layerset):
+def emit_layerset(g, safe_id, state_suffix, element_state_uri, layerset, ontology_graph=None):
     layerset_uri = TABULA[f"Building_{safe_id}_LayerSet_{state_suffix}"]
     g.add((element_state_uri, BMP.hasLayerSet, layerset_uri))
     g.add((layerset_uri, RDF.type, OWL.NamedIndividual))
@@ -368,7 +512,7 @@ def emit_layerset(g, safe_id, state_suffix, element_state_uri, layerset):
         idx = layer["layer_index"]
         layer_uri_ref = layer_uri(safe_id, state_suffix, idx)
         g.add((layerset_uri, BMP.hasLayer, layer_uri_ref))
-        emit_layer_triples(g, layer_uri_ref, layer)
+        emit_layer_triples(g, layer_uri_ref, layer, ontology_graph=ontology_graph)
         emitted_layer_uris.append(layer_uri_ref)
 
     return emitted_layer_uris
@@ -381,13 +525,17 @@ def layer_summary_text(layers):
             parts.append(f"L{layer['layer_index']}:reuse({layer['reuse_uri'].split('_')[-1]})")
             continue
         fn = str(layer["function_iri"]).split("#")[-1]
-        mat = str(layer["material_iri"]).split("#")[-1] if layer.get("material_iri") else "-"
+        cat = layer.get("material_category_iri") or layer.get("material_iri")
+        mat = str(cat).split("#")[-1] if cat else "-"
+        typ = layer.get("material_type_iri")
+        if typ and str(typ) != str(cat):
+            mat = f"{mat}/{str(typ).split('#')[-1]}"
         thick = f"@{layer['thickness_cm']}cm" if layer.get("thickness_cm") is not None else ""
         parts.append(f"L{layer['layer_index']}:{fn}/{mat}{thick}")
     return ", ".join(parts)
 
 
-def process_building(g, building_node):
+def process_building(g, building_node, ontology_corpus=None, ontology_graph=None):
     kv = extract_building_kv_pairs(building_node)
     building_id = kv["building_id"]
     safe_id = building_id.replace(".", "_")
@@ -447,12 +595,6 @@ def process_building(g, building_node):
         use_layers = not is_opening_element(element_label)
         existing_layerset = None
         existing_layer_uris = []
-        if use_layers:
-            existing_layerset = build_existing_layerset(
-                element["construction_type_de"],
-                element["construction_type_eng"],
-                element_label,
-            )
 
         stages = (
             {
@@ -483,6 +625,29 @@ def process_building(g, building_node):
                 "mode": "refurbishment",
             },
         )
+
+        if use_layers:
+            record = iter_tabula_stage_descriptions(
+                building_id,
+                safe_id,
+                element_label,
+                stages[0],
+            )
+            nlp_existing = None
+            if ontology_corpus and record:
+                nlp_existing = layerset_from_nlp(
+                    stages[0]["desc_de"],
+                    stages[0]["desc_eng"],
+                    record.subject_uri,
+                    ontology_corpus,
+                    ontology_graph=ontology_graph,
+                )
+            existing_layerset = nlp_existing or build_existing_layerset(
+                element["construction_type_de"],
+                element["construction_type_eng"],
+                element_label,
+                ontology_graph=ontology_graph,
+            )
 
         for stage in stages:
             if stage["u_value"] is None:
@@ -520,33 +685,55 @@ def process_building(g, building_node):
 
             if stage["mode"] == "existing":
                 layerset = existing_layerset
+            elif ontology_corpus and (stage["desc_de"] or stage["desc_eng"]):
+                stage_record = iter_tabula_stage_descriptions(
+                    building_id, safe_id, element_label, stage
+                )
+                layerset = build_refurbishment_layerset_with_nlp(
+                    existing_layer_uris,
+                    stage["desc_de"],
+                    stage["desc_eng"],
+                    element_label,
+                    stage_record.subject_uri if stage_record else "",
+                    ontology_corpus,
+                    ontology_graph=ontology_graph,
+                )
             else:
                 layerset = build_refurbishment_layerset(
                     existing_layer_uris,
                     stage["desc_de"],
                     stage["desc_eng"],
                     element_label,
+                    ontology_graph=ontology_graph,
                 )
 
             if layerset and layerset.get("layers"):
                 print(f"  {element_label} ({stage['suffix']}): {layer_summary_text(layerset['layers'])}")
-                layer_uris = emit_layerset(g, safe_id, state_suffix, element_state_uri, layerset)
+                layer_uris = emit_layerset(
+                    g, safe_id, state_suffix, element_state_uri, layerset, ontology_graph=ontology_graph
+                )
                 if stage["mode"] == "existing":
                     existing_layer_uris = layer_uris
 
 
 def build_tabula_graph():
+    ontology_g = load_ontology_graph(BASE_DIR / "owl")
+    print("Loading shared ontology corpus for TABULA NLP...")
+    ontology_corpus = load_ontology_corpus(ontology_g)
+    begin_report("tabula")
+
     g = init_graph()
     for building_node in load_tabula_buildings():
-        process_building(g, building_node)
+        process_building(g, building_node, ontology_corpus=ontology_corpus, ontology_graph=ontology_g)
     return g
 
 
 def main():
     print(f"Base directory: {BASE_DIR}")
-    test_mode = bool(TEST_BUILDING_ID)
+    test_id = TEST_BUILDING_ID or os.environ.get("TABULA_TEST_BUILDING_ID")
+    test_mode = bool(test_id)
     if test_mode:
-        print(f"Test mode: single building {TEST_BUILDING_ID}")
+        print(f"Test mode: single building {test_id}")
     else:
         print("Full dataset mode: all TABULA buildings")
 
@@ -560,13 +747,15 @@ def main():
     layer_count = sum(1 for _ in g.subjects(RDF.type, BMP.Layer))
 
     if test_mode:
-        out_path = out_dir / f"tabula_{TEST_BUILDING_ID.replace('.', '_')}_test.ttl"
+        out_path = out_dir / f"tabula_{test_id.replace('.', '_')}_test.ttl"
     else:
         out_path = out_dir / "tabula_buildings-enriched.ttl"
         if out_path.is_file():
             out_path.unlink()
 
     g.serialize(destination=out_path, format="turtle")
+    ontology_g = load_ontology_graph()
+    finalize_report(data_graph=g, ontology_graph=ontology_g, ttl_path=out_path)
 
     print(f"\nSaved: {out_path}")
     print(

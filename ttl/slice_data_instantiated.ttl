@@ -194,7 +194,7 @@ slice:Layer_inst_01_01 a bmp:Layer,
 slice:Layer_inst_01_02 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | Bituminised wood fibre (22 mm) | Screwed"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer1_2 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "22.0"^^xsd:float ] ;
@@ -230,7 +230,7 @@ slice:Layer_inst_02_01 a bmp:Layer,
 slice:Layer_inst_02_02 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | Insulating wood fibre (18 mm) | Screwed"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer2_2 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "18.0"^^xsd:float ] ;
@@ -248,7 +248,7 @@ slice:Layer_inst_02_03 a bmp:Layer,
 slice:Layer_inst_02_04 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | OSB (18 mm) | Screwed"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer2_4 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "18.0"^^xsd:float ] ;
@@ -275,7 +275,7 @@ slice:Layer_inst_03_01 a bmp:Layer,
 slice:Layer_inst_03_02 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Cavity ties | Steel (180 x 3.5 mm)"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer3_2 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "5.0"^^xsd:float ] ;
@@ -284,7 +284,7 @@ slice:Layer_inst_03_02 a bmp:Layer,
 slice:Layer_inst_03_03 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | Wood fibre (22 mm) | Screwed"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer3_3 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "22.0"^^xsd:float ] ;
@@ -302,7 +302,7 @@ slice:Layer_inst_03_04 a bmp:Layer,
 slice:Layer_inst_03_05 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Board | OSB (18 mm) | Screwed"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer3_5 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "18.0"^^xsd:float ] ;
@@ -365,7 +365,7 @@ slice:Layer_inst_06_02 a bmp:Layer,
 slice:Layer_inst_06_03 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Wall - external finish | Infrastructure | Bracket | Steel (12 mm) | Screwed | For hempcrete blocks"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer6_3 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "12.0"^^xsd:float ] ;
@@ -392,7 +392,7 @@ slice:Layer_inst_07_02 a bmp:Layer,
 slice:Layer_inst_07_03 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Floor finish | Vapour barrier | Proofing sheet | PE (0.2 mm) | Stapled"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer7_3 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "2.0"^^xsd:float ] ;
@@ -527,7 +527,7 @@ slice:Layer_inst_10_04 a bmp:Layer,
 slice:Layer_inst_10_05 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Vapour barrier | Proofing sheet | Bitumen - Glass fibre (3 mm) | Loose laid"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer10_5 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "3.0"^^xsd:float ] ;
@@ -590,7 +590,7 @@ slice:Layer_inst_11_05 a bmp:Layer,
 slice:Layer_inst_11_06 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Vapour barrier | Proofing sheet | Bitumen - Glass fibre (3 mm) | Loose laid"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer11_6 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "3.0"^^xsd:float ] ;
@@ -626,7 +626,7 @@ slice:Layer_inst_12_02 a bmp:Layer,
 slice:Layer_inst_12_03 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Boarding | Board | Softwood (24 mm) | Nailed | For zinc tiles, zinc roof plate and copper roof plate"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer12_3 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "24.0"^^xsd:float ] ;
@@ -635,7 +635,7 @@ slice:Layer_inst_12_03 a bmp:Layer,
 slice:Layer_inst_12_04 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Counter battens | Battens | Softwood (30 x 15 mm) | Nailed | Treated - uncontaminated | For corrugated fibre cement board"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer12_4 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "15.0"^^xsd:float ] ;
@@ -644,7 +644,7 @@ slice:Layer_inst_12_04 a bmp:Layer,
 slice:Layer_inst_12_05 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Vapour barrier | Proofing sheet | PP (0.25 mm) | Stapled"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer12_5 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "25.0"^^xsd:float ] ;
@@ -743,7 +743,7 @@ slice:Layer_inst_13_06 a bmp:Layer,
 slice:Layer_inst_13_07 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Vapour barrier | Proofing sheet | PP (0.22 mm) | Stapled"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer13_7 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "22.0"^^xsd:float ] ;
@@ -752,7 +752,7 @@ slice:Layer_inst_13_07 a bmp:Layer,
 slice:Layer_inst_13_08 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Ceiling finish | Support structure | Profiles | Galvanised steel | Screwed | For boards"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer13_8 ;
     bpo:isPartOf slice:layerSet_13 .
 
@@ -831,7 +831,7 @@ slice:Layer_inst_14_07 a bmp:Layer,
 slice:Layer_inst_14_08 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Roof finish | Vapour barrier | Proofing sheet | PP (0.22 mm) | Stapled"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer14_8 ;
     bmp:hasThickness [ bmp:hasUnit unit:MilliM ;
             bmp:hasValue "22.0"^^xsd:float ] ;
@@ -840,7 +840,7 @@ slice:Layer_inst_14_08 a bmp:Layer,
 slice:Layer_inst_14_09 a bmp:Layer,
         bpo:Component ;
     at:hasArchetypeDescription "Ceiling finish | Support structure | Profiles | Galvanised steel | Screwed | For boards"^^xsd:string ;
-    bmp:hasLayerFunction bmp:Infrastructure ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
     bmp:hasMaterial slice:material_inst_layer14_9 ;
     bpo:isPartOf slice:layerSet_14 .
 
@@ -860,7 +860,8 @@ slice:material_inst_layer10_1 a bmp:Material ;
         slice:material_inst_layer10_1_LCSC2,
         slice:material_inst_layer10_1_LCSC3,
         slice:material_inst_layer10_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Aggregates ;
+    bmp:hasMaterialType bmp:Gravel .
 
 slice:material_inst_layer10_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1035,7 +1036,7 @@ slice:material_inst_layer10_2 a bmp:Material ;
         slice:material_inst_layer10_2_LCSC2,
         slice:material_inst_layer10_2_LCSC3,
         slice:material_inst_layer10_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer10_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1263,7 +1264,8 @@ slice:material_inst_layer10_3 a bmp:Material ;
         slice:material_inst_layer10_3_LCSC2,
         slice:material_inst_layer10_3_LCSC3,
         slice:material_inst_layer10_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 slice:material_inst_layer10_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1462,7 +1464,7 @@ slice:material_inst_layer10_4 a bmp:Material ;
         slice:material_inst_layer10_4_LCSA5,
         slice:material_inst_layer10_4_LCSC2,
         slice:material_inst_layer10_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hempcrete .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer10_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1608,7 +1610,8 @@ slice:material_inst_layer10_5 a bmp:Material ;
         slice:material_inst_layer10_5_LCSC2,
         slice:material_inst_layer10_5_LCSC3,
         slice:material_inst_layer10_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:GlassFibres .
+    bmp:hasMaterialCategory bmp:Glass ;
+    bmp:hasMaterialType bmp:DrawnSheetGlass .
 
 slice:material_inst_layer10_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1781,7 +1784,8 @@ slice:material_inst_layer10_6 a bmp:Material ;
         slice:material_inst_layer10_6_LCSC2,
         slice:material_inst_layer10_6_LCSC3,
         slice:material_inst_layer10_6_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 slice:material_inst_layer10_6_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -1954,7 +1958,8 @@ slice:material_inst_layer11_1 a bmp:Material ;
         slice:material_inst_layer11_1_LCSC2,
         slice:material_inst_layer11_1_LCSC3,
         slice:material_inst_layer11_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Aggregates ;
+    bmp:hasMaterialType bmp:Gravel .
 
 slice:material_inst_layer11_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -2131,7 +2136,8 @@ slice:material_inst_layer11_2 a bmp:Material ;
         slice:material_inst_layer11_2_LCSC2,
         slice:material_inst_layer11_2_LCSC3,
         slice:material_inst_layer11_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 slice:material_inst_layer11_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -2414,7 +2420,7 @@ slice:material_inst_layer11_3 a bmp:Material ;
         slice:material_inst_layer11_3_LCSC2,
         slice:material_inst_layer11_3_LCSC3,
         slice:material_inst_layer11_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer11_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -2642,7 +2648,8 @@ slice:material_inst_layer11_4 a bmp:Material ;
         slice:material_inst_layer11_4_LCSC2,
         slice:material_inst_layer11_4_LCSC3,
         slice:material_inst_layer11_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Concrete .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 slice:material_inst_layer11_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -2841,7 +2848,7 @@ slice:material_inst_layer11_5 a bmp:Material ;
         slice:material_inst_layer11_5_LCSA5,
         slice:material_inst_layer11_5_LCSC2,
         slice:material_inst_layer11_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hempcrete .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer11_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -2987,7 +2994,8 @@ slice:material_inst_layer11_6 a bmp:Material ;
         slice:material_inst_layer11_6_LCSC2,
         slice:material_inst_layer11_6_LCSC3,
         slice:material_inst_layer11_6_LCSC4 ;
-    bmp:hasMaterialCategory bmp:GlassFibres .
+    bmp:hasMaterialCategory bmp:Glass ;
+    bmp:hasMaterialType bmp:DrawnSheetGlass .
 
 slice:material_inst_layer11_6_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -3160,7 +3168,8 @@ slice:material_inst_layer11_7 a bmp:Material ;
         slice:material_inst_layer11_7_LCSC2,
         slice:material_inst_layer11_7_LCSC3,
         slice:material_inst_layer11_7_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 slice:material_inst_layer11_7_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -3333,7 +3342,8 @@ slice:material_inst_layer12_1 a bmp:Material ;
         slice:material_inst_layer12_1_LCSC2,
         slice:material_inst_layer12_1_LCSC3,
         slice:material_inst_layer12_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Aggregates ;
+    bmp:hasMaterialType bmp:Gravel .
 
 slice:material_inst_layer12_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -3508,7 +3518,7 @@ slice:material_inst_layer12_2 a bmp:Material ;
         slice:material_inst_layer12_2_LCSC2,
         slice:material_inst_layer12_2_LCSC3,
         slice:material_inst_layer12_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer12_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -3736,7 +3746,8 @@ slice:material_inst_layer12_3 a bmp:Material ;
         slice:material_inst_layer12_3_LCSC2,
         slice:material_inst_layer12_3_LCSC3,
         slice:material_inst_layer12_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodSoft .
 
 slice:material_inst_layer12_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -3936,7 +3947,8 @@ slice:material_inst_layer12_4 a bmp:Material ;
         slice:material_inst_layer12_4_LCSC2,
         slice:material_inst_layer12_4_LCSC3,
         slice:material_inst_layer12_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodSoft .
 
 slice:material_inst_layer12_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -4109,7 +4121,8 @@ slice:material_inst_layer12_5 a bmp:Material ;
         slice:material_inst_layer12_5_LCSC2,
         slice:material_inst_layer12_5_LCSC3,
         slice:material_inst_layer12_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 slice:material_inst_layer12_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -4282,7 +4295,8 @@ slice:material_inst_layer12_6 a bmp:Material ;
         slice:material_inst_layer12_6_LCSC2,
         slice:material_inst_layer12_6_LCSC3,
         slice:material_inst_layer12_6_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer12_6_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -4455,7 +4469,8 @@ slice:material_inst_layer12_7 a bmp:Material ;
         slice:material_inst_layer12_7_LCSC2,
         slice:material_inst_layer12_7_LCSC3,
         slice:material_inst_layer12_7_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hemp .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer12_7_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -4628,7 +4643,7 @@ slice:material_inst_layer12_8 a bmp:Material ;
         slice:material_inst_layer12_8_LCSC2,
         slice:material_inst_layer12_8_LCSC3,
         slice:material_inst_layer12_8_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer12_8_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -4804,7 +4819,8 @@ slice:material_inst_layer12_9 a bmp:Material ;
         slice:material_inst_layer12_9_LCSC2,
         slice:material_inst_layer12_9_LCSC3,
         slice:material_inst_layer12_9_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:ClayBinder .
 
 slice:material_inst_layer12_9_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -5058,7 +5074,8 @@ slice:material_inst_layer13_1 a bmp:Material ;
         slice:material_inst_layer13_1_LCSC2,
         slice:material_inst_layer13_1_LCSC3,
         slice:material_inst_layer13_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Aggregates ;
+    bmp:hasMaterialType bmp:Gravel .
 
 slice:material_inst_layer13_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -5233,7 +5250,7 @@ slice:material_inst_layer13_2 a bmp:Material ;
         slice:material_inst_layer13_2_LCSC2,
         slice:material_inst_layer13_2_LCSC3,
         slice:material_inst_layer13_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer13_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -5459,7 +5476,7 @@ slice:material_inst_layer13_3 a bmp:Material ;
         slice:material_inst_layer13_3_LCSA5,
         slice:material_inst_layer13_3_LCSC2,
         slice:material_inst_layer13_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Rockwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer13_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -5605,7 +5622,7 @@ slice:material_inst_layer13_4 a bmp:Material ;
         slice:material_inst_layer13_4_LCSC2,
         slice:material_inst_layer13_4_LCSC3,
         slice:material_inst_layer13_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer13_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -5778,7 +5795,8 @@ slice:material_inst_layer13_5 a bmp:Material ;
         slice:material_inst_layer13_5_LCSC2,
         slice:material_inst_layer13_5_LCSC3,
         slice:material_inst_layer13_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodSoft .
 
 slice:material_inst_layer13_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -6124,7 +6142,8 @@ slice:material_inst_layer13_7 a bmp:Material ;
         slice:material_inst_layer13_7_LCSC2,
         slice:material_inst_layer13_7_LCSC3,
         slice:material_inst_layer13_7_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 slice:material_inst_layer13_7_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -6298,7 +6317,8 @@ slice:material_inst_layer13_8 a bmp:Material ;
         slice:material_inst_layer13_8_LCSC2,
         slice:material_inst_layer13_8_LCSC3,
         slice:material_inst_layer13_8_LCSC4 ;
-    bmp:hasMaterialCategory bmp:MineralFibre .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer13_8_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -6500,7 +6520,8 @@ slice:material_inst_layer13_9 a bmp:Material ;
         slice:material_inst_layer13_9_LCSC2,
         slice:material_inst_layer13_9_LCSC3,
         slice:material_inst_layer13_9_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer13_9_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -6727,7 +6748,8 @@ slice:material_inst_layer14_1 a bmp:Material ;
         slice:material_inst_layer14_1_LCSC2,
         slice:material_inst_layer14_1_LCSC3,
         slice:material_inst_layer14_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Brick .
+    bmp:hasMaterialCategory bmp:Aggregates ;
+    bmp:hasMaterialType bmp:Gravel .
 
 slice:material_inst_layer14_10 a bmp:Material ;
     bmp:hasLifeCycleStage slice:material_inst_layer14_10_LCSA1A2A3,
@@ -6738,7 +6760,8 @@ slice:material_inst_layer14_10 a bmp:Material ;
         slice:material_inst_layer14_10_LCSC2,
         slice:material_inst_layer14_10_LCSC3,
         slice:material_inst_layer14_10_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer14_10_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -7133,7 +7156,8 @@ slice:material_inst_layer14_2 a bmp:Material ;
         slice:material_inst_layer14_2_LCSC2,
         slice:material_inst_layer14_2_LCSC3,
         slice:material_inst_layer14_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:HeavyWeightConcrete .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:HeavyWeightConcrete .
 
 slice:material_inst_layer14_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -7416,7 +7440,7 @@ slice:material_inst_layer14_3 a bmp:Material ;
         slice:material_inst_layer14_3_LCSC2,
         slice:material_inst_layer14_3_LCSC3,
         slice:material_inst_layer14_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer14_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -7642,7 +7666,7 @@ slice:material_inst_layer14_4 a bmp:Material ;
         slice:material_inst_layer14_4_LCSA5,
         slice:material_inst_layer14_4_LCSC2,
         slice:material_inst_layer14_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Rockwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer14_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -7788,7 +7812,7 @@ slice:material_inst_layer14_5 a bmp:Material ;
         slice:material_inst_layer14_5_LCSC2,
         slice:material_inst_layer14_5_LCSC3,
         slice:material_inst_layer14_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer14_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -7961,7 +7985,8 @@ slice:material_inst_layer14_6 a bmp:Material ;
         slice:material_inst_layer14_6_LCSC2,
         slice:material_inst_layer14_6_LCSC3,
         slice:material_inst_layer14_6_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodSoft .
 
 slice:material_inst_layer14_6_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -8307,7 +8332,8 @@ slice:material_inst_layer14_8 a bmp:Material ;
         slice:material_inst_layer14_8_LCSC2,
         slice:material_inst_layer14_8_LCSC3,
         slice:material_inst_layer14_8_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:ReinforcedConcrete .
 
 slice:material_inst_layer14_8_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -8481,7 +8507,8 @@ slice:material_inst_layer14_9 a bmp:Material ;
         slice:material_inst_layer14_9_LCSC2,
         slice:material_inst_layer14_9_LCSC3,
         slice:material_inst_layer14_9_LCSC4 ;
-    bmp:hasMaterialCategory bmp:MineralFibre .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer14_9_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -8682,7 +8709,8 @@ slice:material_inst_layer1_1 a bmp:Material ;
         slice:material_inst_layer1_1_LCSC2,
         slice:material_inst_layer1_1_LCSC3,
         slice:material_inst_layer1_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:NaturalStone .
+    bmp:hasMaterialCategory bmp:Cork ;
+    bmp:hasMaterialType bmp:CorkType .
 
 slice:material_inst_layer1_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -8882,7 +8910,8 @@ slice:material_inst_layer1_2 a bmp:Material ;
         slice:material_inst_layer1_2_LCSC2,
         slice:material_inst_layer1_2_LCSC3,
         slice:material_inst_layer1_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer1_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -9055,7 +9084,8 @@ slice:material_inst_layer1_3 a bmp:Material ;
         slice:material_inst_layer1_3_LCSC2,
         slice:material_inst_layer1_3_LCSC3,
         slice:material_inst_layer1_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hemp .
+    bmp:hasMaterialCategory bmp:Hemp ;
+    bmp:hasMaterialType bmp:HempFibre .
 
 slice:material_inst_layer1_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -9404,7 +9434,8 @@ slice:material_inst_layer2_1 a bmp:Material ;
         slice:material_inst_layer2_1_LCSC2,
         slice:material_inst_layer2_1_LCSC3,
         slice:material_inst_layer2_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:NaturalStone .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer2_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -9658,7 +9689,8 @@ slice:material_inst_layer2_2 a bmp:Material ;
         slice:material_inst_layer2_2_LCSC2,
         slice:material_inst_layer2_2_LCSC3,
         slice:material_inst_layer2_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer2_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -9831,7 +9863,8 @@ slice:material_inst_layer2_3 a bmp:Material ;
         slice:material_inst_layer2_3_LCSC2,
         slice:material_inst_layer2_3_LCSC3,
         slice:material_inst_layer2_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hemp .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:AirDryTimber .
 
 slice:material_inst_layer2_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -10004,7 +10037,7 @@ slice:material_inst_layer2_4 a bmp:Material ;
         slice:material_inst_layer2_4_LCSC2,
         slice:material_inst_layer2_4_LCSC3,
         slice:material_inst_layer2_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:MineralFibre .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer2_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -10180,7 +10213,8 @@ slice:material_inst_layer2_5 a bmp:Material ;
         slice:material_inst_layer2_5_LCSC2,
         slice:material_inst_layer2_5_LCSC3,
         slice:material_inst_layer2_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ClayUnit .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer2_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -10663,7 +10697,7 @@ slice:material_inst_layer3_2 a bmp:Material ;
         slice:material_inst_layer3_2_LCSC2,
         slice:material_inst_layer3_2_LCSC3,
         slice:material_inst_layer3_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer3_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -10836,7 +10870,8 @@ slice:material_inst_layer3_3 a bmp:Material ;
         slice:material_inst_layer3_3_LCSC2,
         slice:material_inst_layer3_3_LCSC3,
         slice:material_inst_layer3_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodFibre .
 
 slice:material_inst_layer3_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -11009,7 +11044,7 @@ slice:material_inst_layer3_4 a bmp:Material ;
         slice:material_inst_layer3_4_LCSC2,
         slice:material_inst_layer3_4_LCSC3,
         slice:material_inst_layer3_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:HempFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber .
 
 slice:material_inst_layer3_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -11182,7 +11217,7 @@ slice:material_inst_layer3_5 a bmp:Material ;
         slice:material_inst_layer3_5_LCSC2,
         slice:material_inst_layer3_5_LCSC3,
         slice:material_inst_layer3_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:MineralFibre .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer3_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -11358,7 +11393,8 @@ slice:material_inst_layer3_6 a bmp:Material ;
         slice:material_inst_layer3_6_LCSC2,
         slice:material_inst_layer3_6_LCSC3,
         slice:material_inst_layer3_6_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ClayUnit .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer3_6_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -11612,7 +11648,8 @@ slice:material_inst_layer4_1 a bmp:Material ;
         slice:material_inst_layer4_1_LCSC2,
         slice:material_inst_layer4_1_LCSC3,
         slice:material_inst_layer4_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 slice:material_inst_layer4_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -11788,7 +11825,8 @@ slice:material_inst_layer5_1 a bmp:Material ;
         slice:material_inst_layer5_1_LCSC2,
         slice:material_inst_layer5_1_LCSC3,
         slice:material_inst_layer5_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ClayUnit .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer5_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -12042,7 +12080,8 @@ slice:material_inst_layer5_2 a bmp:Material ;
         slice:material_inst_layer5_2_LCSC2,
         slice:material_inst_layer5_2_LCSC3,
         slice:material_inst_layer5_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hemp .
+    bmp:hasMaterialCategory bmp:Hemp ;
+    bmp:hasMaterialType bmp:HempFibre .
 
 slice:material_inst_layer5_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -12218,7 +12257,8 @@ slice:material_inst_layer6_1 a bmp:Material ;
         slice:material_inst_layer6_1_LCSC2,
         slice:material_inst_layer6_1_LCSC3,
         slice:material_inst_layer6_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ClayUnit .
+    bmp:hasMaterialCategory bmp:Binders ;
+    bmp:hasMaterialType bmp:GypsumPlaster .
 
 slice:material_inst_layer6_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -12472,7 +12512,7 @@ slice:material_inst_layer6_2 a bmp:Material ;
         slice:material_inst_layer6_2_LCSC2,
         slice:material_inst_layer6_2_LCSC3,
         slice:material_inst_layer6_2_LCSC4 ;
-    bmp:hasMaterialCategory bmp:HempFibre .
+    bmp:hasMaterialCategory bmp:WoodTimber .
 
 slice:material_inst_layer6_2_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -12645,7 +12685,8 @@ slice:material_inst_layer6_3 a bmp:Material ;
         slice:material_inst_layer6_3_LCSC2,
         slice:material_inst_layer6_3_LCSC3,
         slice:material_inst_layer6_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 slice:material_inst_layer6_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -12821,7 +12862,8 @@ slice:material_inst_layer7_1 a bmp:Material ;
         slice:material_inst_layer7_1_LCSC2,
         slice:material_inst_layer7_1_LCSC3,
         slice:material_inst_layer7_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodHard .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodHard .
 
 slice:material_inst_layer7_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -13276,7 +13318,8 @@ slice:material_inst_layer7_3 a bmp:Material ;
         slice:material_inst_layer7_3_LCSC2,
         slice:material_inst_layer7_3_LCSC3,
         slice:material_inst_layer7_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Polymer .
+    bmp:hasMaterialCategory bmp:Concrete ;
+    bmp:hasMaterialType bmp:LightWeightConcrete .
 
 slice:material_inst_layer7_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -13448,7 +13491,8 @@ slice:material_inst_layer7_4 a bmp:Material ;
         slice:material_inst_layer7_4_LCSA5,
         slice:material_inst_layer7_4_LCSC2,
         slice:material_inst_layer7_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:ExtrudedPolystyrene .
+    bmp:hasMaterialCategory bmp:Polymer ;
+    bmp:hasMaterialType bmp:ExpandedPolystyrene .
 
 slice:material_inst_layer7_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -13594,7 +13638,8 @@ slice:material_inst_layer7_5 a bmp:Material ;
         slice:material_inst_layer7_5_LCSC2,
         slice:material_inst_layer7_5_LCSC3,
         slice:material_inst_layer7_5_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodTimber .
+    bmp:hasMaterialCategory bmp:Brick ;
+    bmp:hasMaterialType bmp:BrickMasonryUnit .
 
 slice:material_inst_layer7_5_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -13770,7 +13815,8 @@ slice:material_inst_layer8_1 a bmp:Material ;
         slice:material_inst_layer8_1_LCSC2,
         slice:material_inst_layer8_1_LCSC3,
         slice:material_inst_layer8_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodHard .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodHard .
 
 slice:material_inst_layer8_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -14225,7 +14271,7 @@ slice:material_inst_layer8_3 a bmp:Material ;
         slice:material_inst_layer8_3_LCSC2,
         slice:material_inst_layer8_3_LCSC3,
         slice:material_inst_layer8_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer8_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -14398,7 +14444,8 @@ slice:material_inst_layer8_4 a bmp:Material ;
         slice:material_inst_layer8_4_LCSC2,
         slice:material_inst_layer8_4_LCSC3,
         slice:material_inst_layer8_4_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Hemp .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:AirDryTimber .
 
 slice:material_inst_layer8_4_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -14574,7 +14621,8 @@ slice:material_inst_layer9_1 a bmp:Material ;
         slice:material_inst_layer9_1_LCSC2,
         slice:material_inst_layer9_1_LCSC3,
         slice:material_inst_layer9_1_LCSC4 ;
-    bmp:hasMaterialCategory bmp:WoodHard .
+    bmp:hasMaterialCategory bmp:WoodTimber ;
+    bmp:hasMaterialType bmp:WoodHard .
 
 slice:material_inst_layer9_1_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,
@@ -15029,7 +15077,7 @@ slice:material_inst_layer9_3 a bmp:Material ;
         slice:material_inst_layer9_3_LCSC2,
         slice:material_inst_layer9_3_LCSC3,
         slice:material_inst_layer9_3_LCSC4 ;
-    bmp:hasMaterialCategory bmp:Slagwool .
+    bmp:hasMaterialCategory bmp:Brick .
 
 slice:material_inst_layer9_3_LCSA1A2A3 a owl:NamedIndividual,
         lca:A1,

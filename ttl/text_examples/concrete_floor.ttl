@@ -1,0 +1,31 @@
+@prefix at: <https://w3id.org/at#> .
+@prefix beo: <https://w3id.org/beo#> .
+@prefix bmp: <https://w3id.org/bmp#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix test: <https://namedgraphs.org/test#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:floor_01 a at:ElementArchetype,
+        beo:Floor ;
+    at:hasDescription "The floor element is overall 30 cm thick, made out of hollow concrete blocks."@en ;
+    bmp:hasLayerSet test:floor_01_layerset_var1 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "30.0"^^xsd:float ] .
+
+test:floor_01_layer_var1_01 a bmp:Layer ;
+    bmp:hasLayerFunction bmp:LoadBearing ;
+    bmp:hasMaterial test:floor_01_mat_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "30.0"^^xsd:float ] .
+
+test:floor_01_layerset_var1 a bmp:LayerSet,
+        bmp:SingleLayer ;
+    bmp:hasLayer test:floor_01_layer_var1_01 ;
+    bmp:hasThickness [ qudt:unit unit:CentiM ;
+            rdf:value "30.0"^^xsd:float ] .
+
+test:floor_01_mat_var1_01 a bmp:Material ;
+    bmp:hasMaterialCategory bmp:Concrete .
+
